@@ -1,0 +1,23 @@
+{
+ "updatedAt": "2026-10-20",
+ "credit": "Supported by Rakuten Developers",
+ "cards": [
+  {
+   "id": "OP01-003",
+   "name": "モンキー・D・ルフィ",
+   "updatedAt": "2026-10-20",
+   "count": 5,
+   "minPrice": 50,
+   "refPrice": 180,
+   "shop": "ゴールデンホビー",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rshbo.li9aeb49.g00rshbo.li9af287/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgoldhobby%2Fop01-003%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgoldhobby%2Fi%2F10055043%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "change": null
+  },
+  {
+   "id": "OP01-003-P",
+   "name": "モンキー・D・ルフィ",
+   "updatedAt": "2026-10-20",
+   "count": 0
+  }
+ ]
+}
