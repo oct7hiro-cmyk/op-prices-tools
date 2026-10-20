@@ -55,13 +55,13 @@ async function searchYahoo(keyword, minPrice) {
     price_from: minPrice, image_size: 600 }).forEach(([k, v]) => v != null && v !== '' && url.searchParams.set(k, String(v)));
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { headers: { 'User-Agent': `op-prices-tools/1.0 (+${SITE_REFERER})` } });
       if (res.ok) {
         const j = await res.json();
         return (j.hits ?? []).map((h) => ({ src: 'yahoo', itemName: h.name ?? '', itemPrice: Number(h.price), shopName: h.seller?.name ?? '',
           url: h.url, img: h.exImage?.url || h.image?.medium || null }));
       }
-      if (res.status === 401 || res.status === 403) { yahooDown = true; console.error(`[Yahoo] 認証エラー(${res.status}): YAHOO_APP_ID を確認。以降は楽天のみ`); return []; }
+      if (res.status === 401 || res.status === 403) { yahooDown = true; console.error(`[Yahoo] 認証エラー(${res.status}): ${(await res.text()).replace(/\s+/g, ' ').slice(0, 300)} / appid長さ=${YAHOO_APP_ID.length}。以降は楽天のみ`); return []; }
       if (res.status === 404) return [];
       console.error(`[Yahoo] ${res.status} ${keyword}`);
     } catch (e) { console.error(`[Yahoo] ${e.message} ${keyword}`); }
