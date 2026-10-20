@@ -14,10 +14,15 @@
    "change": null
   },
   {
-   "id": "OP01-003-P",
+   "id": "OP01-003",
    "name": "モンキー・D・ルフィ",
    "updatedAt": "2026-10-20",
-   "count": 0
+   "count": 2,
+   "minPrice": 35000,
+   "refPrice": 35000,
+   "shop": "お宝ギターズ",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qdzyo.li9ae777.g00qdzyo.li9aff68/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fotakara-100%2F083s-260803-36759odx%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fotakara-100%2Fi%2F10146446%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "change": null
   }
  ]
 }
