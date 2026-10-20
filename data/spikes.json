@@ -1,4 +1,50 @@
 {
- "updatedAt": "2026-10-20",
- "spikes": []
+ "updatedAt": "2026-10-21",
+ "spikes": [
+  {
+   "id": "OP17-063-P",
+   "name": "カイドウ(SRパラレル)",
+   "updatedAt": "2026-10-21",
+   "count": 3,
+   "imgs": [
+    "https://item-shopping.c.yimg.jp/i/l/moetaku_rc-itrv4l1ibl3s-hunw",
+    "https://item-shopping.c.yimg.jp/i/l/ryuunoshippo_240814963",
+    "https://thumbnail.image.rakuten.co.jp/@0_mall/toretoku/cabinet/items232/397232jat_1.jpg?_ex=400x400"
+   ],
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-063%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-063%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "minPrice": 670,
+   "refPrice": 880,
+   "shop": "トレカ通販 トレトク楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F397232j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10630721%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 1,
+    "yahoo": 2
+   },
+   "change": 31.3
+  },
+  {
+   "id": "OP17-005",
+   "name": "エドワード・ニューゲート(SR)",
+   "updatedAt": "2026-10-21",
+   "count": 5,
+   "imgs": [
+    "https://item-shopping.c.yimg.jp/i/l/game38japan_171205964",
+    "https://item-shopping.c.yimg.jp/i/l/ryuunoshippo_240814882",
+    "https://thumbnail.image.rakuten.co.jp/@0_mall/toretoku/cabinet/items151/397151jat_1.jpg?_ex=400x400",
+    "https://thumbnail.image.rakuten.co.jp/@0_mall/fullahead/cabinet/07535276/07538682/opc-op17-005.jpg?_ex=400x400"
+   ],
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-005%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-005%2F",
+   "minPrice": 80,
+   "refPrice": 140,
+   "shop": "トレカ通販 トレトク楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F397151j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10630361%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 2,
+    "yahoo": 3
+   },
+   "change": 27.3
+  }
+ ]
 }
