@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ワンピースカード BOX開封シミュレーター</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6f2;--surf:#fff;--ink:#12283a;--mute:#5d6f7d;--line:#d5dbd8;--red:#c93a2b;--gold:#b7821a;--sea:#1d6f8a;--good:#1f7a4d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1c27;--surf:#152a39;--ink:#eaf0f3;--mute:#9fb2bf;--line:#28404f;--red:#ee6a5a;--gold:#e5b04a;--sea:#5bb5d0;--good:#59c28a}}
+:root[data-theme="dark"]{--bg:#0e1c27;--surf:#152a39;--ink:#eaf0f3;--mute:#9fb2bf;--line:#28404f;--red:#ee6a5a;--gold:#e5b04a;--sea:#5bb5d0;--good:#59c28a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6}
+main{max-width:980px;margin:0 auto;padding:28px 16px 56px}
+h1{font-size:clamp(26px,5vw,40px);font-weight:900;margin:0 0 4px;letter-spacing:.01em}
+.sub{color:var(--mute);margin:0 0 24px}
+.note{border-left:4px solid var(--gold);background:var(--surf);padding:10px 14px;margin:0 0 24px;font-size:14px}
+.grid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+section{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:16px}
+h2{font-size:17px;margin:0 0 12px}
+label{display:block;font-size:13px;color:var(--mute);margin:10px 0 2px}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px}
+textarea{font-size:13px;min-height:92px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset:1px}
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.rar{border-top:1px solid var(--line);margin-top:12px;padding-top:6px}
+.rar b{font-size:15px}
+button{font:inherit;font-weight:700;border:0;border-radius:6px;padding:10px 16px;cursor:pointer;background:var(--red);color:#fff}
+button.sec{background:var(--sea)}
+.verdict{display:grid;gap:14px;grid-template-columns:repeat(2,1fr);margin-bottom:16px}
+.big{font-size:clamp(28px,6vw,44px);font-weight:900;font-variant-numeric:tabular-nums;line-height:1.1}
+.cap{font-size:13px;color:var(--mute)}
+.bar{position:relative;height:26px;background:var(--bg);border:1px solid var(--line);border-radius:6px;margin:10px 0 4px}
+.bar i{position:absolute;top:-4px;bottom:-4px;width:3px}
+.bar .ev{background:var(--good)}.bar .msrp{background:var(--ink)}.bar .pre{background:var(--red)}
+.leg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mute)}
+.hist{display:flex;align-items:flex-end;gap:2px;height:110px;margin-top:8px}
+.hist div{flex:1;background:var(--sea);min-height:1px;border-radius:2px 2px 0 0}
+.hist div.win{background:var(--good)}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+td,th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:right}
+td:first-child,th:first-child{text-align:left}
+.pull{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.tag{font-weight:900;color:var(--gold);margin-right:6px}
+</style>
+</head>
+<body>
+<main>
+<h1>BOX開封シミュレーター</h1>
+<p class="sub">開けて得か、買わずにシングルで買うか。期待値で比べます。</p>
+<p class="note">入っている封入率と価格は<strong>ダミーのサンプル</strong>です。公式の封入率と、実際のシングル相場に書き換えてから使ってください。</p>
+
+<div id="out"></div>
+
+<div class="grid">
+<section>
+<h2>BOXの条件</h2>
+<div class="row">
+<div><label for="msrp">定価(円)</label><input id="msrp" type="number" value="5280"></div>
+<div><label for="pre">実売・プレ値(円)</label><input id="pre" type="number" value="7000"></div>
+<div><label for="packs">1BOXのパック数</label><input id="packs" type="number" value="24"></div>
+<div><label for="fee">売却手数料(%)</label><input id="fee" type="number" value="10"></div>
+<div><label for="bulk">ノーマル類の価値/BOX(円)</label><input id="bulk" type="number" value="100"></div>
+<div><label for="n">試行回数(BOX)</label><input id="n" type="number" value="5000"></div>
+</div>
+<p style="margin:16px 0 0;display:flex;gap:8px;flex-wrap:wrap">
+<button id="run">シミュレーション</button>
+<button id="open1" class="sec">1BOX開ける</button>
+</p>
+<h2 style="margin-top:20px">開封結果</h2>
+<div id="pulls" class="cap">「1BOX開ける」を押すと、当たりカードが表示されます。</div>
+</section>
+
+<section>
+<h2>レアリティ別データ</h2>
+<div id="rars"></div>
+</section>
+</div>
+</main>
+<footer style="max-width:980px;margin:0 auto;padding:0 16px 32px;font-size:12px;color:var(--mute)">価格データ:楽天ウェブサービス / Supported by Rakuten Developers。本ページは投資・購入の助言ではありません。</footer>
+<script>
+var DEFAULT=[
+{k:'SEC',p:0.02,pool:'SEC カードA,30000\nSEC カードB,12000\nSEC カードC,6000'},
+{k:'SP',p:0.04,pool:'SP カードA,15000\nSP カードB,4000\nSP カードC,2500\nSP カードD,1200'},
+{k:'L',p:0.06,pool:'L パラレルA,3000\nL パラレルB,1500\nL パラレルC,800'},
+{k:'SR',p:0.17,pool:'SR カードA,1200\nSR カードB,500\nSR カードC,200\nSR カードD,100\nSR カードE,80'},
+{k:'R',p:0.80,pool:'R カードA,150\nR カードB,60\nR カードC,30\nR カードD,20\nR カードE,10'}
+];
+var $=function(id){return document.getElementById(id)};
+var yen=function(v){return '¥'+Math.round(v).toLocaleString('ja-JP')};
+function buildRars(){
+ $('rars').innerHTML=DEFAULT.map(function(r,i){
+  return '<div class="rar"><b>'+r.k+'</b><label for="p'+i+'">1パックあたりの封入率(0〜1)</label><input id="p'+i+'" type="number" step="0.001" value="'+r.p+'">'+
+  '<label for="pool'+i+'">カード名,価格(1行1枚)</label><textarea id="pool'+i+'">'+r.pool+'</textarea></div>';
+ }).join('');
+}
+function read(){
+ var rs=DEFAULT.map(function(r,i){
+  var pool=$('pool'+i).value.split('\n').map(function(l){
+   var a=l.split(','),pr=parseFloat(a[a.length-1]);
+   return a.length>1&&!isNaN(pr)?{name:a.slice(0,-1).join(','),price:pr}:null}).filter(Boolean);
+  return {k:r.k,p:Math.min(1,Math.max(0,parseFloat($('p'+i).value)||0)),pool:pool};
+ });
+ return {rs:rs,msrp:+$('msrp').value||0,pre:+$('pre').value||0,packs:+$('packs').value||24,
+  fee:(+$('fee').value||0)/100,bulk:+$('bulk').value||0,n:Math.min(50000,Math.max(100,+$('n').value||5000))};
+}
+function ev(c){
+ var tot=c.bulk,rows=[];
+ c.rs.forEach(function(r){
+  var avg=r.pool.length?r.pool.reduce(function(s,x){return s+x.price},0)/r.pool.length:0;
+  var v=r.p*c.packs*avg*(1-c.fee);
+  rows.push({k:r.k,cnt:r.p*c.packs,avg:avg,v:v});tot+=v;
+ });
+ return {tot:tot,rows:rows};
+}
+function openBox(c){
+ var pulls=[],val=c.bulk;
+ for(var i=0;i<c.packs;i++)c.rs.forEach(function(r){
+  if(r.pool.length&&Math.random()<r.p){
+   var card=r.pool[Math.floor(Math.random()*r.pool.length)];
+   pulls.push({k:r.k,name:card.name,price:card.price});val+=card.price*(1-c.fee);
+  }});
+ return {pulls:pulls,val:val};
+}
+function render(c){
+ var e=ev(c),vals=[],i;
+ for(i=0;i<c.n;i++)vals.push(openBox(c).val);
+ vals.sort(function(a,b){return a-b});
+ var q=function(p){return vals[Math.min(vals.length-1,Math.floor(vals.length*p))]};
+ var winMsrp=vals.filter(function(v){return v>=c.msrp}).length/vals.length;
+ var winPre=vals.filter(function(v){return v>=c.pre}).length/vals.length;
+ var max=Math.max(e.tot,c.msrp,c.pre,1)*1.15,pos=function(v){return Math.min(100,v/max*100)+'%'};
+ var lo=vals[0],hi=q(0.99),bins=24,h=[];
+ for(i=0;i<bins;i++)h.push(0);
+ vals.forEach(function(v){var b=Math.min(bins-1,Math.floor((v-lo)/(hi-lo||1)*bins));if(b>=0)h[b]++});
+ var hm=Math.max.apply(null,h);
+ var ratio=c.pre?e.tot/c.pre*100:0;
+ $('out').innerHTML=
+ '<section style="margin-bottom:16px"><div class="verdict">'+
+ '<div><div class="cap">1BOXの期待値(手数料後)</div><div class="big">'+yen(e.tot)+'</div></div>'+
+ '<div><div class="cap">プレ値に対する期待値</div><div class="big" style="color:'+(ratio>=100?'var(--good)':'var(--red)')+'">'+ratio.toFixed(0)+'%</div></div></div>'+
+ '<div class="bar"><i class="ev" style="left:'+pos(e.tot)+'"></i><i class="msrp" style="left:'+pos(c.msrp)+'"></i><i class="pre" style="left:'+pos(c.pre)+'"></i></div>'+
+ '<div class="leg"><span style="color:var(--good)">■ 期待値 '+yen(e.tot)+'</span><span>■ 定価 '+yen(c.msrp)+'</span><span style="color:var(--red)">■ プレ値 '+yen(c.pre)+'</span></div>'+
+ '<p class="cap" style="margin:12px 0 0">'+c.n.toLocaleString()+'BOX分の試行:下位10% '+yen(q(.1))+' / 中央値 '+yen(q(.5))+' / 上位10% '+yen(q(.9))+
+ '。定価以上の価値が出た割合は '+(winMsrp*100).toFixed(0)+'%、プレ値以上は '+(winPre*100).toFixed(0)+'%。</p>'+
+ '<div class="hist" aria-label="BOX価値の分布">'+h.map(function(n,i){
+   var from=lo+(hi-lo)*i/bins;return '<div class="'+(from>=c.pre?'win':'')+'" style="height:'+(n/hm*100)+'%" title="'+yen(from)+'〜"></div>'}).join('')+'</div>'+
+ '<div class="cap">緑の棒はプレ値以上になったBOX。横軸は1BOXの売却価値。</div>'+
+ '<table style="margin-top:14px"><tr><th>レアリティ</th><th>期待枚数/BOX</th><th>平均単価</th><th>期待値</th></tr>'+
+ e.rows.map(function(r){return '<tr><td>'+r.k+'</td><td>'+r.cnt.toFixed(2)+'</td><td>'+yen(r.avg)+'</td><td>'+yen(r.v)+'</td></tr>'}).join('')+'</table></section>';
+}
+function doOpen(){
+ var c=read(),b=openBox(c);
+ b.pulls.sort(function(a,z){return z.price-a.price});
+ var top=b.pulls.filter(function(x){return x.k!=='R'});
+ $('pulls').innerHTML='<div style="margin-bottom:6px">合計 <strong>'+yen(b.val)+'</strong>(R以下のまとめ価値含む)/ 定価 '+yen(c.msrp)+'</div>'+
+ (top.length?top:b.pulls).map(function(x){return '<div class="pull"><span><span class="tag">'+x.k+'</span>'+x.name+'</span><span>'+yen(x.price)+'</span></div>'}).join('')+
+ '<div class="cap" style="margin-top:6px">Rは'+b.pulls.filter(function(x){return x.k==='R'}).length+'枚</div>';
+}
+buildRars();
+$('run').onclick=function(){render(read())};
+$('open1').onclick=doOpen;
+render(read());
+</script>
+</body>
+</html>
