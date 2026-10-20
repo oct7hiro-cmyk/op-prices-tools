@@ -184,7 +184,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:海賊団SP</button><button class="btn s" id="t2">テスト:覇王色SP</button><button class="btn s" id="tc">テスト:コミパラ</button></div>
 </details>
 <details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
-<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers</p>
+<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a></p>
 </section>
 </main>
 
@@ -425,7 +425,7 @@ $('src').innerHTML=[
  '封入率は開封調査にもとづく販売サイトの推定値です(DMMマイカ、ワンピースカードレター、ワンピ買取チェッカー、あにあにたろう、トレカビギン、スニダン ほか)。公式発表はありません。',
  '1BOX:R 7〜8枚、SR 3〜4枚。約33%のBOXはSEC1枚(パラレル系なし)。それ以外はパラレル枠1枚、一部に「リーダーパラレル以上」枠1枚。',
  'リーダーパラレル6種で約6BOXに1枚、リーダースーパーパラレル約98BOXに1枚、コミパラ4種で約96BOXに1枚(72〜100BOXの推定あり)、SP10種は1種あたり90〜120BOXに1枚、海賊団SPは1枚あたり240(または500)BOXに1枚。',
- '価格はショップの販売価格。SP・コミパラ・海賊団SP・リーダースーパーパラレルはユーザー提供、そのほかは楽天ウェブサービスの価格('+S.date+'時点、毎日更新)。カード・BOX画像は楽天市場の出品画像です。'
+ '価格はショップの販売価格。SP・コミパラ・海賊団SP・リーダースーパーパラレルはユーザー提供、そのほかは楽天ウェブサービスとYahoo!ショッピングの価格('+S.date+'時点、毎日更新)。カード・BOX画像は楽天市場・Yahoo!ショッピングの出品画像です。'
 ].map(function(t){return '<li>'+t+'</li>'}).join('');
 try{fetch('https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/data/latest.json').then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return fetch('data/latest.json').then(function(r){return r.json()})}).then(function(j){
  var m={};j.cards.forEach(function(c){m[c.id]=c});
