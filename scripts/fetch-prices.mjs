@@ -3,7 +3,7 @@
 import { readFile, writeFile, mkdir, appendFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
-const { RAKUTEN_APP_ID, RAKUTEN_ACCESS_KEY, RAKUTEN_AFFILIATE_ID = '', SITE_REFERER, YAHOO_APP_ID = '' } = process.env;
+const { RAKUTEN_APP_ID, RAKUTEN_ACCESS_KEY, RAKUTEN_AFFILIATE_ID = '', SITE_REFERER, YAHOO_APP_ID = '', YAHOO_VC_SID = '', YAHOO_VC_PID = '' } = process.env;
 const DELAY_MS = Number(process.env.DELAY_MS ?? 1100); // 1秒1リクエスト程度に抑える
 if (!RAKUTEN_APP_ID || !RAKUTEN_ACCESS_KEY || !SITE_REFERER) {
   console.error('RAKUTEN_APP_ID / RAKUTEN_ACCESS_KEY / SITE_REFERER を設定してください');
@@ -59,7 +59,7 @@ async function searchYahoo(keyword, minPrice) {
       if (res.ok) {
         const j = await res.json();
         return (j.hits ?? []).map((h) => ({ src: 'yahoo', itemName: h.name ?? '', itemPrice: Number(h.price), shopName: h.seller?.name ?? '',
-          url: h.url, img: h.exImage?.url || h.image?.medium || null }));
+          url: vcWrap(h.url), img: h.exImage?.url || h.image?.medium || null }));
       }
       if (res.status === 401 || res.status === 403) { yahooDown = true; console.error(`[Yahoo] 認証エラー(${res.status}): ${(await res.text()).replace(/\s+/g, ' ').slice(0, 300)} / appid長さ=${YAHOO_APP_ID.length}。以降は楽天のみ`); return []; }
       if (res.status === 404) return [];
@@ -69,6 +69,19 @@ async function searchYahoo(keyword, minPrice) {
   }
   return [];
 }
+
+// アフィリエイトリンク
+// Yahoo!: バリューコマースのMyLink形式(YAHOO_VC_SID/PID 未設定なら通常URL)
+const vcWrap = (u) => (u && YAHOO_VC_SID && YAHOO_VC_PID
+  ? `https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=${YAHOO_VC_SID}&pid=${YAHOO_VC_PID}&vc_url=${encodeURIComponent(u)}` : u);
+// 楽天の検索結果ページ(出品が取れないカード用の受け皿)。アフィリエイトID未設定なら通常URL
+const rakutenSearchUrl = (kw) => {
+  const u = `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(kw)}/`;
+  return RAKUTEN_AFFILIATE_ID ? `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(u)}&m=${encodeURIComponent(u)}` : u;
+};
+// 最安出品へのリンク情報
+const linkOf = (valid, kw) => ({ url: valid[0]?.url ?? null, src: valid[0]?.src ?? null, shop: valid[0]?.shopName ?? null,
+  price: valid[0]?.itemPrice ?? null, searchUrl: rakutenSearchUrl(kw) });
 
 // 楽天とYahoo!をまとめて検索(Yahoo!側の失敗は無視)
 async function search(keyword, minPrice) {
@@ -111,7 +124,7 @@ async function main() {
     try {
       const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
       const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
-      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid) };
+      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid), searchUrl: rakutenSearchUrl(card.keyword) };
       if (valid.length) {
         const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
         const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
@@ -133,11 +146,13 @@ async function main() {
   }
 
   // 画像だけ取得する対象(SP・スーパーパラレル・BOXなど価格は手入力のもの)。失敗してもジョブは止めない
-  const images = {};
+  const images = {}, links = {};
   for (const card of imageTargets) {
     try {
-      const imgs = imgsOf(pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults));
+      const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
+      const imgs = imgsOf(valid);
       if (imgs.length) images[card.id] = imgs;
+      links[card.id] = linkOf(valid, card.keyword);
       console.log(`[画像] ${card.id}: ${imgs.length}件`);
     } catch (e) {
       if (/認証エラー/.test(e.message)) throw e;
@@ -146,7 +161,7 @@ async function main() {
     await sleep(DELAY_MS);
   }
 
-  await writeFile('data/latest.json', JSON.stringify({ updatedAt: today, credit: 'Supported by Rakuten Developers / Web Services by Yahoo! JAPAN', cards: out, images }, null, 1));
+  await writeFile('data/latest.json', JSON.stringify({ updatedAt: today, credit: 'Supported by Rakuten Developers / Web Services by Yahoo! JAPAN', cards: out, images, links }, null, 1));
   const spikes = out.filter((c) => c.change != null && c.change >= SPIKE_PCT && c.count >= MIN_SAMPLES).sort((a, b) => b.change - a.change);
   await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes }, null, 1));
   console.log(`完了: ${out.length}件, 急騰${spikes.length}件, 失敗${failed.length}件`);
