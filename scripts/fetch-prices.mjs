@@ -79,9 +79,13 @@ const rakutenSearchUrl = (kw) => {
   const u = `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(kw)}/`;
   return RAKUTEN_AFFILIATE_ID ? `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(u)}&m=${encodeURIComponent(u)}` : u;
 };
+// Yahoo!ショッピングの検索結果ページ(受け皿)
+const yahooSearchUrl = (kw) => vcWrap(`https://shopping.yahoo.co.jp/search?p=${encodeURIComponent(kw)}`);
+// 販売ショップ一覧(安い順・最大8件)。検索は在庫ありのみなので、取得時点で在庫あり
+const offersOf = (valid, n = 8) => valid.slice(0, n).map((i) => ({ s: i.src, shop: i.shopName, p: i.itemPrice, u: i.url, n: String(i.itemName ?? '').slice(0, 60) }));
 // 最安出品へのリンク情報
 const linkOf = (valid, kw) => ({ url: valid[0]?.url ?? null, src: valid[0]?.src ?? null, shop: valid[0]?.shopName ?? null,
-  price: valid[0]?.itemPrice ?? null, searchUrl: rakutenSearchUrl(kw) });
+  price: valid[0]?.itemPrice ?? null, searchUrl: rakutenSearchUrl(kw), ysearchUrl: yahooSearchUrl(kw), offers: offersOf(valid) });
 
 // 楽天とYahoo!をまとめて検索(Yahoo!側の失敗は無視)
 async function search(keyword, minPrice) {
@@ -124,7 +128,7 @@ async function main() {
     try {
       const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
       const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
-      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid), searchUrl: rakutenSearchUrl(card.keyword) };
+      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid), searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword), offers: offersOf(valid) };
       if (valid.length) {
         const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
         const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
