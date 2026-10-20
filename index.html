@@ -76,6 +76,11 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;gap
 .fc img.ok,#reveal .card img.ok{opacity:1}
 .pr{margin-top:6px;text-align:center;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s .25s}
 .cd.on .pr{opacity:1}
+.go{display:block;margin:3px auto 0;width:fit-content;max-width:100%;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;color:#120a18;background:var(--gold);text-decoration:none;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s .35s}
+.go.s{background:transparent;color:var(--mute);border:1px solid var(--line)}
+.cd.on .go{opacity:1;pointer-events:auto}
+.cd.on[data-url]{cursor:pointer}
+.adnote{margin:8px 0 0;font-size:11px;color:var(--mute);text-align:right}
 .k-R{--face:linear-gradient(160deg,#173a52,#0c1f2e);--rim:#7fd6e8}
 .k-SR{--face:linear-gradient(160deg,#4a3410,#20160a);--rim:#ffcf4a}
 .k-SEC{--face:linear-gradient(160deg,#5a1414,#250808);--rim:#ff7a5a}
@@ -161,6 +166,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="gauge"><div id="fill"></div><i class="mk" id="mkM"><b>定価</b></i><i class="mk" id="mkP"><b>プレ値</b></i></div>
 <button id="skip">スキップ ▶▶</button>
 </div>
+<p class="adnote">PR・カードをタップすると最安値の販売ページへ移動します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)</p>
 <div id="grid" class="grid"></div>
 <div id="after" hidden>
 <div class="acts"><button class="btn" id="again">もう1BOX!</button><button class="btn s" id="more">くわしい数字</button></div>
@@ -184,7 +190,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:海賊団SP</button><button class="btn s" id="t2">テスト:覇王色SP</button><button class="btn s" id="tc">テスト:コミパラ</button></div>
 </details>
 <details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
-<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a></p>
+<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。商品リンクには楽天アフィリエイト・バリューコマースの広告を含みます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a></p>
 </section>
 </main>
 
@@ -292,6 +298,12 @@ function addImg(parent,c){
   im.classList.add('ok')};
  im.src=L[0];parent.appendChild(im);
 }
+// 購入リンク: 最安出品(楽天/Yahoo!)→ なければ楽天の検索結果
+function linkOf(c){
+ if(c.url)return{url:c.url,direct:true,label:(c.src==='yahoo'?'Yahoo!':c.src==='rakuten'?'楽天':'ショップ')+'で見る ›'};
+ var su=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent('ワンピースカード '+(/^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP|CP)$/,''):c.n))+'/');
+ return{url:su,direct:false,label:'楽天で探す ›'};
+}
 function setBox(u){if(!u||$('box').querySelector('img'))return;
  var bi=document.createElement('img');bi.alt='OP17 BOX';bi.referrerPolicy='no-referrer';
  bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
@@ -311,6 +323,9 @@ function cardEl(c){
  d.className='cd g'+grade(c)+' k-'+KC[c.c];
  d.innerHTML='<div class="in"><div class="bk"><span>OP17</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
   '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
+ var L=linkOf(c);
+ if(L){var a=document.createElement('a');a.className='go'+(L.direct?'':' s');a.href=L.url;a.target='_blank';a.rel='sponsored noopener';a.textContent=L.label;d.appendChild(a);
+  d.dataset.url=L.url;d.addEventListener('click',function(e){if(!d.classList.contains('on')||e.target.closest('a'))return;window.open(L.url,'_blank','noopener')})}
  addImg(d.querySelector('.fc'),c);
  return d;
 }
@@ -429,8 +444,10 @@ $('src').innerHTML=[
 ].map(function(t){return '<li>'+t+'</li>'}).join('');
 try{fetch('https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/data/latest.json').then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return fetch('data/latest.json').then(function(r){return r.json()})}).then(function(j){
  var m={};j.cards.forEach(function(c){m[c.id]=c});
- var im=j.images||{};
- ALL.forEach(function(c){var x=m[c.id];if(x&&x.refPrice)c.p=x.refPrice;var L=(x&&x.imgs&&x.imgs.length?x.imgs:im[c.id]);if(L&&L.length)c.imgs=L});
+ var im=j.images||{},lk=j.links||{};
+ ALL.forEach(function(c){var x=m[c.id],l=lk[c.id];if(x&&x.refPrice)c.p=x.refPrice;
+  if(x&&x.url){c.url=x.url;c.src=x.source==='manual'?null:x.src}else if(l&&l.url){c.url=l.url;c.src=l.src}
+  c.search=(x&&x.searchUrl)||(l&&l.searchUrl)||c.search;var L=(x&&x.imgs&&x.imgs.length?x.imgs:im[c.id]);if(L&&L.length)c.imgs=L});
  if(!BOX_IMG&&im.BOX&&im.BOX.length)setBox(im.BOX[0]);
  S.date=j.updatedAt||S.date;
 }).catch(function(){})}catch(e){}
