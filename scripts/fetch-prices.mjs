@@ -25,15 +25,17 @@ async function search(keyword, minPrice) {
     affiliateId: RAKUTEN_AFFILIATE_ID, keyword, hits: 30, sort: '+itemPrice', availability: 1, minPrice,
   }).forEach(([k, v]) => v !== '' && url.searchParams.set(k, String(v)));
 
+    let lastErr = '';
   for (let attempt = 1; attempt <= 3; attempt++) {
     const res = await fetch(url, { headers: { Referer: SITE_REFERER, Origin: new URL(SITE_REFERER).origin } });
     if (res.ok) { const j = await res.json(); return (j.Items ?? []).map((i) => i.Item ?? i); }
     if (res.status === 401 || res.status === 403)
       throw new Error(`認証エラー(${res.status}): アクセスキー/アプリID、およびアプリ設定の許可ドメインと SITE_REFERER の一致を確認`);
-    if (res.status === 404) return [];            // 該当なし
+        if (res.status === 404) return [];            // 該当なし
+    lastErr = `${res.status} ${(await res.text()).slice(0, 300)}`;
     await sleep(2000 * attempt);                  // 429/5xx は待って再試行
   }
-  throw new Error(`取得失敗: ${keyword}`);
+  throw new Error(`取得失敗(${lastErr}): ${keyword}`);  
 }
 
 function pick(items, card, d) {
