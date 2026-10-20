@@ -1194,6 +1194,50 @@
    "refPrice": 100000,
    "source": "manual",
    "change": null
+  },
+  {
+   "id": "OP17-022-CP",
+   "name": "シャンクス(OP17-022 コミパラ)",
+   "updatedAt": "2026-10-20",
+   "minPrice": 149000,
+   "refPrice": 149000,
+   "source": "manual",
+   "change": null,
+   "buyPrice": 110000,
+   "label": "コミパラ"
+  },
+  {
+   "id": "OP17-005-CP",
+   "name": "エドワード・ニューゲート(OP17-005 コミパラ)",
+   "updatedAt": "2026-10-20",
+   "minPrice": 81000,
+   "refPrice": 81000,
+   "source": "manual",
+   "change": null,
+   "buyPrice": 60000,
+   "label": "コミパラ"
+  },
+  {
+   "id": "OP17-062-CP",
+   "name": "カイドウ(OP17-062 コミパラ)",
+   "updatedAt": "2026-10-20",
+   "minPrice": 81000,
+   "refPrice": 81000,
+   "source": "manual",
+   "change": null,
+   "buyPrice": 60000,
+   "label": "コミパラ"
+  },
+  {
+   "id": "OP17-112-CP",
+   "name": "シャーロット・リンリン(OP17-112 コミパラ)",
+   "updatedAt": "2026-10-20",
+   "minPrice": 87800,
+   "refPrice": 87800,
+   "source": "manual",
+   "change": null,
+   "buyPrice": 65000,
+   "label": "コミパラ"
   }
  ],
  "images": {
