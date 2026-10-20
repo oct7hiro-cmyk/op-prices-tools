@@ -34,7 +34,8 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;gap
 @keyframes gl{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
 .box b{font-size:clamp(44px,12vw,58px);color:var(--gold);text-shadow:0 3px 0 #3a0714}
 .box span{font-size:14px;letter-spacing:.3em}
-.box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:12px}
+.box img{position:absolute;inset:9px;width:calc(100% - 18px);height:calc(100% - 18px);object-fit:cover;border-radius:6px;background:#fff}
+.box.has-img b,.box.has-img span{display:none}
 @keyframes fl{0%,100%{transform:translateY(0) rotateY(-16deg) rotateX(4deg)}50%{transform:translateY(-22px) rotateY(16deg) rotateX(-2deg)}}
 .box.shake{animation:sk .9s linear forwards}
 @keyframes sk{0%{transform:translate(0)}10%{transform:translate(-6px,2px) rotate(-3deg)}20%{transform:translate(6px,-2px) rotate(3deg)}30%{transform:translate(-8px,3px) rotate(-4deg)}40%{transform:translate(8px,-3px) rotate(4deg)}50%{transform:translate(-10px,2px) rotate(-5deg) scale(1.05)}60%{transform:translate(10px,-2px) rotate(5deg) scale(1.08)}80%{transform:translate(-6px) rotate(-3deg) scale(1.12)}100%{transform:scale(1.18)}}
@@ -71,7 +72,8 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;gap
 .rb{align-self:center;font-size:10px;font-weight:900;padding:1px 7px;border-radius:99px;background:var(--rim);color:#120a18;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .nm{font-size:12px;font-weight:900;line-height:1.3;word-break:break-all;text-shadow:0 1px 2px #000}
 .id{font-size:9px;color:rgba(255,255,255,.65)}
-.fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--face);opacity:0;transition:opacity .2s}
+.fc img.ok,#reveal .card img.ok{opacity:1}
 .pr{margin-top:6px;text-align:center;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s .25s}
 .cd.on .pr{opacity:1}
 .k-R{--face:linear-gradient(160deg,#173a52,#0c1f2e);--rim:#7fd6e8}
@@ -134,7 +136,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 #reveal.t2 .k{background:linear-gradient(90deg,#d8c8ff,#7aa8ff);color:#120a33}
 #reveal .card{position:relative;margin:18px auto;width:min(58vw,240px);aspect-ratio:63/88;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden;font-family:"Dela Gothic One",sans-serif;font-size:clamp(22px,6vw,30px);line-height:1.25;color:#1e1300;background:linear-gradient(150deg,#3a2a05,#a97a12 45%,#f6d775 52%,#8a600a);border:3px solid #ffe9a0;box-shadow:0 0 70px 16px rgba(255,210,100,.65)}
 #reveal.t2 .card{color:#0f0a30;background:linear-gradient(150deg,#1a1448,#4d3fb0 45%,#b9a6ff 52%,#3a2d92);border-color:#d8ccff;box-shadow:0 0 70px 16px rgba(150,130,255,.6)}
-#reveal .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#reveal .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .2s}
 #reveal .pr2{font-family:"Dela Gothic One",sans-serif;font-size:clamp(32px,9vw,52px);color:#fff;text-shadow:0 0 24px rgba(255,200,80,.8)}
 #reveal .hint{margin-top:8px;font-size:14px;color:#ddd;animation:pu 1.2s infinite}
 @media(prefers-reduced-motion:reduce){#bg,.box,.box::after,.scene::after,.tap,#reveal .rays,.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{animation:none}.in{transition:none}}
@@ -267,14 +269,29 @@ function stats(){
 }
 
 // ---- カード画像 ----
-// IMG にカードIDごとの画像URLを入れると、標準デザインの代わりに表示します(例: 'OP17-005':'https://…/OP17-005.png')。
-// IMG_PATTERN に '{id}' を含むURLの規則を入れると、全カードに適用します。読み込めない画像は自動で標準デザインに戻ります。
+// 画像は毎朝の楽天APIバッチが data/latest.json に入れる出品画像(各カード最大3候補)を使います。
+// 正方形の画像より縦長(カード形)の画像を優先し、読み込めないときは標準デザインに戻ります。
+// 自前の画像を使いたいときは IMG にカードIDごとのURLを書くと、そちらが優先されます(例: 'OP17-005':'https://…/a.png')。
+// 公式サイトの画像は他サイトからの表示がブロックされる(CORP: same-site)ため使えません。
 var IMG={};
-var IMG_PATTERN='';
-// BOX_IMG にBOXの画像URLを入れると、最初の画面のBOXが画像になります(読み込めないときは標準デザイン)
+// BOX_IMG にURLを書くと楽天の画像より優先されます
 var BOX_IMG='';
-if(BOX_IMG){var bi=document.createElement('img');bi.alt='OP17 BOX';bi.src=BOX_IMG;bi.onerror=function(){bi.remove()};document.getElementById('box').appendChild(bi)}
-function imgOf(c){return IMG[c.id]||(IMG_PATTERN?IMG_PATTERN.split('{id}').join(c.id):'')}
+function imgOf(c){return IMG[c.id]?[IMG[c.id]]:(c.imgs||[])}
+function addImg(parent,c){
+ var L=imgOf(c);if(!L.length)return;
+ var im=document.createElement('img'),i=0,first=null;
+ im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
+ im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
+ im.onload=function(){
+  if(im.src===first){im.classList.add('ok');return}
+  if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
+  im.classList.add('ok')};
+ im.src=L[0];parent.appendChild(im);
+}
+function setBox(u){if(!u||$('box').querySelector('img'))return;
+ var bi=document.createElement('img');bi.alt='OP17 BOX';bi.referrerPolicy='no-referrer';
+ bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
+setBox(BOX_IMG);
 var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',LPAR:'LPAR',LSP:'TOP',OSP:'TOP',SPY:'SP',HAO:'SP'};
 function grade(c){return c.c==='R'?0:c.c==='SR'?1:(c.t>=2?3:2)}
 function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
@@ -286,10 +303,11 @@ function setTotal(v,ms){var from=cur,t0=performance.now();cur=v;
  requestAnimationFrame(function step(t){var k=Math.min(1,(t-t0)/ms);paint(from+(v-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)});
 }
 function cardEl(c){
- var d=document.createElement('div'),u=imgOf(c),num=/^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP)$/,''):'';
+ var d=document.createElement('div'),num=/^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP)$/,''):'';
  d.className='cd g'+grade(c)+' k-'+KC[c.c];
  d.innerHTML='<div class="in"><div class="bk"><span>OP17</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
-  (u?'<img alt="'+c.n+'" src="'+u+'" loading="lazy" onerror="this.remove()">':'')+'</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
+  '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
+ addImg(d.querySelector('.fc'),c);
  return d;
 }
 function burst(x,y,col,n){
@@ -311,9 +329,9 @@ function fx(e,g){
  if(g>=2){burst(x,y,['#ff8fd0','#8fe9ff','#ffe27a','#c3a8ff','#6cffc8'],g===3?60:30);flash(g===3?.9:.5);shake()}
 }
 function cutin(c){
- var r=$('reveal'),u=imgOf(c);r.className=c.t===3?'t3':'t2';
+ var r=$('reveal');r.className=c.t===3?'t3':'t2';
  $('rk').textContent=c.k;$('rn').textContent=c.n;$('rp').textContent=c.p==null?'':yen(c.p);
- $('rimg').innerHTML=u?'<img alt="'+c.n+'" src="'+u+'" onerror="this.remove()">':'';
+ $('rimg').innerHTML='';addImg($('rimg'),c);
  r.hidden=false;flash(1,700);
  burst(innerWidth/2,innerHeight*.45,c.t===3?['#ffe08a','#fff3c0','#ff9d2e','#ff5fa8']:['#d8c8ff','#8fb4ff','#fff'],c.t===3?90:45);
  return new Promise(function(res){r.onclick=function(){r.hidden=true;res()}});
@@ -402,11 +420,13 @@ $('src').innerHTML=[
  '封入率は開封調査にもとづく販売サイトの推定値です(DMMマイカ、ワンピースカードレター、ワンピ買取チェッカー、あにあにたろう、トレカビギン、スニダン ほか)。公式発表はありません。',
  '1BOX:R 7〜8枚、SR 3〜4枚。約33%のBOXはSEC1枚(パラレル系なし)。それ以外はパラレル枠1枚、一部に「リーダーパラレル以上」枠1枚。',
  'リーダーパラレル6種で約6BOXに1枚、リーダースーパーパラレル約98BOXに1枚、SP10種は1種あたり90〜120BOXに1枚、海賊団SPは1枚あたり240(または500)BOXに1枚。',
- '価格はショップの販売価格。SP・海賊団SP・リーダースーパーパラレルはユーザー提供、そのほかは楽天ウェブサービスの価格('+S.date+'時点、毎日更新)。'
+ '価格はショップの販売価格。SP・海賊団SP・リーダースーパーパラレルはユーザー提供、そのほかは楽天ウェブサービスの価格('+S.date+'時点、毎日更新)。カード・BOX画像は楽天市場の出品画像です。'
 ].map(function(t){return '<li>'+t+'</li>'}).join('');
 try{fetch('https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/data/latest.json').then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return fetch('data/latest.json').then(function(r){return r.json()})}).then(function(j){
  var m={};j.cards.forEach(function(c){m[c.id]=c});
- ALL.forEach(function(c){var x=m[c.id];if(x&&x.refPrice)c.p=x.refPrice});
+ var im=j.images||{};
+ ALL.forEach(function(c){var x=m[c.id];if(x&&x.refPrice)c.p=x.refPrice;var L=(x&&x.imgs&&x.imgs.length?x.imgs:im[c.id]);if(L&&L.length)c.imgs=L});
+ if(!BOX_IMG&&im.BOX&&im.BOX.length)setBox(im.BOX[0]);
  S.date=j.updatedAt||S.date;
 }).catch(function(){})}catch(e){}
 </script>

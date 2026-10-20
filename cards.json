@@ -736,5 +736,153 @@
     "スーパー"
    ]
   }
+ ],
+ "images": [
+  {
+   "id": "BOX",
+   "name": "OP17 世界最強の戦士 BOX",
+   "keyword": "ワンピースカード 世界最強の戦士 BOX",
+   "code": "世界最強の戦士",
+   "must": [
+    "BOX"
+   ],
+   "minPrice": 4000,
+   "mustNot": [
+    "カートン",
+    "パック単品",
+    "1パック",
+    "シングル"
+   ]
+  },
+  {
+   "id": "OP17-079-LSP",
+   "name": "モンキー・D・ルフィ(リーダースーパーパラレル)",
+   "keyword": "ワンピースカード OP17-079 スーパーパラレル",
+   "code": "OP17-079",
+   "must": [
+    "スーパー"
+   ],
+   "minPrice": 10000
+  },
+  {
+   "id": "OP17-118-OSP",
+   "name": "ロックス・D・ジーベック(海賊団スーパーパラレル)",
+   "keyword": "ワンピースカード OP17-118 スーパーパラレル",
+   "code": "OP17-118",
+   "must": [
+    "スーパー"
+   ],
+   "minPrice": 30000
+  },
+  {
+   "id": "EB04-061-OSP",
+   "name": "モンキー・D・ルフィ(海賊団スーパーパラレル)",
+   "keyword": "ワンピースカード EB04-061 スーパーパラレル 世界最強の戦士",
+   "code": "EB04-061",
+   "must": [
+    "スーパー"
+   ],
+   "minPrice": 50000
+  },
+  {
+   "id": "SPY-LUFFY",
+   "name": "モンキー・D・ルフィ(新四皇SP)",
+   "keyword": "ワンピースカード ST31-004 SP",
+   "code": "ST31-004",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "SPY-SHANKS",
+   "name": "シャンクス(新四皇SP)",
+   "keyword": "ワンピースカード OP13-028 SP",
+   "code": "OP13-028",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "SPY-TEACH",
+   "name": "マーシャル・D・ティーチ(新四皇SP)",
+   "keyword": "ワンピースカード ST27-005 SP",
+   "code": "ST27-005",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "SPY-BUGGY",
+   "name": "バギー(新四皇SP)",
+   "keyword": "ワンピースカード P-084 SP",
+   "code": "P-084",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "HAO-ZORO",
+   "name": "ロロノア・ゾロ(覇王色SP)",
+   "keyword": "ワンピースカード EB04-007 SP",
+   "code": "EB04-007",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "HAO-YAMATO",
+   "name": "ヤマト(覇王色SP)",
+   "keyword": "ワンピースカード OP16-098 SP",
+   "code": "OP16-098",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "HAO-ODEN",
+   "name": "光月おでん(覇王色SP)",
+   "keyword": "ワンピースカード ST32-002 SP",
+   "code": "ST32-002",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "HAO-RAYLEIGH",
+   "name": "シルバーズ・レイリー(覇王色SP)",
+   "keyword": "ワンピースカード OP14-108 SP",
+   "code": "OP14-108",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "HAO-ROGER",
+   "name": "ゴール・D・ロジャー(覇王色SP)",
+   "keyword": "ワンピースカード P-107 SP",
+   "code": "P-107",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  },
+  {
+   "id": "HAO-GARP",
+   "name": "モンキー・D・ガープ(覇王色SP)",
+   "keyword": "ワンピースカード OP12-056 SP",
+   "code": "OP12-056",
+   "must": [
+    "SP"
+   ],
+   "minPrice": 2000
+  }
  ]
 }
