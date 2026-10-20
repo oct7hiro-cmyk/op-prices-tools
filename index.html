@@ -178,9 +178,10 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div><label for="pre">プレ値・実売(円)</label><input id="pre" type="number" value="7000"></div>
 <div><label for="secBoxes">SEC通常(2種合計)</label><select id="secBoxes"><option value="2">2BOXに1枚</option><option value="3" selected>3BOXに1枚</option><option value="4">4BOXに1枚</option></select></div>
 <div><label for="spN">SP10種(1種あたり)</label><select id="spN"><option value="90">90BOXに1枚</option><option value="105" selected>105BOXに1枚</option><option value="120">120BOXに1枚</option></select></div>
+<div><label for="cpN">コミパラ(4種合計)</label><select id="cpN"><option value="72">72BOXに1枚</option><option value="96" selected>96BOXに1枚</option><option value="120">120BOXに1枚</option></select></div>
 <div><label for="oN">海賊団SP(1枚あたり)</label><select id="oN"><option value="240" selected>240BOXに1枚</option><option value="500">500BOXに1枚</option></select></div>
 </div>
-<div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:海賊団SP</button><button class="btn s" id="t2">テスト:覇王色SP</button></div>
+<div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:海賊団SP</button><button class="btn s" id="t2">テスト:覇王色SP</button><button class="btn s" id="tc">テスト:コミパラ</button></div>
 </details>
 <details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
 <p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers</p>
@@ -193,7 +194,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div id="flash"></div>
 
 <script>
-var S={msrp:5760,pre:7000,spN:105,secBoxes:3,oN:240,date:'2026-10-20'};
+var S={msrp:5760,pre:7000,spN:105,secBoxes:3,oN:240,cpN:96,date:'2026-10-20'};
 var $=function(i){return document.getElementById(i)};
 var yen=function(v){return(v<0?'−':'')+'¥'+Math.abs(Math.round(v)).toLocaleString('ja-JP')};
 var sgn=function(v){return(v>=0?'+':'')+yen(v)};
@@ -211,6 +212,8 @@ var POOL={
  PAR:mk(RN,'-P','R/SRパラレル','PAR',['027','037','049','054','061','087','114']).concat(mk(SRN,'-P','R/SRパラレル','PAR')).concat([o('OP17-118-P','ロックス・D・ジーベック','SECパラレル','PAR',null,0)]),
  LPAR:mk(LN,'-P','リーダーパラレル','LPAR'),
  LSP:[o('OP17-079-LSP','モンキー・D・ルフィ','リーダースーパーパラレル','LSP',100000,3)],
+ CP:[o('OP17-022-CP','シャンクス','コミパラ','CP',149000,3),o('OP17-005-CP','エドワード・ニューゲート','コミパラ','CP',81000,3),
+ o('OP17-062-CP','カイドウ','コミパラ','CP',81000,3),o('OP17-112-CP','シャーロット・リンリン','コミパラ','CP',87800,3)],
  SECN:[o('OP17-118','ロックス・D・ジーベック','SEC','SEC',2000,0),o('OP17-119','ロキ','SEC','SEC',2000,0)],
  SP10:[
  o('SPY-LUFFY','モンキー・D・ルフィ','新四皇SP','SPY',62400,2),o('SPY-SHANKS','シャンクス','新四皇SP','SPY',20800,2),
@@ -220,7 +223,7 @@ var POOL={
  o('HAO-ROGER','ゴール・D・ロジャー','覇王色SP','HAO',10390,2),o('HAO-GARP','モンキー・D・ガープ','覇王色SP','HAO',6230,2)],
  OSP:[o('EB04-061-OSP','モンキー・D・ルフィ','海賊団SP','OSP',1000000,3),o('OP17-118-OSP','ロックス・D・ジーベック','海賊団SP','OSP',500000,3)]
 };
-var ALL=[].concat(POOL.R,POOL.SR,POOL.PAR,POOL.LPAR,POOL.LSP,POOL.SECN,POOL.SP10,POOL.OSP);
+var ALL=[].concat(POOL.R,POOL.SR,POOL.PAR,POOL.LPAR,POOL.LSP,POOL.CP,POOL.SECN,POOL.SP10,POOL.OSP);
 // 2026-10-20 時点の楽天価格(販売価格)のスナップショット。最新の latest.json が読めたら上書きされる
 var SNAP={'OP17-003':80,'OP17-007':50,'OP17-008':30,'OP17-019':50,'OP17-027':50,'OP17-029':30,'OP17-032':90,'OP17-033':30,'OP17-037':50,'OP17-040':90,'OP17-042':50,'OP17-049':110,'OP17-054':110,'OP17-055':80,'OP17-060':30,'OP17-061':50,'OP17-074':250,'OP17-076':50,'OP17-081':120,'OP17-087':100,'OP17-089':140,'OP17-096':50,'OP17-109':250,'OP17-113':120,'OP17-114':150,'OP17-115':90,
 'OP17-005':110,'OP17-022':355,'OP17-031':260,'OP17-046':325,'OP17-048':160,'OP17-062':100,'OP17-063':80,'OP17-080':210,'OP17-093':500,'OP17-112':400,
@@ -233,6 +236,7 @@ function price(c){return c.p||0}
 function Bitems(){var a=[];
  POOL.LPAR.forEach(function(c){a.push([c,1/36])});   // リーダーパラレル6種 合計で約6BOXに1枚
  POOL.LSP.forEach(function(c){a.push([c,1/98])});    // リーダースーパーパラレル 約96〜100BOXに1枚
+ POOL.CP.forEach(function(c){a.push([c,1/(S.cpN*POOL.CP.length)])}); // コミパラ4種 合計で約96BOXに1枚
  POOL.SP10.forEach(function(c){a.push([c,1/S.spN])});
  POOL.OSP.forEach(function(c){a.push([c,1/S.oN])});
  return a}
@@ -255,7 +259,7 @@ function drawer(){
 function ev(){var B=Bitems(),pS=1/S.secBoxes,e=7.5*avg(POOL.R)+3.3*avg(POOL.SR)+pS*avg(POOL.SECN)+(1-pS)*avg(POOL.PAR);
  B.forEach(function(x){e+=x[1]*price(x[0])});return e}
 function pBig(){var s=0;Bitems().forEach(function(x){if(x[0].t>=2)s+=x[1]});return s}
-function missing(){var n=0;['R','SR','PAR','LPAR','LSP'].forEach(function(k){POOL[k].forEach(function(c){if(c.p==null)n++})});return n}
+function missing(){var n=0;['R','SR','PAR','LPAR','LSP','CP'].forEach(function(k){POOL[k].forEach(function(c){if(c.p==null)n++})});return n}
 function sum(h){return h.reduce(function(s,c){return s+price(c)},0)}
 function stats(){
  var N=20000,v=new Array(N),i,d=drawer();
@@ -292,10 +296,10 @@ function setBox(u){if(!u||$('box').querySelector('img'))return;
  var bi=document.createElement('img');bi.alt='OP17 BOX';bi.referrerPolicy='no-referrer';
  bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
 setBox(BOX_IMG);
-var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',LPAR:'LPAR',LSP:'TOP',OSP:'TOP',SPY:'SP',HAO:'SP'};
+var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',LPAR:'LPAR',LSP:'TOP',CP:'TOP',OSP:'TOP',SPY:'SP',HAO:'SP'};
 function grade(c){return c.c==='R'?0:c.c==='SR'?1:(c.t>=2?3:2)}
 function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
-function readSet(){S.msrp=+$('msrp').value||0;S.pre=+$('pre').value||0;S.spN=+$('spN').value;S.secBoxes=+$('secBoxes').value;S.oN=+$('oN').value}
+function readSet(){S.msrp=+$('msrp').value||0;S.pre=+$('pre').value||0;S.spN=+$('spN').value;S.secBoxes=+$('secBoxes').value;S.oN=+$('oN').value;S.cpN=+$('cpN').value}
 function gmax(){return Math.max(S.pre,S.msrp)*1.5}
 function paint(x){$('total').textContent=yen(x);$('fill').style.width=Math.min(100,x/gmax()*100)+'%'}
 function setTotal(v,ms){var from=cur,t0=performance.now();cur=v;
@@ -303,7 +307,7 @@ function setTotal(v,ms){var from=cur,t0=performance.now();cur=v;
  requestAnimationFrame(function step(t){var k=Math.min(1,(t-t0)/ms);paint(from+(v-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)});
 }
 function cardEl(c){
- var d=document.createElement('div'),num=/^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP)$/,''):'';
+ var d=document.createElement('div'),num=/^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP|CP)$/,''):'';
  d.className='cd g'+grade(c)+' k-'+KC[c.c];
  d.innerHTML='<div class="in"><div class="bk"><span>OP17</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
   '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
@@ -415,12 +419,13 @@ $('skip').addEventListener('click',function(){skip=true;$('result').classList.ad
 $('more').addEventListener('click',function(){var d=$('detail');d.hidden=!d.hidden;if(!d.hidden)detail()});
 $('t3').addEventListener('click',function(){reset();openBox('EB04-061-OSP')});
 $('t2').addEventListener('click',function(){reset();openBox('HAO-ZORO')});
-['msrp','pre','spN','secBoxes','oN'].forEach(function(i){$(i).addEventListener('change',function(){readSet();if(!$('detail').hidden)detail()})});
+$('tc').addEventListener('click',function(){reset();openBox('OP17-022-CP')});
+['msrp','pre','spN','secBoxes','oN','cpN'].forEach(function(i){$(i).addEventListener('change',function(){readSet();if(!$('detail').hidden)detail()})});
 $('src').innerHTML=[
  '封入率は開封調査にもとづく販売サイトの推定値です(DMMマイカ、ワンピースカードレター、ワンピ買取チェッカー、あにあにたろう、トレカビギン、スニダン ほか)。公式発表はありません。',
  '1BOX:R 7〜8枚、SR 3〜4枚。約33%のBOXはSEC1枚(パラレル系なし)。それ以外はパラレル枠1枚、一部に「リーダーパラレル以上」枠1枚。',
- 'リーダーパラレル6種で約6BOXに1枚、リーダースーパーパラレル約98BOXに1枚、SP10種は1種あたり90〜120BOXに1枚、海賊団SPは1枚あたり240(または500)BOXに1枚。',
- '価格はショップの販売価格。SP・海賊団SP・リーダースーパーパラレルはユーザー提供、そのほかは楽天ウェブサービスの価格('+S.date+'時点、毎日更新)。カード・BOX画像は楽天市場の出品画像です。'
+ 'リーダーパラレル6種で約6BOXに1枚、リーダースーパーパラレル約98BOXに1枚、コミパラ4種で約96BOXに1枚(72〜100BOXの推定あり)、SP10種は1種あたり90〜120BOXに1枚、海賊団SPは1枚あたり240(または500)BOXに1枚。',
+ '価格はショップの販売価格。SP・コミパラ・海賊団SP・リーダースーパーパラレルはユーザー提供、そのほかは楽天ウェブサービスの価格('+S.date+'時点、毎日更新)。カード・BOX画像は楽天市場の出品画像です。'
 ].map(function(t){return '<li>'+t+'</li>'}).join('');
 try{fetch('https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/data/latest.json').then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return fetch('data/latest.json').then(function(r){return r.json()})}).then(function(j){
  var m={};j.cards.forEach(function(c){m[c.id]=c});
