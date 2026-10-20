@@ -97,10 +97,10 @@ async function search(keyword, minPrice) {
 function pick(items, card, d) {
   const code = norm(card.code ?? card.id);
   const ng = [...(d.ng ?? []), ...(card.mustNot ?? [])].map(norm);
-  const must = (card.must ?? []).map(norm);
+  const must = (card.must ?? []).map(norm), any = (card.mustAny ?? []).map(norm);
   return items.filter((i) => {
     const n = norm(i.itemName);
-    return n.includes(code) && !ng.some((w) => n.includes(w)) && must.every((w) => n.includes(w));
+    return n.includes(code) && !ng.some((w) => n.includes(w)) && must.every((w) => n.includes(w)) && (!any.length || any.some((w) => n.includes(w)));
   }).sort((a, b) => a.itemPrice - b.itemPrice);
 }
 
@@ -119,56 +119,78 @@ async function readHistory(id) {
   return (await readFile(f, 'utf8')).trim().split('\n').slice(1).map((l) => { const [date, min, ref, count] = l.split(','); return { date, min: +min, ref: +ref, count: +count }; });
 }
 
+// 今回取得する弾: 環境変数 SETS(例 "OP17,OP16" / "all")があればそれ。
+// なければ新しい3弾は毎日、残りは発売順に7グループへ分けて曜日ごとに週1回。
+function chooseSets(index) {
+  const all = index.sets.map((s) => s.code);
+  const env = (process.env.SETS ?? '').trim();
+  if (env) return env === 'all' ? all : env.split(',').map((x) => x.trim()).filter((x) => all.includes(x));
+  const daily = all.slice(0, 3), rest = all.slice(3);
+  const dow = new Date(Date.now() + 9 * 3600e3).getUTCDay();
+  return [...daily, ...rest.filter((_, i) => i % 7 === dow)];
+}
+
+async function priceCard(card, defaults) {
+  const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
+  const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
+  const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid),
+    searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword), offers: offersOf(valid) };
+  if (valid.length) {
+    const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
+    const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
+    Object.assign(rec, { minPrice: valid[0].itemPrice, refPrice: ref, shop: valid[0].shopName, url: valid[0].url, src: valid[0].src,
+      counts: { rakuten: valid.filter((i) => i.src === 'rakuten').length, yahoo: valid.filter((i) => i.src === 'yahoo').length },
+      change: base ? Math.round(((ref - base) / base) * 1000) / 10 : null });
+    const f = `data/history/${card.id}.csv`;
+    if (!existsSync(f)) await writeFile(f, 'date,min,ref,count\n');
+    await appendFile(f, `${today},${rec.minPrice},${ref},${valid.length}\n`);
+  }
+  return rec;
+}
+
 async function main() {
-  const { defaults, cards, images: imageTargets = [] } = JSON.parse(await readFile('cards.json', 'utf8'));
+  const { defaults, cards } = JSON.parse(await readFile('cards.json', 'utf8'));
+  const index = JSON.parse(await readFile('sets/index.json', 'utf8'));
   await mkdir('data/history', { recursive: true });
-  const out = [], failed = [];
+  await mkdir('data/sets', { recursive: true });
+  const targets = chooseSets(index);
+  console.log(`今回の対象: ${targets.join(', ')}`);
+  const spikesAll = [];
+  let total = 0, failedAll = 0;
 
-  for (const card of cards) {
-    try {
-      const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
-      const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
-      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid), searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword), offers: offersOf(valid) };
-      if (valid.length) {
-        const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
-        const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
-        Object.assign(rec, { minPrice: valid[0].itemPrice, refPrice: ref, shop: valid[0].shopName,
-          url: valid[0].url, src: valid[0].src,
-          counts: { rakuten: valid.filter((i) => i.src === 'rakuten').length, yahoo: valid.filter((i) => i.src === 'yahoo').length },
-          change: base ? Math.round(((ref - base) / base) * 1000) / 10 : null });
-        const f = `data/history/${card.id}.csv`;
-        if (!existsSync(f)) await writeFile(f, 'date,min,ref,count\n');
-        await appendFile(f, `${today},${rec.minPrice},${ref},${valid.length}\n`);
+  for (const code of targets) {
+    const meta = index.sets.find((s) => s.code === code);
+    const list = cards.filter((c) => c.set === code);
+    const out = [], failed = [];
+    for (const card of list) {
+      try {
+        const rec = await priceCard(card, defaults);
+        out.push(rec);
+        console.log(`[${code}] ${card.id}: ${rec.count}件(楽天${rec.counts?.rakuten ?? 0}/Yahoo${rec.counts?.yahoo ?? 0}) ref=${rec.refPrice ?? '-'}`);
+      } catch (e) {
+        if (/認証エラー/.test(e.message)) throw e; // 認証系は全体を止める
+        failed.push(card.id); console.error(`[${code}] ${card.id}: ${e.message}`);
       }
-      out.push(rec);
-      console.log(`${card.id}: ${valid.length}件(楽天${rec.counts?.rakuten ?? 0}/Yahoo${rec.counts?.yahoo ?? 0}) min=${rec.minPrice ?? '-'} ref=${rec.refPrice ?? '-'} change=${rec.change ?? '-'}%`);
-    } catch (e) {
-      if (/認証エラー/.test(e.message)) throw e; // 認証系は全体を止める
-      failed.push(card.id); console.error(`${card.id}: ${e.message}`);
+      await sleep(DELAY_MS);
     }
-    await sleep(DELAY_MS);
-  }
-
-  // 画像だけ取得する対象(SP・スーパーパラレル・BOXなど価格は手入力のもの)。失敗してもジョブは止めない
-  const images = {}, links = {};
-  for (const card of imageTargets) {
+    // BOXの画像と販売リンク
+    const images = {}, links = {};
     try {
-      const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
-      const imgs = imgsOf(valid);
-      if (imgs.length) images[card.id] = imgs;
-      links[card.id] = linkOf(valid, card.keyword);
-      console.log(`[画像] ${card.id}: ${imgs.length}件`);
-    } catch (e) {
-      if (/認証エラー/.test(e.message)) throw e;
-      console.error(`[画像] ${card.id}: ${e.message}`);
-    }
+      const box = { id: 'BOX', code: meta.name, keyword: `ワンピースカード ${meta.name} BOX`, must: ['BOX'], mustNot: ['カートン', 'パック単品', '1パック', 'シングル'], minPrice: 3000 };
+      const valid = pick(await search(box.keyword, box.minPrice), box, defaults);
+      const imgs = imgsOf(valid); if (imgs.length) images.BOX = imgs;
+      links.BOX = linkOf(valid, box.keyword);
+    } catch (e) { if (/認証エラー/.test(e.message)) throw e; console.error(`[${code}] BOX: ${e.message}`); }
     await sleep(DELAY_MS);
-  }
 
-  await writeFile('data/latest.json', JSON.stringify({ updatedAt: today, credit: 'Supported by Rakuten Developers / Web Services by Yahoo! JAPAN', cards: out, images, links }, null, 1));
-  const spikes = out.filter((c) => c.change != null && c.change >= SPIKE_PCT && c.count >= MIN_SAMPLES).sort((a, b) => b.change - a.change);
-  await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes }, null, 1));
-  console.log(`完了: ${out.length}件, 急騰${spikes.length}件, 失敗${failed.length}件`);
-  if (failed.length > cards.length / 2) process.exit(1); // 半数超の失敗はジョブ失敗にする
+    await writeFile(`data/sets/${code}.json`, JSON.stringify({ code, updatedAt: today, credit: 'Supported by Rakuten Developers / Web Services by Yahoo! JAPAN', cards: out, images, links }));
+    spikesAll.push(...out.filter((c) => c.change != null && c.change >= SPIKE_PCT && c.count >= MIN_SAMPLES).map((c) => ({ ...c, set: code, offers: undefined, imgs: undefined })));
+    total += list.length; failedAll += failed.length;
+    console.log(`[${code}] 完了: ${out.length}件, 失敗${failed.length}件`);
+  }
+  spikesAll.sort((a, b) => b.change - a.change);
+  await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes: spikesAll }, null, 1));
+  console.log(`全体: ${total}件, 急騰${spikesAll.length}件, 失敗${failedAll}件`);
+  if (total && failedAll > total / 2) process.exit(1); // 半数超の失敗はジョブ失敗にする
 }
 main().catch((e) => { console.error(e.message); process.exit(1); });
