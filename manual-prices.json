@@ -1,0 +1,112 @@
+{
+  "EB04-061-OSP": {
+    "name": "モンキー・D・ルフィ(EB04-061 海賊団スーパーパラレル)",
+    "price": 1000000,
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "OP17-118-OSP": {
+    "name": "ロックス・D・ジーベック(OP17-118 海賊団スーパーパラレル)",
+    "price": 500000,
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "OP17-118": {
+    "name": "ロックス・D・ジーベック(OP17-118 SEC通常)",
+    "price": 2000,
+    "updated": "2026-10-20",
+    "force": false
+  },
+  "OP17-119": {
+    "name": "ロキ(OP17-119 SEC通常)",
+    "price": 2000,
+    "updated": "2026-10-20",
+    "force": false
+  },
+  "SPY-LUFFY": {
+    "name": "モンキー・D・ルフィ(新四皇SP)",
+    "price": 62400,
+    "buyPrice": 53330,
+    "label": "新四皇SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "SPY-SHANKS": {
+    "name": "シャンクス(新四皇SP)",
+    "price": 20800,
+    "buyPrice": 14670,
+    "label": "新四皇SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "SPY-TEACH": {
+    "name": "マーシャル・D・ティーチ(新四皇SP)",
+    "price": 16650,
+    "buyPrice": 11330,
+    "label": "新四皇SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "SPY-BUGGY": {
+    "name": "バギー(新四皇SP)",
+    "price": 14800,
+    "buyPrice": 11000,
+    "label": "新四皇SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "HAO-ZORO": {
+    "name": "ロロノア・ゾロ(覇王色SP)",
+    "price": 22800,
+    "buyPrice": 16330,
+    "label": "覇王色SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "HAO-YAMATO": {
+    "name": "ヤマト(覇王色SP)",
+    "price": 18800,
+    "buyPrice": 12670,
+    "label": "覇王色SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "HAO-ODEN": {
+    "name": "光月おでん(覇王色SP)",
+    "price": 12800,
+    "buyPrice": 9000,
+    "label": "覇王色SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "HAO-RAYLEIGH": {
+    "name": "シルバーズ・レイリー(覇王色SP)",
+    "price": 12300,
+    "buyPrice": 8330,
+    "label": "覇王色SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "HAO-ROGER": {
+    "name": "ゴール・D・ロジャー(覇王色SP)",
+    "price": 10390,
+    "buyPrice": 7670,
+    "label": "覇王色SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "HAO-GARP": {
+    "name": "モンキー・D・ガープ(覇王色SP)",
+    "price": 6230,
+    "buyPrice": 4670,
+    "label": "覇王色SP",
+    "updated": "2026-10-20",
+    "force": true
+  },
+  "OP17-079-LSP": {
+    "name": "モンキー・D・ルフィ(OP17-079 リーダースーパーパラレル)",
+    "price": 100000,
+    "updated": "2026-10-20",
+    "force": true
+  }
+}
