@@ -323,15 +323,15 @@
    "updatedAt": "2026-10-20",
    "count": 5,
    "imgs": [
-    "https://thumbnail.image.rakuten.co.jp/@0_mall/toretoku/cabinet/items183/397183jat_1.jpg?_ex=400x400",
     "https://thumbnail.image.rakuten.co.jp/@0_mall/auc-stepreikodo/cabinet/03802301/11850460/imgrc0104506400.jpg?_ex=400x400",
+    "https://thumbnail.image.rakuten.co.jp/@0_mall/toretoku/cabinet/items183/397183jat_1.jpg?_ex=400x400",
     "https://thumbnail.image.rakuten.co.jp/@0_mall/fullahead/cabinet/07535276/07538682/opc-op17-029.jpg?_ex=400x400",
     "https://thumbnail.image.rakuten.co.jp/@0_mall/realize-store/cabinet/onepiececg/c/op1700029.jpg?_ex=400x400"
    ],
    "minPrice": 30,
    "refPrice": 30,
-   "shop": "トレカ通販 トレトク楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F397183j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10630292%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "shop": "ステップREIKODO",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00q9m1o.li9ae286.g00q9m1o.li9af6a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-stepreikodo%2Ftrc-20260821-0029%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-stepreikodo%2Fi%2F10694066%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
     "rakuten": 5,
