@@ -76,10 +76,9 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;gap
 .fc img.ok,#reveal .card img.ok{opacity:1}
 .pr{margin-top:6px;text-align:center;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s .25s}
 .cd.on .pr{opacity:1}
-.go{display:block;margin:3px auto 0;width:fit-content;max-width:100%;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;color:#120a18;background:var(--gold);text-decoration:none;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s .35s}
-.go.s{background:transparent;color:var(--mute);border:1px solid var(--line)}
+.go{display:block;margin:3px auto 0;width:fit-content;max-width:100%;padding:2px 9px;border:0;border-radius:99px;font-size:11px;font-weight:700;color:#120a18;background:var(--gold);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s .35s}
 .cd.on .go{opacity:1;pointer-events:auto}
-.cd.on[data-url]{cursor:pointer}
+.cd.on{cursor:pointer}
 .adnote{margin:8px 0 0;font-size:11px;color:var(--mute);text-align:right}
 .k-R{--face:linear-gradient(160deg,#173a52,#0c1f2e);--rim:#7fd6e8}
 .k-SR{--face:linear-gradient(160deg,#4a3410,#20160a);--rim:#ffcf4a}
@@ -127,6 +126,51 @@ summary{cursor:pointer;font-weight:700;font-size:14px}
 .set input,.set select{width:100%;font:inherit;color:var(--ink);background:#120c18;border:1px solid var(--line);border-radius:6px;padding:7px}
 @media(max-width:560px){.set{grid-template-columns:1fr 1fr}}
 ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
+/* カード詳細(販売ショップ一覧) */
+#dv{position:fixed;inset:0;z-index:58;overflow-y:auto;overscroll-behavior:contain;background:#07040c;-webkit-overflow-scrolling:touch}
+#dv .bgr{position:fixed;inset:-60%;pointer-events:none;background:repeating-conic-gradient(from 0deg,var(--dvc) 0 4deg,transparent 4deg 14deg);opacity:.28;animation:spin 26s linear infinite}
+#dv .glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 30%,var(--dvg),transparent 60%)}
+#dv .dvin{position:relative;max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 56px) 16px 48px;text-align:center}
+#dvX{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(10,6,16,.7);font-size:22px;line-height:1}
+#dv .stage{perspective:1000px;margin:0 auto 6px;width:min(66vw,290px)}
+#dv .float{animation:dvfl 4.5s ease-in-out infinite}
+@keyframes dvfl{50%{transform:translateY(-10px)}}
+#dvCard{position:relative;aspect-ratio:63/88;border-radius:14px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .12s ease-out;touch-action:pan-y}
+#dvCard.enter{animation:dvin 1.1s cubic-bezier(.2,.9,.25,1.05) both}
+@keyframes dvin{0%{transform:translateY(60px) scale(.35) rotateY(-540deg);opacity:0}60%{opacity:1}100%{transform:none;opacity:1}}
+#dvCard .fc{transform:none;border-width:3px;border-radius:14px;box-shadow:0 0 30px var(--rim),0 0 70px var(--rim),0 30px 60px rgba(0,0,0,.7)}
+#dvCard .nm{font-size:clamp(18px,5vw,24px)}#dvCard .rb{font-size:13px}#dvCard .id{font-size:12px}
+#dvCard .sh{position:absolute;inset:0;border-radius:14px;pointer-events:none;mix-blend-mode:screen;
+ background:linear-gradient(115deg,transparent calc(var(--sx,50%) - 30%),rgba(255,255,255,.55) var(--sx,50%),transparent calc(var(--sx,50%) + 30%)),
+ linear-gradient(115deg,rgba(255,110,200,.25),rgba(110,220,255,.25),rgba(255,240,130,.25));background-size:100% 100%,300% 100%;animation:holo 3s linear infinite}
+#dv .spk{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px var(--dvc);pointer-events:none;animation:spk 2.6s ease-in-out infinite}
+@keyframes spk{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.2)}}
+#dv .kk{display:inline-block;margin-top:18px;font-family:"Dela Gothic One",sans-serif;font-size:15px;padding:3px 14px;border-radius:99px;background:var(--rim);color:#120a18}
+#dv h2{margin:8px 0 0;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(24px,7vw,34px);line-height:1.2;text-shadow:0 0 18px var(--dvg)}
+#dv .cid{font-size:12px;color:var(--mute);margin-top:2px}
+#dv .mp{margin-top:10px}#dv .mp small{display:block;font-size:12px;color:var(--mute)}
+#dv .mp b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(36px,11vw,52px);color:#fff;text-shadow:0 0 24px var(--dvg)}
+#dv .cta{display:inline-block;margin-top:12px;padding:14px 28px;border-radius:12px;font-family:"Dela Gothic One",sans-serif;font-size:17px;text-decoration:none;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 5px 0 #8a3a0a,0 0 26px rgba(255,170,60,.55);animation:ctap 1.6s ease-in-out infinite}
+@keyframes ctap{50%{transform:scale(1.04);box-shadow:0 5px 0 #8a3a0a,0 0 44px rgba(255,190,80,.9)}}
+#dv .shops{margin-top:26px;text-align:left;background:rgba(26,18,32,.92);border:1px solid var(--line);border-radius:14px;padding:14px}
+#dv .shops h3{margin:0 0 8px;font-size:15px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+#dv .shops h3 small{font-size:11px;color:var(--mute);font-weight:500}
+#dvList{list-style:none;margin:0;padding:0}
+#dvList li{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"src shop price" "src nm buy";gap:2px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+#dvList li:first-child{border-top:0}
+#dvList .src{grid-area:src;font-size:11px;font-weight:900;padding:3px 7px;border-radius:6px;color:#fff;align-self:start}
+#dvList .src.rakuten{background:#bf0000}#dvList .src.yahoo{background:#ff0033}
+#dvList .shop{grid-area:shop;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dvList .nm2{grid-area:nm;font-size:11px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dvList .pp{grid-area:price;font-weight:900;font-size:17px;font-variant-numeric:tabular-nums;text-align:right}
+#dvList .buy{grid-area:buy;justify-self:end;display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--gold);color:#120a18;text-decoration:none;white-space:nowrap}
+#dvList .st{font-size:11px;font-weight:700;color:var(--win);margin-right:6px}
+#dvList li.best .pp{color:var(--gold)}
+#dvList li.best .shop::before{content:"最安";font-size:10px;font-weight:900;margin-right:6px;padding:1px 6px;border-radius:4px;background:var(--gold);color:#120a18;vertical-align:2px}
+#dv .alt{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#dv .alt a{flex:1;min-width:140px;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+#dv .empty{font-size:13px;color:var(--mute);margin:4px 0}
+@media(prefers-reduced-motion:reduce){#dv .bgr,#dv .float,#dvCard.enter,#dvCard .sh,#dv .spk,#dv .cta{animation:none}}
 /* カットイン */
 #reveal{position:fixed;inset:0;z-index:55;border:0;width:100%;background:#05030a;display:grid;place-items:center;overflow:hidden;text-align:center}
 #reveal .rays{position:absolute;inset:-60%;background:repeating-conic-gradient(from 0deg,rgba(255,215,120,.32) 0 5deg,transparent 5deg 15deg);animation:spin 10s linear infinite}
@@ -166,7 +210,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="gauge"><div id="fill"></div><i class="mk" id="mkM"><b>定価</b></i><i class="mk" id="mkP"><b>プレ値</b></i></div>
 <button id="skip">スキップ ▶▶</button>
 </div>
-<p class="adnote">PR・カードをタップすると最安値の販売ページへ移動します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)</p>
+<p class="adnote">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)</p>
 <div id="grid" class="grid"></div>
 <div id="after" hidden>
 <div class="acts"><button class="btn" id="again">もう1BOX!</button><button class="btn s" id="more">くわしい数字</button></div>
@@ -194,6 +238,20 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 </section>
 </main>
 
+<div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
+<div class="bgr"></div><div class="glow"></div>
+<button id="dvX" aria-label="閉じる">×</button>
+<div class="dvin">
+<div class="stage"><div class="float"><div id="dvCard"></div></div></div>
+<div class="kk" id="dvK"></div>
+<h2 id="dvN"></h2>
+<div class="cid" id="dvId"></div>
+<div class="mp"><small>相場(ショップ販売価格)</small><b id="dvP"></b></div>
+<a class="cta" id="dvCta" target="_blank" rel="sponsored noopener" hidden></a>
+<div class="shops"><h3>販売中のショップ(安い順)<small id="dvNote"></small></h3><ol id="dvList"></ol><div class="alt" id="dvAlt"></div>
+<p class="adnote" style="text-align:left">PR・楽天アフィリエイト/バリューコマースの広告リンクです。在庫と価格は毎朝6時の取得時点のもので、売り切れ・価格変更の場合があります。</p></div>
+</div>
+</div>
 <button id="reveal" hidden aria-label="次へ"><div class="rays"></div><div class="in2"><div class="k" id="rk"></div><div class="card" id="rcard"><span id="rn"></span><div id="rimg"></div></div><div class="pr2" id="rp"></div><div class="hint">タップ</div></div></button>
 <div id="toast" class="toast"></div>
 <div id="stampEl" class="stamp" hidden></div>
@@ -298,12 +356,52 @@ function addImg(parent,c){
   im.classList.add('ok')};
  im.src=L[0];parent.appendChild(im);
 }
-// 購入リンク: 最安出品(楽天/Yahoo!)→ なければ楽天の検索結果
-function linkOf(c){
- if(c.url)return{url:c.url,direct:true,label:(c.src==='yahoo'?'Yahoo!':c.src==='rakuten'?'楽天':'ショップ')+'で見る ›'};
- var su=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent('ワンピースカード '+(/^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP|CP)$/,''):c.n))+'/');
- return{url:su,direct:false,label:'楽天で探す ›'};
+// ---- カード詳細(大きく表示+販売ショップ一覧) ----
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+function cardNo(c){return /^(OP|EB)/.test(c.id)?c.id.replace(/-(P|OSP|LSP|CP)$/,''):''}
+function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
+var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
+var dvOpen=false,dvPushed=false;
+function openDetail(c){
+ var dv=$('dv'),g=grade(c),col=DVC[g];
+ dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
+ var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
+ cardBox.innerHTML='<div class="fc"><div class="gen"><span class="rb">'+esc(c.k)+'</span><span class="nm">'+esc(c.n)+'</span><span class="id">'+cardNo(c)+'</span></div></div><div class="sh"></div>';
+ addImg(cardBox.querySelector('.fc'),c);
+ if(!reduce){void cardBox.offsetWidth;cardBox.classList.add('enter');
+  var st=dv.querySelector('.stage');[].forEach.call(st.querySelectorAll('.spk'),function(e){e.remove()});
+  for(var i=0;i<(g>=2?14:7);i++){var sp=document.createElement('i');sp.className='spk';sp.style.left=(Math.random()*110-5)+'%';sp.style.top=(Math.random()*110-5)+'%';sp.style.animationDelay=(Math.random()*2.6)+'s';st.appendChild(sp)}}
+ $('dvK').textContent=c.k;$('dvK').className='kk k-'+KC[c.c];
+ $('dvN').textContent=c.n;$('dvId').textContent=cardNo(c);
+ var P=$('dvP');if(c.p==null)P.textContent='価格未取得';else if(reduce)P.textContent=yen(c.p);else{var t0=performance.now();requestAnimationFrame(function st(t){var k=Math.min(1,(t-t0)/900);P.textContent=yen(c.p*(1-Math.pow(1-k,3)));if(k<1&&dvOpen)requestAnimationFrame(st)})}
+ var offs=(c.offers||[]).slice().sort(function(a,b){return a.p-b.p});
+ $('dvList').innerHTML=offs.length?offs.map(function(o,i){
+  return '<li'+(i?'':' class="best"')+'><span class="src '+(o.s==='yahoo'?'yahoo':'rakuten')+'">'+(o.s==='yahoo'?'Yahoo!':'楽天')+'</span>'+
+  '<span class="shop">'+esc(o.shop||'ショップ')+'</span><span class="pp">'+yen(o.p)+'</span>'+
+  '<span class="nm2"><span class="st">● 在庫あり</span>'+esc(o.n||'')+'</span><a class="buy" href="'+esc(o.u)+'" target="_blank" rel="sponsored noopener">ショップへ ›</a></li>'}).join('')
+  :'<li style="display:block"><p class="empty">取得時点で在庫のある出品が見つかりませんでした。下のボタンから最新の出品を探せます。</p></li>';
+ $('dvNote').textContent=offs.length?offs.length+'件・'+S.date+' 6時時点':'';
+ var cta=$('dvCta');if(offs.length){cta.href=offs[0].u;cta.textContent='最安 '+yen(offs[0].p)+' で手に入れる ›';cta.hidden=false}else cta.hidden=true;
+ var rs=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent(kw(c))+'/'),ys=c.ysearch||('https://shopping.yahoo.co.jp/search?p='+encodeURIComponent(kw(c)));
+ $('dvAlt').innerHTML='<a href="'+esc(rs)+'" target="_blank" rel="sponsored noopener">楽天で探す ›</a><a href="'+esc(ys)+'" target="_blank" rel="sponsored noopener">Yahoo!で探す ›</a>';
+ dv.hidden=false;dv.scrollTop=0;document.documentElement.style.overflow='hidden';dvOpen=true;
+ if(!dvPushed){try{history.pushState({dv:1},'','#card='+encodeURIComponent(c.id));dvPushed=true}catch(e){}}
+ $('dvX').focus({preventScroll:true});
 }
+function closeDetail(fromPop){
+ if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow='';$('dvCard').innerHTML='';
+ if(dvPushed){dvPushed=false;if(!fromPop)try{history.back()}catch(e){}}
+}
+$('dvX').addEventListener('click',function(){closeDetail()});
+addEventListener('popstate',function(){if(dvOpen){dvPushed=false;closeDetail(true)}});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
+// 指・マウス・端末の傾きでカードが動く
+(function(){var cb=$('dvCard');
+ function tilt(x,y){if(reduce)return;cb.style.setProperty('--ry',(x*18).toFixed(1)+'deg');cb.style.setProperty('--rx',(-y*18).toFixed(1)+'deg');cb.style.setProperty('--sx',(50+x*60).toFixed(0)+'%')}
+ cb.addEventListener('pointermove',function(e){var r=cb.getBoundingClientRect();tilt((e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5)});
+ cb.addEventListener('pointerleave',function(){tilt(0,0)});
+ addEventListener('deviceorientation',function(e){if(!dvOpen||e.gamma==null)return;tilt(Math.max(-.5,Math.min(.5,e.gamma/40)),Math.max(-.5,Math.min(.5,(e.beta-45)/40)))});
+})();
 function setBox(u){if(!u||$('box').querySelector('img'))return;
  var bi=document.createElement('img');bi.alt='OP17 BOX';bi.referrerPolicy='no-referrer';
  bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
@@ -323,9 +421,9 @@ function cardEl(c){
  d.className='cd g'+grade(c)+' k-'+KC[c.c];
  d.innerHTML='<div class="in"><div class="bk"><span>OP17</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
   '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
- var L=linkOf(c);
- if(L){var a=document.createElement('a');a.className='go'+(L.direct?'':' s');a.href=L.url;a.target='_blank';a.rel='sponsored noopener';a.textContent=L.label;d.appendChild(a);
-  d.dataset.url=L.url;d.addEventListener('click',function(e){if(!d.classList.contains('on')||e.target.closest('a'))return;window.open(L.url,'_blank','noopener')})}
+ var b=document.createElement('button');b.className='go';b.type='button';
+ var n=(c.offers||[]).length;b.textContent=n?'販売 '+n+'店 ›':'ショップを探す ›';d.appendChild(b);
+ d.addEventListener('click',function(){if(d.classList.contains('on'))openDetail(c)});
  addImg(d.querySelector('.fc'),c);
  return d;
 }
@@ -446,8 +544,8 @@ try{fetch('https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/
  var m={};j.cards.forEach(function(c){m[c.id]=c});
  var im=j.images||{},lk=j.links||{};
  ALL.forEach(function(c){var x=m[c.id],l=lk[c.id];if(x&&x.refPrice)c.p=x.refPrice;
-  if(x&&x.url){c.url=x.url;c.src=x.source==='manual'?null:x.src}else if(l&&l.url){c.url=l.url;c.src=l.src}
-  c.search=(x&&x.searchUrl)||(l&&l.searchUrl)||c.search;var L=(x&&x.imgs&&x.imgs.length?x.imgs:im[c.id]);if(L&&L.length)c.imgs=L});
+  c.offers=(x&&x.offers&&x.offers.length?x.offers:(l&&l.offers))||c.offers;
+  c.search=(x&&x.searchUrl)||(l&&l.searchUrl)||c.search;c.ysearch=(x&&x.ysearchUrl)||(l&&l.ysearchUrl)||c.ysearch;var L=(x&&x.imgs&&x.imgs.length?x.imgs:im[c.id]);if(L&&L.length)c.imgs=L});
  if(!BOX_IMG&&im.BOX&&im.BOX.length)setBox(im.BOX[0]);
  S.date=j.updatedAt||S.date;
 }).catch(function(){})}catch(e){}
