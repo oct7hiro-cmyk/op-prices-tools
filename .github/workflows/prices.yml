@@ -18,6 +18,8 @@ jobs:
           RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
           SITE_REFERER: ${{ secrets.SITE_REFERER }}
           YAHOO_APP_ID: ${{ secrets.YAHOO_APP_ID }}
+          YAHOO_VC_SID: ${{ secrets.YAHOO_VC_SID }}
+          YAHOO_VC_PID: ${{ secrets.YAHOO_VC_PID }}
       - run: node scripts/merge-manual.mjs
       - name: Commit data
         run: |
