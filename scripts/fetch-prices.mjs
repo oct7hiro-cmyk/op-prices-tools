@@ -48,6 +48,20 @@ function pick(items, card, d) {
   }).sort((a, b) => a.itemPrice - b.itemPrice);
 }
 
+// 出品画像URL(最大n件)。_ex=400x400 で縦横比を保ったまま大きめのサムネイルにする
+function imgsOf(items, n = 3) {
+  const out = [];
+  for (const i of items) {
+    const u = (i.mediumImageUrls ?? [])[0];
+    const url = typeof u === 'string' ? u : u?.imageUrl;
+    if (!url) continue;
+    const big = url.replace(/\?_ex=\d+x\d+$/, '') + '?_ex=400x400';
+    if (!out.includes(big)) out.push(big);
+    if (out.length >= n) break;
+  }
+  return out;
+}
+
 async function readHistory(id) {
   const f = `data/history/${id}.csv`;
   if (!existsSync(f)) return [];
@@ -55,7 +69,7 @@ async function readHistory(id) {
 }
 
 async function main() {
-  const { defaults, cards } = JSON.parse(await readFile('cards.json', 'utf8'));
+  const { defaults, cards, images: imageTargets = [] } = JSON.parse(await readFile('cards.json', 'utf8'));
   await mkdir('data/history', { recursive: true });
   const out = [], failed = [];
 
@@ -63,7 +77,7 @@ async function main() {
     try {
       const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
       const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
-      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length };
+      const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid) };
       if (valid.length) {
         const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
         const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
@@ -83,7 +97,21 @@ async function main() {
     await sleep(DELAY_MS);
   }
 
-  await writeFile('data/latest.json', JSON.stringify({ updatedAt: today, credit: 'Supported by Rakuten Developers', cards: out }, null, 1));
+  // 画像だけ取得する対象(SP・スーパーパラレル・BOXなど価格は手入力のもの)。失敗してもジョブは止めない
+  const images = {};
+  for (const card of imageTargets) {
+    try {
+      const imgs = imgsOf(pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults));
+      if (imgs.length) images[card.id] = imgs;
+      console.log(`[画像] ${card.id}: ${imgs.length}件`);
+    } catch (e) {
+      if (/認証エラー/.test(e.message)) throw e;
+      console.error(`[画像] ${card.id}: ${e.message}`);
+    }
+    await sleep(DELAY_MS);
+  }
+
+  await writeFile('data/latest.json', JSON.stringify({ updatedAt: today, credit: 'Supported by Rakuten Developers', cards: out, images }, null, 1));
   const spikes = out.filter((c) => c.change != null && c.change >= SPIKE_PCT && c.count >= MIN_SAMPLES).sort((a, b) => b.change - a.change);
   await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes }, null, 1));
   console.log(`完了: ${out.length}件, 急騰${spikes.length}件, 失敗${failed.length}件`);
