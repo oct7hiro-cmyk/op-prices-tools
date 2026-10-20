@@ -10,7 +10,7 @@ if (!RAKUTEN_APP_ID || !RAKUTEN_ACCESS_KEY || !SITE_REFERER) {
   process.exit(1);
 }
 
-const ENDPOINT = 'https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20220701';
+const ENDPOINT = 'https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701';
 const SPIKE_PCT = 20;     // 基準価格から+20%以上で急騰扱い
 const MIN_SAMPLES = 2;    // 有効な出品が2件未満なら「薄い」として急騰判定しない
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
