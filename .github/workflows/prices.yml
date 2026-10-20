@@ -2,15 +2,22 @@ name: daily-prices
 on:
   schedule: [{ cron: '0 21 * * *' }]   # 毎日 06:00 JST
   workflow_dispatch:
+    inputs:
+      sets:
+        description: '取得する弾(例 OP17,OP16 / all)。空欄なら通常スケジュール'
+        required: false
+        default: ''
 permissions:
   contents: write
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
+      - run: node scripts/build-sets.mjs
       - run: node scripts/fetch-prices.mjs
         env:
           RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
@@ -20,9 +27,10 @@ jobs:
           YAHOO_APP_ID: ${{ secrets.YAHOO_APP_ID }}
           YAHOO_VC_SID: ${{ secrets.YAHOO_VC_SID }}
           YAHOO_VC_PID: ${{ secrets.YAHOO_VC_PID }}
+          SETS: ${{ github.event.inputs.sets }}
       - run: node scripts/merge-manual.mjs
       - name: Commit data
         run: |
           git config user.name "price-bot"; git config user.email "bot@users.noreply.github.com"
-          git add data
-          git diff --cached --quiet || (git commit -m "prices $(date -u +%F)" && git push)
+          git add data sets cards.json
+          git diff --cached --quiet || (git commit -m "prices $(date -u +%F)" && git pull --rebase && git push)
