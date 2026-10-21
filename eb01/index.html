@@ -6,12 +6,12 @@
 <!--HEAD-->
 <base href="/op-prices-tools/">
 <title>EB01 メモリアルコレクション 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
-<meta name="description" content="ワンピースカード EB01「メモリアルコレクション」のBOX開封をシミュレーション。1BOXの期待値¥2,591、プレ値¥25,680。当たりカード:Mr.2・ボン・クレー(ベンサム)(SECパラレル)¥2,250、トニートニー・チョッパー(パラレル)¥2,020、ラブーン(パラレル)¥1,880など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta name="description" content="ワンピースカード EB01「メモリアルコレクション」のBOX開封をシミュレーション。1BOXの期待値¥2,937、プレ値¥25,680。当たりカード:Mr.2・ボン・クレー(ベンサム)(SECパラレル)¥2,250、トニートニー・チョッパー(パラレル)¥2,020、ラブーン(パラレル)¥1,880など。楽天・Yahoo!の販売価格から毎日更新。">
 <link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/eb01/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
 <meta property="og:title" content="EB01 メモリアルコレクション 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
-<meta property="og:description" content="ワンピースカード EB01「メモリアルコレクション」のBOX開封をシミュレーション。1BOXの期待値¥2,591、プレ値¥25,680。当たりカード:Mr.2・ボン・クレー(ベンサム)(SECパラレル)¥2,250、トニートニー・チョッパー(パラレル)¥2,020、ラブーン(パラレル)¥1,880など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:description" content="ワンピースカード EB01「メモリアルコレクション」のBOX開封をシミュレーション。1BOXの期待値¥2,937、プレ値¥25,680。当たりカード:Mr.2・ボン・クレー(ベンサム)(SECパラレル)¥2,250、トニートニー・チョッパー(パラレル)¥2,020、ラブーン(パラレル)¥1,880など。楽天・Yahoo!の販売価格から毎日更新。">
 <meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/eb01/">
 <meta name="twitter:card" content="summary">
 <!--/HEAD-->
@@ -42,16 +42,37 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .scene{position:relative;perspective:900px;height:min(48svh,340px);display:grid;place-items:center;margin:14px 0 4px}
 .scene::after{content:"";position:absolute;bottom:2%;width:160px;height:20px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(8px);animation:sh 4s ease-in-out infinite}
 @keyframes sh{50%{transform:scale(.75);opacity:.55}}
-.box{position:relative;z-index:2;width:min(54vw,220px);aspect-ratio:3/4;border:0;border-radius:12px;color:#fff;
-background:linear-gradient(160deg,var(--c1),var(--c2) 70%,#120a14);box-shadow:inset 0 0 0 4px var(--gold),inset 0 0 0 7px var(--c2),inset 0 0 0 9px var(--gold),0 0 80px 14px rgba(255,170,60,.45),0 30px 60px rgba(0,0,0,.7);
-display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;animation:fl 4s ease-in-out infinite;overflow:hidden}
-.box::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);animation:gl 2.6s linear infinite}
-@keyframes gl{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
-.box b{font-size:clamp(44px,12vw,58px);color:var(--gold);text-shadow:0 3px 0 #3a0714}
-.box span{font-size:14px;letter-spacing:.3em}
-.box img{position:absolute;inset:9px;width:calc(100% - 18px);height:calc(100% - 18px);object-fit:cover;border-radius:6px;background:#fff}
-.box.has-img b,.box.has-img span{display:none}
-@keyframes fl{0%,100%{transform:translateY(0) rotateY(-16deg) rotateX(4deg)}50%{transform:translateY(-22px) rotateY(16deg) rotateX(-2deg)}}
+/* BOX:CSSで描いた直方体(全弾共通デザイン・弾の色で塗り分け)。宙に浮いて、下に影 */
+.box{position:relative;z-index:2;display:block;border:0;padding:0;background:none;color:#fff;cursor:pointer;
+--bw:min(56vw,230px);--bh:calc(var(--bw)*.66);--bd:calc(var(--bw)*.4);width:var(--bw);height:var(--bh);perspective:1100px;animation:fl 4s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.cube{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(-16deg) rotateY(-32deg);animation:sway 9s ease-in-out infinite}
+@keyframes sway{50%{transform:rotateX(-12deg) rotateY(-16deg)}}
+.cube>i{position:absolute;display:block;left:0;top:0;font-style:normal;overflow:hidden;backface-visibility:hidden}
+.cube .f,.cube .k{width:var(--bw);height:var(--bh)}
+.cube .f{transform:translateZ(calc(var(--bd)/2));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+ background:radial-gradient(120% 90% at 30% 15%,rgba(255,255,255,.28),transparent 55%),repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px),linear-gradient(160deg,var(--c1),var(--c2))}
+.cube .f::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:gl 3.2s linear infinite}
+.cube .f small{font-size:calc(var(--bw)*.045);letter-spacing:.18em;font-weight:900;opacity:.85}
+.cube .f b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:calc(var(--bw)*.2);line-height:1;color:var(--ca);text-shadow:0 3px 0 rgba(0,0,0,.45)}
+.cube .f em{font-style:normal;font-weight:900;font-size:calc(var(--bw)*.07);line-height:1.2;max-width:88%;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.cube .f u{position:absolute;left:0;right:0;bottom:0;text-decoration:none;text-align:center;font-size:calc(var(--bw)*.045);letter-spacing:.25em;font-weight:900;padding:4px 0;background:rgba(0,0,0,.35)}
+.cube .k{transform:rotateY(180deg) translateZ(calc(var(--bd)/2));background:var(--c2)}
+.cube .r,.cube .l{width:var(--bd);height:var(--bh);left:calc((var(--bw) - var(--bd))/2)}
+.cube .r{transform:rotateY(90deg) translateZ(calc(var(--bw)/2));background:linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.32)),linear-gradient(160deg,var(--c1),var(--c2));display:grid;place-items:center}
+.cube .r b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:calc(var(--bw)*.075);color:var(--ca);writing-mode:vertical-rl;opacity:.9}
+.cube .l{transform:rotateY(-90deg) translateZ(calc(var(--bw)/2));background:var(--c2)}
+.cube .t,.cube .u{width:var(--bw);height:var(--bd);top:calc((var(--bh) - var(--bd))/2)}
+.cube .t{transform:rotateX(90deg) translateZ(calc(var(--bh)/2));background:linear-gradient(rgba(255,255,255,.22),rgba(255,255,255,.08)),linear-gradient(90deg,var(--c1),var(--c2))}
+.cube .t::before{content:"";position:absolute;left:0;right:0;top:44%;height:12%;background:rgba(0,0,0,.18)}
+.cube .u{transform:rotateX(-90deg) translateZ(calc(var(--bh)/2));background:#000}
+.scene::after{bottom:calc(50% - 112px);width:min(46vw,190px);height:22px;background:rgba(0,0,0,.65);filter:blur(9px)}
+@keyframes gl{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+/* 弾一覧の小さなBOX(同じデザイン、浮かない) */
+.mbox{--bw:96px;--bh:calc(var(--bw)*.66);--bd:calc(var(--bw)*.4);position:relative;width:var(--bw);height:var(--bh);perspective:700px;color:#fff;transition:transform .2s}
+.sc:hover .mbox{transform:translateY(-4px)}
+.mbox .cube{animation:none;transform:rotateX(-16deg) rotateY(-30deg)}
+.mbox .f::after{display:none}
 .box.shake{animation:sk .9s linear forwards}
 @keyframes sk{0%{transform:translate(0)}10%{transform:translate(-6px,2px) rotate(-3deg)}20%{transform:translate(6px,-2px) rotate(3deg)}30%{transform:translate(-8px,3px) rotate(-4deg)}40%{transform:translate(8px,-3px) rotate(4deg)}50%{transform:translate(-10px,2px) rotate(-5deg) scale(1.05)}60%{transform:translate(10px,-2px) rotate(5deg) scale(1.08)}80%{transform:translate(-6px) rotate(-3deg) scale(1.12)}100%{transform:scale(1.18)}}
 .bc{position:absolute;left:50%;top:50%;width:46px;height:64px;margin:-32px 0 0 -23px;border-radius:5px;border:2px solid var(--gold);background:radial-gradient(circle,var(--ca) 0 14%,transparent 15%),repeating-conic-gradient(var(--c1) 0 10deg,var(--c2) 10deg 20deg);z-index:3;opacity:0}
@@ -92,7 +113,7 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;gap
 .rb{align-self:center;font-size:10px;font-weight:900;padding:1px 7px;border-radius:99px;background:var(--rim);color:#120a18;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .nm{font-size:12px;font-weight:900;line-height:1.3;word-break:break-all;text-shadow:0 1px 2px #000}
 .id{font-size:9px;color:rgba(255,255,255,.65)}
-.fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--face);opacity:0;transition:opacity .2s}
+.fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--face);opacity:0;transition:opacity .2s}
 .fc img.ok,#reveal .card img.ok{opacity:1}
 .pr{margin-top:6px;text-align:center;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s .25s}
 .cd.on .pr{opacity:1}
@@ -195,7 +216,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;text-align:left}
 .sc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .15s}
 .sc:hover{transform:translateY(-3px)}
-.sc .im{aspect-ratio:1;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
+.sc .im{aspect-ratio:1.25;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
 .sc .im img{width:100%;height:100%;object-fit:contain;background:#fff}
 .sc .im b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:30px;color:var(--gold)}
 .sc .tx{padding:8px 10px 10px}
@@ -242,7 +263,8 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 #dvList .nm2{grid-area:nm;font-size:11px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #dvList .pp{grid-area:price;font-weight:900;font-size:17px;font-variant-numeric:tabular-nums;text-align:right}
 #dvList .buy{grid-area:buy;justify-self:end;display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--gold);color:#120a18;text-decoration:none;white-space:nowrap}
-#dvList .st{font-size:11px;font-weight:700;color:var(--win);margin-right:6px}
+#dvList .st{font-size:11px;font-weight:700;color:var(--win);margin-right:6px}#dvList .st.so{color:var(--lose)}
+.pr .es{margin-left:4px;font-size:10px;font-weight:700;color:var(--mute)}
 #dvList li.best .pp{color:var(--gold)}
 #dvList li.best .shop::before{content:"最安";font-size:10px;font-weight:900;margin-right:6px;padding:1px 6px;border-radius:4px;background:var(--gold);color:#120a18;vertical-align:2px}
 #dv .alt{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -263,10 +285,10 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 #reveal.t2 .k{background:linear-gradient(90deg,#d8c8ff,#7aa8ff);color:#120a33}
 #reveal .card{position:relative;margin:18px auto;width:min(58vw,240px);aspect-ratio:63/88;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden;font-family:"Dela Gothic One",sans-serif;font-size:clamp(22px,6vw,30px);line-height:1.25;color:#1e1300;background:linear-gradient(150deg,#3a2a05,#a97a12 45%,#f6d775 52%,#8a600a);border:3px solid #ffe9a0;box-shadow:0 0 70px 16px rgba(255,210,100,.65)}
 #reveal.t2 .card{color:#0f0a30;background:linear-gradient(150deg,#1a1448,#4d3fb0 45%,#b9a6ff 52%,#3a2d92);border-color:#d8ccff;box-shadow:0 0 70px 16px rgba(150,130,255,.6)}
-#reveal .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .2s}
+#reveal .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}
 #reveal .pr2{font-family:"Dela Gothic One",sans-serif;font-size:clamp(32px,9vw,52px);color:#fff;text-shadow:0 0 24px rgba(255,200,80,.8)}
 #reveal .hint{margin-top:8px;font-size:14px;color:#ddd;animation:pu 1.2s infinite}
-@media(prefers-reduced-motion:reduce){#bg,.box,.box::after,.scene::after,.tap,#reveal .rays,.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{animation:none}.in{transition:none}}
+@media(prefers-reduced-motion:reduce){#bg,.box,.cube,.cube .f::after,.scene::after,.tap,#reveal .rays,.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{animation:none}.in{transition:none}}
 </style>
 </head>
 <body>
@@ -289,14 +311,14 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button></div>
 <p id="rkNote"></p>
 <ol class="rl" id="rkList"></ol>
-<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格(安い順3件の中央値)で、買取価格ではありません。超高額のうち出品が少ないカードは手入力の参考価格です。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格(安い順3件の中央値)で、買取価格ではありません。在庫のある出品がないカードは売り切れの出品の価格を参考にしています。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
 </section>
 <section id="stage" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
 <div>
 <h1 class="ttl dg" id="ttl">OP</h1>
 <p class="sub dg" id="sub"></p>
-<div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><b class="dg" id="boxCode">OP</b><span>BOX</span></button></div>
+<div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><span class="cube" id="cube"></span></button></div>
 <p class="tap dg">TAP!</p>
 <p class="boxinfo" id="boxInfo"></p>
 <details class="hist" id="histS"><summary>この弾の開封履歴</summary><div id="histSB"></div></details>
@@ -339,10 +361,10 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <table><tbody>
 <tr><th>定価(1BOX)</th><td class="r">¥5,280</td></tr>
 <tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥25,680</td></tr>
-<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥2,591</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥2,937</td></tr>
 </tbody></table>
 <h3>EB01の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>Mr.2・ボン・クレー(ベンサム)(SECパラレル)<br><small>EB01-061</small></td><td class="r">¥2,250</td></tr><tr><td>2</td><td>トニートニー・チョッパー(パラレル)<br><small>EB01-006</small></td><td class="r">¥2,020</td></tr><tr><td>3</td><td>ラブーン(パラレル)<br><small>EB01-048</small></td><td class="r">¥1,880</td></tr><tr><td>4</td><td>光月おでん(リーダーパラレル)<br><small>EB01-001</small></td><td class="r">¥1,335</td></tr><tr><td>5</td><td>ブルック(パラレル)<br><small>EB01-046</small></td><td class="r">¥980</td></tr><tr><td>6</td><td>しらほし(パラレル)<br><small>EB01-057</small></td><td class="r">¥920</td></tr><tr><td>7</td><td>光月日和(パラレル)<br><small>EB01-013</small></td><td class="r">¥800</td></tr><tr><td>8</td><td>キュロス(リーダーパラレル)<br><small>EB01-040</small></td><td class="r">¥800</td></tr><tr><td>9</td><td>シャーロット・フランぺ(パラレル)<br><small>EB01-056</small></td><td class="r">¥760</td></tr><tr><td>10</td><td>ハンニャバル(リーダーパラレル)<br><small>EB01-021</small></td><td class="r">¥680</td></tr></tbody></table>
-<h3>封入率の目安</h3><ul><li>SEC:1BOXに約1/3枚</li><li>パラレル:1BOXに約1/1枚</li><li>リーダーパラレル:1BOXに約1/4枚</li><li>SECパラレル:1BOXに約1/7枚</li><li>コミパラ:1BOXに約1/167枚</li></ul>
+<h3>封入率の目安</h3><ul><li>リーダーパラレル:1BOXに約1/4枚</li><li>コミパラ:1BOXに約1/167枚</li></ul>
 <p>価格は2026-10-21時点のショップ販売価格(楽天・Yahoo!ショッピング)です。封入率は販売・買取サイトの開封調査にもとづく推定値で、公式発表ではありません。当サイトは非公式のファンサイトです。</p>
 <h3>ほかの弾の開封シミュレーター</h3><ul class="lk"><li><a href="op17/">OP17 世界最強の戦士</a></li><li><a href="op16/">OP16 決戦の刻</a></li><li><a href="op15/">OP15 神の島の冒険</a></li><li><a href="eb04/">EB04 EGGHEAD CRISIS</a></li><li><a href="op14/">OP14 蒼海の七傑</a></li><li><a href="eb03/">EB03 ONE PIECE Heroines Edition</a></li><li><a href="op13/">OP13 受け継がれる意志</a></li><li><a href="prb02/">PRB02 ONE PIECE CARD THE BEST vol.2</a></li><li><a href="op12/">OP12 師弟の絆</a></li><li><a href="op11/">OP11 神速の拳</a></li><li><a href="eb02/">EB02 Anime 25th collection</a></li><li><a href="op10/">OP10 王族の血統</a></li><li><a href="op09/">OP09 新たなる皇帝</a></li><li><a href="prb01/">PRB01 ONE PIECE CARD THE BEST</a></li><li><a href="op08/">OP08 二つの伝説</a></li><li><a href="op07/">OP07 500年後の未来</a></li><li><a href="eb01/">EB01 メモリアルコレクション</a></li><li><a href="op06/">OP06 双璧の覇者</a></li><li><a href="op05/">OP05 新時代の主役</a></li><li><a href="op04/">OP04 謀略の王国</a></li><li><a href="op03/">OP03 強大な敵</a></li><li><a href="op02/">OP02 頂上決戦</a></li><li><a href="op01/">OP01 ROMANCE DAWN</a></li></ul>
 <p><a href="ranking/">ワンピースカード 相場ランキング(高額カードTOP50・今週の値上がり)</a></p>
@@ -357,7 +379,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="kk" id="dvK"></div>
 <h2 id="dvN"></h2>
 <div class="cid" id="dvId"></div>
-<div class="mp"><small>相場(ショップ販売価格)</small><b id="dvP"></b></div>
+<div class="mp"><small id="dvPL">相場(ショップ販売価格)</small><b id="dvP"></b></div>
 <a class="cta" id="dvCta" target="_blank" rel="sponsored noopener" hidden></a>
 <div class="shops"><h3>販売中のショップ(安い順)<small id="dvNote"></small></h3><ol id="dvList"></ol><div class="alt" id="dvAlt"></div>
 <p class="adnote" style="text-align:left">PR・楽天アフィリエイト/バリューコマースの広告リンクです。在庫と価格は毎朝6時の取得時点のもので、売り切れ・価格変更の場合があります。</p></div>
@@ -398,21 +420,28 @@ function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function rint(r){return r[0]+Math.floor(Math.random()*(r[1]-r[0]+1))}
 // 同じBOXの中で同じカテゴリのカードは重複させない(種類数より多く引くときだけ重複)。SRとSRパラレルはカテゴリが違うので重複可
 function pickN(a,n){var out=[],bag=[];for(var i=0;i<n;i++){if(!bag.length)bag=a.slice();out.push(bag.splice(Math.floor(Math.random()*bag.length),1)[0])}return out}
-// 1BOXの抽選: base(R・SRなどの枚数の幅)+ カテゴリごとの期待枚数λ(整数部は確定、端数は確率)
+// 1BOXの抽選:
+//  基本枠 … R・SRなどの枚数の幅(同じカードは重複しない)
+//  確定枠 … SEC・SECパラレル・R/SRパラレルのどれか1枚が必ず入る(SECが2枚・SECとパラレルの同時は出ない)
+//  追加枠 … リーダーパラレル・SP以上などは期待枚数λ(整数部は確定、端数は確率)で確定枠とは別に出る
 function drawer(){
- var base=CFG.base||{},cats=CFG.cats||{};
+ var base=CFG.base||{},cats=CFG.cats||{},hit=CFG.hit||null;
  return function(force){
-  var h=[],k,i;
+  var h=[],k;
   for(k in base){if(!POOL[k]||!Array.isArray(base[k]))continue;h=h.concat(pickN(POOL[k],rint(base[k])))}
+  if(hit){var r=Math.random(),acc=0,hk=null;for(k in hit){if(!POOL[k])continue;acc+=hit[k];hk=k;if(r<acc)break}if(hk)h.push(pick(POOL[hk]))}
   for(k in cats){if(!POOL[k])continue;var l=cats[k].lambda,m=Math.floor(l)+(Math.random()<l-Math.floor(l)?1:0);h=h.concat(pickN(POOL[k],m))}
   if(force){var f=typeof force==='string'?ALL.filter(function(c){return c.id===force})[0]:force;
-   if(f&&h.indexOf(f)<0){var j=-1;h.forEach(function(c,x){if(c.c===f.c)j=x});if(j>=0)h[j]=f;else h.push(f)}}
+   if(f&&h.indexOf(f)<0){var j=-1;h.forEach(function(c,x){if(c.c===f.c||(hit&&hit[f.c]!=null&&hit[c.c]!=null))j=x});if(j>=0)h[j]=f;else h.push(f)}}
   return h}
 }
-function ev(){var e=0,k,base=CFG.base||{},cats=CFG.cats||{};
+function ev(){var e=0,k,base=CFG.base||{},cats=CFG.cats||{},hit=CFG.hit||{};
  for(k in base)if(Array.isArray(base[k]))e+=(base[k][0]+base[k][1])/2*avg(POOL[k]);
+ for(k in hit)e+=hit[k]*avg(POOL[k]);
  for(k in cats)e+=cats[k].lambda*avg(POOL[k]);return e}
-function missing(){var n=0;ALL.forEach(function(c){if(c.p==null&&(CFG.base[c.c]||CFG.cats[c.c]))n++});return n}
+function used(k){return !!(CFG.base[k]||CFG.cats[k]||(CFG.hit&&CFG.hit[k]!=null))}
+function missing(){var n=0;ALL.forEach(function(c){if(c.p==null&&used(c.c))n++});return n}
+function estimated(){var n=0;ALL.forEach(function(c){if(c.est&&used(c.c))n++});return n}
 function sum(h){return h.reduce(function(s,c){return s+price(c)},0)}
 function stats(){
  var N=20000,v=new Array(N),i,d=drawer(),big=0;
@@ -468,10 +497,11 @@ function openDetail(c){
  $('dvList').innerHTML=offs.length?offs.map(function(o,i){
   return '<li'+(i?'':' class="best"')+'><span class="src '+(o.s==='yahoo'?'yahoo':'rakuten')+'">'+(o.s==='yahoo'?'Yahoo!':'楽天')+'</span>'+
   '<span class="shop">'+esc(o.shop||'ショップ')+'</span><span class="pp">'+yen(o.p)+'</span>'+
-  '<span class="nm2"><span class="st">● 在庫あり</span>'+esc(o.n||'')+'</span><a class="buy" href="'+esc(o.u)+'" target="_blank" rel="sponsored noopener">ショップへ ›</a></li>'}).join('')
+  '<span class="nm2">'+(o.so?'<span class="st so">売り切れ</span>':'<span class="st">● 在庫あり</span>')+esc(o.n||'')+'</span><a class="buy" href="'+esc(o.u)+'" target="_blank" rel="sponsored noopener">ショップへ ›</a></li>'}).join('')
   :'<li style="display:block"><p class="empty">取得時点で在庫のある出品が見つかりませんでした。下のボタンから最新の出品を探せます。</p></li>';
  $('dvNote').textContent=offs.length?offs.length+'件・'+S.date+' 6時時点':'';
- var cta=$('dvCta');if(offs.length){cta.href=offs[0].u;cta.textContent='最安 '+yen(offs[0].p)+' で手に入れる ›';cta.hidden=false}else cta.hidden=true;
+ $('dvPL').textContent=c.est?'推定価格(同じ弾・同じレアリティの中央値。出品が見つからないカード)':c.so?'参考価格(売り切れの出品の販売価格)':'相場(ショップ販売価格)';
+ var cta=$('dvCta');if(offs.length&&!offs[0].so){cta.href=offs[0].u;cta.textContent='最安 '+yen(offs[0].p)+' で手に入れる ›';cta.hidden=false}else cta.hidden=true;
  var rs=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent(kw(c))+'/'),ys=c.ysearch||('https://shopping.yahoo.co.jp/search?p='+encodeURIComponent(kw(c)));
  $('dvAlt').innerHTML='<a href="'+esc(rs)+'" target="_blank" rel="sponsored noopener">楽天で探す ›</a><a href="'+esc(ys)+'" target="_blank" rel="sponsored noopener">Yahoo!で探す ›</a>';
  dv.hidden=false;dv.scrollTop=0;document.documentElement.style.overflow='hidden';dvOpen=true;
@@ -492,9 +522,12 @@ addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
  cb.addEventListener('pointerleave',function(){tilt(0,0)});
  addEventListener('deviceorientation',function(e){if(!dvOpen||e.gamma==null)return;tilt(Math.max(-.5,Math.min(.5,e.gamma/40)),Math.max(-.5,Math.min(.5,(e.beta-45)/40)))});
 })();
-function setBox(u){if(!u||$('box').querySelector('img'))return;
- var bi=document.createElement('img');bi.alt=(CFG?CFG.code:'')+' BOX';bi.referrerPolicy='no-referrer';
- bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
+// BOXは画像ではなくCSSの直方体で描く(全弾で同じ見た目)
+var BOXTYPE={OP:'BOOSTER PACK',EB:'EXTRA BOOSTER',PRB:'PREMIUM BOOSTER'};
+function cubeHTML(code,name){var p=(code.match(/^[A-Z]+/)||[''])[0],h=code.replace(/^([A-Z]+)(\d+)$/,'$1-$2');
+ return '<i class="f"><small>ONE PIECE CARD GAME</small><b>'+esc(h)+'</b><em>'+esc(name||'')+'</em><u>'+(BOXTYPE[p]||'BOOSTER PACK')+'</u></i><i class="k"></i><i class="r"><b>'+esc(h)+'</b></i><i class="l"></i><i class="t"></i><i class="u"></i>'}
+function colorVars(code){var c=COLOR[code]||[];return '--c1:'+(c[0]||'#b0182b')+';--c2:'+(c[1]||'#7a0e1e')+';--ca:'+(c[2]||'#ffcf4a')}
+function setBox(){}
 var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',SECP:'PAR',FOIL:'PAR',FA:'PAR',OTHER:'PAR',LPAR:'LPAR',LSP:'TOP',CP:'TOP',TOP:'TOP',SP:'SP',TR:'SP'};
 function grade(c){return c.c==='R'?0:c.c==='SR'?1:(c.t>=2?3:2)}
 function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
@@ -509,7 +542,7 @@ function cardEl(c){
  var d=document.createElement('div'),num=cardNo(c);
  d.className='cd g'+grade(c)+' k-'+KC[c.c];
  d.innerHTML='<div class="in"><div class="bk"><span>'+(CFG?CFG.code:'')+'</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
-  '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
+  '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p)+(c.est?'<small class="es">推定</small>':''))+'</div>';
  var b=document.createElement('button');b.className='go';b.type='button';
  var n=(c.offers||[]).length;b.textContent=n?'販売 '+n+'店 ›':'ショップを探す ›';d.appendChild(b);
  d.addEventListener('click',function(){if(d.classList.contains('on'))openDetail(c)});
@@ -590,7 +623,8 @@ function detail(){
  var names=[lb(e[0])+'未満',lb(e[0])+'〜',lb(e[1])+'〜',lb(e[2])+'〜',lb(e[3])+'以上'];
  $('bars').innerHTML=st.cnt.map(function(p,k){var up=k<4?e[k]:Infinity,lo=k?e[k-1]:0,col=up<=S.msrp?'var(--lose)':lo>=S.pre?'var(--win)':'var(--gold)';
   return '<div class="bar"><span>'+names[k]+'</span><i style="width:'+(p*100)+'%;background:'+col+'"></i><span>'+(p*100).toFixed(p<.01&&p>0?2:1)+'%</span></div>'}).join('');
- $('warn').hidden=!ms;if(ms)$('warn').textContent='価格が取れていないカードが'+ms+'種あり、0円で計算しています。';
+ var es=estimated(),w=[];if(ms)w.push('価格が取れていないカードが'+ms+'種あり、0円で計算しています。');if(es)w.push('出品が見つからないカード'+es+'種は、同じ弾・同じレアリティの中央値(推定価格)で計算しています。');
+ $('warn').hidden=!w.length;$('warn').textContent=w.join('');
 }
 async function openBox(force){
  if(busy)return;busy=true;readSet();S.forced=!!force;
@@ -661,11 +695,11 @@ function showSet(code){
  Promise.all([getJSON('sets/'+code+'.json'),getJSON('data/sets/'+code+'.json').catch(function(){return null})]).then(function(r){
   var cfg=r[0],j=r[1];setupCards(cfg);applyColor(cfg.code);
   document.title=cfg.code+' '+cfg.name+' 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場';pv();
-  $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('boxCode').textContent=cfg.code;
+  $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('cube').innerHTML=cubeHTML(cfg.code,cfg.name);
   S.msrp=cfg.msrp||5280;S.pre=cfg.market||Math.round(S.msrp*1.2);var bx=j&&j.box,bl=j&&j.links&&j.links.BOX;
   if(bx&&bx.pre)S.pre=bx.pre;$('msrp').value=S.msrp;$('pre').value=S.pre;
   if(j){var m={};j.cards.forEach(function(c){m[c.id]=c});var im=j.images||{};
-   ALL.forEach(function(c){var x=m[c.id];if(!x)return;if(x.refPrice)c.p=x.refPrice;
+   ALL.forEach(function(c){var x=m[c.id];if(!x)return;if(x.refPrice)c.p=x.refPrice;c.est=!!x.est;c.so=!!x.soldout;
     if(x.offers&&x.offers.length)c.offers=x.offers;c.search=x.searchUrl;c.ysearch=x.ysearchUrl;if(x.imgs&&x.imgs.length)c.imgs=x.imgs});
    setBox(BOX_IMG||(im.BOX&&im.BOX[0]));S.date=j.updatedAt||''}
   else setBox(BOX_IMG);
@@ -680,7 +714,7 @@ function showSet(code){
   $('src').innerHTML=['封入率は開封調査にもとづく販売・買取サイトの推定値です。公式発表はありません(信頼度:'+({high:'高',medium:'中',low:'低'}[cfg.confidence]||'-')+')。',
    '1BOX('+cfg.packs+'パック×'+cfg.perPack+'枚):'+base+'。'].concat(cats).concat([
    'プレ値:'+(bx&&bx.pre?'楽天ウェブサービスとYahoo!ショッピングの未開封BOX(1BOX単品・開封済み/カートン/オリパ等を除く)の販売価格のうち安い順3件の中央値('+bx.count+'件・最安'+yen(bx.min)+'・'+esc(bx.updatedAt)+'時点)。フリマ・オークションの取引価格は含みません。':'販売サイトの相場調査にもとづく参考値。')+'条件・演出テストの欄で変更できます。',
-   '価格はショップの販売価格。高額カードの一部は手入力、そのほかは楽天ウェブサービスとYahoo!ショッピングの価格('+(S.date||'-')+'時点)。カード・BOX画像は楽天市場・Yahoo!ショッピングの出品画像です。',
+   '価格は楽天ウェブサービスとYahoo!ショッピングの販売価格('+(S.date||'-')+'時点、安い順3件の中央値)。在庫のある出品がないカードは売り切れの出品の価格、どちらもないカードは同じ弾・同じレアリティの中央値(「推定」と表示)です。カード画像は楽天市場・Yahoo!ショッピングの出品画像です。',
    '根拠:'+cfg.sources.slice(0,8).map(function(u){return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(u.replace(/^https?:\/\//,'').slice(0,40))+'</a>'}).join(' / ')
   ]).map(function(t){return '<li>'+t+'</li>'}).join('');
   $('picker').hidden=true;$('stage').hidden=false;busy=false;
@@ -691,10 +725,9 @@ function showPicker(){
  Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
   var list=r[0].sets,sum=r[1].sets||{};
   $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
-   return '<a class="sc" href="'+s.code.toLowerCase()+'/"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+(x.box?'<img alt="" referrerpolicy="no-referrer" src="'+esc(x.box)+'" onerror="this.remove()">':'')+'<b>'+s.code+'</b></div>'+
+   return '<a class="sc" href="'+s.code.toLowerCase()+'/"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+'<div class="mbox" style="'+colorVars(s.code)+'"><span class="cube">'+cubeHTML(s.code,s.name)+'</span></div></div>'+
     '<div class="tx"><div class="cd2">'+s.code+'</div><div class="nm3">'+esc(s.name)+'</div>'+
     '<div class="ev">定価 '+(s.msrp?yen(s.msrp):'-')+(x.pre?'<br>プレ値 '+yen(x.pre):'')+(x.ev?'<br>期待値 <b>'+yen(x.ev)+'</b>':'<br>価格取得待ち')+'</div></div></a>'}).join('');
-  [].forEach.call(document.querySelectorAll('.sc .im img'),function(im){im.addEventListener('load',function(){var b=im.parentNode.querySelector('b');if(b)b.remove()})});
  });
 }
 
@@ -725,7 +758,7 @@ function renderRank(){
  $('rkList').innerHTML=list.map(function(r,i){
   var img=r.imgs&&r.imgs[0]?'<img alt="" loading="lazy" referrerpolicy="no-referrer" src="'+esc(r.imgs[0])+'" onerror="this.remove()">':'';
   var right=RKS.tab==='up'?yen(r.p)+'<span class="ch">+'+r.pct+'%(+'+yen(r.diff)+')</span>'+spark(r.spark):yen(r.p);
-  var meta='<span class="tg">'+esc(r.k)+'</span>'+esc(r.set)+' '+esc(r.id.replace(/_[pr]\d+$/,''))+(r.manual?' <span class="tg m">手入力</span>':(RKS.tab==='up'?' ・ '+r.days+'日前 '+yen(r.prev):' ・ 出品'+r.count+'件'));
+  var meta='<span class="tg">'+esc(r.k)+'</span>'+esc(r.set)+' '+esc(r.id.replace(/_[pr]\d+$/,''))+(r.soldout?' <span class="tg m">売り切れ価格</span>':(RKS.tab==='up'?' ・ '+r.days+'日前 '+yen(r.prev):' ・ 出品'+r.count+'件'));
   return '<li data-i="'+i+'"><span class="no">'+(i+1)+'</span><span class="th">'+img+'</span><span><div class="nm4">'+esc(r.n)+'</div><div class="mt">'+meta+'</div></span><span class="pz">'+right+'</span></li>'}).join('');
 }
 function showRank(){

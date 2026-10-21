@@ -1,4 +1,43 @@
 {
  "updatedAt": "2026-10-21",
- "spikes": []
+ "spikes": [
+  {
+   "id": "OP17-037",
+   "name": "そんなに恐いか？「新時代」が!!!(R)",
+   "updatedAt": "2026-10-21",
+   "count": 7,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-037%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-037%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP17-037",
+   "minPrice": 50,
+   "refPrice": 90,
+   "shop": "ステップREIKODO",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00q9m1o.li9ae286.g00q9m1o.li9af6a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-stepreikodo%2Ftrc-20260821-0037%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-stepreikodo%2Fi%2F10694110%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 5,
+    "yahoo": 2
+   },
+   "change": 80,
+   "set": "OP17"
+  },
+  {
+   "id": "OP17-005",
+   "name": "エドワード・ニューゲート(SR)",
+   "updatedAt": "2026-10-21",
+   "count": 5,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-005%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-005%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP17-005",
+   "minPrice": 80,
+   "refPrice": 140,
+   "shop": "トレカ通販 トレトク楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F397151j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10630361%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 3,
+    "yahoo": 2
+   },
+   "change": 27.3,
+   "set": "OP17"
+  }
+ ]
 }
