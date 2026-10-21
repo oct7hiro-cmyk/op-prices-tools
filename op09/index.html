@@ -73,6 +73,14 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .sc:hover .mbox{transform:translateY(-4px)}
 .mbox .cube{animation:none;transform:rotateX(-16deg) rotateY(-30deg)}
 .mbox .f::after{display:none}
+/* 実物のBOX画像(白背景を切り抜いたもの)。読み込めたらCSSのBOXと差し替える */
+.box .bimg{display:none}
+.box.has-img{height:auto}
+.box.has-img .cube{display:none}
+.box.has-img .bimg{display:block;width:100%;max-height:min(40svh,280px);object-fit:contain;filter:drop-shadow(0 16px 14px rgba(0,0,0,.55))}
+.sc .im .pimg{max-width:82%;max-height:82%;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(0,0,0,.6))}
+.sc .im.has-img .mbox{display:none}
+.scene:has(.box.has-img)::after{bottom:calc(50% - 132px)}
 .box.shake{animation:sk .9s linear forwards}
 @keyframes sk{0%{transform:translate(0)}10%{transform:translate(-6px,2px) rotate(-3deg)}20%{transform:translate(6px,-2px) rotate(3deg)}30%{transform:translate(-8px,3px) rotate(-4deg)}40%{transform:translate(8px,-3px) rotate(4deg)}50%{transform:translate(-10px,2px) rotate(-5deg) scale(1.05)}60%{transform:translate(10px,-2px) rotate(5deg) scale(1.08)}80%{transform:translate(-6px) rotate(-3deg) scale(1.12)}100%{transform:scale(1.18)}}
 .bc{position:absolute;left:50%;top:50%;width:46px;height:64px;margin:-32px 0 0 -23px;border-radius:5px;border:2px solid var(--gold);background:radial-gradient(circle,var(--ca) 0 14%,transparent 15%),repeating-conic-gradient(var(--c1) 0 10deg,var(--c2) 10deg 20deg);z-index:3;opacity:0}
@@ -217,7 +225,6 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .sc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .15s}
 .sc:hover{transform:translateY(-3px)}
 .sc .im{aspect-ratio:1.25;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
-.sc .im img{width:100%;height:100%;object-fit:contain;background:#fff}
 .sc .im b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:30px;color:var(--gold)}
 .sc .tx{padding:8px 10px 10px}
 .sc .cd2{font-family:"Dela Gothic One",sans-serif;font-size:15px;color:var(--gold)}
@@ -318,7 +325,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div>
 <h1 class="ttl dg" id="ttl">OP</h1>
 <p class="sub dg" id="sub"></p>
-<div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><span class="cube" id="cube"></span></button></div>
+<div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><span class="cube" id="cube"></span><img class="bimg" id="bimg" alt=""></button></div>
 <p class="tap dg">TAP!</p>
 <p class="boxinfo" id="boxInfo"></p>
 <details class="hist" id="histS"><summary>この弾の開封履歴</summary><div id="histSB"></div></details>
@@ -528,6 +535,8 @@ function cubeHTML(code,name){var p=(code.match(/^[A-Z]+/)||[''])[0],h=code.repla
  return '<i class="f"><small>ONE PIECE CARD GAME</small><b>'+esc(h)+'</b><em>'+esc(name||'')+'</em><u>'+(BOXTYPE[p]||'BOOSTER PACK')+'</u></i><i class="k"></i><i class="r"><b>'+esc(h)+'</b></i><i class="l"></i><i class="t"></i><i class="u"></i>'}
 function colorVars(code){var c=COLOR[code]||[];return '--c1:'+(c[0]||'#b0182b')+';--c2:'+(c[1]||'#7a0e1e')+';--ca:'+(c[2]||'#ffcf4a')}
 function setBox(){}
+// 切り抜き済みの実物BOX画像(img/box/<code>.webp)。あれば表示し、なければCSSのBOXのまま
+function boxImg(im,code,wrap){im.onload=function(){wrap.classList.add('has-img')};im.onerror=function(){wrap.classList.remove('has-img')};im.alt=code+' BOX';im.src='img/box/'+code.toLowerCase()+'.webp'}
 var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',SECP:'PAR',FOIL:'PAR',FA:'PAR',OTHER:'PAR',LPAR:'LPAR',LSP:'TOP',CP:'TOP',TOP:'TOP',SP:'SP',TR:'SP'};
 function grade(c){return c.c==='R'?0:c.c==='SR'?1:(c.t>=2?3:2)}
 function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
@@ -695,7 +704,7 @@ function showSet(code){
  Promise.all([getJSON('sets/'+code+'.json'),getJSON('data/sets/'+code+'.json').catch(function(){return null})]).then(function(r){
   var cfg=r[0],j=r[1];setupCards(cfg);applyColor(cfg.code);
   document.title=cfg.code+' '+cfg.name+' 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場';pv();
-  $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('cube').innerHTML=cubeHTML(cfg.code,cfg.name);
+  $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('cube').innerHTML=cubeHTML(cfg.code,cfg.name);boxImg($('bimg'),cfg.code,$('box'));
   S.msrp=cfg.msrp||5280;S.pre=cfg.market||Math.round(S.msrp*1.2);var bx=j&&j.box,bl=j&&j.links&&j.links.BOX;
   if(bx&&bx.pre)S.pre=bx.pre;$('msrp').value=S.msrp;$('pre').value=S.pre;
   if(j){var m={};j.cards.forEach(function(c){m[c.id]=c});var im=j.images||{};
@@ -725,7 +734,7 @@ function showPicker(){
  Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
   var list=r[0].sets,sum=r[1].sets||{};
   $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
-   return '<a class="sc" href="'+s.code.toLowerCase()+'/"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+'<div class="mbox" style="'+colorVars(s.code)+'"><span class="cube">'+cubeHTML(s.code,s.name)+'</span></div></div>'+
+   return '<a class="sc" href="'+s.code.toLowerCase()+'/"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+'<div class="mbox" style="'+colorVars(s.code)+'"><span class="cube">'+cubeHTML(s.code,s.name)+'</span></div><img class="pimg" alt="" loading="lazy" src="img/box/'+s.code.toLowerCase()+'.webp" onload="this.parentNode.classList.add(\'has-img\')" onerror="this.remove()"></div>'+
     '<div class="tx"><div class="cd2">'+s.code+'</div><div class="nm3">'+esc(s.name)+'</div>'+
     '<div class="ev">定価 '+(s.msrp?yen(s.msrp):'-')+(x.pre?'<br>プレ値 '+yen(x.pre):'')+(x.ev?'<br>期待値 <b>'+yen(x.ev)+'</b>':'<br>価格取得待ち')+'</div></div></a>'}).join('');
  });
