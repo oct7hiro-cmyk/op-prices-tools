@@ -3,15 +3,17 @@
  "sets": {
   "OP17": {
    "updatedAt": "2026-10-21",
-   "box": "https://item-shopping.c.yimg.jp/i/l/characterland_4582770058406-b",
+   "box": "https://item-shopping.c.yimg.jp/i/l/1913store_4582770058406-15",
    "ev": 11827,
+   "pre": 12090,
    "priced": 87,
    "total": 88
   },
   "OP16": {
    "updatedAt": "2026-10-21",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769982897.jpg?_ex=400x400",
+   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
    "ev": 6860,
+   "pre": 12260,
    "priced": 71,
    "total": 74
   },
@@ -19,6 +21,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
    "ev": 6045,
+   "pre": 11480,
    "priced": 65,
    "total": 71
   },
@@ -26,6 +29,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/speedwagon_10014387",
    "ev": 9034,
+   "pre": 16799,
    "priced": 44,
    "total": 55
   },
@@ -33,13 +37,15 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/gochanstore_b0fqb2bqhm",
    "ev": 7238,
+   "pre": 11300,
    "priced": 65,
    "total": 74
   },
   "EB03": {
    "updatedAt": "2026-10-21",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/suns-online-store/cabinet/tradingcard/11797078/imgrc0134257489.jpg?_ex=400x400",
+   "box": "https://item-shopping.c.yimg.jp/i/l/mediaworld-plus_13920550000",
    "ev": 4675,
+   "pre": 14480,
    "priced": 55,
    "total": 60
   },
@@ -47,6 +53,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769865213",
    "ev": 6038,
+   "pre": 22900,
    "priced": 88,
    "total": 93
   },
@@ -54,13 +61,15 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/hrco_prb-02",
    "ev": 3668,
+   "pre": 13500,
    "priced": 139,
    "total": 226
   },
   "OP12": {
    "updatedAt": "2026-10-21",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10764050/31857865_0.jpg?_ex=400x400",
+   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769796838",
    "ev": 7601,
+   "pre": 19680,
    "priced": 67,
    "total": 73
   },
@@ -68,13 +77,15 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/worldplus01_onepiececard",
    "ev": 8505,
+   "pre": 38000,
    "priced": 71,
    "total": 74
   },
   "EB02": {
    "updatedAt": "2026-10-21",
-   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52010742",
+   "box": "https://item-shopping.c.yimg.jp/i/l/free-world_cardpack-o-012",
    "ev": 5704,
+   "pre": 4670,
    "priced": 48,
    "total": 75
   },
@@ -82,6 +93,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/shop998_op10b",
    "ev": 2464,
+   "pre": 13800,
    "priced": 65,
    "total": 69
   },
@@ -89,13 +101,15 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/suekichi-shouten_onepiece-09",
    "ev": 5231,
+   "pre": 23800,
    "priced": 72,
    "total": 77
   },
   "PRB01": {
    "updatedAt": "2026-10-21",
-   "box": "https://item-shopping.c.yimg.jp/i/l/hrco_prb-02",
+   "box": "https://item-shopping.c.yimg.jp/i/l/pasokon_4570118259509a",
    "ev": 2863,
+   "pre": 24999,
    "priced": 128,
    "total": 266
   },
@@ -103,27 +117,31 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/ookinidesu_h20240525-6732okd9850yu965",
    "ev": 2845,
+   "pre": 13500,
    "priced": 66,
    "total": 69
   },
   "OP07": {
    "updatedAt": "2026-10-21",
-   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009708",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/kingshop/cabinet/07395959/drhtellllll.jpg?_ex=400x400",
    "ev": 8289,
+   "pre": 23980,
    "priced": 68,
    "total": 69
   },
   "EB01": {
    "updatedAt": "2026-10-21",
-   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52011954",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0054/52011954_1.jpg?_ex=400x400",
    "ev": 2591,
+   "pre": 25680,
    "priced": 48,
    "total": 49
   },
   "OP06": {
    "updatedAt": "2026-10-21",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/pitaya/cabinet/13744618/imgrc0106391094.jpg?_ex=400x400",
+   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009394",
    "ev": 3124,
+   "pre": 23800,
    "priced": 67,
    "total": 69
   },
@@ -131,6 +149,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118002174",
    "ev": 2852,
+   "pre": 66000,
    "priced": 67,
    "total": 73
   },
@@ -138,6 +157,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009078",
    "ev": 4321,
+   "pre": 23800,
    "priced": 67,
    "total": 68
   },
@@ -145,6 +165,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008958",
    "ev": 3663,
+   "pre": 27280,
    "priced": 69,
    "total": 69
   },
@@ -152,6 +173,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
    "ev": 2830,
+   "pre": 30280,
    "priced": 65,
    "total": 71
   },
@@ -159,6 +181,7 @@
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/treedom-market2_tree-3503",
    "ev": 3785,
+   "pre": 59468,
    "priced": 64,
    "total": 71
   }
