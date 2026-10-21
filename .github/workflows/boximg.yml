@@ -9,10 +9,13 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
       - name: BOX images (cut out white background)
         run: pip install --quiet pillow && python3 scripts/box_images.py
-      - name: Commit images
+      - run: node scripts/build-pages.mjs
+      - name: Commit images and pages
         run: |
           git config user.name "price-bot"; git config user.email "bot@users.noreply.github.com"
-          git add img
+          git add img index.html sitemap.xml ranking op?? eb?? prb??
           git diff --cached --quiet || (git commit -m "box images $(date -u +%F)" && git pull --rebase && git push)
