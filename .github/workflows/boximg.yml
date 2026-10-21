@@ -1,0 +1,18 @@
+name: box-images
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: BOX images (cut out white background)
+        run: pip install --quiet pillow && python3 scripts/box_images.py
+      - name: Commit images
+        run: |
+          git config user.name "price-bot"; git config user.email "bot@users.noreply.github.com"
+          git add img
+          git diff --cached --quiet || (git commit -m "box images $(date -u +%F)" && git pull --rebase && git push)
