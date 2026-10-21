@@ -184,7 +184,7 @@ async function priceBox(meta) {
     return n.includes('BOX') && (n.includes(norm(code)) || n.includes(norm(hy))) && !BOX_NG.some((w) => n.includes(norm(w))) && packsOk(n, packs);
   }).sort((a, b) => a.itemPrice - b.itemPrice);
   const kw = `ワンピースカード ${hy} BOX`;
-  const res = { count: valid.length, images: imgsOf(valid), link: linkOf(valid, kw), box: null };
+  const res = { count: valid.length, images: imgsOf(valid, 10), link: linkOf(valid, kw), box: null };
   if (valid.length) {
     const pre = median(valid.slice(0, 3).map((i) => i.itemPrice));
     res.box = { pre, min: valid[0].itemPrice, count: valid.length, updatedAt: today,
