@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>OP17 世界最強の戦士 BOX開封ガチャ</title>
+<title>ワンピースカード BOX開封ガチャ</title>
+<!-- Googleアナリティクス(GA4)。ページ表示は各画面の表示時に送る -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D6Z0H24YM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0D6Z0H24YM',{send_page_view:false});</script>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--bg:#0b0710;--ink:#fbf6ee;--mute:#b9aec4;--line:#3a2b45;--gold:#ffcf4a;--gold2:#ff9d2e;--red:#e8352b;--win:#4dffa6;--lose:#7e90b8;--panel:#1a1220;--c1:#b0182b;--c2:#7a0e1e;--ca:#ffcf4a;--ct:#3a0714;
@@ -259,6 +262,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="sets" id="sets"></div>
 <details class="hist" id="histP"><summary>あなたの開封履歴(全弾)</summary><div id="histPB"></div></details>
 <p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
+<p class="foot">このサイトはアクセス解析にGoogleアナリティクスを使用しています。データはCookieを使い匿名で収集され、個人を特定するものではありません(<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener" style="color:inherit">Googleによるデータの使用</a>)。</p>
 </section>
 <section id="rank" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
@@ -310,7 +314,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:最上位レア</button><button class="btn s" id="t2">テスト:SP・パラレル</button></div>
 </details>
 <details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
-<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。商品リンクには楽天アフィリエイト・バリューコマースの広告を含みます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a></p>
+<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。商品リンクには楽天アフィリエイト・バリューコマースの広告を含みます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a>。アクセス解析にGoogleアナリティクス(Cookie)を使用しています。</p>
 </section>
 </main>
 
@@ -417,6 +421,7 @@ function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
 var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
 var dvOpen=false,dvPushed=false;
 function openDetail(c){
+ DVCUR=c;track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:$('rank').hidden?'gacha':'ranking'});
  var dv=$('dv'),g=grade(c),col=DVC[g];
  dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
  var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
@@ -535,7 +540,8 @@ async function play(){
 function finish(tot){
  var win=tot>=S.pre,mid=!win&&tot>=S.msrp,cls=win?'win':mid?'mid':'lose',word=win?'大勝利!':mid?'定価超え!':'負け…';
  tally.n++;tally.pnl+=tot-S.pre;if(win)tally.w++;
- if(!S.forced){hAdd(tot);refreshHist()}
+ if(!S.forced){hAdd(tot);refreshHist();var bt=hits.slice().sort(function(a,b){return price(b)-price(a)})[0];
+  track('open_box',{set:CFG.code,total:Math.round(tot),result:cls,best_card:bt?bt.id:'',best_price:bt?price(bt):0})}
  var st=$('stampEl');st.className='stamp '+cls;st.innerHTML='<b>'+word+'</b><small>定価 '+sgn(tot-S.msrp)+' / プレ値 '+sgn(tot-S.pre)+'</small>';st.hidden=false;
  if(!reduce){st.animate([{transform:'translate(-50%,-50%) scale(3) rotate(-14deg)',opacity:0},{transform:'translate(-50%,-50%) scale(.9) rotate(-8deg)',opacity:1,offset:.7},{transform:'translate(-50%,-50%) scale(1) rotate(-8deg)',opacity:1}],{duration:520,easing:'cubic-bezier(.3,1.4,.5,1)'});shake()}
  if(win)burst(innerWidth/2,innerHeight*.45,['#4dffa6','#ffcf4a','#fff','#ff5fa8'],90);
@@ -623,7 +629,7 @@ function catText(k){return (LBL[k]||k)}
 function showSet(code){
  Promise.all([getJSON('sets/'+code+'.json'),getJSON('data/sets/'+code+'.json').catch(function(){return null})]).then(function(r){
   var cfg=r[0],j=r[1];setupCards(cfg);applyColor(cfg.code);
-  document.title=cfg.code+' '+cfg.name+' BOX開封ガチャ';
+  document.title=cfg.code+' '+cfg.name+' BOX開封ガチャ';pv();
   $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('boxCode').textContent=cfg.code;
   S.msrp=cfg.msrp||5280;S.pre=cfg.market||Math.round(S.msrp*1.2);var bx=j&&j.box,bl=j&&j.links&&j.links.BOX;
   if(bx&&bx.pre)S.pre=bx.pre;$('msrp').value=S.msrp;$('pre').value=S.pre;
@@ -650,7 +656,7 @@ function showSet(code){
  }).catch(function(){location.href='./'});
 }
 function showPicker(){
- $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード BOX開封ガチャ';renderHist($('histPB'),'');
+ $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード BOX開封ガチャ';pv();renderHist($('histPB'),'');
  Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
   var list=r[0].sets,sum=r[1].sets||{};
   $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
@@ -661,14 +667,25 @@ function showPicker(){
  });
 }
 
+// ---- アクセス解析(GA4) ----
+var DVCUR=null;
+function track(name,p){try{if(window.gtag)gtag('event',name,p||{})}catch(e){}}
+function pv(){track('page_view',{page_title:document.title,page_location:location.href})}
+// 販売店リンクのクリック(アフィリエイトの成果につながる操作)
+$('dv').addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a||!DVCUR)return;
+ var li=a.closest('#dvList li'),kind=a.id==='dvCta'?'cheapest_button':li?'shop_list':'search';
+ var src=li?(li.querySelector('.src.yahoo')?'yahoo':'rakuten'):(/yahoo/i.test(a.href)?'yahoo':'rakuten');
+ track('shop_click',{item_id:DVCUR.id,item_name:DVCUR.n,item_label:DVCUR.k,price:DVCUR.p||0,link_type:kind,shop_source:src,position:li?[].indexOf.call(li.parentNode.children,li)+1:0,from:$('rank').hidden?'gacha':'ranking'})});
+
 // ---- 相場ランキング ----
 var RK=null,RKS={div:'top',tab:'high'};
 var RKDIV={top:'超高額(SP・コミパラ・超レア・リーダースーパーパラレル・トレジャーレア)',par:'パラレル(パラレル・SECパラレル・リーダーパラレル・フルアートなど)',base:'通常カード(R・SR・SEC)'};
 function spark(a){if(!a||a.length<2)return'';var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),w=64,h=18;
  var pts=a.map(function(v,i){return (i/(a.length-1)*w).toFixed(1)+','+(mx===mn?h/2:h-(v-mn)/(mx-mn)*h).toFixed(1)}).join(' ');
  return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts+'" fill="none" stroke="#4dffa6" stroke-width="1.6"/></svg>'}
-function rkCard(r){return{id:r.id,c:r.c,n:r.n,k:r.k,p:r.p,offers:r.offers||[],search:r.search,ysearch:r.ysearch,imgs:r.imgs||[],t:TIER[r.c]||(r.p>=8000?2:0)}}
+function rkCard(r){return{id:r.id,set:r.set,c:r.c,n:r.n,k:r.k,p:r.p,offers:r.offers||[],search:r.search,ysearch:r.ysearch,imgs:r.imgs||[],t:TIER[r.c]||(r.p>=8000?2:0)}}
 function renderRank(){
+ track('view_ranking',{division:RKS.div,tab:RKS.tab});
  [].forEach.call(document.querySelectorAll('#rkDiv button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.div)});
  [].forEach.call(document.querySelectorAll('#rkTab button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.tab)});
  var d=RK.divisions[RKS.div],list=d[RKS.tab]||[];
@@ -681,7 +698,7 @@ function renderRank(){
   return '<li data-i="'+i+'"><span class="no">'+(i+1)+'</span><span class="th">'+img+'</span><span><div class="nm4">'+esc(r.n)+'</div><div class="mt">'+meta+'</div></span><span class="pz">'+right+'</span></li>'}).join('');
 }
 function showRank(){
- $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='相場ランキング|ワンピースカード';
+ $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='相場ランキング|ワンピースカード';pv();
  var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up')RKS.tab='up';
  getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
   .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
