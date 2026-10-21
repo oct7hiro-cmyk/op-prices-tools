@@ -34,7 +34,7 @@ for (const s of index.sets) {
   let ev = 0;
   for (const [cat, r] of Object.entries(cfg.base)) if (Array.isArray(r)) ev += ((r[0] + r[1]) / 2) * avg(cat);
   for (const [cat, c] of Object.entries(cfg.cats)) ev += c.lambda * avg(cat);
-  summary[s.code] = { updatedAt: data.updatedAt, box: data.images?.BOX?.[0] ?? null, ev: Math.round(ev),
+  summary[s.code] = { updatedAt: data.updatedAt, box: data.images?.BOX?.[0] ?? null, ev: Math.round(ev), pre: data.box?.pre ?? null,
     priced: cfg.cards.filter((c) => price[c[0]]).length, total: cfg.cards.length };
 }
 await writeFile('data/sets/index.json', JSON.stringify({ updated: new Date().toISOString().slice(0, 10), sets: summary }, null, 1));
