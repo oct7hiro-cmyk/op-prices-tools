@@ -34,6 +34,7 @@ jobs:
           SETS: ${{ github.event.inputs.sets }}
           BOX_ONLY: ${{ github.event.inputs.box_only }}
       - run: node scripts/merge-manual.mjs
+      - run: node scripts/build-ranking.mjs
       - name: Commit data
         run: |
           git config user.name "price-bot"; git config user.email "bot@users.noreply.github.com"
