@@ -33,11 +33,14 @@ jobs:
           YAHOO_VC_PID: ${{ secrets.YAHOO_VC_PID }}
           SETS: ${{ github.event.inputs.sets }}
           BOX_ONLY: ${{ github.event.inputs.box_only }}
+      - name: BOX images (cut out white background)
+        run: pip install --quiet pillow && python3 scripts/box_images.py
+        continue-on-error: true
       - run: node scripts/merge-manual.mjs
       - run: node scripts/build-ranking.mjs
       - run: node scripts/build-pages.mjs
       - name: Commit data
         run: |
           git config user.name "price-bot"; git config user.email "bot@users.noreply.github.com"
-          git add data sets cards.json index.html sitemap.xml ranking op?? eb?? prb??
+          git add data sets cards.json index.html sitemap.xml ranking img op?? eb?? prb??
           git diff --cached --quiet || (git commit -m "prices $(date -u +%F)" && git pull --rebase && git push)
