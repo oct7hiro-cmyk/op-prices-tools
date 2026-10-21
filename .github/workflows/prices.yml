@@ -7,6 +7,10 @@ on:
         description: '取得する弾(例 OP17,OP16 / all)。空欄なら通常スケジュール'
         required: false
         default: ''
+      box_only:
+        description: 'BOXの価格(プレ値)と画像だけ更新する'
+        type: boolean
+        default: false
 permissions:
   contents: write
 jobs:
@@ -28,6 +32,7 @@ jobs:
           YAHOO_VC_SID: ${{ secrets.YAHOO_VC_SID }}
           YAHOO_VC_PID: ${{ secrets.YAHOO_VC_PID }}
           SETS: ${{ github.event.inputs.sets }}
+          BOX_ONLY: ${{ github.event.inputs.box_only }}
       - run: node scripts/merge-manual.mjs
       - name: Commit data
         run: |
