@@ -140,6 +140,34 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .hlist .w{color:var(--win)}.hlist .m{color:var(--gold)}.hlist .l{color:var(--lose)}
 .hlist a{color:var(--gold)}
 #picker .hist{max-width:640px;margin:26px auto 0}
+/* 相場ランキング */
+.rkbn{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:640px;margin:0 auto 18px;padding:12px 16px;border-radius:14px;text-decoration:none;color:#2a1600;font-weight:900;background:linear-gradient(90deg,#ffe08a,#ff9d2e);box-shadow:0 0 24px rgba(255,170,60,.35)}
+.rkbn small{display:block;font-weight:700;font-size:12px;color:#5a3300}
+.rkbn b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:18px}
+#rank{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 60px) 16px 56px}
+#rank h1{margin:0;text-align:center;font-size:clamp(28px,7vw,44px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a}
+#rank .lead{text-align:center;margin:6px 0 16px;color:var(--mute);font-size:13px}
+.tabs{display:flex;gap:6px;margin:0 0 8px}
+.tabs button{flex:1;padding:10px 6px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-weight:900;font-size:14px}
+.tabs button.on{background:var(--gold);color:#2a1600;border-color:var(--gold)}
+.tabs.sub button{font-size:13px;padding:8px 6px}
+.tabs.sub button.on{background:rgba(255,207,74,.18);color:var(--gold);border-color:var(--gold)}
+#rkNote{font-size:12px;color:var(--mute);margin:6px 2px 10px}
+.rl{list-style:none;margin:0;padding:0}
+.rl li{display:grid;grid-template-columns:34px 52px 1fr auto;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px solid var(--line);cursor:pointer}
+.rl li:hover{background:rgba(255,255,255,.04)}
+.rl .no{font-family:"Dela Gothic One",sans-serif;font-size:18px;color:var(--mute);text-align:center}
+.rl li:nth-child(1) .no{color:#ffd54a}.rl li:nth-child(2) .no{color:#d8dde6}.rl li:nth-child(3) .no{color:#e0a070}
+.rl .th{width:52px;aspect-ratio:63/88;border-radius:5px;overflow:hidden;background:#241a2c;display:grid;place-items:center;font-size:10px;color:var(--mute)}
+.rl .th img{width:100%;height:100%;object-fit:cover}
+.rl .nm4{font-weight:900;font-size:14px;line-height:1.3}
+.rl .mt{font-size:11px;color:var(--mute);margin-top:2px}
+.rl .tg{display:inline-block;font-size:10px;font-weight:900;padding:1px 7px;border-radius:99px;background:#3a2b45;color:var(--ink);margin-right:4px}
+.rl .tg.m{background:#5a3a10;color:#ffd58a}
+.rl .pz{text-align:right;font-weight:900;font-size:15px;white-space:nowrap}
+.rl .ch{display:block;font-size:12px;color:var(--win)}
+.rl svg{display:block;margin:3px 0 0 auto}
+.rl .em{cursor:default;display:block;text-align:center;color:var(--mute);font-size:13px;padding:24px 8px}
 /* 弾の一覧 */
 #picker{max-width:1000px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 28px) 16px 56px;text-align:center}
 #picker h1{margin:0;font-size:clamp(30px,8vw,52px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a,0 0 30px rgba(255,190,60,.5)}
@@ -227,9 +255,20 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <section id="picker" hidden>
 <h1 class="dg">ワンピースカード<br>BOX開封ガチャ</h1>
 <p class="lead">開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算します。</p>
+<a class="rkbn" href="?view=rank"><span><b>相場ランキング</b><small>超高額・パラレル・通常カードの高額TOP50と今週の値上がり</small></span><span>›</span></a>
 <div class="sets" id="sets"></div>
 <details class="hist" id="histP"><summary>あなたの開封履歴(全弾)</summary><div id="histPB"></div></details>
 <p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
+</section>
+<section id="rank" hidden>
+<a class="back" href="./">‹ 弾一覧</a>
+<h1 class="dg">相場ランキング</h1>
+<p class="lead" id="rkLead">ショップの販売価格(楽天・Yahoo!)から毎朝更新</p>
+<div class="tabs" id="rkDiv"><button data-v="top">超高額</button><button data-v="par">パラレル</button><button data-v="base">通常カード</button></div>
+<div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button></div>
+<p id="rkNote"></p>
+<ol class="rl" id="rkList"></ol>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格(安い順3件の中央値)で、買取価格ではありません。超高額のうち出品が少ないカードは手入力の参考価格です。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
 </section>
 <section id="stage" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
@@ -621,7 +660,37 @@ function showPicker(){
   [].forEach.call(document.querySelectorAll('.sc .im img'),function(im){im.addEventListener('load',function(){var b=im.parentNode.querySelector('b');if(b)b.remove()})});
  });
 }
-(function(){var code=(new URLSearchParams(location.search).get('set')||'').toUpperCase();if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
+
+// ---- 相場ランキング ----
+var RK=null,RKS={div:'top',tab:'high'};
+var RKDIV={top:'超高額(SP・コミパラ・超レア・リーダースーパーパラレル・トレジャーレア)',par:'パラレル(パラレル・SECパラレル・リーダーパラレル・フルアートなど)',base:'通常カード(R・SR・SEC)'};
+function spark(a){if(!a||a.length<2)return'';var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),w=64,h=18;
+ var pts=a.map(function(v,i){return (i/(a.length-1)*w).toFixed(1)+','+(mx===mn?h/2:h-(v-mn)/(mx-mn)*h).toFixed(1)}).join(' ');
+ return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts+'" fill="none" stroke="#4dffa6" stroke-width="1.6"/></svg>'}
+function rkCard(r){return{id:r.id,c:r.c,n:r.n,k:r.k,p:r.p,offers:r.offers||[],search:r.search,ysearch:r.ysearch,imgs:r.imgs||[],t:TIER[r.c]||(r.p>=8000?2:0)}}
+function renderRank(){
+ [].forEach.call(document.querySelectorAll('#rkDiv button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.div)});
+ [].forEach.call(document.querySelectorAll('#rkTab button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.tab)});
+ var d=RK.divisions[RKS.div],list=d[RKS.tab]||[];
+ $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab==='up'?' ・ 約7日前の参考価格との比較(上げ幅'+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)':'');
+ if(!list.length){$('rkList').innerHTML='<li class="em">'+(RKS.tab==='up'?'まだ値上がりのデータがありません。価格の記録が数日分たまると表示されます'+(d.days?'(現在'+d.days+'日分)':'')+'。':'データがありません。')+'</li>';return}
+ $('rkList').innerHTML=list.map(function(r,i){
+  var img=r.imgs&&r.imgs[0]?'<img alt="" loading="lazy" referrerpolicy="no-referrer" src="'+esc(r.imgs[0])+'" onerror="this.remove()">':'';
+  var right=RKS.tab==='up'?yen(r.p)+'<span class="ch">+'+r.pct+'%(+'+yen(r.diff)+')</span>'+spark(r.spark):yen(r.p);
+  var meta='<span class="tg">'+esc(r.k)+'</span>'+esc(r.set)+' '+esc(r.id.replace(/_[pr]\d+$/,''))+(r.manual?' <span class="tg m">手入力</span>':(RKS.tab==='up'?' ・ '+r.days+'日前 '+yen(r.prev):' ・ 出品'+r.count+'件'));
+  return '<li data-i="'+i+'"><span class="no">'+(i+1)+'</span><span class="th">'+img+'</span><span><div class="nm4">'+esc(r.n)+'</div><div class="mt">'+meta+'</div></span><span class="pz">'+right+'</span></li>'}).join('');
+}
+function showRank(){
+ $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='相場ランキング|ワンピースカード';
+ var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up')RKS.tab='up';
+ getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
+  .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
+}
+function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','?view=rank&div='+RKS.div+'&tab='+RKS.tab)}catch(e){}if(RK)renderRank()}
+$('rkDiv').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('div',b.dataset.v)});
+$('rkTab').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('tab',b.dataset.v)});
+$('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard(RK.divisions[RKS.div][RKS.tab][+li.dataset.i]))});
+(function(){var q=new URLSearchParams(location.search),code=(q.get('set')||'').toUpperCase();if(q.get('view')==='rank')showRank();else if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
 </script>
 </body>
 </html>
