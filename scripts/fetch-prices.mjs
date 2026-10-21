@@ -20,11 +20,11 @@ const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10); // J
 const norm = (s) => s.normalize('NFKC').toUpperCase();
 const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 
-async function searchRakuten(keyword, minPrice) {
+async function searchRakuten(keyword, minPrice, all = false) {
   const url = new URL(ENDPOINT);
   Object.entries({
     format: 'json', formatVersion: 2, applicationId: RAKUTEN_APP_ID, accessKey: RAKUTEN_ACCESS_KEY,
-    affiliateId: RAKUTEN_AFFILIATE_ID, keyword, hits: 30, sort: '+itemPrice', availability: 1, minPrice,
+    affiliateId: RAKUTEN_AFFILIATE_ID, keyword, hits: 30, sort: '+itemPrice', availability: all ? 0 : 1, minPrice,
   }).forEach(([k, v]) => v !== '' && url.searchParams.set(k, String(v)));
 
     let lastErr = '';
@@ -49,10 +49,10 @@ async function searchRakuten(keyword, minPrice) {
 
 // Yahoo!ショッピング商品検索API(v3)。YAHOO_APP_ID が無ければスキップ。失敗しても楽天だけで続行する
 let yahooDown = false;
-async function searchYahoo(keyword, minPrice) {
+async function searchYahoo(keyword, minPrice, all = false) {
   if (!YAHOO_APP_ID || yahooDown) return [];
   const url = new URL(YAHOO_ENDPOINT);
-  Object.entries({ appid: YAHOO_APP_ID, query: keyword, results: 30, sort: '+price', in_stock: 'true',
+  Object.entries({ appid: YAHOO_APP_ID, query: keyword, results: 30, sort: '+price', in_stock: all ? '' : 'true',
     price_from: minPrice, image_size: 600 }).forEach(([k, v]) => v != null && v !== '' && url.searchParams.set(k, String(v)));
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
@@ -89,9 +89,9 @@ const linkOf = (valid, kw) => ({ url: valid[0]?.url ?? null, src: valid[0]?.src 
   price: valid[0]?.itemPrice ?? null, searchUrl: rakutenSearchUrl(kw), ysearchUrl: yahooSearchUrl(kw), offers: offersOf(valid) });
 
 // 楽天とYahoo!をまとめて検索(Yahoo!側の失敗は無視)
-async function search(keyword, minPrice) {
-  const r = await searchRakuten(keyword, minPrice);
-  const y = await searchYahoo(keyword, minPrice);
+async function search(keyword, minPrice, all = false) {
+  const r = await searchRakuten(keyword, minPrice, all);
+  const y = await searchYahoo(keyword, minPrice, all);
   return [...r, ...y];
 }
 
@@ -133,21 +133,29 @@ function chooseSets(index) {
 
 async function priceCard(card, defaults) {
   let valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
+  // 在庫のある出品がないとき(高額カードに多い)は、売り切れの出品も含めて探し、その販売価格を参考価格にする
+  let soldout = false;
+  if (!valid.length) {
+    await sleep(DELAY_MS);
+    valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice, true), card, defaults);
+    soldout = valid.length > 0;
+  }
   // 通常カード(R/SR/SEC)は最安の trimHigh 倍を超える出品を除く(記念版・別バージョンの高値が混ざって相場が跳ねるのを防ぐ)
   if (card.trimHigh && valid.length) valid = valid.filter((i) => i.itemPrice <= valid[0].itemPrice * card.trimHigh);
   const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
-  const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid),
-    searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword), offers: offersOf(valid) };
+  const rec = { id: card.id, name: card.name, updatedAt: today, count: soldout ? 0 : valid.length, imgs: imgsOf(valid),
+    searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword),
+    offers: offersOf(valid).map((o) => (soldout ? { ...o, so: 1 } : o)), ...(soldout ? { soldout: true } : {}) };
   if (valid.length) {
     const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
     const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
     Object.assign(rec, { minPrice: valid[0].itemPrice, refPrice: ref, shop: valid[0].shopName, url: valid[0].url, src: valid[0].src,
       counts: { rakuten: valid.filter((i) => i.src === 'rakuten').length, yahoo: valid.filter((i) => i.src === 'yahoo').length },
-      change: base ? Math.round(((ref - base) / base) * 1000) / 10 : null });
+      change: base && !soldout ? Math.round(((ref - base) / base) * 1000) / 10 : null });
     const f = `data/history/${card.id}.csv`;
     if (!existsSync(f)) await writeFile(f, 'date,min,ref,count\n');
     const lines = (await readFile(f, 'utf8')).split('\n').filter((l) => l && !l.startsWith(`${today},`)); // 同じ日の再取得は上書き
-    await writeFile(f, [...lines, `${today},${rec.minPrice},${ref},${valid.length}`].join('\n') + '\n');
+    await writeFile(f, [...lines, `${today},${rec.minPrice},${ref},${rec.count}`].join('\n') + '\n');
   }
   return rec;
 }
