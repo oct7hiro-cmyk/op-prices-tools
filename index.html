@@ -3,7 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ワンピースカード BOX開封ガチャ</title>
+<!--HEAD-->
+<title>ワンピースカード 開封シミュレーター|全弾BOX開封ガチャ・期待値・相場</title>
+<meta name="description" content="ワンピースカードゲームのBOX開封シミュレーター。OP-01〜最新弾・エクストラブースター・プレミアムブースターの全弾を無料で開封できます。1BOXの期待値、プレ値、当たりカードの相場を楽天・Yahoo!の販売価格から毎日更新。">
+<link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
+<meta property="og:title" content="ワンピースカード 開封シミュレーター|全弾BOX開封ガチャ・期待値・相場">
+<meta property="og:description" content="ワンピースカードゲームのBOX開封シミュレーター。全弾の期待値・プレ値・当たりカード相場を毎日更新。">
+<meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/">
+<meta name="twitter:card" content="summary">
+<!--/HEAD-->
+<!--PAGE--><!--/PAGE-->
 <!-- Googleアナリティクス(GA4)。ページ表示は各画面の表示時に送る -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D6Z0H24YM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0D6Z0H24YM',{send_page_view:false});</script>
@@ -46,6 +57,11 @@ display:flex;flex-direction:column;justify-content:center;align-items:center;gap
 .tap{margin:0;font-size:clamp(22px,6vw,30px);color:var(--gold);animation:pu 1.1s ease-in-out infinite}
 @keyframes pu{50%{opacity:.35;transform:scale(.95)}}
 .foot{margin:16px 0 0;font-size:12px;color:var(--mute)}
+.about{max-width:760px;margin:40px auto 0;padding:0 16px 48px;color:var(--mute);font-size:13px;line-height:1.8}
+.about h2{color:var(--ink);font-size:17px;margin:0 0 8px}.about h3{color:var(--ink);font-size:14px;margin:18px 0 6px}
+.about table{width:100%;border-collapse:collapse;font-size:13px}.about td,.about th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left}
+.about td.r{text-align:right;white-space:nowrap;color:var(--ink)}
+.about a{color:var(--gold)}.about ul.lk{display:flex;flex-wrap:wrap;gap:6px 14px;padding:0;list-style:none}
 #flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:60}
 /* 結果 */
 #result{max-width:980px;margin:0 auto;padding:0 12px 64px;position:relative}
@@ -256,9 +272,9 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div id="bg" aria-hidden="true"></div>
 <main>
 <section id="picker" hidden>
-<h1 class="dg">ワンピースカード<br>BOX開封ガチャ</h1>
-<p class="lead">開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算します。</p>
-<a class="rkbn" href="?view=rank"><span><b>相場ランキング</b><small>超高額・パラレル・通常カードの高額TOP50と今週の値上がり</small></span><span>›</span></a>
+<h1 class="dg">ワンピースカード<br>開封シミュレーター</h1>
+<p class="lead">全弾のBOX開封ガチャ。開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算し、1BOXの期待値やプレ値と比べられます。</p>
+<a class="rkbn" href="ranking/"><span><b>相場ランキング</b><small>超高額・パラレル・通常カードの高額TOP50と今週の値上がり</small></span><span>›</span></a>
 <div class="sets" id="sets"></div>
 <details class="hist" id="histP"><summary>あなたの開封履歴(全弾)</summary><div id="histPB"></div></details>
 <p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
@@ -316,6 +332,10 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
 <p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。商品リンクには楽天アフィリエイト・バリューコマースの広告を含みます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a>。アクセス解析にGoogleアナリティクス(Cookie)を使用しています。</p>
 </section>
+<!--ABOUT--><section class="about" id="about"><h2>ワンピースカード 開封シミュレーターとは</h2>
+<p>ワンピースカードゲームのブースターパック・エクストラブースター・プレミアムブースターのBOX開封を、無料でシミュレーションできるサイトです。出たカードの合計金額を、楽天・Yahoo!ショッピングの販売価格で計算し、定価やプレ値(未開封BOXの販売価格)と比べて「当たりBOXか」を判定します。1BOXの期待値、当たりカードの相場、開封履歴も見られます。</p>
+<h3>弾別の開封シミュレーター</h3><ul class="lk"><li><a href="op17/">OP17 世界最強の戦士</a></li><li><a href="op16/">OP16 決戦の刻</a></li><li><a href="op15/">OP15 神の島の冒険</a></li><li><a href="eb04/">EB04 EGGHEAD CRISIS</a></li><li><a href="op14/">OP14 蒼海の七傑</a></li><li><a href="eb03/">EB03 ONE PIECE Heroines Edition</a></li><li><a href="op13/">OP13 受け継がれる意志</a></li><li><a href="prb02/">PRB02 ONE PIECE CARD THE BEST vol.2</a></li><li><a href="op12/">OP12 師弟の絆</a></li><li><a href="op11/">OP11 神速の拳</a></li><li><a href="eb02/">EB02 Anime 25th collection</a></li><li><a href="op10/">OP10 王族の血統</a></li><li><a href="op09/">OP09 新たなる皇帝</a></li><li><a href="prb01/">PRB01 ONE PIECE CARD THE BEST</a></li><li><a href="op08/">OP08 二つの伝説</a></li><li><a href="op07/">OP07 500年後の未来</a></li><li><a href="eb01/">EB01 メモリアルコレクション</a></li><li><a href="op06/">OP06 双璧の覇者</a></li><li><a href="op05/">OP05 新時代の主役</a></li><li><a href="op04/">OP04 謀略の王国</a></li><li><a href="op03/">OP03 強大な敵</a></li><li><a href="op02/">OP02 頂上決戦</a></li><li><a href="op01/">OP01 ROMANCE DAWN</a></li></ul>
+<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり)</a></p></section><!--/ABOUT-->
 </main>
 
 <div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
@@ -444,7 +464,7 @@ function openDetail(c){
  var rs=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent(kw(c))+'/'),ys=c.ysearch||('https://shopping.yahoo.co.jp/search?p='+encodeURIComponent(kw(c)));
  $('dvAlt').innerHTML='<a href="'+esc(rs)+'" target="_blank" rel="sponsored noopener">楽天で探す ›</a><a href="'+esc(ys)+'" target="_blank" rel="sponsored noopener">Yahoo!で探す ›</a>';
  dv.hidden=false;dv.scrollTop=0;document.documentElement.style.overflow='hidden';dvOpen=true;
- if(!dvPushed){try{history.pushState({dv:1},'','#card='+encodeURIComponent(c.id));dvPushed=true}catch(e){}}
+ if(!dvPushed){try{history.pushState({dv:1},'',location.pathname+location.search+'#card='+encodeURIComponent(c.id));dvPushed=true}catch(e){}}
  $('dvX').focus({preventScroll:true});
 }
 function closeDetail(fromPop){
@@ -610,7 +630,7 @@ function renderHist(el,code){
   (best?'<p class="small">最高の1枚:'+esc(best.c.n)+'('+esc(best.c.k)+')'+yen(best.c.p)+' ・ '+esc(best.h.set)+' '+hDate(best.h.t)+'</p>':'');
  html+='<ul class="hlist">'+a.slice(-30).reverse().map(function(h){
   var cls=h.tot>=h.pre?'w':h.tot>=h.msrp?'m':'l',word=cls==='w'?'大勝利':cls==='m'?'定価超え':'負け',b=(h.best||[])[0];
-  return '<li><span class="d">'+hDate(h.t)+(code?'':' <a href="?set='+esc(h.set)+'">'+esc(h.set)+'</a>')+'</span><span class="'+cls+'">'+word+'</span><span class="t">'+yen(h.tot)+'</span>'+
+  return '<li><span class="d">'+hDate(h.t)+(code?'':' <a href="'+esc(h.set.toLowerCase())+'/">'+esc(h.set)+'</a>')+'</span><span class="'+cls+'">'+word+'</span><span class="t">'+yen(h.tot)+'</span>'+
    (b?'<span class="b">'+esc(b.n)+'('+esc(b.k)+')'+yen(b.p)+'</span>':'')+'</li>'}).join('')+'</ul>';
  html+='<p style="text-align:right;margin:8px 0 0"><button class="lnk" type="button" data-clear="'+(code||'')+'">'+(code?'この弾の履歴を消す':'すべての履歴を消す')+'</button></p>';
  el.innerHTML=html;
@@ -629,7 +649,7 @@ function catText(k){return (LBL[k]||k)}
 function showSet(code){
  Promise.all([getJSON('sets/'+code+'.json'),getJSON('data/sets/'+code+'.json').catch(function(){return null})]).then(function(r){
   var cfg=r[0],j=r[1];setupCards(cfg);applyColor(cfg.code);
-  document.title=cfg.code+' '+cfg.name+' BOX開封ガチャ';pv();
+  document.title=cfg.code+' '+cfg.name+' 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場';pv();
   $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('boxCode').textContent=cfg.code;
   S.msrp=cfg.msrp||5280;S.pre=cfg.market||Math.round(S.msrp*1.2);var bx=j&&j.box,bl=j&&j.links&&j.links.BOX;
   if(bx&&bx.pre)S.pre=bx.pre;$('msrp').value=S.msrp;$('pre').value=S.pre;
@@ -656,11 +676,11 @@ function showSet(code){
  }).catch(function(){location.href='./'});
 }
 function showPicker(){
- $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード BOX開封ガチャ';pv();renderHist($('histPB'),'');
+ $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード 開封シミュレーター|全弾BOX開封ガチャ・期待値・相場';pv();renderHist($('histPB'),'');
  Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
   var list=r[0].sets,sum=r[1].sets||{};
   $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
-   return '<a class="sc" href="?set='+s.code+'"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+(x.box?'<img alt="" referrerpolicy="no-referrer" src="'+esc(x.box)+'" onerror="this.remove()">':'')+'<b>'+s.code+'</b></div>'+
+   return '<a class="sc" href="'+s.code.toLowerCase()+'/"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+(x.box?'<img alt="" referrerpolicy="no-referrer" src="'+esc(x.box)+'" onerror="this.remove()">':'')+'<b>'+s.code+'</b></div>'+
     '<div class="tx"><div class="cd2">'+s.code+'</div><div class="nm3">'+esc(s.name)+'</div>'+
     '<div class="ev">定価 '+(s.msrp?yen(s.msrp):'-')+(x.pre?'<br>プレ値 '+yen(x.pre):'')+(x.ev?'<br>期待値 <b>'+yen(x.ev)+'</b>':'<br>価格取得待ち')+'</div></div></a>'}).join('');
   [].forEach.call(document.querySelectorAll('.sc .im img'),function(im){im.addEventListener('load',function(){var b=im.parentNode.querySelector('b');if(b)b.remove()})});
@@ -698,16 +718,16 @@ function renderRank(){
   return '<li data-i="'+i+'"><span class="no">'+(i+1)+'</span><span class="th">'+img+'</span><span><div class="nm4">'+esc(r.n)+'</div><div class="mt">'+meta+'</div></span><span class="pz">'+right+'</span></li>'}).join('');
 }
 function showRank(){
- $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='相場ランキング|ワンピースカード';pv();
+ $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';pv();
  var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up')RKS.tab='up';
  getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
   .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
 }
-function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','?view=rank&div='+RKS.div+'&tab='+RKS.tab)}catch(e){}if(RK)renderRank()}
+function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RKS.div+'&tab='+RKS.tab)}catch(e){}if(RK)renderRank()}
 $('rkDiv').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('div',b.dataset.v)});
 $('rkTab').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('tab',b.dataset.v)});
 $('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard(RK.divisions[RKS.div][RKS.tab][+li.dataset.i]))});
-(function(){var q=new URLSearchParams(location.search),code=(q.get('set')||'').toUpperCase();if(q.get('view')==='rank')showRank();else if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
+(function(){var q=new URLSearchParams(location.search),P=window.PAGE||{},code=(P.set||q.get('set')||'').toUpperCase();if(P.view==='rank'||q.get('view')==='rank')showRank();else if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
 </script>
 </body>
 </html>
