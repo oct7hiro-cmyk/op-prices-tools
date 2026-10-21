@@ -132,7 +132,9 @@ function chooseSets(index) {
 }
 
 async function priceCard(card, defaults) {
-  const valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
+  let valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
+  // 通常カード(R/SR/SEC)は最安の trimHigh 倍を超える出品を除く(記念版・別バージョンの高値が混ざって相場が跳ねるのを防ぐ)
+  if (card.trimHigh && valid.length) valid = valid.filter((i) => i.itemPrice <= valid[0].itemPrice * card.trimHigh);
   const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
   const rec = { id: card.id, name: card.name, updatedAt: today, count: valid.length, imgs: imgsOf(valid),
     searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword), offers: offersOf(valid) };
@@ -144,7 +146,8 @@ async function priceCard(card, defaults) {
       change: base ? Math.round(((ref - base) / base) * 1000) / 10 : null });
     const f = `data/history/${card.id}.csv`;
     if (!existsSync(f)) await writeFile(f, 'date,min,ref,count\n');
-    await appendFile(f, `${today},${rec.minPrice},${ref},${valid.length}\n`);
+    const lines = (await readFile(f, 'utf8')).split('\n').filter((l) => l && !l.startsWith(`${today},`)); // 同じ日の再取得は上書き
+    await writeFile(f, [...lines, `${today},${rec.minPrice},${ref},${valid.length}`].join('\n') + '\n');
   }
   return rec;
 }
