@@ -30,21 +30,21 @@ for (const s of index.sets) {
   const meta = Object.fromEntries(cfg.cards.map((c) => [c[0], c]));
   for (const c of data.cards) {
     const m = meta[c.id];
-    if (!m || !c.refPrice) continue;
+    if (!m || !c.refPrice || c.est) continue; // 推定価格のカードはランキングに載せない
     const div = DIV[m[1]];
     if (!div) continue;
     const key = c.source === 'manual' || !c.offers?.length ? c.id : `${c.refPrice}|${c.offers[0].u}`;
     if (seen.has(key)) continue;
     seen.add(key);
     all.push({ id: c.id, set: s.code, div, c: m[1], n: m[2], k: m[4] || cfg.labels?.[m[1]] || m[1], rar: m[3],
-      p: c.refPrice, min: c.minPrice ?? null, count: c.count ?? 0, manual: c.source === 'manual' || undefined,
+      p: c.refPrice, min: c.minPrice ?? null, count: c.count ?? 0, soldout: c.soldout || undefined,
       imgs: (c.imgs ?? []).slice(0, 2), offers: (c.offers ?? []).slice(0, 5), search: c.searchUrl, ysearch: c.ysearchUrl, updatedAt: c.updatedAt ?? data.updatedAt });
   }
 }
 
 // 値上がり: 最新値と「約7日前(6〜10日前で最も7日に近い日)」の参考価格を比べる。なければ1日以上前の最も古い日と比べる
 for (const r of all) {
-  if (r.manual) continue;
+  if (r.soldout) continue;
   const h = await history(r.id);
   if (h.length < 2) continue;
   const last = h[h.length - 1];
