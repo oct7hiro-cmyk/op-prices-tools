@@ -13,9 +13,8 @@
  },
  "EB04": {
   "file": "img/box/eb04.webp",
-  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/otakara-100/cabinet/racoon_107/2610030901ojist.jpg?_ex=400x400",
-  "score": 0.97,
-  "updatedAt": "2026-10-21"
+  "src": "user",
+  "fixed": true
  },
  "OP14": {
   "file": "img/box/op14.webp",
@@ -91,9 +90,8 @@
  },
  "OP05": {
   "file": "img/box/op05.webp",
-  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/noah-shopping/cabinet/default2/kahcqwf.jpg?_ex=400x400",
-  "score": 0.87,
-  "updatedAt": "2026-10-21"
+  "src": "user",
+  "fixed": true
  },
  "OP04": {
   "file": "img/box/op04.webp",
@@ -118,5 +116,20 @@
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/itemstore-oosaka/cabinet/r_2022123037/20240117133628_45_1.jpg?_ex=400x400",
   "score": 1.06,
   "updatedAt": "2026-10-21"
+ },
+ "OP15": {
+  "file": "img/box/op15.webp",
+  "src": "user",
+  "fixed": true
+ },
+ "OP13": {
+  "file": "img/box/op13.webp",
+  "src": "user",
+  "fixed": true
+ },
+ "OP12": {
+  "file": "img/box/op12.webp",
+  "src": "user",
+  "fixed": true
  }
 }
