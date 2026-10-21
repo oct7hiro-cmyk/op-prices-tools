@@ -13,100 +13,100 @@
   "OP16": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 7547,
+   "ev": 7571,
    "pre": 12260,
    "priced": 74,
-   "estimated": 3,
+   "estimated": 0,
    "total": 74
   },
   "OP15": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
-   "ev": 7042,
+   "ev": 7439,
    "pre": 11480,
    "priced": 71,
-   "estimated": 6,
+   "estimated": 0,
    "total": 71
   },
   "EB04": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/speedwagon_10014387",
-   "ev": 10191,
+   "ev": 10946,
    "pre": 16799,
    "priced": 55,
-   "estimated": 11,
+   "estimated": 0,
    "total": 55
   },
   "OP14": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/gochanstore_b0fqb2bqhm",
-   "ev": 8597,
+   "ev": 8425,
    "pre": 11300,
    "priced": 74,
-   "estimated": 9,
+   "estimated": 0,
    "total": 74
   },
   "EB03": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/mediaworld-plus_13920550000",
-   "ev": 6697,
+   "ev": 6586,
    "pre": 14480,
    "priced": 60,
-   "estimated": 5,
+   "estimated": 0,
    "total": 60
   },
   "OP13": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769865213",
-   "ev": 7316,
+   "ev": 7507,
    "pre": 22900,
    "priced": 93,
-   "estimated": 5,
+   "estimated": 0,
    "total": 93
   },
   "PRB02": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/hrco_prb-02",
-   "ev": 6095,
+   "ev": 5918,
    "pre": 13500,
    "priced": 197,
-   "estimated": 58,
+   "estimated": 49,
    "total": 226
   },
   "OP12": {
    "updatedAt": "2026-10-21",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769796838",
-   "ev": 9137,
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10764050/31857865_0.jpg?_ex=400x400",
+   "ev": 8169,
    "pre": 19680,
    "priced": 73,
-   "estimated": 6,
+   "estimated": 0,
    "total": 73
   },
   "OP11": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/worldplus01_onepiececard",
-   "ev": 11965,
+   "ev": 10520,
    "pre": 38000,
    "priced": 74,
-   "estimated": 3,
+   "estimated": 0,
    "total": 74
   },
   "EB02": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769733727",
-   "ev": 6708,
+   "ev": 6377,
    "pre": 42800,
    "priced": 75,
-   "estimated": 27,
+   "estimated": 0,
    "total": 75
   },
   "OP10": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/shop998_op10b",
-   "ev": 3893,
+   "ev": 2921,
    "pre": 13800,
    "priced": 69,
-   "estimated": 4,
+   "estimated": 0,
    "total": 69
   },
   "OP09": {
@@ -121,7 +121,7 @@
   "PRB01": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/pasokon_4570118259509a",
-   "ev": 4488,
+   "ev": 4418,
    "pre": 24999,
    "priced": 174,
    "estimated": 46,
@@ -130,7 +130,7 @@
   "OP08": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/ookinidesu_h20240525-6732okd9850yu965",
-   "ev": 4475,
+   "ev": 4380,
    "pre": 13500,
    "priced": 69,
    "estimated": 3,
@@ -139,7 +139,7 @@
   "OP07": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009708",
-   "ev": 4304,
+   "ev": 4209,
    "pre": 23800,
    "priced": 69,
    "estimated": 1,
@@ -148,7 +148,7 @@
   "EB01": {
    "updatedAt": "2026-10-21",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0054/52011954_1.jpg?_ex=400x400",
-   "ev": 2937,
+   "ev": 2896,
    "pre": 25680,
    "priced": 49,
    "estimated": 1,
@@ -157,7 +157,7 @@
   "OP06": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009394",
-   "ev": 4526,
+   "ev": 4430,
    "pre": 23800,
    "priced": 69,
    "estimated": 2,
@@ -166,7 +166,7 @@
   "OP05": {
    "updatedAt": "2026-10-21",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118002174",
-   "ev": 3935,
+   "ev": 3980,
    "pre": 66000,
    "priced": 73,
    "estimated": 6,
