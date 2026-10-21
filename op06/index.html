@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--HEAD-->
+<base href="/op-prices-tools/">
+<title>OP06 双璧の覇者 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
+<meta name="description" content="ワンピースカード OP06「双璧の覇者」のBOX開封をシミュレーション。1BOXの期待値¥3,124、プレ値¥23,800。当たりカード:ミス・オールサンデー(SP)¥8,000、シャーロット・リンリン(SP)¥7,170、レベッカ(SP)¥5,964など。楽天・Yahoo!の販売価格から毎日更新。">
+<link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/op06/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
+<meta property="og:title" content="OP06 双璧の覇者 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
+<meta property="og:description" content="ワンピースカード OP06「双璧の覇者」のBOX開封をシミュレーション。1BOXの期待値¥3,124、プレ値¥23,800。当たりカード:ミス・オールサンデー(SP)¥8,000、シャーロット・リンリン(SP)¥7,170、レベッカ(SP)¥5,964など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/op06/">
+<meta name="twitter:card" content="summary">
+<!--/HEAD-->
+<!--PAGE--><script>window.PAGE={set:'OP06'}</script><!--/PAGE-->
+<!-- Googleアナリティクス(GA4)。ページ表示は各画面の表示時に送る -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0D6Z0H24YM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0D6Z0H24YM',{send_page_view:false});</script>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0b0710;--ink:#fbf6ee;--mute:#b9aec4;--line:#3a2b45;--gold:#ffcf4a;--gold2:#ff9d2e;--red:#e8352b;--win:#4dffa6;--lose:#7e90b8;--panel:#1a1220;--c1:#b0182b;--c2:#7a0e1e;--ca:#ffcf4a;--ct:#3a0714;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0710}}
+:root[data-theme="dark"]{--bg:#0b0710}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:rgba(14,9,20,.92)}
+.dg{font-family:"Dela Gothic One","Zen Kaku Gothic New",sans-serif;font-weight:400}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#bg{position:fixed;inset:-50%;z-index:-1;background:repeating-conic-gradient(from 0deg,rgba(255,190,80,.05) 0 6deg,transparent 6deg 18deg),radial-gradient(circle at 50% 50%,#3a1030 0,#160a1c 40%,#0b0710 70%);animation:spin 80s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* ステージ */
+#stage{min-height:100svh;display:grid;place-items:center;padding:24px 16px;text-align:center;position:relative;overflow:hidden}
+.ttl{margin:0;font-size:clamp(46px,13vw,84px);line-height:1;color:var(--gold);text-shadow:0 4px 0 #8a2a0a,0 0 40px rgba(255,190,60,.55);letter-spacing:.02em}
+.sub{margin:6px 0 0;font-size:clamp(18px,5vw,26px);text-shadow:0 2px 0 #000}
+.scene{position:relative;perspective:900px;height:min(48svh,340px);display:grid;place-items:center;margin:14px 0 4px}
+.scene::after{content:"";position:absolute;bottom:2%;width:160px;height:20px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(8px);animation:sh 4s ease-in-out infinite}
+@keyframes sh{50%{transform:scale(.75);opacity:.55}}
+.box{position:relative;z-index:2;width:min(54vw,220px);aspect-ratio:3/4;border:0;border-radius:12px;color:#fff;
+background:linear-gradient(160deg,var(--c1),var(--c2) 70%,#120a14);box-shadow:inset 0 0 0 4px var(--gold),inset 0 0 0 7px var(--c2),inset 0 0 0 9px var(--gold),0 0 80px 14px rgba(255,170,60,.45),0 30px 60px rgba(0,0,0,.7);
+display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;animation:fl 4s ease-in-out infinite;overflow:hidden}
+.box::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);animation:gl 2.6s linear infinite}
+@keyframes gl{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
+.box b{font-size:clamp(44px,12vw,58px);color:var(--gold);text-shadow:0 3px 0 #3a0714}
+.box span{font-size:14px;letter-spacing:.3em}
+.box img{position:absolute;inset:9px;width:calc(100% - 18px);height:calc(100% - 18px);object-fit:cover;border-radius:6px;background:#fff}
+.box.has-img b,.box.has-img span{display:none}
+@keyframes fl{0%,100%{transform:translateY(0) rotateY(-16deg) rotateX(4deg)}50%{transform:translateY(-22px) rotateY(16deg) rotateX(-2deg)}}
+.box.shake{animation:sk .9s linear forwards}
+@keyframes sk{0%{transform:translate(0)}10%{transform:translate(-6px,2px) rotate(-3deg)}20%{transform:translate(6px,-2px) rotate(3deg)}30%{transform:translate(-8px,3px) rotate(-4deg)}40%{transform:translate(8px,-3px) rotate(4deg)}50%{transform:translate(-10px,2px) rotate(-5deg) scale(1.05)}60%{transform:translate(10px,-2px) rotate(5deg) scale(1.08)}80%{transform:translate(-6px) rotate(-3deg) scale(1.12)}100%{transform:scale(1.18)}}
+.bc{position:absolute;left:50%;top:50%;width:46px;height:64px;margin:-32px 0 0 -23px;border-radius:5px;border:2px solid var(--gold);background:radial-gradient(circle,var(--ca) 0 14%,transparent 15%),repeating-conic-gradient(var(--c1) 0 10deg,var(--c2) 10deg 20deg);z-index:3;opacity:0}
+.tap{margin:0;font-size:clamp(22px,6vw,30px);color:var(--gold);animation:pu 1.1s ease-in-out infinite}
+@keyframes pu{50%{opacity:.35;transform:scale(.95)}}
+.foot{margin:16px 0 0;font-size:12px;color:var(--mute)}
+.about{max-width:760px;margin:40px auto 0;padding:0 16px 48px;color:var(--mute);font-size:13px;line-height:1.8}
+.about h2{color:var(--ink);font-size:17px;margin:0 0 8px}.about h3{color:var(--ink);font-size:14px;margin:18px 0 6px}
+.about table{width:100%;border-collapse:collapse;font-size:13px}.about td,.about th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left}
+.about td.r{text-align:right;white-space:nowrap;color:var(--ink)}
+.about a{color:var(--gold)}.about ul.lk{display:flex;flex-wrap:wrap;gap:6px 14px;padding:0;list-style:none}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:60}
+/* 結果 */
+#result{max-width:980px;margin:0 auto;padding:0 12px 64px;position:relative}
+.hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:0 -12px;padding:12px 16px 14px;background:rgba(14,9,20,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.row1{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.lbl{font-size:12px;color:var(--mute)}
+#total{font-size:clamp(34px,9vw,54px);line-height:1;color:#fff;text-shadow:0 0 18px rgba(255,200,80,.5);font-variant-numeric:tabular-nums}
+#verdict{font-size:clamp(16px,4.5vw,22px);padding:2px 12px;border-radius:99px}
+#verdict.win{background:var(--win);color:#06301b}#verdict.mid{background:var(--gold);color:#3a2000}#verdict.lose{background:var(--lose);color:#0d1530}
+.gauge{position:relative;height:14px;margin-top:12px;border-radius:99px;background:#2a1e33;overflow:visible}
+#fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#5a7cff,#c86bff,#ff5fa8,#ffcf4a);box-shadow:0 0 14px rgba(255,170,90,.6)}
+.mk{position:absolute;top:-6px;bottom:-6px;width:3px;background:#fff;border-radius:2px;opacity:.55}
+.mk b{position:absolute;top:22px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:var(--mute);font-weight:700}
+.mk.on{opacity:1;box-shadow:0 0 12px #fff}.mk.on b{color:#fff}
+#skip{position:absolute;right:14px;bottom:-40px;border:1px solid var(--line);background:rgba(26,18,32,.9);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px 10px;margin-top:52px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}}
+.cd{perspective:700px}
+.in{position:relative;aspect-ratio:63/88;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,1.35,.5,1)}
+.skipping .in{transition-duration:.15s}
+.cd.on .in{transform:rotateY(180deg)}
+.bk,.fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:7px;overflow:hidden}
+.bk{display:grid;place-items:center;border:2px solid var(--gold);background:radial-gradient(circle,var(--ca) 0 17%,transparent 18%),repeating-conic-gradient(var(--c1) 0 10deg,var(--c2) 10deg 20deg)}
+.bk span{font-family:"Dela Gothic One",sans-serif;font-size:11px;color:var(--ct);letter-spacing:-.02em}
+.fc{transform:rotateY(180deg);background:var(--face);border:2px solid var(--rim)}
+.gen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:7px 6px;text-align:center}
+.rb{align-self:center;font-size:10px;font-weight:900;padding:1px 7px;border-radius:99px;background:var(--rim);color:#120a18;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.nm{font-size:12px;font-weight:900;line-height:1.3;word-break:break-all;text-shadow:0 1px 2px #000}
+.id{font-size:9px;color:rgba(255,255,255,.65)}
+.fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--face);opacity:0;transition:opacity .2s}
+.fc img.ok,#reveal .card img.ok{opacity:1}
+.pr{margin-top:6px;text-align:center;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s .25s}
+.cd.on .pr{opacity:1}
+.go{display:block;margin:3px auto 0;width:fit-content;max-width:100%;padding:2px 9px;border:0;border-radius:99px;font-size:11px;font-weight:700;color:#120a18;background:var(--gold);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s .35s}
+.cd.on .go{opacity:1;pointer-events:auto}
+.cd.on{cursor:pointer}
+.adnote{margin:8px 0 0;font-size:11px;color:var(--mute);text-align:right}
+.k-R{--face:linear-gradient(160deg,#173a52,#0c1f2e);--rim:#7fd6e8}
+.k-SR{--face:linear-gradient(160deg,#4a3410,#20160a);--rim:#ffcf4a}
+.k-SEC{--face:linear-gradient(160deg,#5a1414,#250808);--rim:#ff7a5a}
+.k-PAR{--face:linear-gradient(160deg,#3a1450,#14082a);--rim:#ff8fd0}
+.k-LPAR{--face:linear-gradient(160deg,#104a3a,#082a20);--rim:#6cffc8}
+.k-SP{--face:linear-gradient(160deg,#2a1a6a,#0e0830);--rim:#c3a8ff}
+.k-TOP{--face:linear-gradient(160deg,#6a4a08,#2a1600);--rim:#ffe08a}
+.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 15%,rgba(255,110,200,.4),rgba(110,220,255,.4),rgba(255,240,130,.4),transparent 85%);background-size:260% 100%;mix-blend-mode:screen;animation:holo 2.2s linear infinite}
+@keyframes holo{from{background-position:100% 0}to{background-position:-160% 0}}
+/* 光彩は box-shadow で付ける(filter は3Dを平面化してめくりが壊れるため) */
+.cd.on.g1 .fc{box-shadow:0 0 10px rgba(255,207,74,.75)}
+.cd.on.g2 .fc{box-shadow:0 0 14px var(--rim),0 0 30px var(--rim)}
+.cd.on.g3 .fc{box-shadow:0 0 20px #ffe08a,0 0 44px #ffb84a}
+.cd.on.g2 .pr,.cd.on.g3 .pr{color:var(--gold);font-size:15px}
+.cd.tease .in{animation:jit .09s linear infinite}
+.cd.tease .bk{box-shadow:0 0 16px #fff,0 0 34px var(--rim)}
+@keyframes jit{0%{translate:0 0}25%{translate:-2px 1px}50%{translate:2px -1px}75%{translate:-1px -2px}}
+.pt{position:fixed;width:10px;height:10px;margin:-5px 0 0 -5px;z-index:70;pointer-events:none;border-radius:2px}
+.toast{position:fixed;left:50%;top:32%;z-index:65;pointer-events:none;font-family:"Dela Gothic One",sans-serif;font-size:clamp(34px,10vw,64px);white-space:nowrap;opacity:0;transform:translate(-50%,-50%)}
+.toast.m{color:#fff;text-shadow:0 0 20px #ff9d2e,0 4px 0 #8a2a0a}
+.toast.p{color:var(--gold);text-shadow:0 0 30px #ff5fa8,0 5px 0 #8a2a0a}
+.toast.go{animation:tst 1.5s ease-out}
+@keyframes tst{0%{opacity:0;transform:translate(-50%,-50%) scale(2.4)}15%{opacity:1;transform:translate(-50%,-50%) scale(.95)}25%{transform:translate(-50%,-50%) scale(1.05)}75%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-70%) scale(1)}}
+.stamp{position:fixed;left:50%;top:45%;z-index:66;transform:translate(-50%,-50%) rotate(-8deg);text-align:center;padding:14px 30px 12px;border:6px solid currentColor;border-radius:14px;background:rgba(10,6,16,.88);pointer-events:none}
+.stamp b{display:block;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(46px,14vw,90px);line-height:1.05}
+.stamp small{display:block;font-size:14px;color:var(--ink);font-weight:700;margin-top:4px}
+.stamp.win{color:var(--win)}.stamp.mid{color:var(--gold)}.stamp.lose{color:var(--lose)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.btn{border:0;border-radius:12px;padding:15px 30px;font-family:"Dela Gothic One",sans-serif;font-size:18px;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 5px 0 #8a3a0a,0 0 24px rgba(255,170,60,.45)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #8a3a0a}
+.btn.s{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none;font-family:inherit;font-weight:700;font-size:14px;padding:11px 18px}
+#tally{text-align:center;font-size:13px;color:var(--mute);margin-top:14px}
+.panel{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st .v{font-size:clamp(22px,6vw,30px);font-variant-numeric:tabular-nums}
+.st small{display:block;color:var(--mute);font-size:12px}
+.bar{display:grid;grid-template-columns:minmax(92px,36%) 1fr 52px;gap:8px;align-items:center;font-size:12px;margin:6px 0;font-variant-numeric:tabular-nums}
+.bar i{display:block;height:12px;border-radius:3px;min-width:2px}
+.small{font-size:12px;color:var(--mute)}
+details{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--panel)}
+summary{cursor:pointer;font-weight:700;font-size:14px}
+.set{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.set label{display:block;font-size:12px;color:var(--mute)}
+.set input,.set select{width:100%;font:inherit;color:var(--ink);background:#120c18;border:1px solid var(--line);border-radius:6px;padding:7px}
+@media(max-width:560px){.set{grid-template-columns:1fr 1fr}}
+ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
+.boxinfo{margin:10px auto 0;max-width:420px;font-size:13px;color:var(--mute);line-height:1.6}
+.boxinfo b{color:var(--ink);font-size:15px}
+.lnk{border:0;background:none;padding:0;color:var(--gold);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.hist{margin-top:14px;text-align:left}
+.hsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}
+.hsum div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#120c18}
+.hsum small{display:block;font-size:11px;color:var(--mute)}.hsum b{font-size:16px}
+.hlist{list-style:none;margin:0;padding:0;font-size:13px}
+.hlist li{display:grid;grid-template-columns:auto 1fr auto;gap:2px 10px;padding:8px 2px;border-top:1px solid var(--line)}
+.hlist .d{color:var(--mute);font-size:11px}.hlist .t{font-weight:900;text-align:right}
+.hlist .b{grid-column:1/-1;font-size:12px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hlist .w{color:var(--win)}.hlist .m{color:var(--gold)}.hlist .l{color:var(--lose)}
+.hlist a{color:var(--gold)}
+#picker .hist{max-width:640px;margin:26px auto 0}
+/* 相場ランキング */
+.rkbn{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:640px;margin:0 auto 18px;padding:12px 16px;border-radius:14px;text-decoration:none;color:#2a1600;font-weight:900;background:linear-gradient(90deg,#ffe08a,#ff9d2e);box-shadow:0 0 24px rgba(255,170,60,.35)}
+.rkbn small{display:block;font-weight:700;font-size:12px;color:#5a3300}
+.rkbn b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:18px}
+#rank{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 60px) 16px 56px}
+#rank h1{margin:0;text-align:center;font-size:clamp(28px,7vw,44px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a}
+#rank .lead{text-align:center;margin:6px 0 16px;color:var(--mute);font-size:13px}
+.tabs{display:flex;gap:6px;margin:0 0 8px}
+.tabs button{flex:1;padding:10px 6px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-weight:900;font-size:14px}
+.tabs button.on{background:var(--gold);color:#2a1600;border-color:var(--gold)}
+.tabs.sub button{font-size:13px;padding:8px 6px}
+.tabs.sub button.on{background:rgba(255,207,74,.18);color:var(--gold);border-color:var(--gold)}
+#rkNote{font-size:12px;color:var(--mute);margin:6px 2px 10px}
+.rl{list-style:none;margin:0;padding:0}
+.rl li{display:grid;grid-template-columns:34px 52px 1fr auto;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px solid var(--line);cursor:pointer}
+.rl li:hover{background:rgba(255,255,255,.04)}
+.rl .no{font-family:"Dela Gothic One",sans-serif;font-size:18px;color:var(--mute);text-align:center}
+.rl li:nth-child(1) .no{color:#ffd54a}.rl li:nth-child(2) .no{color:#d8dde6}.rl li:nth-child(3) .no{color:#e0a070}
+.rl .th{width:52px;aspect-ratio:63/88;border-radius:5px;overflow:hidden;background:#241a2c;display:grid;place-items:center;font-size:10px;color:var(--mute)}
+.rl .th img{width:100%;height:100%;object-fit:cover}
+.rl .nm4{font-weight:900;font-size:14px;line-height:1.3}
+.rl .mt{font-size:11px;color:var(--mute);margin-top:2px}
+.rl .tg{display:inline-block;font-size:10px;font-weight:900;padding:1px 7px;border-radius:99px;background:#3a2b45;color:var(--ink);margin-right:4px}
+.rl .tg.m{background:#5a3a10;color:#ffd58a}
+.rl .pz{text-align:right;font-weight:900;font-size:15px;white-space:nowrap}
+.rl .ch{display:block;font-size:12px;color:var(--win)}
+.rl svg{display:block;margin:3px 0 0 auto}
+.rl .em{cursor:default;display:block;text-align:center;color:var(--mute);font-size:13px;padding:24px 8px}
+/* 弾の一覧 */
+#picker{max-width:1000px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 28px) 16px 56px;text-align:center}
+#picker h1{margin:0;font-size:clamp(30px,8vw,52px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a,0 0 30px rgba(255,190,60,.5)}
+#picker .lead{margin:8px 0 22px;color:var(--mute);font-size:14px}
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;text-align:left}
+.sc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .15s}
+.sc:hover{transform:translateY(-3px)}
+.sc .im{aspect-ratio:1;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
+.sc .im img{width:100%;height:100%;object-fit:contain;background:#fff}
+.sc .im b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:30px;color:var(--gold)}
+.sc .tx{padding:8px 10px 10px}
+.sc .cd2{font-family:"Dela Gothic One",sans-serif;font-size:15px;color:var(--gold)}
+.sc .nm3{font-size:13px;font-weight:700;line-height:1.3;margin-top:2px}
+.sc .ev{font-size:12px;color:var(--mute);margin-top:6px}.sc .ev b{color:var(--ink);font-size:14px}
+.sc .nw{position:absolute;top:8px;left:8px;font-size:11px;font-weight:900;padding:2px 8px;border-radius:99px;background:var(--red);color:#fff}
+.back{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);left:12px;z-index:5;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:99px;background:rgba(26,18,32,.85)}
+/* カード詳細(販売ショップ一覧) */
+#dv{position:fixed;inset:0;z-index:58;overflow-y:auto;overscroll-behavior:contain;background:#07040c;-webkit-overflow-scrolling:touch}
+#dv .bgr{position:fixed;inset:-60%;pointer-events:none;background:repeating-conic-gradient(from 0deg,var(--dvc) 0 4deg,transparent 4deg 14deg);opacity:.28;animation:spin 26s linear infinite}
+#dv .glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 30%,var(--dvg),transparent 60%)}
+#dv .dvin{position:relative;max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 56px) 16px 48px;text-align:center}
+#dvX{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(10,6,16,.7);font-size:22px;line-height:1}
+#dv .stage{perspective:1000px;margin:0 auto 6px;width:min(66vw,290px)}
+#dv .float{animation:dvfl 4.5s ease-in-out infinite}
+@keyframes dvfl{50%{transform:translateY(-10px)}}
+#dvCard{position:relative;aspect-ratio:63/88;border-radius:14px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .12s ease-out;touch-action:pan-y}
+#dvCard.enter{animation:dvin 1.1s cubic-bezier(.2,.9,.25,1.05) both}
+@keyframes dvin{0%{transform:translateY(60px) scale(.35) rotateY(-540deg);opacity:0}60%{opacity:1}100%{transform:none;opacity:1}}
+#dvCard .fc{transform:none;border-width:3px;border-radius:14px;box-shadow:0 0 30px var(--rim),0 0 70px var(--rim),0 30px 60px rgba(0,0,0,.7)}
+#dvCard .nm{font-size:clamp(18px,5vw,24px)}#dvCard .rb{font-size:13px}#dvCard .id{font-size:12px}
+#dvCard .sh{position:absolute;inset:0;border-radius:14px;pointer-events:none;mix-blend-mode:screen;
+ background:linear-gradient(115deg,transparent calc(var(--sx,50%) - 30%),rgba(255,255,255,.55) var(--sx,50%),transparent calc(var(--sx,50%) + 30%)),
+ linear-gradient(115deg,rgba(255,110,200,.25),rgba(110,220,255,.25),rgba(255,240,130,.25));background-size:100% 100%,300% 100%;animation:holo 3s linear infinite}
+#dv .spk{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px var(--dvc);pointer-events:none;animation:spk 2.6s ease-in-out infinite}
+@keyframes spk{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.2)}}
+#dv .kk{display:inline-block;margin-top:18px;font-family:"Dela Gothic One",sans-serif;font-size:15px;padding:3px 14px;border-radius:99px;background:var(--rim);color:#120a18}
+#dv h2{margin:8px 0 0;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(24px,7vw,34px);line-height:1.2;text-shadow:0 0 18px var(--dvg)}
+#dv .cid{font-size:12px;color:var(--mute);margin-top:2px}
+#dv .mp{margin-top:10px}#dv .mp small{display:block;font-size:12px;color:var(--mute)}
+#dv .mp b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(36px,11vw,52px);color:#fff;text-shadow:0 0 24px var(--dvg)}
+#dv .cta{display:inline-block;margin-top:12px;padding:14px 28px;border-radius:12px;font-family:"Dela Gothic One",sans-serif;font-size:17px;text-decoration:none;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 5px 0 #8a3a0a,0 0 26px rgba(255,170,60,.55);animation:ctap 1.6s ease-in-out infinite}
+@keyframes ctap{50%{transform:scale(1.04);box-shadow:0 5px 0 #8a3a0a,0 0 44px rgba(255,190,80,.9)}}
+#dv .shops{margin-top:26px;text-align:left;background:rgba(26,18,32,.92);border:1px solid var(--line);border-radius:14px;padding:14px}
+#dv .shops h3{margin:0 0 8px;font-size:15px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+#dv .shops h3 small{font-size:11px;color:var(--mute);font-weight:500}
+#dvList{list-style:none;margin:0;padding:0}
+#dvList li{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"src shop price" "src nm buy";gap:2px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+#dvList li:first-child{border-top:0}
+#dvList .src{grid-area:src;font-size:11px;font-weight:900;padding:3px 7px;border-radius:6px;color:#fff;align-self:start}
+#dvList .src.rakuten{background:#bf0000}#dvList .src.yahoo{background:#ff0033}
+#dvList .shop{grid-area:shop;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dvList .nm2{grid-area:nm;font-size:11px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dvList .pp{grid-area:price;font-weight:900;font-size:17px;font-variant-numeric:tabular-nums;text-align:right}
+#dvList .buy{grid-area:buy;justify-self:end;display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--gold);color:#120a18;text-decoration:none;white-space:nowrap}
+#dvList .st{font-size:11px;font-weight:700;color:var(--win);margin-right:6px}
+#dvList li.best .pp{color:var(--gold)}
+#dvList li.best .shop::before{content:"最安";font-size:10px;font-weight:900;margin-right:6px;padding:1px 6px;border-radius:4px;background:var(--gold);color:#120a18;vertical-align:2px}
+#dv .alt{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#dv .alt a{flex:1;min-width:140px;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+#dv .empty{font-size:13px;color:var(--mute);margin:4px 0}
+@media(prefers-reduced-motion:reduce){#dv .bgr,#dv .float,#dvCard.enter,#dvCard .sh,#dv .spk,#dv .cta{animation:none}}
+/* カットイン */
+#reveal{position:fixed;inset:0;z-index:55;border:0;width:100%;background:#05030a;display:grid;place-items:center;overflow:hidden;text-align:center}
+#reveal .rays{position:absolute;inset:-60%;background:repeating-conic-gradient(from 0deg,rgba(255,215,120,.32) 0 5deg,transparent 5deg 15deg);animation:spin 10s linear infinite}
+#reveal.t2 .rays{background:repeating-conic-gradient(from 0deg,rgba(180,150,255,.32) 0 5deg,transparent 5deg 15deg)}
+#reveal::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(255,210,110,.6),transparent 55%)}
+#reveal.t2::before{background:radial-gradient(circle at 50% 46%,rgba(170,140,255,.55),transparent 55%)}
+#reveal .in2{position:relative;z-index:2;padding:20px;animation:pop .7s cubic-bezier(.2,1.4,.4,1) both}
+#reveal.t3 .in2{animation:pop .7s cubic-bezier(.2,1.4,.4,1) both,qk .45s .1s linear 3}
+@keyframes pop{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes qk{0%,100%{translate:0}25%{translate:-9px 4px}50%{translate:9px -4px}75%{translate:-5px -3px}}
+#reveal .k{display:inline-block;font-family:"Dela Gothic One",sans-serif;font-size:clamp(18px,5vw,26px);padding:4px 18px;border-radius:99px;background:linear-gradient(90deg,#ffe08a,#ff9d2e);color:#2a1600}
+#reveal.t2 .k{background:linear-gradient(90deg,#d8c8ff,#7aa8ff);color:#120a33}
+#reveal .card{position:relative;margin:18px auto;width:min(58vw,240px);aspect-ratio:63/88;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden;font-family:"Dela Gothic One",sans-serif;font-size:clamp(22px,6vw,30px);line-height:1.25;color:#1e1300;background:linear-gradient(150deg,#3a2a05,#a97a12 45%,#f6d775 52%,#8a600a);border:3px solid #ffe9a0;box-shadow:0 0 70px 16px rgba(255,210,100,.65)}
+#reveal.t2 .card{color:#0f0a30;background:linear-gradient(150deg,#1a1448,#4d3fb0 45%,#b9a6ff 52%,#3a2d92);border-color:#d8ccff;box-shadow:0 0 70px 16px rgba(150,130,255,.6)}
+#reveal .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .2s}
+#reveal .pr2{font-family:"Dela Gothic One",sans-serif;font-size:clamp(32px,9vw,52px);color:#fff;text-shadow:0 0 24px rgba(255,200,80,.8)}
+#reveal .hint{margin-top:8px;font-size:14px;color:#ddd;animation:pu 1.2s infinite}
+@media(prefers-reduced-motion:reduce){#bg,.box,.box::after,.scene::after,.tap,#reveal .rays,.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{animation:none}.in{transition:none}}
+</style>
+</head>
+<body>
+<div id="bg" aria-hidden="true"></div>
+<main>
+<section id="picker" hidden>
+<h1 class="dg">ワンピースカード<br>開封シミュレーター</h1>
+<p class="lead">全弾のBOX開封ガチャ。開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算し、1BOXの期待値やプレ値と比べられます。</p>
+<a class="rkbn" href="ranking/"><span><b>相場ランキング</b><small>超高額・パラレル・通常カードの高額TOP50と今週の値上がり</small></span><span>›</span></a>
+<div class="sets" id="sets"></div>
+<details class="hist" id="histP"><summary>あなたの開封履歴(全弾)</summary><div id="histPB"></div></details>
+<p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
+<p class="foot">このサイトはアクセス解析にGoogleアナリティクスを使用しています。データはCookieを使い匿名で収集され、個人を特定するものではありません(<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener" style="color:inherit">Googleによるデータの使用</a>)。</p>
+</section>
+<section id="rank" hidden>
+<a class="back" href="./">‹ 弾一覧</a>
+<h1 class="dg">相場ランキング</h1>
+<p class="lead" id="rkLead">ショップの販売価格(楽天・Yahoo!)から毎朝更新</p>
+<div class="tabs" id="rkDiv"><button data-v="top">超高額</button><button data-v="par">パラレル</button><button data-v="base">通常カード</button></div>
+<div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button></div>
+<p id="rkNote"></p>
+<ol class="rl" id="rkList"></ol>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格(安い順3件の中央値)で、買取価格ではありません。超高額のうち出品が少ないカードは手入力の参考価格です。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
+</section>
+<section id="stage" hidden>
+<a class="back" href="./">‹ 弾一覧</a>
+<div>
+<h1 class="ttl dg" id="ttl">OP</h1>
+<p class="sub dg" id="sub"></p>
+<div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><b class="dg" id="boxCode">OP</b><span>BOX</span></button></div>
+<p class="tap dg">TAP!</p>
+<p class="boxinfo" id="boxInfo"></p>
+<details class="hist" id="histS"><summary>この弾の開封履歴</summary><div id="histSB"></div></details>
+<p class="foot">非公式の開封シミュレーターです</p>
+</div>
+</section>
+
+<section id="result" hidden>
+<div class="hud">
+<div class="row1"><div><div class="lbl">シングル価格の合計</div><div id="total" class="dg">¥0</div></div><div id="verdict" class="dg" hidden></div></div>
+<div class="gauge"><div id="fill"></div><i class="mk" id="mkM"><b>定価</b></i><i class="mk" id="mkP"><b>プレ値</b></i></div>
+<button id="skip">スキップ ▶▶</button>
+</div>
+<p class="adnote">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)</p>
+<div id="grid" class="grid"></div>
+<div id="after" hidden>
+<div class="acts"><button class="btn" id="again">もう1BOX!</button><button class="btn s" id="more">くわしい数字</button></div>
+<p id="tally"></p>
+<details class="hist" id="histR"><summary>この弾の開封履歴</summary><div id="histRB"></div></details>
+<div class="panel" id="detail" hidden>
+<div class="two" id="stats"></div>
+<p class="small" id="statNote"></p>
+<div id="bars"></div>
+<p class="small" id="warn" hidden></p>
+</div>
+</div>
+<details><summary>条件・演出テスト</summary>
+<div class="set">
+<div><label for="msrp">定価(円)</label><input id="msrp" type="number" value="5760"></div>
+<div><label for="pre">プレ値・実売(円)</label><input id="pre" type="number" value="7000"></div>
+</div>
+<div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:最上位レア</button><button class="btn s" id="t2">テスト:SP・パラレル</button></div>
+</details>
+<details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
+<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。商品リンクには楽天アフィリエイト・バリューコマースの広告を含みます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a>。アクセス解析にGoogleアナリティクス(Cookie)を使用しています。</p>
+</section>
+<!--ABOUT--><section class="about" id="about">
+<h2>OP06 双璧の覇者 開封シミュレーター</h2>
+<p>ワンピースカードゲーム「ブースターパック 双璧の覇者【OP-06】」(2023-11-25発売)のBOX開封をシミュレーションできます。1BOX(24パック)を開けたときに出るR以上のカードを、封入率の目安にもとづいて抽選し、ショップの販売価格の合計を定価・プレ値と比べます。</p>
+<table><tbody>
+<tr><th>定価(1BOX)</th><td class="r">¥5,280</td></tr>
+<tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥23,800</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥3,124</td></tr>
+</tbody></table>
+<h3>OP06の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>ミス・オールサンデー(SP)<br><small>OP04-064</small></td><td class="r">¥8,000</td></tr><tr><td>2</td><td>シャーロット・リンリン(SP)<br><small>OP03-114</small></td><td class="r">¥7,170</td></tr><tr><td>3</td><td>レベッカ(SP)<br><small>OP05-091</small></td><td class="r">¥5,964</td></tr><tr><td>4</td><td>ロロノア・ゾロ(SECパラレル)<br><small>OP06-118</small></td><td class="r">¥5,000</td></tr><tr><td>5</td><td>バギー(SP)<br><small>OP03-008</small></td><td class="r">¥5,000</td></tr><tr><td>6</td><td>ヤマト(リーダーパラレル)<br><small>OP06-022</small></td><td class="r">¥4,925</td></tr><tr><td>7</td><td>シュガー(SP)<br><small>OP04-024</small></td><td class="r">¥4,530</td></tr><tr><td>8</td><td>ウタ(リーダーパラレル)<br><small>OP06-001</small></td><td class="r">¥4,050</td></tr><tr><td>9</td><td>ペローナ(リーダーパラレル)<br><small>OP06-021</small></td><td class="r">¥3,380</td></tr><tr><td>10</td><td>おナミ(パラレル)<br><small>OP06-101</small></td><td class="r">¥3,080</td></tr></tbody></table>
+<h3>封入率の目安</h3><ul><li>SEC:1BOXに約1/3枚</li><li>パラレル:1BOXに約1/2枚</li><li>リーダーパラレル:1BOXに約1/6枚</li><li>SECパラレル:1BOXに約1/14枚</li><li>SP:1BOXに約1/12枚</li><li>コミパラ:1BOXに約1/72枚</li></ul>
+<p>価格は2026-10-21時点のショップ販売価格(楽天・Yahoo!ショッピング)です。封入率は販売・買取サイトの開封調査にもとづく推定値で、公式発表ではありません。当サイトは非公式のファンサイトです。</p>
+<h3>ほかの弾の開封シミュレーター</h3><ul class="lk"><li><a href="op17/">OP17 世界最強の戦士</a></li><li><a href="op16/">OP16 決戦の刻</a></li><li><a href="op15/">OP15 神の島の冒険</a></li><li><a href="eb04/">EB04 EGGHEAD CRISIS</a></li><li><a href="op14/">OP14 蒼海の七傑</a></li><li><a href="eb03/">EB03 ONE PIECE Heroines Edition</a></li><li><a href="op13/">OP13 受け継がれる意志</a></li><li><a href="prb02/">PRB02 ONE PIECE CARD THE BEST vol.2</a></li><li><a href="op12/">OP12 師弟の絆</a></li><li><a href="op11/">OP11 神速の拳</a></li><li><a href="eb02/">EB02 Anime 25th collection</a></li><li><a href="op10/">OP10 王族の血統</a></li><li><a href="op09/">OP09 新たなる皇帝</a></li><li><a href="prb01/">PRB01 ONE PIECE CARD THE BEST</a></li><li><a href="op08/">OP08 二つの伝説</a></li><li><a href="op07/">OP07 500年後の未来</a></li><li><a href="eb01/">EB01 メモリアルコレクション</a></li><li><a href="op06/">OP06 双璧の覇者</a></li><li><a href="op05/">OP05 新時代の主役</a></li><li><a href="op04/">OP04 謀略の王国</a></li><li><a href="op03/">OP03 強大な敵</a></li><li><a href="op02/">OP02 頂上決戦</a></li><li><a href="op01/">OP01 ROMANCE DAWN</a></li></ul>
+<p><a href="ranking/">ワンピースカード 相場ランキング(高額カードTOP50・今週の値上がり)</a></p>
+</section><!--/ABOUT-->
+</main>
+
+<div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
+<div class="bgr"></div><div class="glow"></div>
+<button id="dvX" aria-label="閉じる">×</button>
+<div class="dvin">
+<div class="stage"><div class="float"><div id="dvCard"></div></div></div>
+<div class="kk" id="dvK"></div>
+<h2 id="dvN"></h2>
+<div class="cid" id="dvId"></div>
+<div class="mp"><small>相場(ショップ販売価格)</small><b id="dvP"></b></div>
+<a class="cta" id="dvCta" target="_blank" rel="sponsored noopener" hidden></a>
+<div class="shops"><h3>販売中のショップ(安い順)<small id="dvNote"></small></h3><ol id="dvList"></ol><div class="alt" id="dvAlt"></div>
+<p class="adnote" style="text-align:left">PR・楽天アフィリエイト/バリューコマースの広告リンクです。在庫と価格は毎朝6時の取得時点のもので、売り切れ・価格変更の場合があります。</p></div>
+</div>
+</div>
+<button id="reveal" hidden aria-label="次へ"><div class="rays"></div><div class="in2"><div class="k" id="rk"></div><div class="card" id="rcard"><span id="rn"></span><div id="rimg"></div></div><div class="pr2" id="rp"></div><div class="hint">タップ</div></div></button>
+<div id="toast" class="toast"></div>
+<div id="stampEl" class="stamp" hidden></div>
+<div id="flash"></div>
+
+<script>
+var S={msrp:5280,pre:7000,date:''};
+var $=function(i){return document.getElementById(i)};
+var yen=function(v){return(v<0?'−':'')+'¥'+Math.abs(Math.round(v)).toLocaleString('ja-JP')};
+var sgn=function(v){return(v>=0?'+':'')+yen(v)};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var busy=true,skip=false,hits=[],tally={n:0,w:0,pnl:0},cur=0;
+// 弾の設定(sets/<CODE>.json)から作るカード。c=カテゴリ、k=表示ラベル、p=販売価格(nullは未取得=0円)、t=演出ランク
+var CFG=null,ALL=[],POOL={},BOXC=null;
+var LBL={R:'R',SR:'SR',SEC:'SEC',PAR:'パラレル',SECP:'SECパラレル',LPAR:'リーダーパラレル',SP:'SP',CP:'コミパラ',LSP:'リーダースーパーパラレル',TOP:'超レア',TR:'トレジャーレア',FOIL:'フォイル',FA:'フルアート',OTHER:'特別パラレル'};
+var TIER={TOP:3,LSP:3,CP:3,SP:2,TR:2};
+// カード裏面・BOXの色(BOXのパッケージ色): [メイン,濃い色,中央の丸,文字]
+var COLOR={OP01:['#1f4a9c','#102a5e'],OP02:['#8a3a1c','#4e1e0c'],OP03:['#1e7d8c','#0e4a55'],OP04:['#e0a81e','#9a6a08','#c3263a','#fff'],
+ OP05:['#8fb6e0','#4f7bb0'],OP06:['#2f6b3c','#13331b'],EB01:['#ee9ac2','#c0588a'],OP07:['#e8d25a','#b0962a','#c3263a','#fff'],
+ OP08:['#1f8a7a','#0d4d44'],PRB01:['#d42a2a','#8a0e0e'],OP09:['#3a3a46','#16161c'],OP10:['#3d3fa0','#1c1d5a'],EB02:['#3a6cc0','#1b3a78'],
+ OP11:['#e04a8a','#8a1a4e'],OP12:['#1f8a46','#0d4a22'],PRB02:['#b31d2e','#5c0a14'],OP13:['#d42a2a','#7a0e14'],EB03:['#d8406a','#8a1838'],
+ OP14:['#2a56b0','#122a66'],EB04:['#6a50c8','#34247a'],OP15:['#f0cc2a','#b08a08','#c3263a','#fff'],OP16:['#3a3442','#17131c'],OP17:['#e0b020','#9a700a','#c3263a','#fff']};
+function applyColor(code){var c=COLOR[code]||[],r=document.documentElement.style;
+ r.setProperty('--c1',c[0]||'#b0182b');r.setProperty('--c2',c[1]||'#7a0e1e');r.setProperty('--ca',c[2]||'#ffcf4a');r.setProperty('--ct',c[3]||'#3a0714')}
+function setupCards(cfg){
+ CFG=cfg;ALL=[];POOL={};
+ cfg.cards.forEach(function(r){var c={id:r[0],c:r[1],n:r[2],rar:r[3],k:r[4]||(cfg.labels&&cfg.labels[r[1]])||LBL[r[1]]||r[1],p:null,t:TIER[r[1]]||0};ALL.push(c);(POOL[c.c]=POOL[c.c]||[]).push(c)});
+}
+function retier(){ALL.forEach(function(c){var t=TIER[c.c]||0;if(c.p>=30000)t=3;else if(c.p>=8000&&t<2)t=2;c.t=t})}
+function price(c){return c.p||0}
+function avg(a){return a&&a.length?a.reduce(function(s,c){return s+price(c)},0)/a.length:0}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function rint(r){return r[0]+Math.floor(Math.random()*(r[1]-r[0]+1))}
+// 同じBOXの中で同じカテゴリのカードは重複させない(種類数より多く引くときだけ重複)。SRとSRパラレルはカテゴリが違うので重複可
+function pickN(a,n){var out=[],bag=[];for(var i=0;i<n;i++){if(!bag.length)bag=a.slice();out.push(bag.splice(Math.floor(Math.random()*bag.length),1)[0])}return out}
+// 1BOXの抽選: base(R・SRなどの枚数の幅)+ カテゴリごとの期待枚数λ(整数部は確定、端数は確率)
+function drawer(){
+ var base=CFG.base||{},cats=CFG.cats||{};
+ return function(force){
+  var h=[],k,i;
+  for(k in base){if(!POOL[k]||!Array.isArray(base[k]))continue;h=h.concat(pickN(POOL[k],rint(base[k])))}
+  for(k in cats){if(!POOL[k])continue;var l=cats[k].lambda,m=Math.floor(l)+(Math.random()<l-Math.floor(l)?1:0);h=h.concat(pickN(POOL[k],m))}
+  if(force){var f=typeof force==='string'?ALL.filter(function(c){return c.id===force})[0]:force;
+   if(f&&h.indexOf(f)<0){var j=-1;h.forEach(function(c,x){if(c.c===f.c)j=x});if(j>=0)h[j]=f;else h.push(f)}}
+  return h}
+}
+function ev(){var e=0,k,base=CFG.base||{},cats=CFG.cats||{};
+ for(k in base)if(Array.isArray(base[k]))e+=(base[k][0]+base[k][1])/2*avg(POOL[k]);
+ for(k in cats)e+=cats[k].lambda*avg(POOL[k]);return e}
+function missing(){var n=0;ALL.forEach(function(c){if(c.p==null&&(CFG.base[c.c]||CFG.cats[c.c]))n++});return n}
+function sum(h){return h.reduce(function(s,c){return s+price(c)},0)}
+function stats(){
+ var N=20000,v=new Array(N),i,d=drawer(),big=0;
+ for(i=0;i<N;i++){var h=d();v[i]=sum(h);if(h.some(function(c){return c.t>=2}))big++}
+ v.sort(function(a,b){return a-b});
+ var q=function(p){return v[Math.min(N-1,Math.floor(N*p))]};
+ var e=[S.msrp*.5,S.msrp,S.pre,Math.max(S.pre,S.msrp)*3].sort(function(a,b){return a-b});
+ var cnt=[0,0,0,0,0];v.forEach(function(x){var k=0;while(k<4&&x>=e[k])k++;cnt[k]++});
+ return{mean:ev(),med:q(.5),p10:q(.1),p90:q(.9),none:1-big/N,e:e,cnt:cnt.map(function(x){return x/N}),
+  winPre:v.filter(function(x){return x>=S.pre}).length/N,winMsrp:v.filter(function(x){return x>=S.msrp}).length/N};
+}
+
+// ---- カード画像 ----
+// 画像は毎朝の楽天APIバッチが data/latest.json に入れる出品画像(各カード最大3候補)を使います。
+// 正方形の画像より縦長(カード形)の画像を優先し、読み込めないときは標準デザインに戻ります。
+// 自前の画像を使いたいときは IMG にカードIDごとのURLを書くと、そちらが優先されます(例: 'OP17-005':'https://…/a.png')。
+// 公式サイトの画像は他サイトからの表示がブロックされる(CORP: same-site)ため使えません。
+var IMG={};
+// BOX_IMG にURLを書くと楽天の画像より優先されます
+var BOX_IMG='';
+function imgOf(c){return IMG[c.id]?[IMG[c.id]]:(c.imgs||[])}
+function addImg(parent,c){
+ var L=imgOf(c);if(!L.length)return;
+ var im=document.createElement('img'),i=0,first=null;
+ im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
+ im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
+ im.onload=function(){
+  if(im.src===first){im.classList.add('ok');return}
+  if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
+  im.classList.add('ok')};
+ im.src=L[0];parent.appendChild(im);
+}
+// ---- カード詳細(大きく表示+販売ショップ一覧) ----
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+function cardNo(c){return c.id.replace(/_[pr]\d+$/,'')}
+function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
+var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
+var dvOpen=false,dvPushed=false;
+function openDetail(c){
+ DVCUR=c;track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:$('rank').hidden?'gacha':'ranking'});
+ var dv=$('dv'),g=grade(c),col=DVC[g];
+ dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
+ var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
+ cardBox.innerHTML='<div class="fc"><div class="gen"><span class="rb">'+esc(c.k)+'</span><span class="nm">'+esc(c.n)+'</span><span class="id">'+cardNo(c)+'</span></div></div><div class="sh"></div>';
+ addImg(cardBox.querySelector('.fc'),c);
+ if(!reduce){void cardBox.offsetWidth;cardBox.classList.add('enter');
+  var st=dv.querySelector('.stage');[].forEach.call(st.querySelectorAll('.spk'),function(e){e.remove()});
+  for(var i=0;i<(g>=2?14:7);i++){var sp=document.createElement('i');sp.className='spk';sp.style.left=(Math.random()*110-5)+'%';sp.style.top=(Math.random()*110-5)+'%';sp.style.animationDelay=(Math.random()*2.6)+'s';st.appendChild(sp)}}
+ $('dvK').textContent=c.k;$('dvK').className='kk k-'+KC[c.c];
+ $('dvN').textContent=c.n;$('dvId').textContent=cardNo(c);
+ var P=$('dvP');if(c.p==null)P.textContent='価格未取得';else if(reduce)P.textContent=yen(c.p);else{var t0=performance.now();requestAnimationFrame(function st(t){var k=Math.min(1,(t-t0)/900);P.textContent=yen(c.p*(1-Math.pow(1-k,3)));if(k<1&&dvOpen)requestAnimationFrame(st)})}
+ var offs=(c.offers||[]).slice().sort(function(a,b){return a.p-b.p});
+ $('dvList').innerHTML=offs.length?offs.map(function(o,i){
+  return '<li'+(i?'':' class="best"')+'><span class="src '+(o.s==='yahoo'?'yahoo':'rakuten')+'">'+(o.s==='yahoo'?'Yahoo!':'楽天')+'</span>'+
+  '<span class="shop">'+esc(o.shop||'ショップ')+'</span><span class="pp">'+yen(o.p)+'</span>'+
+  '<span class="nm2"><span class="st">● 在庫あり</span>'+esc(o.n||'')+'</span><a class="buy" href="'+esc(o.u)+'" target="_blank" rel="sponsored noopener">ショップへ ›</a></li>'}).join('')
+  :'<li style="display:block"><p class="empty">取得時点で在庫のある出品が見つかりませんでした。下のボタンから最新の出品を探せます。</p></li>';
+ $('dvNote').textContent=offs.length?offs.length+'件・'+S.date+' 6時時点':'';
+ var cta=$('dvCta');if(offs.length){cta.href=offs[0].u;cta.textContent='最安 '+yen(offs[0].p)+' で手に入れる ›';cta.hidden=false}else cta.hidden=true;
+ var rs=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent(kw(c))+'/'),ys=c.ysearch||('https://shopping.yahoo.co.jp/search?p='+encodeURIComponent(kw(c)));
+ $('dvAlt').innerHTML='<a href="'+esc(rs)+'" target="_blank" rel="sponsored noopener">楽天で探す ›</a><a href="'+esc(ys)+'" target="_blank" rel="sponsored noopener">Yahoo!で探す ›</a>';
+ dv.hidden=false;dv.scrollTop=0;document.documentElement.style.overflow='hidden';dvOpen=true;
+ if(!dvPushed){try{history.pushState({dv:1},'',location.pathname+location.search+'#card='+encodeURIComponent(c.id));dvPushed=true}catch(e){}}
+ $('dvX').focus({preventScroll:true});
+}
+function closeDetail(fromPop){
+ if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow='';$('dvCard').innerHTML='';
+ if(dvPushed){dvPushed=false;if(!fromPop)try{history.back()}catch(e){}}
+}
+$('dvX').addEventListener('click',function(){closeDetail()});
+addEventListener('popstate',function(){if(dvOpen){dvPushed=false;closeDetail(true)}});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
+// 指・マウス・端末の傾きでカードが動く
+(function(){var cb=$('dvCard');
+ function tilt(x,y){if(reduce)return;cb.style.setProperty('--ry',(x*18).toFixed(1)+'deg');cb.style.setProperty('--rx',(-y*18).toFixed(1)+'deg');cb.style.setProperty('--sx',(50+x*60).toFixed(0)+'%')}
+ cb.addEventListener('pointermove',function(e){var r=cb.getBoundingClientRect();tilt((e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5)});
+ cb.addEventListener('pointerleave',function(){tilt(0,0)});
+ addEventListener('deviceorientation',function(e){if(!dvOpen||e.gamma==null)return;tilt(Math.max(-.5,Math.min(.5,e.gamma/40)),Math.max(-.5,Math.min(.5,(e.beta-45)/40)))});
+})();
+function setBox(u){if(!u||$('box').querySelector('img'))return;
+ var bi=document.createElement('img');bi.alt=(CFG?CFG.code:'')+' BOX';bi.referrerPolicy='no-referrer';
+ bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
+var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',SECP:'PAR',FOIL:'PAR',FA:'PAR',OTHER:'PAR',LPAR:'LPAR',LSP:'TOP',CP:'TOP',TOP:'TOP',SP:'SP',TR:'SP'};
+function grade(c){return c.c==='R'?0:c.c==='SR'?1:(c.t>=2?3:2)}
+function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
+function readSet(){S.msrp=+$('msrp').value||0;S.pre=+$('pre').value||0}
+function gmax(){return Math.max(S.pre,S.msrp)*1.5}
+function paint(x){$('total').textContent=yen(x);$('fill').style.width=Math.min(100,x/gmax()*100)+'%'}
+function setTotal(v,ms){var from=cur,t0=performance.now();cur=v;
+ if(skip||reduce||!ms){paint(v);return}
+ requestAnimationFrame(function step(t){var k=Math.min(1,(t-t0)/ms);paint(from+(v-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)});
+}
+function cardEl(c){
+ var d=document.createElement('div'),num=cardNo(c);
+ d.className='cd g'+grade(c)+' k-'+KC[c.c];
+ d.innerHTML='<div class="in"><div class="bk"><span>'+(CFG?CFG.code:'')+'</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
+  '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
+ var b=document.createElement('button');b.className='go';b.type='button';
+ var n=(c.offers||[]).length;b.textContent=n?'販売 '+n+'店 ›':'ショップを探す ›';d.appendChild(b);
+ d.addEventListener('click',function(){if(d.classList.contains('on'))openDetail(c)});
+ addImg(d.querySelector('.fc'),c);
+ return d;
+}
+function burst(x,y,col,n){
+ if(reduce)return;
+ for(var i=0;i<n;i++){var p=document.createElement('i');p.className='pt';p.style.left=x+'px';p.style.top=y+'px';p.style.background=col[i%col.length];document.body.appendChild(p);
+  var a=Math.random()*Math.PI*2,d=50+Math.random()*Math.min(innerWidth*.45,260);
+  var an=p.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+Math.cos(a)*d+'px,'+(Math.sin(a)*d+70)+'px) scale(.3) rotate('+(Math.random()*600)+'deg)',opacity:0}],{duration:800+Math.random()*700,easing:'cubic-bezier(.1,.7,.3,1)'});
+  an.onfinish=function(e){var t=e.target.effect&&e.target.effect.target;if(t)t.remove()};
+ }
+}
+function flash(o,ms){if(!reduce)$('flash').animate([{opacity:o},{opacity:0}],{duration:ms||450})}
+function shake(){if(!reduce)$('result').animate([{transform:'translate(0)'},{transform:'translate(-7px,3px)'},{transform:'translate(7px,-3px)'},{transform:'translate(-3px,2px)'},{transform:'translate(0)'}],{duration:320})}
+function toast(t,cls){var e=$('toast');e.textContent=t;e.className='toast '+cls;void e.offsetWidth;e.classList.add('go')}
+function fx(e,g){
+ if(reduce||skip)return;
+ e.animate([{transform:'scale(1)'},{transform:'scale('+(1.07+g*.07)+')'},{transform:'scale(1)'}],{duration:300+g*140,easing:'ease-out'});
+ var r=e.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+ if(g===1)burst(x,y,['#ffcf4a','#fff3c0'],12);
+ if(g>=2){burst(x,y,['#ff8fd0','#8fe9ff','#ffe27a','#c3a8ff','#6cffc8'],g===3?60:30);flash(g===3?.9:.5);shake()}
+}
+function cutin(c){
+ var r=$('reveal');r.className=c.t===3?'t3':'t2';
+ $('rk').textContent=c.k;$('rn').textContent=c.n;$('rp').textContent=c.p==null?'':yen(c.p);
+ $('rimg').innerHTML='';addImg($('rimg'),c);
+ r.hidden=false;flash(1,700);
+ burst(innerWidth/2,innerHeight*.45,c.t===3?['#ffe08a','#fff3c0','#ff9d2e','#ff5fa8']:['#d8c8ff','#8fb4ff','#fff'],c.t===3?90:45);
+ return new Promise(function(res){r.onclick=function(){r.hidden=true;res()}});
+}
+async function play(){
+ skip=false;$('result').classList.remove('skipping');
+ var order=hits.slice().sort(function(a,b){return grade(a)-grade(b)||price(a)-price(b)});
+ var g=$('grid');g.innerHTML='';cur=0;paint(0);
+ $('mkM').style.left=(S.msrp/gmax()*100)+'%';$('mkP').style.left=(S.pre/gmax()*100)+'%';
+ $('mkM').classList.remove('on');$('mkP').classList.remove('on');
+ $('verdict').hidden=true;$('after').hidden=true;$('detail').hidden=true;$('skip').hidden=false;
+ var els=order.map(function(c){var e=cardEl(c);g.appendChild(e);return e});
+ if(!reduce)els.forEach(function(e,i){e.animate([{opacity:0,transform:'translateY(-60px) scale(.5) rotate(-10deg)'},{opacity:1,transform:'none'}],{duration:400,delay:i*45,easing:'cubic-bezier(.2,1.3,.4,1)',fill:'backwards'})});
+ await wait(500+els.length*45);
+ var tot=0;
+ for(var i=0;i<order.length;i++){
+  var c=order[i],e=els[i],gr=grade(c);
+  if(!skip&&!reduce)e.scrollIntoView({block:'nearest',behavior:'smooth'});
+  if(gr>=2&&!skip){e.classList.add('tease');await wait(gr===3?1200:850);e.classList.remove('tease')}
+  if(c.t>=2&&!skip)await cutin(c);
+  e.classList.add('on');
+  var prev=tot;tot+=price(c);
+  fx(e,gr);setTotal(tot,gr===0?220:550);
+  if(prev<S.msrp&&tot>=S.msrp){$('mkM').classList.add('on');if(!skip)toast('定価突破!','m')}
+  if(prev<S.pre&&tot>=S.pre){$('mkP').classList.add('on');if(!skip){toast('プレ値突破!!','p');burst(innerWidth/2,innerHeight*.3,['#ffcf4a','#fff','#ff5fa8','#7fe0ff'],60)}}
+  await wait(gr===0?160:gr===1?420:750);
+ }
+ $('skip').hidden=true;setTotal(tot,0);
+ await wait(250);finish(tot);
+}
+function finish(tot){
+ var win=tot>=S.pre,mid=!win&&tot>=S.msrp,cls=win?'win':mid?'mid':'lose',word=win?'大勝利!':mid?'定価超え!':'負け…';
+ tally.n++;tally.pnl+=tot-S.pre;if(win)tally.w++;
+ if(!S.forced){hAdd(tot);refreshHist();var bt=hits.slice().sort(function(a,b){return price(b)-price(a)})[0];
+  track('open_box',{set:CFG.code,total:Math.round(tot),result:cls,best_card:bt?bt.id:'',best_price:bt?price(bt):0})}
+ var st=$('stampEl');st.className='stamp '+cls;st.innerHTML='<b>'+word+'</b><small>定価 '+sgn(tot-S.msrp)+' / プレ値 '+sgn(tot-S.pre)+'</small>';st.hidden=false;
+ if(!reduce){st.animate([{transform:'translate(-50%,-50%) scale(3) rotate(-14deg)',opacity:0},{transform:'translate(-50%,-50%) scale(.9) rotate(-8deg)',opacity:1,offset:.7},{transform:'translate(-50%,-50%) scale(1) rotate(-8deg)',opacity:1}],{duration:520,easing:'cubic-bezier(.3,1.4,.5,1)'});shake()}
+ if(win)burst(innerWidth/2,innerHeight*.45,['#4dffa6','#ffcf4a','#fff','#ff5fa8'],90);
+ var v=$('verdict');v.className='dg '+cls;v.textContent=word;v.hidden=false;
+ $('tally').textContent='累計 '+tally.n+'BOX ・ プレ値超え '+tally.w+'回 ・ プレ値で買った場合の収支 '+sgn(tally.pnl);
+ $('after').hidden=false;
+ var close=function(){st.hidden=true;document.removeEventListener('pointerdown',close)};
+ setTimeout(function(){document.addEventListener('pointerdown',close)},300);setTimeout(close,reduce?1200:2200);
+}
+function detail(){
+ var st=stats(),ms=missing();
+ $('stats').innerHTML='<div class="st"><div class="small">期待値(平均)</div><div class="v dg">'+yen(st.mean)+'</div><small>一部の超高額カードが押し上げた値</small></div><div class="st"><div class="small">よくある結果(中央値)</div><div class="v dg">'+yen(st.med)+'</div><small>10%〜90%:'+yen(st.p10)+'〜'+yen(st.p90)+'</small></div>';
+ $('statNote').textContent='プレ値超えは約'+(st.winPre*100).toFixed(0)+'%、定価超えは約'+(st.winMsrp*100).toFixed(0)+'%のBOX。大当たり(SP以上)なしのBOXは約'+(st.none*100).toFixed(0)+'%。';
+ var e=st.e,lb=function(x){return yen(x)+(x===S.msrp?'(定価)':x===S.pre?'(プレ値)':'')};
+ var names=[lb(e[0])+'未満',lb(e[0])+'〜',lb(e[1])+'〜',lb(e[2])+'〜',lb(e[3])+'以上'];
+ $('bars').innerHTML=st.cnt.map(function(p,k){var up=k<4?e[k]:Infinity,lo=k?e[k-1]:0,col=up<=S.msrp?'var(--lose)':lo>=S.pre?'var(--win)':'var(--gold)';
+  return '<div class="bar"><span>'+names[k]+'</span><i style="width:'+(p*100)+'%;background:'+col+'"></i><span>'+(p*100).toFixed(p<.01&&p>0?2:1)+'%</span></div>'}).join('');
+ $('warn').hidden=!ms;if(ms)$('warn').textContent='価格が取れていないカードが'+ms+'種あり、0円で計算しています。';
+}
+async function openBox(force){
+ if(busy)return;busy=true;readSet();S.forced=!!force;
+ var box=$('box'),scene=$('scene');
+ if(!reduce){
+  box.classList.add('shake');await new Promise(function(r){setTimeout(r,900)});
+  for(var i=0;i<24;i++){var el=document.createElement('div');el.className='bc';scene.appendChild(el);
+   var a=Math.random()*Math.PI*2,dist=Math.min(innerWidth,innerHeight)*(.28+Math.random()*.45),x=Math.cos(a)*dist,y=Math.sin(a)*dist*.8,rot=(Math.random()-.5)*900;
+   el.animate([{transform:'translate(0,0) scale(.3) rotate(0)',opacity:1},{transform:'translate('+x+'px,'+y+'px) scale(1.15) rotate('+rot+'deg)',opacity:1,offset:.7},{transform:'translate('+x*1.15+'px,'+y*1.15+'px) scale(1) rotate('+rot*1.1+'deg)',opacity:0}],{duration:1100,easing:'cubic-bezier(.15,.8,.25,1)',fill:'forwards'})}
+  box._fade=box.animate([{opacity:1,filter:'brightness(1)'},{opacity:0,filter:'brightness(3)'}],{duration:260,fill:'forwards'});
+  await new Promise(function(r){setTimeout(r,850)});
+ }
+ var fl=$('flash');
+ await fl.animate([{opacity:0},{opacity:1}],{duration:reduce?80:420,fill:'forwards'}).finished;
+ hits=drawer()(force);
+ $('stage').hidden=true;$('result').hidden=false;scrollTo(0,0);
+ await fl.animate([{opacity:1},{opacity:0}],{duration:reduce?80:800,fill:'forwards'}).finished;
+ await play();
+ busy=false;
+}
+function reset(){
+ if(busy)return;
+ var box=$('box');box.classList.remove('shake');if(box._fade){box._fade.cancel();box._fade=null}
+ [].forEach.call(document.querySelectorAll('.bc'),function(e){e.remove()});
+ $('stampEl').hidden=true;$('result').hidden=true;$('stage').hidden=false;scrollTo(0,0);
+}
+$('box').addEventListener('click',function(){openBox()});
+$('again').addEventListener('click',reset);
+$('skip').addEventListener('click',function(){skip=true;$('result').classList.add('skipping');$('reveal').hidden=true;if($('reveal').onclick)$('reveal').onclick()});
+$('more').addEventListener('click',function(){var d=$('detail');d.hidden=!d.hidden;if(!d.hidden)detail()});
+
+// ---- 開封履歴(この端末のブラウザに保存。テスト開封は記録しない) ----
+var HK='opgacha.history.v1',HMAX=500;
+function hLoad(){try{var a=JSON.parse(localStorage.getItem(HK)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}}
+function hSave(a){try{localStorage.setItem(HK,JSON.stringify(a.slice(-HMAX)))}catch(e){}}
+function hAdd(tot){
+ var best=hits.slice().sort(function(a,b){return price(b)-price(a)}).slice(0,3).map(function(c){return{id:c.id,n:c.n,k:c.k,p:c.p||0}});
+ var a=hLoad();a.push({t:Date.now(),set:CFG.code,name:CFG.name,tot:Math.round(tot),msrp:S.msrp,pre:S.pre,best:best});hSave(a);
+}
+function hDate(t){var d=new Date(t);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
+function renderHist(el,code){
+ var all=hLoad(),a=code?all.filter(function(h){return h.set===code}):all;
+ if(!a.length){el.innerHTML='<p class="small">まだ記録がありません。BOXを開封すると、この端末に結果が残ります。</p>';return}
+ var n=a.length,w=0,m=0,pnl=0,best=null;
+ a.forEach(function(h){if(h.tot>=h.pre)w++;else if(h.tot>=h.msrp)m++;pnl+=h.tot-h.pre;(h.best||[]).forEach(function(c){if(!best||c.p>best.p)best={c:c,h:h}})});
+ var html='<div class="hsum"><div><small>開封数</small><b>'+n+'BOX</b></div><div><small>プレ値超え</small><b>'+w+'回('+Math.round(w/n*100)+'%)</b></div>'+
+  '<div><small>プレ値で買った場合の収支</small><b>'+sgn(pnl)+'</b></div><div><small>平均</small><b>'+yen(a.reduce(function(t,h){return t+h.tot},0)/n)+'</b></div></div>'+
+  (best?'<p class="small">最高の1枚:'+esc(best.c.n)+'('+esc(best.c.k)+')'+yen(best.c.p)+' ・ '+esc(best.h.set)+' '+hDate(best.h.t)+'</p>':'');
+ html+='<ul class="hlist">'+a.slice(-30).reverse().map(function(h){
+  var cls=h.tot>=h.pre?'w':h.tot>=h.msrp?'m':'l',word=cls==='w'?'大勝利':cls==='m'?'定価超え':'負け',b=(h.best||[])[0];
+  return '<li><span class="d">'+hDate(h.t)+(code?'':' <a href="'+esc(h.set.toLowerCase())+'/">'+esc(h.set)+'</a>')+'</span><span class="'+cls+'">'+word+'</span><span class="t">'+yen(h.tot)+'</span>'+
+   (b?'<span class="b">'+esc(b.n)+'('+esc(b.k)+')'+yen(b.p)+'</span>':'')+'</li>'}).join('')+'</ul>';
+ html+='<p style="text-align:right;margin:8px 0 0"><button class="lnk" type="button" data-clear="'+(code||'')+'">'+(code?'この弾の履歴を消す':'すべての履歴を消す')+'</button></p>';
+ el.innerHTML=html;
+ el.querySelector('[data-clear]').addEventListener('click',function(){
+  if(!confirm(code?code+'の開封履歴を消しますか?':'すべての開封履歴を消しますか?'))return;
+  hSave(code?hLoad().filter(function(h){return h.set!==code}):[]);renderHist(el,code)});
+}
+function refreshHist(){if(!CFG)return;renderHist($('histSB'),CFG.code);renderHist($('histRB'),CFG.code)}
+function topCard(){var ord=['TOP','LSP','CP','SP','TR','SECP','LPAR'];for(var i=0;i<ord.length;i++)if(POOL[ord[i]])return pick(POOL[ord[i]]);return pick(ALL)}
+$('t3').addEventListener('click',function(){reset();openBox(topCard())});
+$('t2').addEventListener('click',function(){reset();openBox(pick(POOL.SP||POOL.PAR||ALL))});
+['msrp','pre'].forEach(function(i){$(i).addEventListener('change',function(){readSet();if(!$('detail').hidden)detail()})});
+var RAW='https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/';
+function getJSON(path){return fetch(RAW+path,{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return fetch(path).then(function(r){if(!r.ok)throw 0;return r.json()})})}
+function catText(k){return (LBL[k]||k)}
+function showSet(code){
+ Promise.all([getJSON('sets/'+code+'.json'),getJSON('data/sets/'+code+'.json').catch(function(){return null})]).then(function(r){
+  var cfg=r[0],j=r[1];setupCards(cfg);applyColor(cfg.code);
+  document.title=cfg.code+' '+cfg.name+' 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場';pv();
+  $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('boxCode').textContent=cfg.code;
+  S.msrp=cfg.msrp||5280;S.pre=cfg.market||Math.round(S.msrp*1.2);var bx=j&&j.box,bl=j&&j.links&&j.links.BOX;
+  if(bx&&bx.pre)S.pre=bx.pre;$('msrp').value=S.msrp;$('pre').value=S.pre;
+  if(j){var m={};j.cards.forEach(function(c){m[c.id]=c});var im=j.images||{};
+   ALL.forEach(function(c){var x=m[c.id];if(!x)return;if(x.refPrice)c.p=x.refPrice;
+    if(x.offers&&x.offers.length)c.offers=x.offers;c.search=x.searchUrl;c.ysearch=x.ysearchUrl;if(x.imgs&&x.imgs.length)c.imgs=x.imgs});
+   setBox(BOX_IMG||(im.BOX&&im.BOX[0]));S.date=j.updatedAt||''}
+  else setBox(BOX_IMG);
+  retier();
+  BOXC={id:cfg.code+' BOX',c:'BOX',t:2,n:cfg.name+' BOX',k:'未開封BOX',p:bx&&bx.pre?bx.pre:null,offers:bl&&bl.offers||[],search:bl&&bl.searchUrl,ysearch:bl&&bl.ysearchUrl,imgs:j&&j.images&&j.images.BOX||[]};
+  $('boxInfo').innerHTML='定価 <b>'+yen(S.msrp)+'</b> ・ プレ値 <b>'+yen(S.pre)+'</b><br>'+(bx&&bx.pre?'プレ値=楽天・Yahoo!の未開封BOX販売価格(安い順3件の中央値・'+bx.count+'件・'+esc(bx.updatedAt)+')':'プレ値=販売サイトの相場調査(参考値)')+
+   (BOXC.offers.length?' <button class="lnk" type="button" id="boxShops">BOXの販売店 '+BOXC.offers.length+'件 ›</button>':'');
+  if($('boxShops'))$('boxShops').addEventListener('click',function(e){e.stopPropagation();openDetail(BOXC)});
+  refreshHist();
+  var cats=Object.keys(cfg.cats).map(function(k){var c=cfg.cats[k];return catText(k)+':1BOXに約'+(c.lambda>=1?c.lambda.toFixed(1)+'枚':'1/'+Math.round(1/c.lambda)+'枚')+(c.note?'('+esc(c.note)+')':'')});
+  var base=Object.keys(cfg.base).map(function(k){return k+' '+cfg.base[k][0]+'〜'+cfg.base[k][1]+'枚'}).join('、');
+  $('src').innerHTML=['封入率は開封調査にもとづく販売・買取サイトの推定値です。公式発表はありません(信頼度:'+({high:'高',medium:'中',low:'低'}[cfg.confidence]||'-')+')。',
+   '1BOX('+cfg.packs+'パック×'+cfg.perPack+'枚):'+base+'。'].concat(cats).concat([
+   'プレ値:'+(bx&&bx.pre?'楽天ウェブサービスとYahoo!ショッピングの未開封BOX(1BOX単品・開封済み/カートン/オリパ等を除く)の販売価格のうち安い順3件の中央値('+bx.count+'件・最安'+yen(bx.min)+'・'+esc(bx.updatedAt)+'時点)。フリマ・オークションの取引価格は含みません。':'販売サイトの相場調査にもとづく参考値。')+'条件・演出テストの欄で変更できます。',
+   '価格はショップの販売価格。高額カードの一部は手入力、そのほかは楽天ウェブサービスとYahoo!ショッピングの価格('+(S.date||'-')+'時点)。カード・BOX画像は楽天市場・Yahoo!ショッピングの出品画像です。',
+   '根拠:'+cfg.sources.slice(0,8).map(function(u){return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(u.replace(/^https?:\/\//,'').slice(0,40))+'</a>'}).join(' / ')
+  ]).map(function(t){return '<li>'+t+'</li>'}).join('');
+  $('picker').hidden=true;$('stage').hidden=false;busy=false;
+ }).catch(function(){location.href='./'});
+}
+function showPicker(){
+ $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード 開封シミュレーター|全弾BOX開封ガチャ・期待値・相場';pv();renderHist($('histPB'),'');
+ Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
+  var list=r[0].sets,sum=r[1].sets||{};
+  $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
+   return '<a class="sc" href="'+s.code.toLowerCase()+'/"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+(x.box?'<img alt="" referrerpolicy="no-referrer" src="'+esc(x.box)+'" onerror="this.remove()">':'')+'<b>'+s.code+'</b></div>'+
+    '<div class="tx"><div class="cd2">'+s.code+'</div><div class="nm3">'+esc(s.name)+'</div>'+
+    '<div class="ev">定価 '+(s.msrp?yen(s.msrp):'-')+(x.pre?'<br>プレ値 '+yen(x.pre):'')+(x.ev?'<br>期待値 <b>'+yen(x.ev)+'</b>':'<br>価格取得待ち')+'</div></div></a>'}).join('');
+  [].forEach.call(document.querySelectorAll('.sc .im img'),function(im){im.addEventListener('load',function(){var b=im.parentNode.querySelector('b');if(b)b.remove()})});
+ });
+}
+
+// ---- アクセス解析(GA4) ----
+var DVCUR=null;
+function track(name,p){try{if(window.gtag)gtag('event',name,p||{})}catch(e){}}
+function pv(){track('page_view',{page_title:document.title,page_location:location.href})}
+// 販売店リンクのクリック(アフィリエイトの成果につながる操作)
+$('dv').addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a||!DVCUR)return;
+ var li=a.closest('#dvList li'),kind=a.id==='dvCta'?'cheapest_button':li?'shop_list':'search';
+ var src=li?(li.querySelector('.src.yahoo')?'yahoo':'rakuten'):(/yahoo/i.test(a.href)?'yahoo':'rakuten');
+ track('shop_click',{item_id:DVCUR.id,item_name:DVCUR.n,item_label:DVCUR.k,price:DVCUR.p||0,link_type:kind,shop_source:src,position:li?[].indexOf.call(li.parentNode.children,li)+1:0,from:$('rank').hidden?'gacha':'ranking'})});
+
+// ---- 相場ランキング ----
+var RK=null,RKS={div:'top',tab:'high'};
+var RKDIV={top:'超高額(SP・コミパラ・超レア・リーダースーパーパラレル・トレジャーレア)',par:'パラレル(パラレル・SECパラレル・リーダーパラレル・フルアートなど)',base:'通常カード(R・SR・SEC)'};
+function spark(a){if(!a||a.length<2)return'';var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),w=64,h=18;
+ var pts=a.map(function(v,i){return (i/(a.length-1)*w).toFixed(1)+','+(mx===mn?h/2:h-(v-mn)/(mx-mn)*h).toFixed(1)}).join(' ');
+ return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts+'" fill="none" stroke="#4dffa6" stroke-width="1.6"/></svg>'}
+function rkCard(r){return{id:r.id,set:r.set,c:r.c,n:r.n,k:r.k,p:r.p,offers:r.offers||[],search:r.search,ysearch:r.ysearch,imgs:r.imgs||[],t:TIER[r.c]||(r.p>=8000?2:0)}}
+function renderRank(){
+ track('view_ranking',{division:RKS.div,tab:RKS.tab});
+ [].forEach.call(document.querySelectorAll('#rkDiv button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.div)});
+ [].forEach.call(document.querySelectorAll('#rkTab button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.tab)});
+ var d=RK.divisions[RKS.div],list=d[RKS.tab]||[];
+ $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab==='up'?' ・ 約7日前の参考価格との比較(上げ幅'+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)':'');
+ if(!list.length){$('rkList').innerHTML='<li class="em">'+(RKS.tab==='up'?'まだ値上がりのデータがありません。価格の記録が数日分たまると表示されます'+(d.days?'(現在'+d.days+'日分)':'')+'。':'データがありません。')+'</li>';return}
+ $('rkList').innerHTML=list.map(function(r,i){
+  var img=r.imgs&&r.imgs[0]?'<img alt="" loading="lazy" referrerpolicy="no-referrer" src="'+esc(r.imgs[0])+'" onerror="this.remove()">':'';
+  var right=RKS.tab==='up'?yen(r.p)+'<span class="ch">+'+r.pct+'%(+'+yen(r.diff)+')</span>'+spark(r.spark):yen(r.p);
+  var meta='<span class="tg">'+esc(r.k)+'</span>'+esc(r.set)+' '+esc(r.id.replace(/_[pr]\d+$/,''))+(r.manual?' <span class="tg m">手入力</span>':(RKS.tab==='up'?' ・ '+r.days+'日前 '+yen(r.prev):' ・ 出品'+r.count+'件'));
+  return '<li data-i="'+i+'"><span class="no">'+(i+1)+'</span><span class="th">'+img+'</span><span><div class="nm4">'+esc(r.n)+'</div><div class="mt">'+meta+'</div></span><span class="pz">'+right+'</span></li>'}).join('');
+}
+function showRank(){
+ $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';pv();
+ var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up')RKS.tab='up';
+ getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
+  .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
+}
+function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RKS.div+'&tab='+RKS.tab)}catch(e){}if(RK)renderRank()}
+$('rkDiv').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('div',b.dataset.v)});
+$('rkTab').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('tab',b.dataset.v)});
+$('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard(RK.divisions[RKS.div][RKS.tab][+li.dataset.i]))});
+(function(){var q=new URLSearchParams(location.search),P=window.PAGE||{},code=(P.set||q.get('set')||'').toUpperCase();if(P.view==='rank'||q.get('view')==='rank')showRank();else if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
+</script>
+</body>
+</html>
