@@ -4,6 +4,7 @@ import { readFile, writeFile, mkdir, appendFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const { RAKUTEN_APP_ID, RAKUTEN_ACCESS_KEY, RAKUTEN_AFFILIATE_ID = '', SITE_REFERER, YAHOO_APP_ID = '', YAHOO_VC_SID = '', YAHOO_VC_PID = '' } = process.env;
+const BOX_ONLY = /^(1|true)$/.test(process.env.BOX_ONLY ?? '');
 const DELAY_MS = Number(process.env.DELAY_MS ?? 1100); // 1秒1リクエスト程度に抑える
 if (!RAKUTEN_APP_ID || !RAKUTEN_ACCESS_KEY || !SITE_REFERER) {
   console.error('RAKUTEN_APP_ID / RAKUTEN_ACCESS_KEY / SITE_REFERER を設定してください');
@@ -148,6 +149,35 @@ async function priceCard(card, defaults) {
   return rec;
 }
 
+// BOX(未開封)の販売価格。弾名+弾コード(OP17 / OP-17)の両方を含む出品だけを使い、
+// 複数BOX・カートン・パック・開封済み・オリパなどは除外。安い順3件の中央値をプレ値(実売相場)とする。
+const BOX_NG = ['カートン', 'パック単品', '1パック', 'バラ', 'シングル', '開封済', '空箱', 'オリパ', '福袋', 'ケース', 'セット', '2BOX', '3BOX', '4BOX', '5BOX', '6BOX', '10BOX', '12BOX', '24BOX', '×2', 'X2', '2個', '3個', 'スリーブ', 'プレイマット', 'デッキ', 'ストレージ'];
+async function priceBox(meta) {
+  const code = meta.code, hy = code.replace(/^([A-Z]+)(\d+)$/, '$1-$2');
+  const minPrice = Math.max(3000, Math.round((meta.msrp ?? 5000) * 0.7));
+  const items = [...await search(`ワンピースカード ${meta.name} BOX`, minPrice)];
+  await sleep(DELAY_MS);
+  items.push(...await search(`ワンピースカード ${hy} BOX`, minPrice));
+  const seen = new Set();
+  const valid = items.filter((i) => {
+    const n = norm(i.itemName), k = i.url;
+    if (seen.has(k)) return false; seen.add(k);
+    return n.includes('BOX') && (n.includes(norm(code)) || n.includes(norm(hy))) && !BOX_NG.some((w) => n.includes(norm(w)));
+  }).sort((a, b) => a.itemPrice - b.itemPrice);
+  const kw = `ワンピースカード ${hy} BOX`;
+  const res = { count: valid.length, images: imgsOf(valid), link: linkOf(valid, kw), box: null };
+  if (valid.length) {
+    const pre = median(valid.slice(0, 3).map((i) => i.itemPrice));
+    res.box = { pre, min: valid[0].itemPrice, count: valid.length, updatedAt: today,
+      counts: { rakuten: valid.filter((i) => i.src === 'rakuten').length, yahoo: valid.filter((i) => i.src === 'yahoo').length } };
+    const f = `data/history/BOX-${code}.csv`;
+    if (!existsSync(f)) await writeFile(f, 'date,min,ref,count\n');
+    const hist = await readFile(f, 'utf8');
+    if (!hist.includes(`\n${today},`)) await appendFile(f, `${today},${valid[0].itemPrice},${pre},${valid.length}\n`);
+  }
+  return res;
+}
+
 async function main() {
   const { defaults, cards } = JSON.parse(await readFile('cards.json', 'utf8'));
   const index = JSON.parse(await readFile('sets/index.json', 'utf8'));
@@ -161,8 +191,12 @@ async function main() {
   for (const code of targets) {
     const meta = index.sets.find((s) => s.code === code);
     const list = cards.filter((c) => c.set === code);
-    const out = [], failed = [];
-    for (const card of list) {
+    const file = `data/sets/${code}.json`;
+    const prev = existsSync(file) ? JSON.parse(await readFile(file, 'utf8')) : null;
+    let out = [];
+    const failed = [];
+    if (BOX_ONLY && prev) out = prev.cards; // BOXだけ更新するモード(カード価格は前回のまま)
+    else for (const card of list) {
       try {
         const rec = await priceCard(card, defaults);
         out.push(rec);
@@ -173,23 +207,25 @@ async function main() {
       }
       await sleep(DELAY_MS);
     }
-    // BOXの画像と販売リンク
-    const images = {}, links = {};
+    // BOXの画像・販売リンク・実売価格(プレ値)
+    const images = { ...(prev?.images ?? {}) }, links = { ...(prev?.links ?? {}) };
+    let box = prev?.box ?? null;
     try {
-      const box = { id: 'BOX', code: meta.name, keyword: `ワンピースカード ${meta.name} BOX`, must: ['BOX'], mustNot: ['カートン', 'パック単品', '1パック', 'シングル'], minPrice: 3000 };
-      const valid = pick(await search(box.keyword, box.minPrice), box, defaults);
-      const imgs = imgsOf(valid); if (imgs.length) images.BOX = imgs;
-      links.BOX = linkOf(valid, box.keyword);
+      const r = await priceBox(meta);
+      if (r.images.length) images.BOX = r.images;
+      links.BOX = r.link;
+      if (r.box) box = r.box;
+      console.log(`[${code}] BOX: ${r.count}件 プレ値=${r.box?.pre ?? '-'}`);
     } catch (e) { if (/認証エラー/.test(e.message)) throw e; console.error(`[${code}] BOX: ${e.message}`); }
     await sleep(DELAY_MS);
 
-    await writeFile(`data/sets/${code}.json`, JSON.stringify({ code, updatedAt: today, credit: 'Supported by Rakuten Developers / Web Services by Yahoo! JAPAN', cards: out, images, links }));
+    await writeFile(file, JSON.stringify({ code, updatedAt: BOX_ONLY && prev ? prev.updatedAt : today, credit: 'Supported by Rakuten Developers / Web Services by Yahoo! JAPAN', cards: out, images, links, box }));
     spikesAll.push(...out.filter((c) => c.change != null && c.change >= SPIKE_PCT && c.count >= MIN_SAMPLES).map((c) => ({ ...c, set: code, offers: undefined, imgs: undefined })));
     total += list.length; failedAll += failed.length;
     console.log(`[${code}] 完了: ${out.length}件, 失敗${failed.length}件`);
   }
   spikesAll.sort((a, b) => b.change - a.change);
-  await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes: spikesAll }, null, 1));
+  if (!BOX_ONLY) await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes: spikesAll }, null, 1));
   console.log(`全体: ${total}件, 急騰${spikesAll.length}件, 失敗${failedAll}件`);
   if (total && failedAll > total / 2) process.exit(1); // 半数超の失敗はジョブ失敗にする
 }
