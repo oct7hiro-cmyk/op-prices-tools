@@ -77,7 +77,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 .box.has-img{height:auto}
 .box.has-img .cube{display:none}
 .box.has-img .bimg{display:block;width:100%;max-height:min(40svh,280px);object-fit:contain;filter:drop-shadow(0 16px 14px rgba(0,0,0,.55))}
-.sc .im .pimg{max-width:82%;max-height:82%;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(0,0,0,.6))}
+.sc .im .pimg{position:absolute;left:8%;top:8%;width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 8px 8px rgba(0,0,0,.6))}
 .sc .im.has-img .mbox{display:none}
 .scene:has(.box.has-img)::after{bottom:calc(50% - 132px)}
 .box.shake{animation:sk .9s linear forwards}
@@ -223,7 +223,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;text-align:left}
 .sc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .15s}
 .sc:hover{transform:translateY(-3px)}
-.sc .im{aspect-ratio:1.25;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
+.sc .im{aspect-ratio:1;overflow:hidden;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
 .sc .im b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:30px;color:var(--gold)}
 .sc .tx{padding:8px 10px 10px}
 .sc .cd2{font-family:"Dela Gothic One",sans-serif;font-size:15px;color:var(--gold)}
