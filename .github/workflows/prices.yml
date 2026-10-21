@@ -21,8 +21,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
-      - run: node scripts/fetch-yuyutei.mjs
-        continue-on-error: true
       - run: node scripts/build-sets.mjs
       - run: node scripts/fetch-prices.mjs
         env:
