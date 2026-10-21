@@ -1,0 +1,212 @@
+{
+ "updated": "2026-10-20",
+ "sets": [
+  {
+   "code": "OP17",
+   "name": "世界最強の戦士",
+   "title": "ブースターパック 世界最強の戦士【OP-17】",
+   "release": "2026-08-22",
+   "msrp": 5760,
+   "market": 12000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP16",
+   "name": "決戦の刻",
+   "title": "ブースターパック 決戦の刻【OP-16】",
+   "release": "2026-05-30",
+   "msrp": 5280,
+   "market": 10000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP15",
+   "name": "神の島の冒険",
+   "title": "ブースターパック 神の島の冒険【OP-15】",
+   "release": "2026-02-28",
+   "msrp": 5280,
+   "market": 9500,
+   "confidence": "medium"
+  },
+  {
+   "code": "EB04",
+   "name": "EGGHEAD CRISIS",
+   "title": "エクストラブースター EGGHEAD CRISIS【EB-04】",
+   "release": "2026-01-31",
+   "msrp": 5280,
+   "market": 12500,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP14",
+   "name": "蒼海の七傑",
+   "title": "ブースターパック 蒼海の七傑【OP-14】",
+   "release": "2025-11-22",
+   "msrp": 5280,
+   "market": 9000,
+   "confidence": "medium"
+  },
+  {
+   "code": "EB03",
+   "name": "ONE PIECE Heroines Edition",
+   "title": "エクストラブースター ONE PIECE Heroines Edition【EB-03】",
+   "release": "2025-10-25",
+   "msrp": 5280,
+   "market": 13000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP13",
+   "name": "受け継がれる意志",
+   "title": "ブースターパック 受け継がれる意志【OP-13】",
+   "release": "2025-08-23",
+   "msrp": 5280,
+   "market": 20000,
+   "confidence": "medium"
+  },
+  {
+   "code": "PRB02",
+   "name": "ONE PIECE CARD THE BEST vol.2",
+   "title": "プレミアムブースター ONE PIECE CARD THE BEST vol.2【PRB-02】",
+   "release": "2025-07-26",
+   "msrp": 5500,
+   "market": 10500,
+   "confidence": "low"
+  },
+  {
+   "code": "OP12",
+   "name": "師弟の絆",
+   "title": "ブースターパック 師弟の絆【OP-12】",
+   "release": "2025-05-31",
+   "msrp": 5280,
+   "market": 12850,
+   "confidence": "low"
+  },
+  {
+   "code": "OP11",
+   "name": "神速の拳",
+   "title": "ブースターパック 神速の拳【OP-11】",
+   "release": "2025-03-01",
+   "msrp": 5280,
+   "market": 23000,
+   "confidence": "low"
+  },
+  {
+   "code": "EB02",
+   "name": "Anime 25th collection",
+   "title": "エクストラブースター Anime 25th collection【EB-02】",
+   "release": "2025-01-25",
+   "msrp": 5280,
+   "market": 30000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP10",
+   "name": "王族の血統",
+   "title": "ブースターパック 王族の血統【OP-10】",
+   "release": "2024-11-30",
+   "msrp": 5280,
+   "market": 13800,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP09",
+   "name": "新たなる皇帝",
+   "title": "ブースターパック 新たなる皇帝【OP-09】",
+   "release": "2024-08-31",
+   "msrp": 5280,
+   "market": 14500,
+   "confidence": "medium"
+  },
+  {
+   "code": "PRB01",
+   "name": "ONE PIECE CARD THE BEST",
+   "title": "プレミアムブースター ONE PIECE CARD THE BEST【PRB-01】",
+   "release": "2024-07-27",
+   "msrp": 5500,
+   "market": 23800,
+   "confidence": "low"
+  },
+  {
+   "code": "OP08",
+   "name": "二つの伝説",
+   "title": "ブースターパック 二つの伝説【OP-08】",
+   "release": "2024-05-25",
+   "msrp": 5280,
+   "market": 11000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP07",
+   "name": "500年後の未来",
+   "title": "ブースターパック 500年後の未来【OP-07】",
+   "release": "2024-02-24",
+   "msrp": 5280,
+   "market": 15000,
+   "confidence": "medium"
+  },
+  {
+   "code": "EB01",
+   "name": "メモリアルコレクション",
+   "title": "エクストラブースター メモリアルコレクション【EB-01】",
+   "release": "2024-01-27",
+   "msrp": 5280,
+   "market": 15000,
+   "confidence": "low"
+  },
+  {
+   "code": "OP06",
+   "name": "双璧の覇者",
+   "title": "ブースターパック 双璧の覇者【OP-06】",
+   "release": "2023-11-25",
+   "msrp": 5280,
+   "market": 20000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP05",
+   "name": "新時代の主役",
+   "title": "ブースターパック 新時代の主役【OP-05】",
+   "release": "2023-08-26",
+   "msrp": 5280,
+   "market": 50000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP04",
+   "name": "謀略の王国",
+   "title": "ブースターパック 謀略の王国【OP-04】",
+   "release": "2023-05-27",
+   "msrp": 5280,
+   "market": 12000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP03",
+   "name": "強大な敵",
+   "title": "ブースターパック 強大な敵【OP-03】",
+   "release": "2023-02-11",
+   "msrp": 4752,
+   "market": 17000,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP02",
+   "name": "頂上決戦",
+   "title": "ブースターパック 頂上決戦【OP-02】",
+   "release": "2022-11-04",
+   "msrp": 4752,
+   "market": 18500,
+   "confidence": "medium"
+  },
+  {
+   "code": "OP01",
+   "name": "ROMANCE DAWN",
+   "title": "ブースターパック ROMANCE DAWN【OP-01】",
+   "release": "2022-07-22",
+   "msrp": 4752,
+   "market": 32000,
+   "confidence": "medium"
+  }
+ ]
+}
