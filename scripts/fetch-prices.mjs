@@ -151,9 +151,17 @@ async function priceCard(card, defaults) {
 
 // BOX(未開封)の販売価格。弾名+弾コード(OP17 / OP-17)の両方を含む出品だけを使い、
 // 複数BOX・カートン・パック・開封済み・オリパなどは除外。安い順3件の中央値をプレ値(実売相場)とする。
-const BOX_NG = ['カートン', 'パック単品', '1パック', 'バラ', 'シングル', '開封済', '空箱', 'オリパ', '福袋', 'ケース', 'セット', '2BOX', '3BOX', '4BOX', '5BOX', '6BOX', '10BOX', '12BOX', '24BOX', '×2', 'X2', '2個', '3個', 'スリーブ', 'プレイマット', 'デッキ', 'ストレージ'];
+const BOX_NG = ['カートン', 'パック単品', 'バラ', 'ばら', '1パック', 'シングル', '開封済', '空箱', 'オリパ', '福袋', 'ケース', 'セット', '2BOX', '3BOX', '4BOX', '5BOX', '6BOX', '10BOX', '12BOX', '24BOX', '×2', 'X2', '2個', '3個', 'スリーブ', 'プレイマット', 'デッキ', 'ストレージ'];
+// 「6パック」「15パック ばら売り」などBOXでない出品を除く。BOXのパック数と同じ数、または「2パック付き」(特典)はOK
+function packsOk(n, packs) {
+  for (const m of n.matchAll(/(\d+)パック(.?)/g)) {
+    if (+m[1] !== packs && m[2] !== '付') return false;
+  }
+  return true;
+}
 async function priceBox(meta) {
   const code = meta.code, hy = code.replace(/^([A-Z]+)(\d+)$/, '$1-$2');
+  const packs = existsSync(`sets/${code}.json`) ? JSON.parse(await readFile(`sets/${code}.json`, 'utf8')).packs ?? 24 : 24;
   const minPrice = Math.max(3000, Math.round((meta.msrp ?? 5000) * 0.7));
   const items = [...await search(`ワンピースカード ${meta.name} BOX`, minPrice)];
   await sleep(DELAY_MS);
@@ -162,7 +170,7 @@ async function priceBox(meta) {
   const valid = items.filter((i) => {
     const n = norm(i.itemName), k = i.url;
     if (seen.has(k)) return false; seen.add(k);
-    return n.includes('BOX') && (n.includes(norm(code)) || n.includes(norm(hy))) && !BOX_NG.some((w) => n.includes(norm(w)));
+    return n.includes('BOX') && (n.includes(norm(code)) || n.includes(norm(hy))) && !BOX_NG.some((w) => n.includes(norm(w))) && packsOk(n, packs);
   }).sort((a, b) => a.itemPrice - b.itemPrice);
   const kw = `ワンピースカード ${hy} BOX`;
   const res = { count: valid.length, images: imgsOf(valid), link: linkOf(valid, kw), box: null };
