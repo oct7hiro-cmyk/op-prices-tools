@@ -9,12 +9,23 @@
 """
 import io, json, os, sys, urllib.request
 from collections import deque
-from PIL import Image
+from PIL import Image, ImageDraw
 
 OUT = 'img/box'
 
 
 def cutout(raw):
+    # 普通の白背景で切り抜き、箱が白っぽくて形が欠けたら(詰まり具合が低い)、より白いところだけを背景として切り直す
+    r = cutout1(raw, 228, 22)
+    if r and r['fill'] < 0.86:
+        r2 = cutout1(raw, 248, 10)
+        if r2 and r2['fill'] > r['fill']:
+            r2['score'] = r2['fill'] + min(r2['area'], 0.6) * 0.3 if r2['fill'] > 0.72 and r2['area'] > 0.18 and 0.5 < r2['ar'] < 2.2 and r2['edge'] < 0.02 else 0
+            return r2
+    return r
+
+
+def cutout1(raw, th, chroma):
     im = Image.open(io.BytesIO(raw)).convert('RGBA')
     im.thumbnail((600, 600))
     w, h = im.size
@@ -23,7 +34,7 @@ def cutout(raw):
 
     def white(x, y):
         r, g, b, a = px[x, y]
-        return r > 228 and g > 228 and b > 228 and max(r, g, b) - min(r, g, b) < 22
+        return r > th and g > th and b > th and max(r, g, b) - min(r, g, b) < chroma
 
     bg = bytearray(N)
     st = [(x, 0) for x in range(w)] + [(x, h - 1) for x in range(w)] + [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)]
@@ -60,14 +71,31 @@ def cutout(raw):
     if not best:
         return None
     x0, y0, x1, y1, edge = w, h, 0, 0, 0
+    rows = {}
     for i in range(N):
-        x, y = i % w, i // w
         if lab[i] != best:
-            px[x, y] = (0, 0, 0, 0)
             continue
+        x, y = i % w, i // w
         x0, y0, x1, y1 = min(x0, x), min(y0, y), max(x1, x), max(y1, y)
+        r = rows.get(y)
+        rows[y] = (min(r[0], x), max(r[1], x)) if r else (x, x)
         if x in (0, w - 1) or y in (0, h - 1):
             edge += 1
+    # 箱は凸な形なので、かたまりの凸包の内側はすべて残す(白っぽい箱の面が背景と一緒に消えるのを防ぐ)
+    pts = sorted(set([(r[0], y) for y, r in rows.items()] + [(r[1], y) for y, r in rows.items()]))
+    def cross(o, a, b): return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lo, up = [], []
+    for p_ in pts:
+        while len(lo) >= 2 and cross(lo[-2], lo[-1], p_) <= 0: lo.pop()
+        lo.append(p_)
+    for p_ in reversed(pts):
+        while len(up) >= 2 and cross(up[-2], up[-1], p_) <= 0: up.pop()
+        up.append(p_)
+    hull = lo[:-1] + up[:-1]
+    mask = Image.new('L', (w, h), 0)
+    ImageDraw.Draw(mask).polygon(hull, fill=255)
+    im.putalpha(mask)
+    best_n = sum(1 for v in mask.getdata() if v)
     bw, bh = x1 - x0 + 1, y1 - y0 + 1
     fill, area, ar, edge_r = best_n / (bw * bh), best_n / N, bw / bh, edge / (2 * (w + h))
     # 箱は外枠にほぼ詰まった形。端に接していたら背景つきの写真、面積が小さすぎたら別物
@@ -90,6 +118,9 @@ def main():
         if not os.path.exists(f):
             continue
         data = json.load(open(f, encoding='utf8'))
+        if manifest.get(code, {}).get('fixed'):  # 手動で用意した画像はそのまま使う
+            print(f'[{code}] 固定の画像を使用')
+            continue
         best = None
         for u in (data.get('images', {}).get('BOX') or [])[:10]:
             try:
