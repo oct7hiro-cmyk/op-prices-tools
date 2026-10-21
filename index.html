@@ -126,6 +126,567 @@ summary{cursor:pointer;font-weight:700;font-size:14px}
 .set input,.set select{width:100%;font:inherit;color:var(--ink);background:#120c18;border:1px solid var(--line);border-radius:6px;padding:7px}
 @media(max-width:560px){.set{grid-template-columns:1fr 1fr}}
 ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
+/* 弾の一覧 */
+#picker{max-width:1000px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 28px) 16px 56px;text-align:center}
+#picker h1{margin:0;font-size:clamp(30px,8vw,52px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a,0 0 30px rgba(255,190,60,.5)}
+#picker .lead{margin:8px 0 22px;color:var(--mute);font-size:14px}
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;text-align:left}
+.sc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .15s}
+.sc:hover{transform:translateY(-3px)}
+.sc .im{aspect-ratio:1;background:radial-gradient(circle,#3a1030,#160a1c 70%);display:grid;place-items:center;position:relative}
+.sc .im img{width:100%;height:100%;object-fit:contain;background:#fff}
+.sc .im b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:30px;color:var(--gold)}
+.sc .tx{padding:8px 10px 10px}
+.sc .cd2{font-family:"Dela Gothic One",sans-serif;font-size:15px;color:var(--gold)}
+.sc .nm3{font-size:13px;font-weight:700;line-height:1.3;margin-top:2px}
+.sc .ev{font-size:12px;color:var(--mute);margin-top:6px}.sc .ev b{color:var(--ink);font-size:14px}
+.sc .nw{position:absolute;top:8px;left:8px;font-size:11px;font-weight:900;padding:2px 8px;border-radius:99px;background:var(--red);color:#fff}
+.back{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);left:12px;z-index:5;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:99px;background:rgba(26,18,32,.85)}
+/* カード詳細(販売ショップ一覧) */
+#dv{position:fixed;inset:0;z-index:58;overflow-y:auto;overscroll-behavior:contain;background:#07040c;-webkit-overflow-scrolling:touch}
+#dv .bgr{position:fixed;inset:-60%;pointer-events:none;background:repeating-conic-gradient(from 0deg,var(--dvc) 0 4deg,transparent 4deg 14deg);opacity:.28;animation:spin 26s linear infinite}
+#dv .glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 30%,var(--dvg),transparent 60%)}
+#dv .dvin{position:relative;max-width:560px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 56px) 16px 48px;text-align:center}
+#dvX{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(10,6,16,.7);font-size:22px;line-height:1}
+#dv .stage{perspective:1000px;margin:0 auto 6px;width:min(66vw,290px)}
+#dv .float{animation:dvfl 4.5s ease-in-out infinite}
+@keyframes dvfl{50%{transform:translateY(-10px)}}
+#dvCard{position:relative;aspect-ratio:63/88;border-radius:14px;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .12s ease-out;touch-action:pan-y}
+#dvCard.enter{animation:dvin 1.1s cubic-bezier(.2,.9,.25,1.05) both}
+@keyframes dvin{0%{transform:translateY(60px) scale(.35) rotateY(-540deg);opacity:0}60%{opacity:1}100%{transform:none;opacity:1}}
+#dvCard .fc{transform:none;border-width:3px;border-radius:14px;box-shadow:0 0 30px var(--rim),0 0 70px var(--rim),0 30px 60px rgba(0,0,0,.7)}
+#dvCard .nm{font-size:clamp(18px,5vw,24px)}#dvCard .rb{font-size:13px}#dvCard .id{font-size:12px}
+#dvCard .sh{position:absolute;inset:0;border-radius:14px;pointer-events:none;mix-blend-mode:screen;
+ background:linear-gradient(115deg,transparent calc(var(--sx,50%) - 30%),rgba(255,255,255,.55) var(--sx,50%),transparent calc(var(--sx,50%) + 30%)),
+ linear-gradient(115deg,rgba(255,110,200,.25),rgba(110,220,255,.25),rgba(255,240,130,.25));background-size:100% 100%,300% 100%;animation:holo 3s linear infinite}
+#dv .spk{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px var(--dvc);pointer-events:none;animation:spk 2.6s ease-in-out infinite}
+@keyframes spk{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.2)}}
+#dv .kk{display:inline-block;margin-top:18px;font-family:"Dela Gothic One",sans-serif;font-size:15px;padding:3px 14px;border-radius:99px;background:var(--rim);color:#120a18}
+#dv h2{margin:8px 0 0;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(24px,7vw,34px);line-height:1.2;text-shadow:0 0 18px var(--dvg)}
+#dv .cid{font-size:12px;color:var(--mute);margin-top:2px}
+#dv .mp{margin-top:10px}#dv .mp small{display:block;font-size:12px;color:var(--mute)}
+#dv .mp b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(36px,11vw,52px);color:#fff;text-shadow:0 0 24px var(--dvg)}
+#dv .cta{display:inline-block;margin-top:12px;padding:14px 28px;border-radius:12px;font-family:"Dela Gothic One",sans-serif;font-size:17px;text-decoration:none;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 5px 0 #8a3a0a,0 0 26px rgba(255,170,60,.55);animation:ctap 1.6s ease-in-out infinite}
+@keyframes ctap{50%{transform:scale(1.04);box-shadow:0 5px 0 #8a3a0a,0 0 44px rgba(255,190,80,.9)}}
+#dv .shops{margin-top:26px;text-align:left;background:rgba(26,18,32,.92);border:1px solid var(--line);border-radius:14px;padding:14px}
+#dv .shops h3{margin:0 0 8px;font-size:15px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+#dv .shops h3 small{font-size:11px;color:var(--mute);font-weight:500}
+#dvList{list-style:none;margin:0;padding:0}
+#dvList li{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"src shop price" "src nm buy";gap:2px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+#dvList li:first-child{border-top:0}
+#dvList .src{grid-area:src;font-size:11px;font-weight:900;padding:3px 7px;border-radius:6px;color:#fff;align-self:start}
+#dvList .src.rakuten{background:#bf0000}#dvList .src.yahoo{background:#ff0033}
+#dvList .shop{grid-area:shop;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dvList .nm2{grid-area:nm;font-size:11px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dvList .pp{grid-area:price;font-weight:900;font-size:17px;font-variant-numeric:tabular-nums;text-align:right}
+#dvList .buy{grid-area:buy;justify-self:end;display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--gold);color:#120a18;text-decoration:none;white-space:nowrap}
+#dvList .st{font-size:11px;font-weight:700;color:var(--win);margin-right:6px}
+#dvList li.best .pp{color:var(--gold)}
+#dvList li.best .shop::before{content:"最安";font-size:10px;font-weight:900;margin-right:6px;padding:1px 6px;border-radius:4px;background:var(--gold);color:#120a18;vertical-align:2px}
+#dv .alt{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#dv .alt a{flex:1;min-width:140px;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+#dv .empty{font-size:13px;color:var(--mute);margin:4px 0}
+@media(prefers-reduced-motion:reduce){#dv .bgr,#dv .float,#dvCard.enter,#dvCard .sh,#dv .spk,#dv .cta{animation:none}}
+/* カットイン */
+#reveal{position:fixed;inset:0;z-index:55;border:0;width:100%;background:#05030a;display:grid;place-items:center;overflow:hidden;text-align:center}
+#reveal .rays{position:absolute;inset:-60%;background:repeating-conic-gradient(from 0deg,rgba(255,215,120,.32) 0 5deg,transparent 5deg 15deg);animation:spin 10s linear infinite}
+#reveal.t2 .rays{background:repeating-conic-gradient(from 0deg,rgba(180,150,255,.32) 0 5deg,transparent 5deg 15deg)}
+#reveal::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(255,210,110,.6),transparent 55%)}
+#reveal.t2::before{background:radial-gradient(circle at 50% 46%,rgba(170,140,255,.55),transparent 55%)}
+#reveal .in2{position:relative;z-index:2;padding:20px;animation:pop .7s cubic-bezier(.2,1.4,.4,1) both}
+#reveal.t3 .in2{animation:pop .7s cubic-bezier(.2,1.4,.4,1) both,qk .45s .1s linear 3}
+@keyframes pop{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes qk{0%,100%{translate:0}25%{translate:-9px 4px}50%{translate:9px -4px}75%{translate:-5px -3px}}
+#reveal .k{display:inline-block;font-family:"Dela Gothic One",sans-serif;font-size:clamp(18px,5vw,26px);padding:4px 18px;border-radius:99px;background:linear-gradient(90deg,#ffe08a,#ff9d2e);color:#2a1600}
+#reveal.t2 .k{background:linear-gradient(90deg,#d8c8ff,#7aa8ff);color:#120a33}
+#reveal .card{position:relative;margin:18px auto;width:min(58vw,240px);aspect-ratio:63/88;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden;font-family:"Dela Gothic One",sans-serif;font-size:clamp(22px,6vw,30px);line-height:1.25;color:#1e1300;background:linear-gradient(150deg,#3a2a05,#a97a12 45%,#f6d775 52%,#8a600a);border:3px solid #ffe9a0;box-shadow:0 0 70px 16px rgba(255,210,100,.65)}
+#reveal.t2 .card{color:#0f0a30;background:linear-gradient(150deg,#1a1448,#4d3fb0 45%,#b9a6ff 52%,#3a2d92);border-color:#d8ccff;box-shadow:0 0 70px 16px rgba(150,130,255,.6)}
+#reveal .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .2s}
+#reveal .pr2{font-family:"Dela Gothic One",sans-serif;font-size:clamp(32px,9vw,52px);color:#fff;text-shadow:0 0 24px rgba(255,200,80,.8)}
+#reveal .hint{margin-top:8px;font-size:14px;color:#ddd;animation:pu 1.2s infinite}
+@media(prefers-reduced-motion:reduce){#bg,.box,.box::after,.scene::after,.tap,#reveal .rays,.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{animation:none}.in{transition:none}}
+</style>
+</head>
+<body>
+<div id="bg" aria-hidden="true"></div>
+<main>
+<section id="picker" hidden>
+<h1 class="dg">ワンピースカード<br>BOX開封ガチャ</h1>
+<p class="lead">開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算します。</p>
+<div class="sets" id="sets"></div>
+<p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
+</section>
+<section id="stage" hidden>
+<a class="back" href="./">‹ 弾一覧</a>
+<div>
+<h1 class="ttl dg" id="ttl">OP</h1>
+<p class="sub dg" id="sub"></p>
+<div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><b class="dg" id="boxCode">OP</b><span>BOX</span></button></div>
+<p class="tap dg">TAP!</p>
+<p class="foot">非公式の開封シミュレーターです</p>
+</div>
+</section>
+
+<section id="result" hidden>
+<div class="hud">
+<div class="row1"><div><div class="lbl">シングル価格の合計</div><div id="total" class="dg">¥0</div></div><div id="verdict" class="dg" hidden></div></div>
+<div class="gauge"><div id="fill"></div><i class="mk" id="mkM"><b>定価</b></i><i class="mk" id="mkP"><b>プレ値</b></i></div>
+<button id="skip">スキップ ▶▶</button>
+</div>
+<p class="adnote">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)</p>
+<div id="grid" class="grid"></div>
+<div id="after" hidden>
+<div class="acts"><button class="btn" id="again">もう1BOX!</button><button class="btn s" id="more">くわしい数字</button></div>
+<p id="tally"></p>
+<div class="panel" id="detail" hidden>
+<div class="two" id="stats"></div>
+<p class="small" id="statNote"></p>
+<div id="bars"></div>
+<p class="small" id="warn" hidden></p>
+</div>
+</div>
+<details><summary>条件・演出テスト</summary>
+<div class="set">
+<div><label for="msrp">定価(円)</label><input id="msrp" type="number" value="5760"></div>
+<div><label for="pre">プレ値・実売(円)</label><input id="pre" type="number" value="7000"></div>
+</div>
+<div class="acts" style="justify-content:flex-start;margin-top:12px"><button class="btn s" id="t3">テスト:最上位レア</button><button class="btn s" id="t2">テスト:SP・パラレル</button></div>
+</details>
+<details><summary>データの根拠</summary><ul class="src" id="src"></ul></details>
+<p class="small" style="margin-top:16px">ショップのシングル販売価格(R以上)の合計です。C・UCと、売却時の手数料は含みません。封入率は販売サイトの推定値で、公式発表はありません。商品リンクには楽天アフィリエイト・バリューコマースの広告を含みます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / <a href="https://developer.yahoo.co.jp/sitemap/" style="color:inherit">Web Services by Yahoo! JAPAN</a></p>
+</section>
+</main>
+
+<div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
+<div class="bgr"></div><div class="glow"></div>
+<button id="dvX" aria-label="閉じる">×</button>
+<div class="dvin">
+<div class="stage"><div class="float"><div id="dvCard"></div></div></div>
+<div class="kk" id="dvK"></div>
+<h2 id="dvN"></h2>
+<div class="cid" id="dvId"></div>
+<div class="mp"><small>相場(ショップ販売価格)</small><b id="dvP"></b></div>
+<a class="cta" id="dvCta" target="_blank" rel="sponsored noopener" hidden></a>
+<div class="shops"><h3>販売中のショップ(安い順)<small id="dvNote"></small></h3><ol id="dvList"></ol><div class="alt" id="dvAlt"></div>
+<p class="adnote" style="text-align:left">PR・楽天アフィリエイト/バリューコマースの広告リンクです。在庫と価格は毎朝6時の取得時点のもので、売り切れ・価格変更の場合があります。</p></div>
+</div>
+</div>
+<button id="reveal" hidden aria-label="次へ"><div class="rays"></div><div class="in2"><div class="k" id="rk"></div><div class="card" id="rcard"><span id="rn"></span><div id="rimg"></div></div><div class="pr2" id="rp"></div><div class="hint">タップ</div></div></button>
+<div id="toast" class="toast"></div>
+<div id="stampEl" class="stamp" hidden></div>
+<div id="flash"></div>
+
+<script>
+var S={msrp:5280,pre:7000,date:''};
+var $=function(i){return document.getElementById(i)};
+var yen=function(v){return(v<0?'−':'')+'¥'+Math.abs(Math.round(v)).toLocaleString('ja-JP')};
+var sgn=function(v){return(v>=0?'+':'')+yen(v)};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var busy=true,skip=false,hits=[],tally={n:0,w:0,pnl:0},cur=0;
+// 弾の設定(sets/<CODE>.json)から作るカード。c=カテゴリ、k=表示ラベル、p=販売価格(nullは未取得=0円)、t=演出ランク
+var CFG=null,ALL=[],POOL={};
+var LBL={R:'R',SR:'SR',SEC:'SEC',PAR:'パラレル',SECP:'SECパラレル',LPAR:'リーダーパラレル',SP:'SP',CP:'コミパラ',LSP:'リーダースーパーパラレル',TOP:'超レア',TR:'トレジャーレア',FOIL:'フォイル',FA:'フルアート',OTHER:'特別パラレル'};
+var TIER={TOP:3,LSP:3,CP:3,SP:2,TR:2};
+function setupCards(cfg){
+ CFG=cfg;ALL=[];POOL={};
+ cfg.cards.forEach(function(r){var c={id:r[0],c:r[1],n:r[2],rar:r[3],k:r[4]||(cfg.labels&&cfg.labels[r[1]])||LBL[r[1]]||r[1],p:null,t:TIER[r[1]]||0};ALL.push(c);(POOL[c.c]=POOL[c.c]||[]).push(c)});
+}
+function retier(){ALL.forEach(function(c){var t=TIER[c.c]||0;if(c.p>=30000)t=3;else if(c.p>=8000&&t<2)t=2;c.t=t})}
+function price(c){return c.p||0}
+function avg(a){return a&&a.length?a.reduce(function(s,c){return s+price(c)},0)/a.length:0}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+function rint(r){return r[0]+Math.floor(Math.random()*(r[1]-r[0]+1))}
+// 1BOXの抽選: base(R・SRなどの枚数の幅)+ カテゴリごとの期待枚数λ(整数部は確定、端数は確率)
+function drawer(){
+ var base=CFG.base||{},cats=CFG.cats||{};
+ return function(force){
+  var h=[],k,i;
+  for(k in base){if(!POOL[k]||!Array.isArray(base[k]))continue;var n=rint(base[k]);for(i=0;i<n;i++)h.push(pick(POOL[k]))}
+  for(k in cats){if(!POOL[k])continue;var l=cats[k].lambda,m=Math.floor(l)+(Math.random()<l-Math.floor(l)?1:0);for(i=0;i<m;i++)h.push(pick(POOL[k]))}
+  if(force){var f=typeof force==='string'?ALL.filter(function(c){return c.id===force})[0]:force;if(f&&h.indexOf(f)<0)h.push(f)}
+  return h}
+}
+function ev(){var e=0,k,base=CFG.base||{},cats=CFG.cats||{};
+ for(k in base)if(Array.isArray(base[k]))e+=(base[k][0]+base[k][1])/2*avg(POOL[k]);
+ for(k in cats)e+=cats[k].lambda*avg(POOL[k]);return e}
+function missing(){var n=0;ALL.forEach(function(c){if(c.p==null&&(CFG.base[c.c]||CFG.cats[c.c]))n++});return n}
+function sum(h){return h.reduce(function(s,c){return s+price(c)},0)}
+function stats(){
+ var N=20000,v=new Array(N),i,d=drawer(),big=0;
+ for(i=0;i<N;i++){var h=d();v[i]=sum(h);if(h.some(function(c){return c.t>=2}))big++}
+ v.sort(function(a,b){return a-b});
+ var q=function(p){return v[Math.min(N-1,Math.floor(N*p))]};
+ var e=[S.msrp*.5,S.msrp,S.pre,Math.max(S.pre,S.msrp)*3].sort(function(a,b){return a-b});
+ var cnt=[0,0,0,0,0];v.forEach(function(x){var k=0;while(k<4&&x>=e[k])k++;cnt[k]++});
+ return{mean:ev(),med:q(.5),p10:q(.1),p90:q(.9),none:1-big/N,e:e,cnt:cnt.map(function(x){return x/N}),
+  winPre:v.filter(function(x){return x>=S.pre}).length/N,winMsrp:v.filter(function(x){return x>=S.msrp}).length/N};
+}
+
+// ---- カード画像 ----
+// 画像は毎朝の楽天APIバッチが data/latest.json に入れる出品画像(各カード最大3候補)を使います。
+// 正方形の画像より縦長(カード形)の画像を優先し、読み込めないときは標準デザインに戻ります。
+// 自前の画像を使いたいときは IMG にカードIDごとのURLを書くと、そちらが優先されます(例: 'OP17-005':'https://…/a.png')。
+// 公式サイトの画像は他サイトからの表示がブロックされる(CORP: same-site)ため使えません。
+var IMG={};
+// BOX_IMG にURLを書くと楽天の画像より優先されます
+var BOX_IMG='';
+function imgOf(c){return IMG[c.id]?[IMG[c.id]]:(c.imgs||[])}
+function addImg(parent,c){
+ var L=imgOf(c);if(!L.length)return;
+ var im=document.createElement('img'),i=0,first=null;
+ im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
+ im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
+ im.onload=function(){
+  if(im.src===first){im.classList.add('ok');return}
+  if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
+  im.classList.add('ok')};
+ im.src=L[0];parent.appendChild(im);
+}
+// ---- カード詳細(大きく表示+販売ショップ一覧) ----
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+function cardNo(c){return c.id.replace(/_[pr]\d+$/,'')}
+function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
+var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
+var dvOpen=false,dvPushed=false;
+function openDetail(c){
+ var dv=$('dv'),g=grade(c),col=DVC[g];
+ dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
+ var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
+ cardBox.innerHTML='<div class="fc"><div class="gen"><span class="rb">'+esc(c.k)+'</span><span class="nm">'+esc(c.n)+'</span><span class="id">'+cardNo(c)+'</span></div></div><div class="sh"></div>';
+ addImg(cardBox.querySelector('.fc'),c);
+ if(!reduce){void cardBox.offsetWidth;cardBox.classList.add('enter');
+  var st=dv.querySelector('.stage');[].forEach.call(st.querySelectorAll('.spk'),function(e){e.remove()});
+  for(var i=0;i<(g>=2?14:7);i++){var sp=document.createElement('i');sp.className='spk';sp.style.left=(Math.random()*110-5)+'%';sp.style.top=(Math.random()*110-5)+'%';sp.style.animationDelay=(Math.random()*2.6)+'s';st.appendChild(sp)}}
+ $('dvK').textContent=c.k;$('dvK').className='kk k-'+KC[c.c];
+ $('dvN').textContent=c.n;$('dvId').textContent=cardNo(c);
+ var P=$('dvP');if(c.p==null)P.textContent='価格未取得';else if(reduce)P.textContent=yen(c.p);else{var t0=performance.now();requestAnimationFrame(function st(t){var k=Math.min(1,(t-t0)/900);P.textContent=yen(c.p*(1-Math.pow(1-k,3)));if(k<1&&dvOpen)requestAnimationFrame(st)})}
+ var offs=(c.offers||[]).slice().sort(function(a,b){return a.p-b.p});
+ $('dvList').innerHTML=offs.length?offs.map(function(o,i){
+  return '<li'+(i?'':' class="best"')+'><span class="src '+(o.s==='yahoo'?'yahoo':'rakuten')+'">'+(o.s==='yahoo'?'Yahoo!':'楽天')+'</span>'+
+  '<span class="shop">'+esc(o.shop||'ショップ')+'</span><span class="pp">'+yen(o.p)+'</span>'+
+  '<span class="nm2"><span class="st">● 在庫あり</span>'+esc(o.n||'')+'</span><a class="buy" href="'+esc(o.u)+'" target="_blank" rel="sponsored noopener">ショップへ ›</a></li>'}).join('')
+  :'<li style="display:block"><p class="empty">取得時点で在庫のある出品が見つかりませんでした。下のボタンから最新の出品を探せます。</p></li>';
+ $('dvNote').textContent=offs.length?offs.length+'件・'+S.date+' 6時時点':'';
+ var cta=$('dvCta');if(offs.length){cta.href=offs[0].u;cta.textContent='最安 '+yen(offs[0].p)+' で手に入れる ›';cta.hidden=false}else cta.hidden=true;
+ var rs=c.search||('https://search.rakuten.co.jp/search/mall/'+encodeURIComponent(kw(c))+'/'),ys=c.ysearch||('https://shopping.yahoo.co.jp/search?p='+encodeURIComponent(kw(c)));
+ $('dvAlt').innerHTML='<a href="'+esc(rs)+'" target="_blank" rel="sponsored noopener">楽天で探す ›</a><a href="'+esc(ys)+'" target="_blank" rel="sponsored noopener">Yahoo!で探す ›</a>';
+ dv.hidden=false;dv.scrollTop=0;document.documentElement.style.overflow='hidden';dvOpen=true;
+ if(!dvPushed){try{history.pushState({dv:1},'','#card='+encodeURIComponent(c.id));dvPushed=true}catch(e){}}
+ $('dvX').focus({preventScroll:true});
+}
+function closeDetail(fromPop){
+ if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow='';$('dvCard').innerHTML='';
+ if(dvPushed){dvPushed=false;if(!fromPop)try{history.back()}catch(e){}}
+}
+$('dvX').addEventListener('click',function(){closeDetail()});
+addEventListener('popstate',function(){if(dvOpen){dvPushed=false;closeDetail(true)}});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
+// 指・マウス・端末の傾きでカードが動く
+(function(){var cb=$('dvCard');
+ function tilt(x,y){if(reduce)return;cb.style.setProperty('--ry',(x*18).toFixed(1)+'deg');cb.style.setProperty('--rx',(-y*18).toFixed(1)+'deg');cb.style.setProperty('--sx',(50+x*60).toFixed(0)+'%')}
+ cb.addEventListener('pointermove',function(e){var r=cb.getBoundingClientRect();tilt((e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5)});
+ cb.addEventListener('pointerleave',function(){tilt(0,0)});
+ addEventListener('deviceorientation',function(e){if(!dvOpen||e.gamma==null)return;tilt(Math.max(-.5,Math.min(.5,e.gamma/40)),Math.max(-.5,Math.min(.5,(e.beta-45)/40)))});
+})();
+function setBox(u){if(!u||$('box').querySelector('img'))return;
+ var bi=document.createElement('img');bi.alt=(CFG?CFG.code:'')+' BOX';bi.referrerPolicy='no-referrer';
+ bi.onload=function(){$('box').classList.add('has-img')};bi.onerror=function(){bi.remove()};bi.src=u;$('box').appendChild(bi)}
+var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',SECP:'PAR',FOIL:'PAR',FA:'PAR',OTHER:'PAR',LPAR:'LPAR',LSP:'TOP',CP:'TOP',TOP:'TOP',SP:'SP',TR:'SP'};
+function grade(c){return c.c==='R'?0:c.c==='SR'?1:(c.t>=2?3:2)}
+function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
+function readSet(){S.msrp=+$('msrp').value||0;S.pre=+$('pre').value||0}
+function gmax(){return Math.max(S.pre,S.msrp)*1.5}
+function paint(x){$('total').textContent=yen(x);$('fill').style.width=Math.min(100,x/gmax()*100)+'%'}
+function setTotal(v,ms){var from=cur,t0=performance.now();cur=v;
+ if(skip||reduce||!ms){paint(v);return}
+ requestAnimationFrame(function step(t){var k=Math.min(1,(t-t0)/ms);paint(from+(v-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)});
+}
+function cardEl(c){
+ var d=document.createElement('div'),num=cardNo(c);
+ d.className='cd g'+grade(c)+' k-'+KC[c.c];
+ d.innerHTML='<div class="in"><div class="bk"><span>OP17</span></div><div class="fc"><div class="gen"><span class="rb">'+c.k+'</span><span class="nm">'+c.n+'</span><span class="id">'+num+'</span></div>'+
+  '</div></div><div class="pr">'+(c.p==null?'価格未取得':yen(c.p))+'</div>';
+ var b=document.createElement('button');b.className='go';b.type='button';
+ var n=(c.offers||[]).length;b.textContent=n?'販売 '+n+'店 ›':'ショップを探す ›';d.appendChild(b);
+ d.addEventListener('click',function(){if(d.classList.contains('on'))openDetail(c)});
+ addImg(d.querySelector('.fc'),c);
+ return d;
+}
+function burst(x,y,col,n){
+ if(reduce)return;
+ for(var i=0;i<n;i++){var p=document.createElement('i');p.className='pt';p.style.left=x+'px';p.style.top=y+'px';p.style.background=col[i%col.length];document.body.appendChild(p);
+  var a=Math.random()*Math.PI*2,d=50+Math.random()*Math.min(innerWidth*.45,260);
+  var an=p.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+Math.cos(a)*d+'px,'+(Math.sin(a)*d+70)+'px) scale(.3) rotate('+(Math.random()*600)+'deg)',opacity:0}],{duration:800+Math.random()*700,easing:'cubic-bezier(.1,.7,.3,1)'});
+  an.onfinish=function(e){var t=e.target.effect&&e.target.effect.target;if(t)t.remove()};
+ }
+}
+function flash(o,ms){if(!reduce)$('flash').animate([{opacity:o},{opacity:0}],{duration:ms||450})}
+function shake(){if(!reduce)$('result').animate([{transform:'translate(0)'},{transform:'translate(-7px,3px)'},{transform:'translate(7px,-3px)'},{transform:'translate(-3px,2px)'},{transform:'translate(0)'}],{duration:320})}
+function toast(t,cls){var e=$('toast');e.textContent=t;e.className='toast '+cls;void e.offsetWidth;e.classList.add('go')}
+function fx(e,g){
+ if(reduce||skip)return;
+ e.animate([{transform:'scale(1)'},{transform:'scale('+(1.07+g*.07)+')'},{transform:'scale(1)'}],{duration:300+g*140,easing:'ease-out'});
+ var r=e.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+ if(g===1)burst(x,y,['#ffcf4a','#fff3c0'],12);
+ if(g>=2){burst(x,y,['#ff8fd0','#8fe9ff','#ffe27a','#c3a8ff','#6cffc8'],g===3?60:30);flash(g===3?.9:.5);shake()}
+}
+function cutin(c){
+ var r=$('reveal');r.className=c.t===3?'t3':'t2';
+ $('rk').textContent=c.k;$('rn').textContent=c.n;$('rp').textContent=c.p==null?'':yen(c.p);
+ $('rimg').innerHTML='';addImg($('rimg'),c);
+ r.hidden=false;flash(1,700);
+ burst(innerWidth/2,innerHeight*.45,c.t===3?['#ffe08a','#fff3c0','#ff9d2e','#ff5fa8']:['#d8c8ff','#8fb4ff','#fff'],c.t===3?90:45);
+ return new Promise(function(res){r.onclick=function(){r.hidden=true;res()}});
+}
+async function play(){
+ skip=false;$('result').classList.remove('skipping');
+ var order=hits.slice().sort(function(a,b){return grade(a)-grade(b)||price(a)-price(b)});
+ var g=$('grid');g.innerHTML='';cur=0;paint(0);
+ $('mkM').style.left=(S.msrp/gmax()*100)+'%';$('mkP').style.left=(S.pre/gmax()*100)+'%';
+ $('mkM').classList.remove('on');$('mkP').classList.remove('on');
+ $('verdict').hidden=true;$('after').hidden=true;$('detail').hidden=true;$('skip').hidden=false;
+ var els=order.map(function(c){var e=cardEl(c);g.appendChild(e);return e});
+ if(!reduce)els.forEach(function(e,i){e.animate([{opacity:0,transform:'translateY(-60px) scale(.5) rotate(-10deg)'},{opacity:1,transform:'none'}],{duration:400,delay:i*45,easing:'cubic-bezier(.2,1.3,.4,1)',fill:'backwards'})});
+ await wait(500+els.length*45);
+ var tot=0;
+ for(var i=0;i<order.length;i++){
+  var c=order[i],e=els[i],gr=grade(c);
+  if(!skip&&!reduce)e.scrollIntoView({block:'nearest',behavior:'smooth'});
+  if(gr>=2&&!skip){e.classList.add('tease');await wait(gr===3?1200:850);e.classList.remove('tease')}
+  if(c.t>=2&&!skip)await cutin(c);
+  e.classList.add('on');
+  var prev=tot;tot+=price(c);
+  fx(e,gr);setTotal(tot,gr===0?220:550);
+  if(prev<S.msrp&&tot>=S.msrp){$('mkM').classList.add('on');if(!skip)toast('定価突破!','m')}
+  if(prev<S.pre&&tot>=S.pre){$('mkP').classList.add('on');if(!skip){toast('プレ値突破!!','p');burst(innerWidth/2,innerHeight*.3,['#ffcf4a','#fff','#ff5fa8','#7fe0ff'],60)}}
+  await wait(gr===0?160:gr===1?420:750);
+ }
+ $('skip').hidden=true;setTotal(tot,0);
+ await wait(250);finish(tot);
+}
+function finish(tot){
+ var win=tot>=S.pre,mid=!win&&tot>=S.msrp,cls=win?'win':mid?'mid':'lose',word=win?'大勝利!':mid?'定価超え!':'負け…';
+ tally.n++;tally.pnl+=tot-S.pre;if(win)tally.w++;
+ var st=$('stampEl');st.className='stamp '+cls;st.innerHTML='<b>'+word+'</b><small>定価 '+sgn(tot-S.msrp)+' / プレ値 '+sgn(tot-S.pre)+'</small>';st.hidden=false;
+ if(!reduce){st.animate([{transform:'translate(-50%,-50%) scale(3) rotate(-14deg)',opacity:0},{transform:'translate(-50%,-50%) scale(.9) rotate(-8deg)',opacity:1,offset:.7},{transform:'translate(-50%,-50%) scale(1) rotate(-8deg)',opacity:1}],{duration:520,easing:'cubic-bezier(.3,1.4,.5,1)'});shake()}
+ if(win)burst(innerWidth/2,innerHeight*.45,['#4dffa6','#ffcf4a','#fff','#ff5fa8'],90);
+ var v=$('verdict');v.className='dg '+cls;v.textContent=word;v.hidden=false;
+ $('tally').textContent='累計 '+tally.n+'BOX ・ プレ値超え '+tally.w+'回 ・ プレ値で買った場合の収支 '+sgn(tally.pnl);
+ $('after').hidden=false;
+ var close=function(){st.hidden=true;document.removeEventListener('pointerdown',close)};
+ setTimeout(function(){document.addEventListener('pointerdown',close)},300);setTimeout(close,reduce?1200:2200);
+}
+function detail(){
+ var st=stats(),ms=missing();
+ $('stats').innerHTML='<div class="st"><div class="small">期待値(平均)</div><div class="v dg">'+yen(st.mean)+'</div><small>一部の超高額カードが押し上げた値</small></div><div class="st"><div class="small">よくある結果(中央値)</div><div class="v dg">'+yen(st.med)+'</div><small>10%〜90%:'+yen(st.p10)+'〜'+yen(st.p90)+'</small></div>';
+ $('statNote').textContent='プレ値超えは約'+(st.winPre*100).toFixed(0)+'%、定価超えは約'+(st.winMsrp*100).toFixed(0)+'%のBOX。大当たり(SP以上)なしのBOXは約'+(st.none*100).toFixed(0)+'%。';
+ var e=st.e,lb=function(x){return yen(x)+(x===S.msrp?'(定価)':x===S.pre?'(プレ値)':'')};
+ var names=[lb(e[0])+'未満',lb(e[0])+'〜',lb(e[1])+'〜',lb(e[2])+'〜',lb(e[3])+'以上'];
+ $('bars').innerHTML=st.cnt.map(function(p,k){var up=k<4?e[k]:Infinity,lo=k?e[k-1]:0,col=up<=S.msrp?'var(--lose)':lo>=S.pre?'var(--win)':'var(--gold)';
+  return '<div class="bar"><span>'+names[k]+'</span><i style="width:'+(p*100)+'%;background:'+col+'"></i><span>'+(p*100).toFixed(p<.01&&p>0?2:1)+'%</span></div>'}).join('');
+ $('warn').hidden=!ms;if(ms)$('warn').textContent='価格が取れていないカードが'+ms+'種あり、0円で計算しています。';
+}
+async function openBox(force){
+ if(busy)return;busy=true;readSet();
+ var box=$('box'),scene=$('scene');
+ if(!reduce){
+  box.classList.add('shake');await new Promise(function(r){setTimeout(r,900)});
+  for(var i=0;i<24;i++){var el=document.createElement('div');el.className='bc';scene.appendChild(el);
+   var a=Math.random()*Math.PI*2,dist=Math.min(innerWidth,innerHeight)*(.28+Math.random()*.45),x=Math.cos(a)*dist,y=Math.sin(a)*dist*.8,rot=(Math.random()-.5)*900;
+   el.animate([{transform:'translate(0,0) scale(.3) rotate(0)',opacity:1},{transform:'translate('+x+'px,'+y+'px) scale(1.15) rotate('+rot+'deg)',opacity:1,offset:.7},{transform:'translate('+x*1.15+'px,'+y*1.15+'px) scale(1) rotate('+rot*1.1+'deg)',opacity:0}],{duration:1100,easing:'cubic-bezier(.15,.8,.25,1)',fill:'forwards'})}
+  box._fade=box.animate([{opacity:1,filter:'brightness(1)'},{opacity:0,filter:'brightness(3)'}],{duration:260,fill:'forwards'});
+  await new Promise(function(r){setTimeout(r,850)});
+ }
+ var fl=$('flash');
+ await fl.animate([{opacity:0},{opacity:1}],{duration:reduce?80:420,fill:'forwards'}).finished;
+ hits=drawer()(force);
+ $('stage').hidden=true;$('result').hidden=false;scrollTo(0,0);
+ await fl.animate([{opacity:1},{opacity:0}],{duration:reduce?80:800,fill:'forwards'}).finished;
+ await play();
+ busy=false;
+}
+function reset(){
+ if(busy)return;
+ var box=$('box');box.classList.remove('shake');if(box._fade){box._fade.cancel();box._fade=null}
+ [].forEach.call(document.querySelectorAll('.bc'),function(e){e.remove()});
+ $('stampEl').hidden=true;$('result').hidden=true;$('stage').hidden=false;scrollTo(0,0);
+}
+$('box').addEventListener('click',function(){openBox()});
+$('again').addEventListener('click',reset);
+$('skip').addEventListener('click',function(){skip=true;$('result').classList.add('skipping');$('reveal').hidden=true;if($('reveal').onclick)$('reveal').onclick()});
+$('more').addEventListener('click',function(){var d=$('detail');d.hidden=!d.hidden;if(!d.hidden)detail()});
+function topCard(){var ord=['TOP','LSP','CP','SP','TR','SECP','LPAR'];for(var i=0;i<ord.length;i++)if(POOL[ord[i]])return pick(POOL[ord[i]]);return pick(ALL)}
+$('t3').addEventListener('click',function(){reset();openBox(topCard())});
+$('t2').addEventListener('click',function(){reset();openBox(pick(POOL.SP||POOL.PAR||ALL))});
+['msrp','pre'].forEach(function(i){$(i).addEventListener('change',function(){readSet();if(!$('detail').hidden)detail()})});
+var RAW='https://raw.githubusercontent.com/oct7hiro-cmyk/op-prices-tools/main/';
+function getJSON(path){return fetch(RAW+path,{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return fetch(path).then(function(r){if(!r.ok)throw 0;return r.json()})})}
+function catText(k){return (LBL[k]||k)}
+function showSet(code){
+ Promise.all([getJSON('sets/'+code+'.json'),getJSON('data/sets/'+code+'.json').catch(function(){return null})]).then(function(r){
+  var cfg=r[0],j=r[1];setupCards(cfg);
+  document.title=cfg.code+' '+cfg.name+' BOX開封ガチャ';
+  $('ttl').textContent=cfg.code;$('sub').textContent=cfg.name;$('boxCode').textContent=cfg.code;
+  S.msrp=cfg.msrp||5280;S.pre=cfg.market||Math.round(S.msrp*1.2);$('msrp').value=S.msrp;$('pre').value=S.pre;
+  if(j){var m={};j.cards.forEach(function(c){m[c.id]=c});var im=j.images||{};
+   ALL.forEach(function(c){var x=m[c.id];if(!x)return;if(x.refPrice)c.p=x.refPrice;
+    if(x.offers&&x.offers.length)c.offers=x.offers;c.search=x.searchUrl;c.ysearch=x.ysearchUrl;if(x.imgs&&x.imgs.length)c.imgs=x.imgs});
+   setBox(BOX_IMG||(im.BOX&&im.BOX[0]));S.date=j.updatedAt||''}
+  else setBox(BOX_IMG);
+  retier();
+  var cats=Object.keys(cfg.cats).map(function(k){var c=cfg.cats[k];return catText(k)+':1BOXに約'+(c.lambda>=1?c.lambda.toFixed(1)+'枚':'1/'+Math.round(1/c.lambda)+'枚')+(c.note?'('+esc(c.note)+')':'')});
+  var base=Object.keys(cfg.base).map(function(k){return k+' '+cfg.base[k][0]+'〜'+cfg.base[k][1]+'枚'}).join('、');
+  $('src').innerHTML=['封入率は開封調査にもとづく販売・買取サイトの推定値です。公式発表はありません(信頼度:'+({high:'高',medium:'中',low:'低'}[cfg.confidence]||'-')+')。',
+   '1BOX('+cfg.packs+'パック×'+cfg.perPack+'枚):'+base+'。'].concat(cats).concat([
+   '価格はショップの販売価格。高額カードの一部は手入力、そのほかは楽天ウェブサービスとYahoo!ショッピングの価格('+(S.date||'-')+'時点)。カード・BOX画像は楽天市場・Yahoo!ショッピングの出品画像です。',
+   '根拠:'+cfg.sources.slice(0,8).map(function(u){return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(u.replace(/^https?:\/\//,'').slice(0,40))+'</a>'}).join(' / ')
+  ]).map(function(t){return '<li>'+t+'</li>'}).join('');
+  $('picker').hidden=true;$('stage').hidden=false;busy=false;
+ }).catch(function(){location.href='./'});
+}
+function showPicker(){
+ $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード BOX開封ガチャ';
+ Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
+  var list=r[0].sets,sum=r[1].sets||{};
+  $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
+   return '<a class="sc" href="?set='+s.code+'"><div class="im">'+(i<3?'<span class="nw">NEW</span>':'')+(x.box?'<img alt="" referrerpolicy="no-referrer" src="'+esc(x.box)+'" onerror="this.remove()">':'')+'<b>'+s.code+'</b></div>'+
+    '<div class="tx"><div class="cd2">'+s.code+'</div><div class="nm3">'+esc(s.name)+'</div>'+
+    '<div class="ev">定価 '+(s.msrp?yen(s.msrp):'-')+(x.ev?'<br>期待値 <b>'+yen(x.ev)+'</b>':'<br>価格取得待ち')+'</div></div></a>'}).join('');
+  [].forEach.call(document.querySelectorAll('.sc .im img'),function(im){im.addEventListener('load',function(){var b=im.parentNode.querySelector('b');if(b)b.remove()})});
+ });
+}
+(function(){var code=(new URLSearchParams(location.search).get('set')||'').toUpperCase();if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OP17 世界最強の戦士 BOX開封ガチャ</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0b0710;--ink:#fbf6ee;--mute:#b9aec4;--line:#3a2b45;--gold:#ffcf4a;--gold2:#ff9d2e;--red:#e8352b;--win:#4dffa6;--lose:#7e90b8;--panel:#1a1220;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0710}}
+:root[data-theme="dark"]{--bg:#0b0710}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:rgba(14,9,20,.92)}
+.dg{font-family:"Dela Gothic One","Zen Kaku Gothic New",sans-serif;font-weight:400}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#bg{position:fixed;inset:-50%;z-index:-1;background:repeating-conic-gradient(from 0deg,rgba(255,190,80,.05) 0 6deg,transparent 6deg 18deg),radial-gradient(circle at 50% 50%,#3a1030 0,#160a1c 40%,#0b0710 70%);animation:spin 80s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* ステージ */
+#stage{min-height:100svh;display:grid;place-items:center;padding:24px 16px;text-align:center;position:relative;overflow:hidden}
+.ttl{margin:0;font-size:clamp(46px,13vw,84px);line-height:1;color:var(--gold);text-shadow:0 4px 0 #8a2a0a,0 0 40px rgba(255,190,60,.55);letter-spacing:.02em}
+.sub{margin:6px 0 0;font-size:clamp(18px,5vw,26px);text-shadow:0 2px 0 #000}
+.scene{position:relative;perspective:900px;height:min(48svh,340px);display:grid;place-items:center;margin:14px 0 4px}
+.scene::after{content:"";position:absolute;bottom:2%;width:160px;height:20px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(8px);animation:sh 4s ease-in-out infinite}
+@keyframes sh{50%{transform:scale(.75);opacity:.55}}
+.box{position:relative;z-index:2;width:min(54vw,220px);aspect-ratio:3/4;border:0;border-radius:12px;color:#fff;
+background:linear-gradient(160deg,#c3263a,#6d0f22 60%,#3a0714);box-shadow:inset 0 0 0 4px var(--gold),inset 0 0 0 7px #6d0f22,inset 0 0 0 9px var(--gold),0 0 80px 14px rgba(255,170,60,.45),0 30px 60px rgba(0,0,0,.7);
+display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;animation:fl 4s ease-in-out infinite;overflow:hidden}
+.box::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);animation:gl 2.6s linear infinite}
+@keyframes gl{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
+.box b{font-size:clamp(44px,12vw,58px);color:var(--gold);text-shadow:0 3px 0 #3a0714}
+.box span{font-size:14px;letter-spacing:.3em}
+.box img{position:absolute;inset:9px;width:calc(100% - 18px);height:calc(100% - 18px);object-fit:cover;border-radius:6px;background:#fff}
+.box.has-img b,.box.has-img span{display:none}
+@keyframes fl{0%,100%{transform:translateY(0) rotateY(-16deg) rotateX(4deg)}50%{transform:translateY(-22px) rotateY(16deg) rotateX(-2deg)}}
+.box.shake{animation:sk .9s linear forwards}
+@keyframes sk{0%{transform:translate(0)}10%{transform:translate(-6px,2px) rotate(-3deg)}20%{transform:translate(6px,-2px) rotate(3deg)}30%{transform:translate(-8px,3px) rotate(-4deg)}40%{transform:translate(8px,-3px) rotate(4deg)}50%{transform:translate(-10px,2px) rotate(-5deg) scale(1.05)}60%{transform:translate(10px,-2px) rotate(5deg) scale(1.08)}80%{transform:translate(-6px) rotate(-3deg) scale(1.12)}100%{transform:scale(1.18)}}
+.bc{position:absolute;left:50%;top:50%;width:46px;height:64px;margin:-32px 0 0 -23px;border-radius:5px;border:2px solid var(--gold);background:repeating-conic-gradient(#b0182b 0 10deg,#7a0e1e 10deg 20deg);z-index:3;opacity:0}
+.tap{margin:0;font-size:clamp(22px,6vw,30px);color:var(--gold);animation:pu 1.1s ease-in-out infinite}
+@keyframes pu{50%{opacity:.35;transform:scale(.95)}}
+.foot{margin:16px 0 0;font-size:12px;color:var(--mute)}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:60}
+/* 結果 */
+#result{max-width:980px;margin:0 auto;padding:0 12px 64px;position:relative}
+.hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin:0 -12px;padding:12px 16px 14px;background:rgba(14,9,20,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.row1{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.lbl{font-size:12px;color:var(--mute)}
+#total{font-size:clamp(34px,9vw,54px);line-height:1;color:#fff;text-shadow:0 0 18px rgba(255,200,80,.5);font-variant-numeric:tabular-nums}
+#verdict{font-size:clamp(16px,4.5vw,22px);padding:2px 12px;border-radius:99px}
+#verdict.win{background:var(--win);color:#06301b}#verdict.mid{background:var(--gold);color:#3a2000}#verdict.lose{background:var(--lose);color:#0d1530}
+.gauge{position:relative;height:14px;margin-top:12px;border-radius:99px;background:#2a1e33;overflow:visible}
+#fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#5a7cff,#c86bff,#ff5fa8,#ffcf4a);box-shadow:0 0 14px rgba(255,170,90,.6)}
+.mk{position:absolute;top:-6px;bottom:-6px;width:3px;background:#fff;border-radius:2px;opacity:.55}
+.mk b{position:absolute;top:22px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:var(--mute);font-weight:700}
+.mk.on{opacity:1;box-shadow:0 0 12px #fff}.mk.on b{color:#fff}
+#skip{position:absolute;right:14px;bottom:-40px;border:1px solid var(--line);background:rgba(26,18,32,.9);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:12px 10px;margin-top:52px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}}
+.cd{perspective:700px}
+.in{position:relative;aspect-ratio:63/88;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,1.35,.5,1)}
+.skipping .in{transition-duration:.15s}
+.cd.on .in{transform:rotateY(180deg)}
+.bk,.fc{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:7px;overflow:hidden}
+.bk{display:grid;place-items:center;border:2px solid var(--gold);background:radial-gradient(circle,#ffcf4a 0 13%,transparent 14%),repeating-conic-gradient(#b0182b 0 10deg,#7a0e1e 10deg 20deg)}
+.bk span{font-family:"Dela Gothic One",sans-serif;font-size:13px;color:#3a0714}
+.fc{transform:rotateY(180deg);background:var(--face);border:2px solid var(--rim)}
+.gen{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:7px 6px;text-align:center}
+.rb{align-self:center;font-size:10px;font-weight:900;padding:1px 7px;border-radius:99px;background:var(--rim);color:#120a18;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.nm{font-size:12px;font-weight:900;line-height:1.3;word-break:break-all;text-shadow:0 1px 2px #000}
+.id{font-size:9px;color:rgba(255,255,255,.65)}
+.fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--face);opacity:0;transition:opacity .2s}
+.fc img.ok,#reveal .card img.ok{opacity:1}
+.pr{margin-top:6px;text-align:center;font-weight:900;font-size:13px;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s .25s}
+.cd.on .pr{opacity:1}
+.go{display:block;margin:3px auto 0;width:fit-content;max-width:100%;padding:2px 9px;border:0;border-radius:99px;font-size:11px;font-weight:700;color:#120a18;background:var(--gold);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s .35s}
+.cd.on .go{opacity:1;pointer-events:auto}
+.cd.on{cursor:pointer}
+.adnote{margin:8px 0 0;font-size:11px;color:var(--mute);text-align:right}
+.k-R{--face:linear-gradient(160deg,#173a52,#0c1f2e);--rim:#7fd6e8}
+.k-SR{--face:linear-gradient(160deg,#4a3410,#20160a);--rim:#ffcf4a}
+.k-SEC{--face:linear-gradient(160deg,#5a1414,#250808);--rim:#ff7a5a}
+.k-PAR{--face:linear-gradient(160deg,#3a1450,#14082a);--rim:#ff8fd0}
+.k-LPAR{--face:linear-gradient(160deg,#104a3a,#082a20);--rim:#6cffc8}
+.k-SP{--face:linear-gradient(160deg,#2a1a6a,#0e0830);--rim:#c3a8ff}
+.k-TOP{--face:linear-gradient(160deg,#6a4a08,#2a1600);--rim:#ffe08a}
+.k-PAR .fc::after,.k-LPAR .fc::after,.k-SP .fc::after,.k-TOP .fc::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 15%,rgba(255,110,200,.4),rgba(110,220,255,.4),rgba(255,240,130,.4),transparent 85%);background-size:260% 100%;mix-blend-mode:screen;animation:holo 2.2s linear infinite}
+@keyframes holo{from{background-position:100% 0}to{background-position:-160% 0}}
+/* 光彩は box-shadow で付ける(filter は3Dを平面化してめくりが壊れるため) */
+.cd.on.g1 .fc{box-shadow:0 0 10px rgba(255,207,74,.75)}
+.cd.on.g2 .fc{box-shadow:0 0 14px var(--rim),0 0 30px var(--rim)}
+.cd.on.g3 .fc{box-shadow:0 0 20px #ffe08a,0 0 44px #ffb84a}
+.cd.on.g2 .pr,.cd.on.g3 .pr{color:var(--gold);font-size:15px}
+.cd.tease .in{animation:jit .09s linear infinite}
+.cd.tease .bk{box-shadow:0 0 16px #fff,0 0 34px var(--rim)}
+@keyframes jit{0%{translate:0 0}25%{translate:-2px 1px}50%{translate:2px -1px}75%{translate:-1px -2px}}
+.pt{position:fixed;width:10px;height:10px;margin:-5px 0 0 -5px;z-index:70;pointer-events:none;border-radius:2px}
+.toast{position:fixed;left:50%;top:32%;z-index:65;pointer-events:none;font-family:"Dela Gothic One",sans-serif;font-size:clamp(34px,10vw,64px);white-space:nowrap;opacity:0;transform:translate(-50%,-50%)}
+.toast.m{color:#fff;text-shadow:0 0 20px #ff9d2e,0 4px 0 #8a2a0a}
+.toast.p{color:var(--gold);text-shadow:0 0 30px #ff5fa8,0 5px 0 #8a2a0a}
+.toast.go{animation:tst 1.5s ease-out}
+@keyframes tst{0%{opacity:0;transform:translate(-50%,-50%) scale(2.4)}15%{opacity:1;transform:translate(-50%,-50%) scale(.95)}25%{transform:translate(-50%,-50%) scale(1.05)}75%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-70%) scale(1)}}
+.stamp{position:fixed;left:50%;top:45%;z-index:66;transform:translate(-50%,-50%) rotate(-8deg);text-align:center;padding:14px 30px 12px;border:6px solid currentColor;border-radius:14px;background:rgba(10,6,16,.88);pointer-events:none}
+.stamp b{display:block;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(46px,14vw,90px);line-height:1.05}
+.stamp small{display:block;font-size:14px;color:var(--ink);font-weight:700;margin-top:4px}
+.stamp.win{color:var(--win)}.stamp.mid{color:var(--gold)}.stamp.lose{color:var(--lose)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.btn{border:0;border-radius:12px;padding:15px 30px;font-family:"Dela Gothic One",sans-serif;font-size:18px;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 5px 0 #8a3a0a,0 0 24px rgba(255,170,60,.45)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #8a3a0a}
+.btn.s{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none;font-family:inherit;font-weight:700;font-size:14px;padding:11px 18px}
+#tally{text-align:center;font-size:13px;color:var(--mute);margin-top:14px}
+.panel{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st .v{font-size:clamp(22px,6vw,30px);font-variant-numeric:tabular-nums}
+.st small{display:block;color:var(--mute);font-size:12px}
+.bar{display:grid;grid-template-columns:minmax(92px,36%) 1fr 52px;gap:8px;align-items:center;font-size:12px;margin:6px 0;font-variant-numeric:tabular-nums}
+.bar i{display:block;height:12px;border-radius:3px;min-width:2px}
+.small{font-size:12px;color:var(--mute)}
+details{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--panel)}
+summary{cursor:pointer;font-weight:700;font-size:14px}
+.set{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.set label{display:block;font-size:12px;color:var(--mute)}
+.set input,.set select{width:100%;font:inherit;color:var(--ink);background:#120c18;border:1px solid var(--line);border-radius:6px;padding:7px}
+@media(max-width:560px){.set{grid-template-columns:1fr 1fr}}
+ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 /* カード詳細(販売ショップ一覧) */
 #dv{position:fixed;inset:0;z-index:58;overflow-y:auto;overscroll-behavior:contain;background:#07040c;-webkit-overflow-scrolling:touch}
 #dv .bgr{position:fixed;inset:-60%;pointer-events:none;background:repeating-conic-gradient(from 0deg,var(--dvc) 0 4deg,transparent 4deg 14deg);opacity:.28;animation:spin 26s linear infinite}
