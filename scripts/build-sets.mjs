@@ -14,7 +14,9 @@ const LABEL = { R: 'R', SR: 'SR', SEC: 'SEC', PAR: 'パラレル', SECP: 'SECパ
 const NAME_OVERRIDE = { 'OP17-118_p2': '海賊団SP', 'EB04-061_p3': '海賊団SP' };
 // 価格監視しないカテゴリ(低額で種類が多い)
 const NO_WATCH = new Set(['FOIL']);
-const NG_VARIANT = ['パラ', 'SP', 'スーパー', 'コミ', '漫画', 'サイン'];
+const NG_VARIANT = ['パラ', 'SP', 'スーパー', 'コミ', '漫画', 'サイン', '★'];
+// 記念セット・海外版など、同じカード番号でも別物の出品を除く
+const NG_SPECIAL = ['ANNIVERSARY', '周年', 'CHINA', '中国', '英語', '海外', '簡体', '繁体'];
 
 const sets = [];
 const watch = [];
@@ -52,12 +54,12 @@ for (const f of files) {
     const code = id.replace(/_p\d+$/, '');
     const siblings = byCode[code].length > 1;
     const w = { set: r.code, id, name: `${name}(${NAME_OVERRIDE[id] ?? LABEL[cat] ?? cat})`, code };
-    if (['R', 'SR', 'SEC'].includes(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, mustNot: NG_VARIANT });
+    if (['R', 'SR', 'SEC'].includes(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
     else if (cat === 'SP') Object.assign(w, { keyword: `ワンピースカード ${code} SP`, mustAny: ['SP', 'スペシャル'], minPrice: 1000 });
     else if (cat === 'CP' || cat === 'LSP') Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, mustAny: ['スーパー', 'コミ', '漫画'], minPrice: 5000 });
     else if (cat === 'TOP') Object.assign(w, { keyword: `ワンピースカード ${code}`, mustAny: ['スーパー', 'コミ', '漫画', '海賊団', '金', '赤', 'サイン', '周年'], minPrice: 30000 });
     else if (cat === 'TR') Object.assign(w, { keyword: `ワンピースカード ${code} TR`, mustAny: ['TR', 'トレジャー'], minPrice: 300 });
-    else Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP'],
+    else Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', ...NG_SPECIAL],
       ...(siblings && cat === 'OTHER' ? { minPrice: 3000 } : {}) });
     watch.push(w);
   }
@@ -65,6 +67,8 @@ for (const f of files) {
 sets.sort((a, b) => String(b.release).localeCompare(String(a.release)));
 await writeFile('sets/index.json', JSON.stringify({ updated: new Date().toISOString().slice(0, 10), sets }, null, 1));
 const cardsJson = JSON.parse(await readFile('cards.json', 'utf8'));
-await writeFile('cards.json', JSON.stringify({ defaults: cardsJson.defaults, cards: watch }, null, 1) + '\n');
+const EXTRA_NG = ['キズ', '英語版', '中国語', '簡体', '繁体'];
+const defaults = { ...cardsJson.defaults, ng: [...new Set([...(cardsJson.defaults.ng ?? []), ...EXTRA_NG])] };
+await writeFile('cards.json', JSON.stringify({ defaults, cards: watch }, null, 1) + '\n');
 const per = {}; watch.forEach((w) => { per[w.set] = (per[w.set] ?? 0) + 1; });
 console.log(`弾 ${sets.length} / 監視カード ${watch.length}`, per);
