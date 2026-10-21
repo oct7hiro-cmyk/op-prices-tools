@@ -44,7 +44,7 @@ async function topCards(code, n = 10) {
   const cfg = JSON.parse(await readFile(`sets/${code}.json`, 'utf8'));
   const meta = Object.fromEntries(cfg.cards.map((c) => [c[0], c]));
   const seen = new Set(), out = [];
-  for (const c of [...data.cards].filter((c) => c.refPrice && meta[c.id]).sort((a, b) => b.refPrice - a.refPrice)) {
+  for (const c of [...data.cards].filter((c) => c.refPrice && !c.est && meta[c.id]).sort((a, b) => b.refPrice - a.refPrice)) {
     const key = c.source === 'manual' || !c.offers?.length ? c.id : `${c.refPrice}|${c.offers[0].u}`;
     if (seen.has(key)) continue; seen.add(key);
     const m = meta[c.id];
