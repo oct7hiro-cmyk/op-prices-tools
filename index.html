@@ -240,6 +240,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .dkmu .th{position:relative;width:36px;aspect-ratio:63/88;border-radius:4px;overflow:hidden;background:#241a2c}.dkmu .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}.dkmu .th img.ok{opacity:1}
 .dkmu .n{font-weight:900;font-size:13px}.dkmu .s{font-size:11px;color:var(--mute)}.dkmu .r{font-weight:900;font-size:16px;text-align:right}.dkmu .g .r{color:#4dffa6}.dkmu .b .r{color:#ff8f8f}
 .dkmu .em{font-size:12px;color:var(--mute);padding:6px 0}
+.dkmu .tt{display:inline-block;font-size:10px;font-weight:900;padding:0 5px;border-radius:4px;margin-right:5px;background:#3a2b45;vertical-align:1px}.dkmu .tt.SS{background:#ff9d2e;color:#2a1600}.dkmu .tt.S{background:#ff6fb0;color:#2a0a20}.dkmu .tt.A{background:#7fb4ff;color:#0a1430}
 .dkmu .mo{margin-top:6px;width:100%;padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:12px;font-weight:700;cursor:pointer}
 @media(max-width:520px){.dkst{grid-template-columns:repeat(2,1fr)}.dkmu{grid-template-columns:1fr}}
 .dkl{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;padding:12px 0 12px 12px}
@@ -393,7 +394,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <p id="dkNote"></p>
 <div class="dkg" id="dkGrid"></div>
 </div>
-<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。デッキ価格は各カードのショップ最安値×枚数の合計で、買取価格ではありません。フルパラ版は、パラレルのあるカードをパラレル(SP・コミパラなどを除く)に置き換えた価格です。Tier表・勝率・相性・デッキリストはOPlayTCGのメタ統計(直近30日・ランク戦)から毎日集計しています。勝率はそのリーダー全体の成績、相性は200戦以上の相手のみ表示(上位3つ、「もっと見る」で全部)、デッキリストはよく使われている構築のうち50戦以上で勝率が一番高いものです。フルパラ版はプレミアムカードコレクションのパラレルも候補に含め、一番安いものを選んでいます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。デッキ価格は各カードのショップ最安値×枚数の合計で、買取価格ではありません。フルパラ版は、パラレルのあるカードをパラレル(SP・コミパラなどを除く)に置き換えた価格です。Tier表・勝率・相性・デッキリストはOPlayTCGのメタ統計(直近30日・ランク戦)から毎日集計しています。勝率はそのリーダー全体の成績、相性は200戦以上の相手のみ表示(Tier A以上の相手から上位3つ、「もっと見る」でTier B・Tier表外も含めて全部)、デッキリストはよく使われている構築のうち50戦以上で勝率が一番高いものです。フルパラ版はプレミアムカードコレクションのパラレルも候補に含め、一番安いものを選んでいます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
 </section>
 <section id="stage" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
@@ -869,9 +870,14 @@ function renderDeck(slug){
  var st=d.stats,pc=function(v){return v==null?'-':v.toFixed(1)+'%'};
  $('dkSt').innerHTML=st?['勝率',pc(st.winRate),'先手',pc(st.first.winRate),'後手',pc(st.second.winRate),'使用率',pc(st.share)].reduce(function(a,x,i,arr){if(i%2===0)a.push('<div><small>'+x+'</small><b>'+arr[i+1]+'</b></div>');return a},[]).join('')+'':'';
  if(st)$('dkSt').title=st.games.toLocaleString()+'戦・'+st.players.toLocaleString()+'人';
- var muL=function(list,cls,ttl){return '<div class="'+cls+'"><h3>'+ttl+'</h3>'+(list&&list.length?'<ul>'+list.map(function(m,i){return '<li'+(i>=3?' class="more" hidden':'')+'><span class="th" data-m="'+cls+i+'"></span><span><div class="n">'+esc(m.name)+'</div><div class="s">先手 '+pc(m.first)+' ・ 後手 '+pc(m.second)+' ・ '+m.games.toLocaleString()+'戦</div></span><span class="r">'+pc(m.winRate)+'</span></li>'}).join('')+'</ul>'+(list.length>3?'<button type="button" class="mo" data-n="'+(list.length-3)+'">もっと見る(あと'+(list.length-3)+'件)</button>':''):'<div class="em">対戦数の多い相手の中にはありません</div>')+'</div>'};
- $('dkMu').innerHTML=st?muL(d.good,'g','有利なデッキ')+muL(d.bad,'b','不利なデッキ'):'';
- (d.good||[]).forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="g'+i+'"]'),dkCard(m.leader))});(d.bad||[]).forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="b'+i+'"]'),dkCard(m.leader))});
+ // 有利/不利: Tier A以上の相手から上位3つ。残り(Tier B・Tier表外も含む全部)は「もっと見る」で
+ var TOF={};DK.tiers.forEach(function(t){t.decks.forEach(function(x){TOF[x.slug]=t.tier})});
+ var muL=function(list,cls,ttl,none){list=list||[];var top=list.filter(function(m){return /^(SS|S|A)$/.test(TOF[m.id.toLowerCase()]||'')}).slice(0,3),rest=list.filter(function(m){return top.indexOf(m)<0}),all=top.concat(rest);
+  var row=function(m,i){var t=TOF[m.id.toLowerCase()];return '<li'+(i>=top.length?' class="more" hidden':'')+'><span class="th" data-m="'+cls+i+'"></span><span><div class="n">'+(t?'<span class="tt '+t+'">'+t+'</span>':'')+esc(m.name)+'</div><div class="s">先手 '+pc(m.first)+' ・ 後手 '+pc(m.second)+' ・ '+m.games.toLocaleString()+'戦</div></span><span class="r">'+pc(m.winRate)+'</span></li>'};
+  return {html:'<div class="'+cls+'"><h3>'+ttl+'</h3>'+(top.length?'':'<div class="em">'+none+'</div>')+(all.length?'<ul>'+all.map(row).join('')+'</ul>':'')+(rest.length?'<button type="button" class="mo" data-n="'+rest.length+'">もっと見る(あと'+rest.length+'件)</button>':'')+'</div>',list:all}};
+ var G=st?muL(d.good,'g','有利なデッキ','Tier A以上のデッキには有利な相手がいません'):null,B=st?muL(d.bad,'b','不利なデッキ','Tier A以上のデッキには不利な相手がいません'):null;
+ $('dkMu').innerHTML=st?G.html+B.html:'';
+ if(st){G.list.forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="g'+i+'"]'),dkCard(m.leader))});B.list.forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="b'+i+'"]'),dkCard(m.leader))})}
  $('dkLImg').innerHTML='';addImg($('dkLImg'),dkCard(d.leader));
  track('view_deck',{deck:d.slug,deck_name:d.name});pv();renderDeckList();
 }
