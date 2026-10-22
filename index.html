@@ -252,7 +252,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .dkst small{display:block;font-size:11px;color:var(--mute)}.dkst b{font-size:17px}
 .dkmu{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}
 .dkmu h3{margin:0 0 6px;font-size:14px}.dkmu .g h3{color:#4dffa6}.dkmu .b h3{color:#ff8f8f}
-.dkmu ul{list-style:none;margin:0;padding:0}.dkmu li{display:grid;grid-template-columns:36px 1fr auto;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.dkmu ul{list-style:none;margin:0;padding:0}.dkmu li.lk{cursor:pointer}.dkmu li.lk:hover .n{text-decoration:underline}.dkmu .ar{font-style:normal;font-size:14px;color:var(--mute);margin-left:4px}.dkmu li{display:grid;grid-template-columns:36px 1fr auto;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
 .dkmu .th{position:relative;width:36px;aspect-ratio:63/88;border-radius:4px;overflow:hidden;background:#241a2c}.dkmu .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}.dkmu .th img.ok{opacity:1}
 .dkmu .n{font-weight:900;font-size:13px}.dkmu .s{font-size:11px;color:var(--mute)}.dkmu .r{font-weight:900;font-size:16px;text-align:right}.dkmu .g .r{color:#4dffa6}.dkmu .b .r{color:#ff8f8f}
 .dkmu .em{font-size:12px;color:var(--mute);padding:6px 0}
@@ -285,7 +285,6 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 @keyframes dkbg{50%{box-shadow:0 4px 0 #8a3a0a,0 0 38px rgba(255,190,80,.85)}}
 .dkbb b{display:block;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(17px,4.6vw,21px);line-height:1.2}
 .dkbb small{display:block;font-size:11px;font-weight:700;opacity:.85;margin-top:2px}
-.dkbb .bp{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:"Dela Gothic One",sans-serif;font-size:clamp(16px,4.4vw,20px)}
 .dkbb[aria-expanded="true"]{animation:none}
 .dkmer{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);text-decoration:none;font-size:12px;font-weight:900;line-height:1.3;text-align:center}
 .dkmer small{font-size:10px;font-weight:500;color:var(--mute)}
@@ -589,13 +588,16 @@ function stats(){
 var IMG={};
 // BOX_IMG にURLを書くと楽天の画像より優先されます
 var BOX_IMG='';
-function imgOf(c){return IMG[c.id]?[IMG[c.id]]:(c.imgs||[])}
+// 出品画像のうち「画像なし」の差し替え画像(no_photo など)は使わない
+var NOIMG=/no[_-]?(photo|image|img)|now[_-]?printing/i;
+function imgOf(c){return IMG[c.id]?[IMG[c.id]]:(c.imgs||[]).filter(function(u){return !NOIMG.test(u)})}
 function addImg(parent,c){
  var L=imgOf(c);if(!L.length)return;
  var im=document.createElement('img'),i=0,first=null;
  im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
  im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
  im.onload=function(){
+  if(im.naturalWidth<200&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さすぎる画像は「画像なし」の差し替えのことが多い
   if(im.src===first){im.classList.add('ok');return}
   if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
   im.classList.add('ok')};
@@ -650,7 +652,7 @@ function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
 var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
 var dvOpen=false,dvPushed=false;
 function openDetail(c){
- DVCUR=c;track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'});
+ DVCUR=c;sfx('detail');track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'});
  var dv=$('dv'),g=grade(c),col=DVC[g];
  dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
  var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
@@ -831,7 +833,8 @@ function sfx(n,a){
  case 'pre':arp([784,988,1175,1568],t,.08,.5,{type:'square',vol:.07});noise(t+.3,.6,{ft:'highpass',f:7000,vol:.08});break;
  case 'win':arp([523,659,784],t,.12,.25,{type:'square',vol:.08});[1047,1319,1568].forEach(function(f){tone(f,t+.36,1.4,{type:'square',vol:.05,hold:.5})});tone(130,t+.36,.6,{type:'sine',to:65,vol:.5});noise(t+.36,1.2,{ft:'highpass',f:7000,vol:.09});break;
  case 'mid':arp([659,784,1047],t,.1,.4,{type:'square',vol:.07});break;
- case 'lose':[392,370,349].forEach(function(f,k){tone(f,t+k*.28,.26,{type:'square',vol:.06})});tone(330,t+.84,.9,{type:'square',to:220,vol:.06,hold:.3});break;
+ case 'lose':tone(150,t,.22,{type:'sine',to:55,vol:.8});noise(t,.08,{ft:'lowpass',f:500,vol:.35});break;
+ case 'detail':arp([2093,2637,3136,4186],t,.05,.5,{vol:.035});noise(t+.03,.5,{ft:'highpass',f:8000,vol:.03});break;
  case 'ui':tone(1400,t,.05,{vol:.08});break;
  }}
 (function(){var b=$('snd'),upd=function(){b.classList.toggle('off',!SND.on);b.setAttribute('aria-pressed',SND.on?'true':'false');b.title=SND.on?'効果音オン(タップでオフ)':'効果音オフ(タップでオン)'};upd();
@@ -1010,7 +1013,7 @@ function renderDeck(slug){
  // 有利/不利: Tier A以上の相手から上位3つ。残り(Tier B・Tier表外も含む全部)は「もっと見る」で
  var TOF={};DK.tiers.forEach(function(t){t.decks.forEach(function(x){TOF[x.slug]=t.tier})});
  var muL=function(list,cls,ttl,none){list=list||[];var top=list.filter(function(m){return /^(SS|S|A)$/.test(TOF[m.id.toLowerCase()]||'')}).slice(0,3),rest=list.filter(function(m){return top.indexOf(m)<0}),all=top.concat(rest);
-  var row=function(m,i){var t=TOF[m.id.toLowerCase()];return '<li'+(i>=top.length?' class="more" hidden':'')+'><span class="th" data-m="'+cls+i+'"></span><span><div class="n">'+(t?'<span class="tt '+t+'">'+t+'</span>':'')+esc(m.name)+'</div><div class="s">先手 '+pc(m.first)+' ・ 後手 '+pc(m.second)+' ・ '+m.games.toLocaleString()+'戦</div></span><span class="r">'+pc(m.winRate)+'</span></li>'};
+  var row=function(m,i){var t=TOF[m.id.toLowerCase()],f=dkFind(m.id.toLowerCase()),go=f&&f.d.ready;return '<li'+(i>=top.length?' class="more'+(go?' lk':'')+'" hidden':go?' class="lk"':'')+(go?' data-s="'+esc(f.d.slug)+'" role="link" tabindex="0" title="'+esc(m.name)+'のデッキを見る"':'')+'><span class="th" data-m="'+cls+i+'"></span><span><div class="n">'+(t?'<span class="tt '+t+'">'+t+'</span>':'')+esc(m.name)+'</div><div class="s">先手 '+pc(m.first)+' ・ 後手 '+pc(m.second)+' ・ '+m.games.toLocaleString()+'戦</div></span><span class="r">'+pc(m.winRate)+(go?'<i class="ar">›</i>':'')+'</span></li>'};
   return {html:'<div class="'+cls+'"><h3>'+ttl+'</h3>'+(top.length?'':'<div class="em">'+none+'</div>')+(all.length?'<ul>'+all.map(row).join('')+'</ul>':'')+(rest.length?'<button type="button" class="mo" data-n="'+rest.length+'">もっと見る(あと'+rest.length+'件)</button>':'')+'</div>',list:all}};
  var G=st?muL(d.good,'g','有利なデッキ','Tier A以上のデッキには有利な相手がいません'):null,B=st?muL(d.bad,'b','不利なデッキ','Tier A以上のデッキには不利な相手がいません'):null;
  $('dkMu').innerHTML=st?G.html+B.html:'';
@@ -1059,7 +1062,7 @@ function merUrl(d,max){var kw=d.name.replace(/[((].*?[))]/g,'').replace(/&/g,' '
 var DKOC={};
 function renderBuy(){
  var d=dkFind(DKS.slug).d,v=d[DKS.ver],ck=DKS.slug+'|'+DKS.ver+'|'+SHIP,R=DKOC[ck]||(DKOC[ck]=dkOpt(v.cards,SHIP)),b=R.best,ok=isFinite(b.cost)&&R.groups.length;
- $('dkBuyB').innerHTML='<b>最適まとめ買い</b><small>'+(ok?'送料込み・'+b.shops+'ショップでそろう':'送料まで考えて一番安い買い方')+'</small>'+(ok?'<span class="bp">'+yen(b.cost)+'</span>':'');
+ $('dkBuyB').innerHTML='<b>最適まとめ買い</b><small>送料も考えて、一番安い買い方を計算 ›</small>';
  $('dkMer').href=merUrl(d,0);
  if($('dkBuy').hidden)return;
  if(!ok){$('dkBuy').innerHTML='<p class="how">在庫のある出品が見つからず、計算できませんでした。</p>';return}
@@ -1085,7 +1088,9 @@ function showDecks(slug){
 }
 $('dkRows').addEventListener('click',function(e){var b=e.target.closest('.dkc[data-s]');if(!b||b.disabled)return;try{history.pushState({dk:1},'','decks/?d='+b.dataset.s)}catch(x){}renderDeck(b.dataset.s)});
 $('dkBack').addEventListener('click',function(e){e.preventDefault();try{history.pushState({dk:1},'','decks/')}catch(x){}DKS.slug=null;renderTiers()});
-$('dkMu').addEventListener('click',function(e){var b=e.target.closest('.mo');if(!b)return;var box=b.parentNode,open=b.dataset.open!=='1';[].forEach.call(box.querySelectorAll('li.more'),function(li){li.hidden=!open});b.dataset.open=open?'1':'0';b.textContent=open?'閉じる':'もっと見る(あと'+b.dataset.n+'件)'});
+function dkGo(li){var s=li.dataset.s;track('view_matchup_deck',{from:DKS.slug,to:s});try{history.pushState({dk:1},'','decks/?d='+s)}catch(x){}renderDeck(s)}
+$('dkMu').addEventListener('keydown',function(e){var li=e.target.closest&&e.target.closest('li.lk');if(li&&(e.key==='Enter'||e.key===' ')){e.preventDefault();dkGo(li)}});
+$('dkMu').addEventListener('click',function(e){var li=e.target.closest('li.lk');if(li){dkGo(li);return}var b=e.target.closest('.mo');if(!b)return;var box=b.parentNode,open=b.dataset.open!=='1';[].forEach.call(box.querySelectorAll('li.more'),function(li){li.hidden=!open});b.dataset.open=open?'1':'0';b.textContent=open?'閉じる':'もっと見る(あと'+b.dataset.n+'件)'});
 $('dkSum').addEventListener('click',function(e){var b=e.target.closest('[data-v]');if(!b)return;DKS.ver=b.dataset.v;renderDeckList();track('deck_version',{deck:DKS.slug,version:DKS.ver})});
 $('dkGrid').addEventListener('click',function(e){var b=e.target.closest('.dc');if(!b)return;openDetail(dkCard(dkFind(DKS.slug).d[DKS.ver].cards[+b.dataset.i]))});
 addEventListener('popstate',function(){if($('decks').hidden||dvOpen||!DK)return;var s=new URLSearchParams(location.search).get('d');if(s===DKS.slug)return;if(s)renderDeck(s);else{DKS.slug=null;renderTiers()}});
