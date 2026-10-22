@@ -5,7 +5,7 @@
 //   対象 = 直近30日のランク戦で対戦数 MIN_GAMES 以上・使用率 MIN_SHARE 以上のリーダー
 //   強さ = 勝率の95%信頼区間の下限(対戦数が少なく偶然勝っているだけのリーダーを上げすぎない)
 //   SS: 52%以上 / S: 50%以上 / A: 47.5%以上 / B: それ未満
-// 取得に失敗したときは前回のデータをそのまま使う
+// decklists.json の banned に書いたリーダー(禁止デッキ)は除外する。取得に失敗したときは前回のデータをそのまま使う
 import { readFile, writeFile } from 'node:fs/promises';
 
 const UA = { 'User-Agent': 'op-prices-tools/1.0 (+https://oct7hiro-cmyk.github.io/op-prices-tools/)' };
@@ -35,6 +35,8 @@ async function getPayload() {
   return JSON.parse(s.slice(st, i + 1)).payload;
 }
 
+const src = JSON.parse(await readFile('decklists.json', 'utf8'));
+const BANNED = new Set(src.banned ?? []); // 禁止になったリーダー(Tier表・相性から外す)
 let P, D;
 try {
   P = await getPayload();
@@ -51,11 +53,12 @@ if (!w?.leaders?.length) { console.error('リーダーのデータなし。前�
 const total = w.n; // 対戦数(1対戦に2リーダー)
 const leaders = {};
 for (const l of w.leaders) {
+  if (BANNED.has(l.l)) continue;
   const gs = l.g - l.gf, ws = l.w - l.wf;
   leaders[l.l] = { games: l.g, wins: l.w, winRate: pct(l.w, l.g), lower: Math.round(lower(l.w, l.g) * 1000) / 10,
     first: { games: l.gf, winRate: pct(l.wf, l.gf) }, second: { games: gs, winRate: pct(ws, gs) },
     share: Math.round((l.g / (2 * total)) * 1000) / 10, players: l.u,
-    matchups: (l.m ?? []).filter((m) => m.o !== l.l && m.g >= MIN_MATCH).map((m) => {
+    matchups: (l.m ?? []).filter((m) => m.o !== l.l && !BANNED.has(m.o) && m.g >= MIN_MATCH).map((m) => {
       const g2 = m.g - m.gf, w2 = m.w - m.wf;
       return { o: m.o, games: m.g, winRate: pct(m.w, m.g), first: m.gf >= 30 ? pct(m.wf, m.gf) : null, second: g2 >= 30 ? pct(w2, g2) : null };
     }) };
