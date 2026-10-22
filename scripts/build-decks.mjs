@@ -2,6 +2,7 @@
 //   node scripts/build-decks.mjs --watch … デッキに入っているカードのうち、弾の価格監視(cards.json)に無いものの検索条件を
 //                                          data/decks-watch.json に書く(fetch-prices がこれも取得して data/decks-prices.json に保存)
 //   node scripts/build-decks.mjs         … data/decks.json(Tier表・デッキごとのカード・ノーマル版/フルパラ版の合計価格)を作る
+// デッキリストは data/decklists-auto.json(fetch-decks.mjs が OPlayTCG から取った勝率最上位の構築)を優先し、無ければ decklists.json の code。
 // フルパラ版: 各カードを、元の弾のパラレル(_p の番号が一番小さいもの。SP・コミパラ・超レアなどは除く)に置き換えたもの。
 //            パラレルが無いカードはノーマルのまま。リーダーもリーダーパラレルにする
 import { readFile, writeFile } from 'node:fs/promises';
@@ -15,6 +16,9 @@ const TYPE = { LEADER: 'リーダー', CHARACTER: 'キャラ', EVENT: 'イベン
 const read = async (f, d = null) => (existsSync(f) ? JSON.parse(await readFile(f, 'utf8')) : d);
 
 const src = await read('decklists.json');
+const auto = await read('data/decklists-auto.json', { decks: {} });
+const codeOf = (d) => auto.decks?.[d.slug]?.code ?? d.code ?? null;
+const NAMES = Object.assign({}, ...Object.values(auto.decks ?? {}).map((x) => x.names ?? {}), src.names ?? {}); // 公式カードリストに無いカード(スタートデッキなど)の名前
 const raw = await read('data/raw/cardlists.json');
 const index = await read('sets/index.json');
 // 公式カードリスト: カード番号 → [番号, レアリティ, 名前, 種類, 色, シリーズ]。同じ番号が複数の弾にあれば元の弾を優先
@@ -49,8 +53,8 @@ const decks = src.tiers.flatMap((t) => t.decks.map((d) => ({ ...d, tier: t.tier 
 const need = new Set();
 for (const d of decks) {
   if (d.leader) { need.add(d.leader); need.add(paraOf(d.leader)); }
-  if (!d.code) continue;
-  const p = parseCode(d.code);
+  if (!codeOf(d)) continue;
+  const p = parseCode(codeOf(d));
   for (const c of [{ id: p.leader }, ...p.cards]) { need.add(c.id); need.add(paraOf(c.id)); }
 }
 
@@ -60,7 +64,7 @@ if (WATCH) {
   for (const id of need) {
     if (watched.has(id)) continue;
     const base = id.replace(/_[pr]\d+$/, ''), c = card[id] ?? card[base];
-    const w = { set: 'DECK', id, name: `${c?.[2] ?? base}(${id === base ? (c?.[1] ?? '') : 'パラレル'})`, code: base };
+    const w = { set: 'DECK', id, name: `${c?.[2] ?? NAMES[base] ?? base}(${id === base ? (c?.[1] ?? '') : 'パラレル'})`, code: base };
     if (id === base) Object.assign(w, { keyword: `ワンピースカード ${base}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
     else Object.assign(w, { keyword: `ワンピースカード ${base} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', 'スペシャル', ...NG_SPECIAL] });
     out.push(w);
@@ -79,7 +83,7 @@ let updated = '';
 const item = (id, n) => {
   const base = id.replace(/_[pr]\d+$/, ''), c = card[id] ?? card[base] ?? [], r = price[id] ?? {};
   if (r.updatedAt > updated) updated = r.updatedAt;
-  return { id, n, name: c[2] ?? base, rar: c[1] ?? '', type: TYPE[c[3]] ?? '', color: c[4] ?? '', para: id !== base,
+  return { id, n, name: c[2] ?? NAMES[base] ?? base, rar: c[1] ?? '', type: TYPE[c[3]] ?? '', color: c[4] ?? '', para: id !== base,
     p: r.refPrice ?? null, est: r.est || undefined, so: r.soldout || undefined, offers: (r.offers ?? []).slice(0, 8), imgs: (r.imgs ?? []).slice(0, 3),
     search: r.searchUrl, ysearch: r.ysearchUrl };
 };
@@ -87,13 +91,16 @@ const total = (list) => {
   const miss = list.filter((x) => x.p == null);
   return { total: list.reduce((t, x) => t + (x.p ?? 0) * x.n, 0), missing: miss.reduce((t, x) => t + x.n, 0) };
 };
-const out = { updatedAt: '', source: src.source, sourceUrl: src.sourceUrl, listUpdated: src.updated, tiers: [] };
+const out = { updatedAt: '', source: src.source, sourceUrl: src.sourceUrl, listUpdated: src.updated,
+  lists: auto.source ? { source: auto.source, sourceUrl: auto.sourceUrl, rule: auto.rule, statsAt: (auto.statsAt ?? auto.fetchedAt ?? '').slice(0, 10) } : null, tiers: [] };
 for (const t of src.tiers) {
   const row = { tier: t.tier, label: t.label, decks: [] };
   for (const d of t.decks) {
-    const e = { slug: d.slug, name: d.name, leader: d.leader ? item(d.leader, 1) : null, ready: !!d.code };
-    if (d.code) {
-      const p = parseCode(d.code);
+    const code = codeOf(d), st = auto.decks?.[d.slug];
+    const e = { slug: d.slug, name: d.name, leader: d.leader ? item(d.leader, 1) : null, ready: !!code };
+    if (st?.code) e.stats = { winRate: st.winRate, games: st.games };
+    if (code) {
+      const p = parseCode(code);
       const normal = [item(p.leader, 1), ...p.cards.map((c) => item(c.id, c.n))];
       const full = [item(paraOf(p.leader), 1), ...p.cards.map((c) => item(paraOf(c.id), c.n))];
       e.leader = normal[0];
@@ -108,4 +115,4 @@ for (const t of src.tiers) {
 out.updatedAt = updated;
 await writeFile('data/decks.json', JSON.stringify(out));
 const ready = out.tiers.flatMap((t) => t.decks).filter((d) => d.ready);
-console.log(`デッキ ${ready.length}/${decks.length}件: ` + ready.map((d) => `${d.name} ノーマル¥${d.normal.total}(価格なし${d.normal.missing}枚) フルパラ¥${d.full.total}(価格なし${d.full.missing}枚)`).join(' / '));
+console.log(`デッキ ${ready.length}/${decks.length}件: ` + ready.map((d) => `${d.name}${d.stats ? `(勝率${d.stats.winRate}%)` : ''} ノーマル¥${d.normal.total}(価格なし${d.normal.missing}枚) フルパラ¥${d.full.total}(価格なし${d.full.missing}枚)`).join(' / '));
