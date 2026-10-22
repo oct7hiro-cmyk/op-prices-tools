@@ -147,6 +147,8 @@ async function priceCard(card, defaults) {
     soldout = valid.length > 0;
   }
   // 通常カード(R/SR/SEC)は最安の trimHigh 倍を超える出品を除く(記念版・別バージョンの高値が混ざって相場が跳ねるのを防ぐ)
+  // 価格は最安値を使うので、2番目の出品の35%未満という極端に安い出品は除く(デッキ収録版・フォイル違いなど別物のことが多い)
+  while (valid.length >= 3 && valid[0].itemPrice < valid[1].itemPrice * 0.35) valid = valid.slice(1);
   if (card.trimHigh && valid.length) valid = valid.filter((i) => i.itemPrice <= valid[0].itemPrice * card.trimHigh);
   // 出品が見つからないときの画像: 同じカード番号の出品の画像(プレミアムブースターの再録など)
   let imgs = imgsOf(valid);
