@@ -6,12 +6,12 @@
 <!--HEAD-->
 <base href="/op-prices-tools/">
 <title>PRB02 ONE PIECE CARD THE BEST vol.2 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
-<meta name="description" content="ワンピースカード PRB02「ONE PIECE CARD THE BEST vol.2」のBOX開封をシミュレーション。1BOXの期待値¥4,576、プレ値¥13,500。当たりカード:サンジ(コミパラ)¥100,000、モンキー・Ｄ・ルフィ(SP)¥24,800、ゴムゴムの巨人(SP)¥22,560など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta name="description" content="ワンピースカード PRB02「ONE PIECE CARD THE BEST vol.2」のBOX開封をシミュレーション。1BOXの期待値¥4,653、プレ値¥13,500。当たりカード:サンジ(コミパラ)¥100,000、モンキー・Ｄ・ルフィ(SP)¥24,800、ゴムゴムの巨人(SP)¥22,560など。楽天・Yahoo!の販売価格から毎日更新。">
 <link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/prb02/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
 <meta property="og:title" content="PRB02 ONE PIECE CARD THE BEST vol.2 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
-<meta property="og:description" content="ワンピースカード PRB02「ONE PIECE CARD THE BEST vol.2」のBOX開封をシミュレーション。1BOXの期待値¥4,576、プレ値¥13,500。当たりカード:サンジ(コミパラ)¥100,000、モンキー・Ｄ・ルフィ(SP)¥24,800、ゴムゴムの巨人(SP)¥22,560など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:description" content="ワンピースカード PRB02「ONE PIECE CARD THE BEST vol.2」のBOX開封をシミュレーション。1BOXの期待値¥4,653、プレ値¥13,500。当たりカード:サンジ(コミパラ)¥100,000、モンキー・Ｄ・ルフィ(SP)¥24,800、ゴムゴムの巨人(SP)¥22,560など。楽天・Yahoo!の販売価格から毎日更新。">
 <meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/prb02/">
 <meta name="twitter:card" content="summary">
 <!--/HEAD-->
@@ -496,7 +496,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <table><tbody>
 <tr><th>定価(1BOX)</th><td class="r">¥5,500</td></tr>
 <tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥13,500</td></tr>
-<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥4,576</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥4,653</td></tr>
 </tbody></table>
 <h3>PRB02の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>サンジ(コミパラ)<br><small>OP06-119</small></td><td class="r">¥100,000</td></tr><tr><td>2</td><td>モンキー・Ｄ・ルフィ(SP)<br><small>EB02-061</small></td><td class="r">¥24,800</td></tr><tr><td>3</td><td>ゴムゴムの巨人(SP)<br><small>OP09-078</small></td><td class="r">¥22,560</td></tr><tr><td>4</td><td>来い…!!!おれ達が相手をしてやる!!!(SP)<br><small>OP09-020</small></td><td class="r">¥16,560</td></tr><tr><td>5</td><td>おれの時代だァ!!!!(SP)<br><small>OP09-096</small></td><td class="r">¥12,960</td></tr><tr><td>6</td><td>シャンクス(SP)<br><small>OP06-007</small></td><td class="r">¥11,230</td></tr><tr><td>7</td><td>トラファルガー・ロー(SP)<br><small>OP10-119</small></td><td class="r">¥7,170</td></tr><tr><td>8</td><td>クロスギルド(SP)<br><small>OP09-057</small></td><td class="r">¥6,980</td></tr><tr><td>9</td><td>レベッカ(SP)<br><small>OP05-091</small></td><td class="r">¥5,130</td></tr><tr><td>10</td><td>シャーロット・プリン(SP)<br><small>OP06-047</small></td><td class="r">¥4,350</td></tr></tbody></table>
 <h3>封入率の目安</h3><ul><li>パラレル:1BOXに約1.2枚</li><li>SP:1BOXに約1/10枚</li><li>コミパラ:1BOXに約1/149枚</li><li>特別パラレル:1BOXに約2.0枚</li></ul>
@@ -608,7 +608,7 @@ function addImg(parent,c){
  im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
  im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
  im.onload=function(){
-  if(im.naturalWidth<200&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さすぎる画像は「画像なし」の差し替えのことが多い
+  if(im.naturalWidth<200&&im.naturalWidth>im.naturalHeight*.85&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さい正方形の画像は「画像なし」の差し替えのことが多い(駿河屋の小さい縦長画像は使う)
   if(im.src===first){im.classList.add('ok');return}
   if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
   im.classList.add('ok')};

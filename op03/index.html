@@ -6,12 +6,12 @@
 <!--HEAD-->
 <base href="/op-prices-tools/">
 <title>OP03 強大な敵 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
-<meta name="description" content="ワンピースカード OP03「強大な敵」のBOX開封をシミュレーション。1BOXの期待値¥3,025、プレ値¥27,280。当たりカード:そげキング(コミパラ)¥65,000、モンキー・D・ルフィ(SP)¥28,500、ナミ(リーダーパラレル)¥12,480など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta name="description" content="ワンピースカード OP03「強大な敵」のBOX開封をシミュレーション。1BOXの期待値¥3,008、プレ値¥27,280。当たりカード:そげキング(コミパラ)¥65,000、モンキー・D・ルフィ(SP)¥28,500、ナミ(リーダーパラレル)¥12,480など。楽天・Yahoo!の販売価格から毎日更新。">
 <link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/op03/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
 <meta property="og:title" content="OP03 強大な敵 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
-<meta property="og:description" content="ワンピースカード OP03「強大な敵」のBOX開封をシミュレーション。1BOXの期待値¥3,025、プレ値¥27,280。当たりカード:そげキング(コミパラ)¥65,000、モンキー・D・ルフィ(SP)¥28,500、ナミ(リーダーパラレル)¥12,480など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:description" content="ワンピースカード OP03「強大な敵」のBOX開封をシミュレーション。1BOXの期待値¥3,008、プレ値¥27,280。当たりカード:そげキング(コミパラ)¥65,000、モンキー・D・ルフィ(SP)¥28,500、ナミ(リーダーパラレル)¥12,480など。楽天・Yahoo!の販売価格から毎日更新。">
 <meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/op03/">
 <meta name="twitter:card" content="summary">
 <!--/HEAD-->
@@ -496,7 +496,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <table><tbody>
 <tr><th>定価(1BOX)</th><td class="r">¥4,752</td></tr>
 <tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥27,280</td></tr>
-<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥3,025</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥3,008</td></tr>
 </tbody></table>
 <h3>OP03の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>そげキング(コミパラ)<br><small>OP03-122</small></td><td class="r">¥65,000</td></tr><tr><td>2</td><td>モンキー・D・ルフィ(SP)<br><small>ST01-012</small></td><td class="r">¥28,500</td></tr><tr><td>3</td><td>ナミ(リーダーパラレル)<br><small>OP03-040</small></td><td class="r">¥12,480</td></tr><tr><td>4</td><td>ユースタス・キッド(SP)<br><small>OP01-051</small></td><td class="r">¥5,730</td></tr><tr><td>5</td><td>カイドウ(SP)<br><small>ST04-003</small></td><td class="r">¥4,500</td></tr><tr><td>6</td><td>ドンキホーテ・ドフラミンゴ(SP)<br><small>ST03-009</small></td><td class="r">¥3,500</td></tr><tr><td>7</td><td>ポートガス・D・エース(リーダーパラレル)<br><small>OP03-001</small></td><td class="r">¥2,710</td></tr><tr><td>8</td><td>シャーロット・カタクリ(リーダーパラレル)<br><small>OP03-099</small></td><td class="r">¥2,370</td></tr><tr><td>9</td><td>アーロン(リーダーパラレル)<br><small>OP03-022</small></td><td class="r">¥2,130</td></tr><tr><td>10</td><td>シャーロット・リンリン(リーダーパラレル)<br><small>OP03-077</small></td><td class="r">¥2,130</td></tr></tbody></table>
 <h3>封入率の目安</h3><ul><li>リーダーパラレル:1BOXに約1/6枚</li><li>SP:1BOXに約1/12枚</li><li>コミパラ:1BOXに約1/125枚</li></ul>
@@ -608,7 +608,7 @@ function addImg(parent,c){
  im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
  im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
  im.onload=function(){
-  if(im.naturalWidth<200&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さすぎる画像は「画像なし」の差し替えのことが多い
+  if(im.naturalWidth<200&&im.naturalWidth>im.naturalHeight*.85&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さい正方形の画像は「画像なし」の差し替えのことが多い(駿河屋の小さい縦長画像は使う)
   if(im.src===first){im.classList.add('ok');return}
   if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
   im.classList.add('ok')};

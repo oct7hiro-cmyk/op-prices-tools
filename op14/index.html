@@ -6,12 +6,12 @@
 <!--HEAD-->
 <base href="/op-prices-tools/">
 <title>OP14 蒼海の七傑 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
-<meta name="description" content="ワンピースカード OP14「蒼海の七傑」のBOX開封をシミュレーション。1BOXの期待値¥7,547、プレ値¥12,356。当たりカード:ジュラキュール・ミホーク(コミパラ)¥126,500、バギー(周年記念SP(金))¥59,800、バギー(周年記念SP(銀))¥59,800など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta name="description" content="ワンピースカード OP14「蒼海の七傑」のBOX開封をシミュレーション。1BOXの期待値¥7,771、プレ値¥12,356。当たりカード:ジュラキュール・ミホーク(コミパラ)¥126,500、バギー(周年記念SP(金))¥59,800、バギー(周年記念SP(銀))¥59,800など。楽天・Yahoo!の販売価格から毎日更新。">
 <link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/op14/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
 <meta property="og:title" content="OP14 蒼海の七傑 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
-<meta property="og:description" content="ワンピースカード OP14「蒼海の七傑」のBOX開封をシミュレーション。1BOXの期待値¥7,547、プレ値¥12,356。当たりカード:ジュラキュール・ミホーク(コミパラ)¥126,500、バギー(周年記念SP(金))¥59,800、バギー(周年記念SP(銀))¥59,800など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:description" content="ワンピースカード OP14「蒼海の七傑」のBOX開封をシミュレーション。1BOXの期待値¥7,771、プレ値¥12,356。当たりカード:ジュラキュール・ミホーク(コミパラ)¥126,500、バギー(周年記念SP(金))¥59,800、バギー(周年記念SP(銀))¥59,800など。楽天・Yahoo!の販売価格から毎日更新。">
 <meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/op14/">
 <meta name="twitter:card" content="summary">
 <!--/HEAD-->
@@ -496,7 +496,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <table><tbody>
 <tr><th>定価(1BOX)</th><td class="r">¥5,280</td></tr>
 <tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥12,356</td></tr>
-<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥7,547</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥7,771</td></tr>
 </tbody></table>
 <h3>OP14の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>ジュラキュール・ミホーク(コミパラ)<br><small>OP14-119</small></td><td class="r">¥126,500</td></tr><tr><td>2</td><td>バギー(周年記念SP(金))<br><small>OP09-051</small></td><td class="r">¥59,800</td></tr><tr><td>3</td><td>バギー(周年記念SP(銀))<br><small>OP09-051</small></td><td class="r">¥59,800</td></tr><tr><td>4</td><td>ボア・ハンコック(SP)<br><small>OP14-112</small></td><td class="r">¥41,000</td></tr><tr><td>5</td><td>わらわ こわい…♡(パラレル)<br><small>OP14-118</small></td><td class="r">¥28,850</td></tr><tr><td>6</td><td>ボア・ハンコック(リーダーパラレル)<br><small>OP14-041</small></td><td class="r">¥14,800</td></tr><tr><td>7</td><td>ジュラキュール・ミホーク(SP)<br><small>OP12-030</small></td><td class="r">¥11,230</td></tr><tr><td>8</td><td>ペローナ(SP)<br><small>OP06-093</small></td><td class="r">¥8,160</td></tr><tr><td>9</td><td>浸食輪廻(パラレル)<br><small>OP14-096</small></td><td class="r">¥8,000</td></tr><tr><td>10</td><td>シュガー(SP)<br><small>OP10-065</small></td><td class="r">¥7,480</td></tr></tbody></table>
 <h3>封入率の目安</h3><ul><li>リーダーパラレル:1BOXに約1/6枚</li><li>SP:1BOXに約1/12枚</li><li>コミパラ:1BOXに約1/83枚</li><li>超レア:1BOXに約1/167枚</li></ul>
@@ -608,7 +608,7 @@ function addImg(parent,c){
  im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
  im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
  im.onload=function(){
-  if(im.naturalWidth<200&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さすぎる画像は「画像なし」の差し替えのことが多い
+  if(im.naturalWidth<200&&im.naturalWidth>im.naturalHeight*.85&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さい正方形の画像は「画像なし」の差し替えのことが多い(駿河屋の小さい縦長画像は使う)
   if(im.src===first){im.classList.add('ok');return}
   if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
   im.classList.add('ok')};

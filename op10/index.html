@@ -6,12 +6,12 @@
 <!--HEAD-->
 <base href="/op-prices-tools/">
 <title>OP10 王族の血統 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
-<meta name="description" content="ワンピースカード OP10「王族の血統」のBOX開封をシミュレーション。1BOXの期待値¥2,758、プレ値¥13,800。当たりカード:トラファルガー・ロー(コミパラ)¥17,000、エドワード・ニューゲート(SP)¥13,500、神避(パラレル)¥5,600など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta name="description" content="ワンピースカード OP10「王族の血統」のBOX開封をシミュレーション。1BOXの期待値¥2,741、プレ値¥13,800。当たりカード:トラファルガー・ロー(コミパラ)¥17,000、エドワード・ニューゲート(SP)¥13,500、神避(パラレル)¥5,600など。楽天・Yahoo!の販売価格から毎日更新。">
 <link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/op10/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
 <meta property="og:title" content="OP10 王族の血統 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
-<meta property="og:description" content="ワンピースカード OP10「王族の血統」のBOX開封をシミュレーション。1BOXの期待値¥2,758、プレ値¥13,800。当たりカード:トラファルガー・ロー(コミパラ)¥17,000、エドワード・ニューゲート(SP)¥13,500、神避(パラレル)¥5,600など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:description" content="ワンピースカード OP10「王族の血統」のBOX開封をシミュレーション。1BOXの期待値¥2,741、プレ値¥13,800。当たりカード:トラファルガー・ロー(コミパラ)¥17,000、エドワード・ニューゲート(SP)¥13,500、神避(パラレル)¥5,600など。楽天・Yahoo!の販売価格から毎日更新。">
 <meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/op10/">
 <meta name="twitter:card" content="summary">
 <!--/HEAD-->
@@ -496,7 +496,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <table><tbody>
 <tr><th>定価(1BOX)</th><td class="r">¥5,280</td></tr>
 <tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥13,800</td></tr>
-<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥2,758</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥2,741</td></tr>
 </tbody></table>
 <h3>OP10の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>トラファルガー・ロー(コミパラ)<br><small>OP10-119</small></td><td class="r">¥17,000</td></tr><tr><td>2</td><td>エドワード・ニューゲート(SP)<br><small>ST15-002</small></td><td class="r">¥13,500</td></tr><tr><td>3</td><td>神避(パラレル)<br><small>OP10-019</small></td><td class="r">¥5,600</td></tr><tr><td>4</td><td>ウソ八(SP)<br><small>ST18-001</small></td><td class="r">¥5,440</td></tr><tr><td>5</td><td>サンジ(SP)<br><small>ST14-003</small></td><td class="r">¥4,755</td></tr><tr><td>6</td><td>シャーロット・プリン(SP)<br><small>ST12-012</small></td><td class="r">¥3,480</td></tr><tr><td>7</td><td>モンキー・D・ルフィ(SECパラレル)<br><small>OP10-118</small></td><td class="r">¥2,850</td></tr><tr><td>8</td><td>シャーロット・フランペ(SP)<br><small>EB01-056</small></td><td class="r">¥2,840</td></tr><tr><td>9</td><td>ウルージ(SP)<br><small>OP07-021</small></td><td class="r">¥2,230</td></tr><tr><td>10</td><td>トラファルガー・ロー(SECパラレル)<br><small>OP10-119</small></td><td class="r">¥1,480</td></tr></tbody></table>
 <h3>封入率の目安</h3><ul><li>リーダーパラレル:1BOXに約1/6枚</li><li>SP:1BOXに約1/12枚</li><li>コミパラ:1BOXに約1/72枚</li></ul>
@@ -608,7 +608,7 @@ function addImg(parent,c){
  im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
  im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
  im.onload=function(){
-  if(im.naturalWidth<200&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さすぎる画像は「画像なし」の差し替えのことが多い
+  if(im.naturalWidth<200&&im.naturalWidth>im.naturalHeight*.85&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さい正方形の画像は「画像なし」の差し替えのことが多い(駿河屋の小さい縦長画像は使う)
   if(im.src===first){im.classList.add('ok');return}
   if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
   im.classList.add('ok')};
