@@ -56,9 +56,10 @@ for (const r of all) {
     .sort((a, b) => Math.abs((t - Date.parse(a.date)) / DAY - 7) - Math.abs((t - Date.parse(b.date)) / DAY - 7));
   const base = near[0] ?? older[0];
   if (base.count < 2 || last.count < 2) continue; // 出品が薄いときは比べない
-  r.prev = base.ref; r.days = Math.round((t - Date.parse(base.date)) / DAY); r.diff = last.ref - base.ref;
+  // 今の価格は画面と同じ最安値(極端に安い別物の出品を除いた値)
+  r.prev = base.ref; r.days = Math.round((t - Date.parse(base.date)) / DAY); r.diff = r.p - base.ref;
   r.pct = Math.round((r.diff / base.ref) * 1000) / 10;
-  r.spark = h.slice(-14).map((x) => x.ref);
+  r.spark = [...h.slice(-14, -1).map((x) => x.ref), r.p];
 }
 
 const out = { updatedAt: today, divisions: {} };
