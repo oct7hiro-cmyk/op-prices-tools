@@ -217,6 +217,51 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .rl .ch.dn{color:#7fb4ff}
 .rl svg{display:block;margin:3px 0 0 auto}
 .rl .em{cursor:default;display:block;text-align:center;color:var(--mute);font-size:13px;padding:24px 8px}
+/* 環境デッキ */
+.rkbn.dk{background:linear-gradient(90deg,#8fd0ff,#5d7bff);box-shadow:0 0 24px rgba(90,140,255,.35);color:#0a1430}
+.rkbn.dk small{color:#14245a}
+#decks{max-width:1000px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 60px) 16px 56px}
+#decks h1{margin:0;text-align:center;font-size:clamp(28px,7vw,44px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a}
+#decks .lead{text-align:center;margin:6px 0 16px;color:var(--mute);font-size:13px}
+#decks .lead a{color:inherit}
+.dkrow{display:grid;grid-template-columns:70px 1fr;border-top:1px solid var(--line)}
+.dkrow:last-child{border-bottom:1px solid var(--line)}
+.dkt{display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--line);padding:10px 4px}
+.dkt b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:30px;line-height:1}
+.dkt small{font-size:11px;color:var(--mute);margin-top:4px}
+.dkt.SS b{background:linear-gradient(#ffe08a,#ff9d2e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dkt.S b{color:#ff6fb0}.dkt.A b{color:#7fb4ff}
+.dkl{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;padding:12px 0 12px 12px}
+.dkc{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);color:var(--ink);text-decoration:none;text-align:left;font:inherit;padding:0;cursor:pointer}
+.dkc[disabled]{cursor:default;opacity:.6}
+.dkc .im{position:relative;aspect-ratio:4/3;background:#241a2c;overflow:hidden}
+.dkc .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;opacity:0;transition:opacity .2s}
+.dkc .im img.ok{opacity:1}
+.dkc .nm{font-weight:900;font-size:14px;padding:6px 8px 0}
+.dkc .pr{font-size:12px;color:var(--mute);padding:2px 8px 8px}
+.dkc .pr b{color:var(--gold);font-size:14px}
+.dkb{display:inline-block;margin:0 0 10px;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:99px}
+.dkh{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;margin:0 0 14px}
+.dkh .im{position:relative;aspect-ratio:63/88;border-radius:8px;overflow:hidden;background:#241a2c}
+.dkh .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}.dkh .im img.ok{opacity:1}
+.dkh h2{margin:0;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(24px,6vw,34px)}
+.dkh .mt{font-size:12px;color:var(--mute);margin-top:4px}
+.dksum{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 8px}
+.dksum div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--panel);cursor:pointer}
+.dksum div.on{border-color:var(--gold);background:rgba(255,207,74,.12)}
+.dksum small{display:block;font-size:12px;color:var(--mute)}
+.dksum b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(20px,5vw,28px);color:var(--gold)}
+#dkNote{font-size:12px;color:var(--mute);margin:4px 2px 10px}
+.dkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.dkg .cd{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);cursor:pointer;color:var(--ink);font:inherit;text-align:left;padding:0}
+.dkg .cd .im{position:relative;aspect-ratio:63/88;background:#241a2c;display:grid;place-items:center;font-size:11px;color:var(--mute);text-align:center;padding:4px}
+.dkg .cd .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}.dkg .cd .im img.ok{opacity:1}
+.dkg .cd .qt{position:absolute;right:4px;bottom:4px;z-index:2;font-family:"Dela Gothic One",sans-serif;font-size:15px;padding:1px 8px;border-radius:99px;background:rgba(10,6,16,.85);border:1px solid var(--gold);color:var(--gold)}
+.dkg .cd .lt{position:absolute;left:4px;top:4px;z-index:2;font-size:10px;font-weight:900;padding:1px 6px;border-radius:4px;background:#ff8fd0;color:#2a0a20}
+.dkg .cd .tx{padding:5px 6px 7px;font-size:11px;line-height:1.35}
+.dkg .cd .tx b{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dkg .cd .tx .p{color:var(--gold);font-weight:900}
+@media(max-width:520px){.dkrow{grid-template-columns:52px 1fr}.dkt b{font-size:24px}.dkl{grid-template-columns:repeat(2,1fr);gap:8px;padding-left:8px}.dkh{grid-template-columns:84px 1fr}.dkg{grid-template-columns:repeat(3,1fr);gap:6px}}
 /* 弾の一覧 */
 #picker{max-width:1000px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 28px) 16px 56px;text-align:center}
 #picker h1{margin:0;font-size:clamp(30px,8vw,52px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a,0 0 30px rgba(255,190,60,.5)}
@@ -305,6 +350,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <h1 class="dg">ワンピースカード<br>開封シミュレーター</h1>
 <p class="lead">全弾のBOX開封ガチャ。開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算し、1BOXの期待値やプレ値と比べられます。</p>
 <a class="rkbn" href="ranking/"><span><b>相場ランキング</b><small>超高額・パラレル/SP・通常カードの高額TOP50と今週の値上がり・値下がり</small></span><span>›</span></a>
+<a class="rkbn dk" href="decks/"><span><b>環境デッキTier表</b><small>上位デッキのレシピと、デッキ1つ分の価格(ノーマル/フルパラ)</small></span><span>›</span></a>
 <div class="sets" id="sets"></div>
 <details class="hist" id="histP"><summary>あなたの開封履歴(全弾)</summary><div id="histPB"></div></details>
 <p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
@@ -319,6 +365,22 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <p id="rkNote"></p>
 <ol class="rl" id="rkList"></ol>
 <p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格のうち最安値で、買取価格ではありません。在庫のある出品がないカードは売り切れの出品の価格を参考にしています。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
+</section>
+<section id="decks" hidden>
+<a class="back" href="./">‹ 弾一覧</a>
+<div id="dkTier">
+<h1 class="dg">環境デッキTier表</h1>
+<p class="lead" id="dkLead">読み込み中…</p>
+<div id="dkRows"></div>
+</div>
+<div id="dkDeck" hidden>
+<a class="dkb" href="decks/" id="dkBack">‹ Tier表</a>
+<div class="dkh"><div class="im" id="dkLImg"></div><div><h2 id="dkName"></h2><div class="mt" id="dkMeta"></div></div></div>
+<div class="dksum" id="dkSum"></div>
+<p id="dkNote"></p>
+<div class="dkg" id="dkGrid"></div>
+</div>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。デッキ価格は各カードのショップ最安値×枚数の合計で、買取価格ではありません。フルパラ版は、パラレルのあるカードをパラレル(SP・コミパラなどを除く)に置き換えた価格です。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
 </section>
 <section id="stage" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
@@ -365,7 +427,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <!--ABOUT--><section class="about" id="about"><h2>ワンピースカード 開封シミュレーターとは</h2>
 <p>ワンピースカードゲームのブースターパック・エクストラブースター・プレミアムブースターのBOX開封を、無料でシミュレーションできるサイトです。出たカードの合計金額を、楽天・Yahoo!ショッピングの販売価格で計算し、定価やプレ値(未開封BOXの販売価格)と比べて「当たりBOXか」を判定します。1BOXの期待値、当たりカードの相場、開封履歴も見られます。</p>
 <h3>弾別の開封シミュレーター</h3><ul class="lk"><li><a href="op17/">OP17 世界最強の戦士</a></li><li><a href="op16/">OP16 決戦の刻</a></li><li><a href="op15/">OP15 神の島の冒険</a></li><li><a href="eb04/">EB04 EGGHEAD CRISIS</a></li><li><a href="op14/">OP14 蒼海の七傑</a></li><li><a href="eb03/">EB03 ONE PIECE Heroines Edition</a></li><li><a href="op13/">OP13 受け継がれる意志</a></li><li><a href="prb02/">PRB02 ONE PIECE CARD THE BEST vol.2</a></li><li><a href="op12/">OP12 師弟の絆</a></li><li><a href="op11/">OP11 神速の拳</a></li><li><a href="eb02/">EB02 Anime 25th collection</a></li><li><a href="op10/">OP10 王族の血統</a></li><li><a href="op09/">OP09 新たなる皇帝</a></li><li><a href="prb01/">PRB01 ONE PIECE CARD THE BEST</a></li><li><a href="op08/">OP08 二つの伝説</a></li><li><a href="op07/">OP07 500年後の未来</a></li><li><a href="eb01/">EB01 メモリアルコレクション</a></li><li><a href="op06/">OP06 双璧の覇者</a></li><li><a href="op05/">OP05 新時代の主役</a></li><li><a href="op04/">OP04 謀略の王国</a></li><li><a href="op03/">OP03 強大な敵</a></li><li><a href="op02/">OP02 頂上決戦</a></li><li><a href="op01/">OP01 ROMANCE DAWN</a></li></ul>
-<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p></section><!--/ABOUT-->
+<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a> ・ <a href="decks/">環境デッキTier表(デッキ価格)</a></p></section><!--/ABOUT-->
 </main>
 
 <div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
@@ -478,7 +540,7 @@ function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
 var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
 var dvOpen=false,dvPushed=false;
 function openDetail(c){
- DVCUR=c;track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:$('rank').hidden?'gacha':'ranking'});
+ DVCUR=c;track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'});
  var dv=$('dv'),g=grade(c),col=DVC[g];
  dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
  var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
@@ -741,7 +803,7 @@ function pv(){track('page_view',{page_title:document.title,page_location:locatio
 $('dv').addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a||!DVCUR)return;
  var li=a.closest('#dvList li'),kind=a.id==='dvCta'?'cheapest_button':li?'shop_list':'search';
  var src=li?(li.querySelector('.src.yahoo')?'yahoo':'rakuten'):(/yahoo/i.test(a.href)?'yahoo':'rakuten');
- track('shop_click',{item_id:DVCUR.id,item_name:DVCUR.n,item_label:DVCUR.k,price:DVCUR.p||0,link_type:kind,shop_source:src,position:li?[].indexOf.call(li.parentNode.children,li)+1:0,from:$('rank').hidden?'gacha':'ranking'})});
+ track('shop_click',{item_id:DVCUR.id,item_name:DVCUR.n,item_label:DVCUR.k,price:DVCUR.p||0,link_type:kind,shop_source:src,position:li?[].indexOf.call(li.parentNode.children,li)+1:0,from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'})});
 
 // ---- 相場ランキング ----
 var RK=null,RKS={div:'top',tab:'high'};
@@ -773,7 +835,46 @@ function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RK
 $('rkDiv').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('div',b.dataset.v)});
 $('rkTab').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('tab',b.dataset.v)});
 $('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard(RK.divisions[RKS.div][RKS.tab][+li.dataset.i]))});
-(function(){var q=new URLSearchParams(location.search),P=window.PAGE||{},code=(P.set||q.get('set')||'').toUpperCase();if(P.view==='rank'||q.get('view')==='rank')showRank();else if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
+// ---- 環境デッキ ----
+var DK=null,DKS={slug:null,ver:'normal'};
+function dkCard(x){return{id:x.id,set:'DECK',c:x.para?'PAR':'R',n:x.name,k:x.para?'パラレル':(x.rar||x.type||''),p:x.p,est:x.est,so:x.so,offers:x.offers||[],search:x.search,ysearch:x.ysearch,imgs:x.imgs||[],t:0}}
+function dkFind(slug){var r=null;DK.tiers.forEach(function(t){t.decks.forEach(function(d){if(d.slug===slug)r={d:d,t:t}})});return r}
+function renderTiers(){
+ $('dkTier').hidden=false;$('dkDeck').hidden=true;document.title='ワンピースカード 環境デッキTier表|デッキレシピと価格(ノーマル/フルパラ)';
+ $('dkLead').innerHTML='Tier表:<a href="'+esc(DK.sourceUrl)+'" target="_blank" rel="noopener">'+esc(DK.source)+'</a>('+esc(DK.listUpdated)+')・価格はショップ最安値('+esc(DK.updatedAt||'-')+'時点)';
+ $('dkRows').innerHTML=DK.tiers.map(function(t){
+  return '<div class="dkrow"><div class="dkt '+esc(t.tier)+'"><b>'+esc(t.tier)+'</b><small>'+esc(t.label)+'</small></div><div class="dkl">'+t.decks.map(function(d){
+   return '<button class="dkc" type="button" data-s="'+esc(d.slug)+'"'+(d.ready?'':' disabled')+'><div class="im" data-l="'+esc(d.slug)+'"></div><div class="nm">'+esc(d.name)+'</div><div class="pr">'+(d.ready?'ノーマル <b>'+yen(d.normal.total)+'</b><br>フルパラ '+yen(d.full.total):'デッキリスト準備中')+'</div></button>'}).join('')+'</div></div>'}).join('');
+ DK.tiers.forEach(function(t){t.decks.forEach(function(d){if(d.leader)addImg(document.querySelector('[data-l="'+d.slug+'"]'),dkCard(d.leader))})});
+ pv();
+}
+function renderDeck(slug){
+ var f=dkFind(slug);if(!f||!f.d.ready){renderTiers();return}
+ var d=f.d;DKS.slug=slug;$('dkTier').hidden=true;$('dkDeck').hidden=false;scrollTo(0,0);
+ document.title=d.name+' デッキレシピと価格|ワンピースカード 環境デッキ';
+ $('dkName').textContent=d.name;$('dkMeta').textContent=f.t.tier+'('+f.t.label+')・リーダー '+d.leader.name+'('+d.leader.id+')・'+d.count+'枚';
+ $('dkLImg').innerHTML='';addImg($('dkLImg'),dkCard(d.leader));
+ track('view_deck',{deck:d.slug,deck_name:d.name});pv();renderDeckList();
+}
+function renderDeckList(){
+ var d=dkFind(DKS.slug).d,v=d[DKS.ver];
+ $('dkSum').innerHTML=['normal','full'].map(function(k){return '<div data-v="'+k+'" class="'+(k===DKS.ver?'on':'')+'"><small>'+(k==='normal'?'ノーマル版':'フルパラ版')+'</small><b>'+yen(d[k].total)+'</b></div>'}).join('');
+ $('dkNote').textContent=(v.missing?'価格が取れていないカード'+v.missing+'枚は合計に含みません。':'')+'カードをタップすると最安ショップを表示します。';
+ $('dkGrid').innerHTML=v.cards.map(function(x,i){
+  return '<button class="cd" type="button" data-i="'+i+'"><div class="im">'+esc(x.name)+(x.para?'<span class="lt">パラレル</span>':'')+'<span class="qt">×'+x.n+'</span></div><div class="tx"><b>'+esc(x.name)+'</b>'+esc(x.id.replace(/_[pr]\d+$/,''))+(i===0?' リーダー':'')+'<br><span class="p">'+(x.p==null?'価格なし':yen(x.p))+'</span>'+(x.p!=null&&x.n>1?' ×'+x.n+'='+yen(x.p*x.n):'')+'</div></button>'}).join('');
+ [].forEach.call($('dkGrid').querySelectorAll('.cd'),function(e){addImg(e.querySelector('.im'),dkCard(v.cards[+e.dataset.i]))});
+}
+function showDecks(slug){
+ $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=true;$('decks').hidden=false;
+ getJSON('data/decks.json').then(function(j){DK=j;S.date=j.updatedAt;if(slug)renderDeck(slug);else renderTiers()})
+  .catch(function(){$('dkLead').textContent='デッキ情報を読み込めませんでした。'});
+}
+$('dkRows').addEventListener('click',function(e){var b=e.target.closest('.dkc[data-s]');if(!b||b.disabled)return;try{history.pushState({dk:1},'','decks/?d='+b.dataset.s)}catch(x){}renderDeck(b.dataset.s)});
+$('dkBack').addEventListener('click',function(e){e.preventDefault();try{history.pushState({dk:1},'','decks/')}catch(x){}DKS.slug=null;renderTiers()});
+$('dkSum').addEventListener('click',function(e){var b=e.target.closest('[data-v]');if(!b)return;DKS.ver=b.dataset.v;renderDeckList();track('deck_version',{deck:DKS.slug,version:DKS.ver})});
+$('dkGrid').addEventListener('click',function(e){var b=e.target.closest('.cd');if(!b)return;openDetail(dkCard(dkFind(DKS.slug).d[DKS.ver].cards[+b.dataset.i]))});
+addEventListener('popstate',function(){if($('decks').hidden||dvOpen||!DK)return;var s=new URLSearchParams(location.search).get('d');if(s===DKS.slug)return;if(s)renderDeck(s);else{DKS.slug=null;renderTiers()}});
+(function(){var q=new URLSearchParams(location.search),P=window.PAGE||{},code=(P.set||q.get('set')||'').toUpperCase();if(P.view==='decks'||q.get('view')==='decks')showDecks(q.get('d'));else if(P.view==='rank'||q.get('view')==='rank')showRank();else if(/^[A-Z]{2,3}\d{2}$/.test(code))showSet(code);else showPicker()})();
 </script>
 </body>
 </html>
