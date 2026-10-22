@@ -15,6 +15,8 @@ const ENDPOINT = 'https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/2
 const YAHOO_ENDPOINT = 'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch';
 const SPIKE_PCT = 20;     // 基準価格から+20%以上で急騰扱い
 const MIN_SAMPLES = 2;    // 有効な出品が2件未満なら「薄い」として急騰判定しない
+// 「画像なし」の差し替え画像(駿河屋の no_photo.jpg など)はカード画像に使わない
+const NOIMG = /no[_-]?(photo|image|img)|now[_-]?printing/i;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10); // JST日付
 const norm = (s) => s.normalize('NFKC').toUpperCase();
@@ -33,7 +35,7 @@ async function searchRakuten(keyword, minPrice, all = false) {
     if (res.ok) {
       const j = await res.json();
       return (j.Items ?? []).map((i) => i.Item ?? i).map((i) => {
-        const u = (i.mediumImageUrls ?? [])[0], img = typeof u === 'string' ? u : u?.imageUrl;
+        const u = (i.mediumImageUrls ?? [])[0], img0 = typeof u === 'string' ? u : u?.imageUrl, img = img0 && !NOIMG.test(img0) ? img0 : null;
         return { src: 'rakuten', itemName: i.itemName, itemPrice: i.itemPrice, shopName: i.shopName,
           url: i.affiliateUrl || i.itemUrl, free: i.postageFlag === 0, img: img ? img.replace(/\?_ex=\d+x\d+$/, '') + '?_ex=400x400' : null };
       });
@@ -60,7 +62,7 @@ async function searchYahoo(keyword, minPrice, all = false) {
       if (res.ok) {
         const j = await res.json();
         return (j.hits ?? []).map((h) => ({ src: 'yahoo', itemName: h.name ?? '', itemPrice: Number(h.price), shopName: h.seller?.name ?? '',
-          url: vcWrap(h.url), free: h.shipping?.code === 2, img: h.exImage?.url || h.image?.medium || null }));
+          url: vcWrap(h.url), free: h.shipping?.code === 2, img: [h.exImage?.url, h.image?.medium].find((x) => x && !NOIMG.test(x)) ?? null }));
       }
       if (res.status === 401 || res.status === 403) { yahooDown = true; console.error(`[Yahoo] 認証エラー(${res.status}): ${(await res.text()).replace(/\s+/g, ' ').slice(0, 300)} / appid長さ=${YAHOO_APP_ID.length}。以降は楽天のみ`); return []; }
       if (res.status === 404) return [];
