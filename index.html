@@ -177,6 +177,22 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .boxinfo{margin:10px auto 0;max-width:420px;font-size:13px;color:var(--mute);line-height:1.6}
 .boxinfo b{color:var(--ink);font-size:15px}
 .lnk{border:0;background:none;padding:0;color:var(--gold);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.allb{display:block;margin:12px auto 0;padding:10px 20px;border:1px solid var(--gold);border-radius:99px;background:rgba(255,207,74,.1);color:var(--gold);font:inherit;font-size:14px;font-weight:900;cursor:pointer}
+#al{position:fixed;inset:0;z-index:57;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);-webkit-overflow-scrolling:touch}
+#al .alh{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px;background:rgba(11,7,16,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+#al .alh h2{flex:1;margin:0;font-size:15px;line-height:1.3}#al .alh h2 small{display:block;font-size:11px;color:var(--mute);font-weight:500}
+#alX{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+#al .aln{display:flex;gap:6px;overflow-x:auto;padding:8px 14px;scrollbar-width:none}#al .aln::-webkit-scrollbar{display:none}
+#al .aln a{flex:none;font-size:12px;font-weight:700;padding:4px 10px;border:1px solid var(--line);border-radius:99px;color:var(--ink);text-decoration:none;background:var(--panel)}
+#alB{max-width:960px;margin:0 auto;padding:4px 14px 40px}
+#alB h3{margin:18px 0 8px;font-size:15px;display:flex;align-items:baseline;gap:8px;scroll-margin-top:110px}#alB h3 small{font-size:12px;color:var(--mute);font-weight:500}
+.alg{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.alc{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);color:var(--ink);font:inherit;text-align:left;padding:0;cursor:pointer}
+.alc .im{position:relative;aspect-ratio:63/88;background:linear-gradient(160deg,var(--a,#555),var(--b,#222));display:flex;flex-direction:column;justify-content:flex-end;padding:5px;font-size:10px;font-weight:900;line-height:1.25;color:#fff;text-shadow:0 1px 2px #000;overflow:hidden}
+.alc .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}.alc .im img.ok{opacity:1}
+.alc .rb{position:absolute;left:3px;top:3px;z-index:2;font-size:9px;font-weight:900;padding:1px 5px;border-radius:4px;background:rgba(10,6,16,.85);border:1px solid rgba(255,255,255,.25);color:#fff;text-shadow:none}
+.alc .cl{position:absolute;right:3px;top:3px;z-index:2;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--a) 50%,var(--b2,var(--a)) 50%);border:1px solid rgba(255,255,255,.7)}
+.alc .tx{padding:4px 5px 6px;font-size:10px;line-height:1.3}.alc .tx b{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.alc .tx .p{color:var(--gold);font-weight:900}.alc .tx .q{color:var(--mute)}
 .hist{margin-top:14px;text-align:left}
 .hsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}
 .hsum div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#120c18}
@@ -437,6 +453,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><span class="cube" id="cube"></span><img class="bimg" id="bimg" alt=""></button></div>
 <p class="tap dg">TAP!</p>
 <p class="boxinfo" id="boxInfo"></p>
+<button type="button" class="allb" id="allB">このBOXのカードを全部見る ›</button>
 <details class="hist" id="histS"><summary>この弾の開封履歴</summary><div id="histSB"></div></details>
 <p class="foot">非公式の開封シミュレーターです</p>
 </div>
@@ -477,6 +494,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a> ・ <a href="decks/">環境デッキTier表(デッキ価格)</a></p></section><!--/ABOUT-->
 </main>
 
+<div id="al" hidden role="dialog" aria-modal="true" aria-labelledby="alT"><div class="alh"><h2 id="alT"></h2><button type="button" id="alX" aria-label="閉じる">×</button></div><nav class="aln" id="alN"></nav><div id="alB"></div></div>
 <div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
 <div class="bgr"></div><div class="glow"></div>
 <button id="dvX" aria-label="閉じる">×</button>
@@ -580,6 +598,48 @@ function addImg(parent,c){
   im.classList.add('ok')};
  im.src=L[0];parent.appendChild(im);
 }
+// ---- このBOXのカードを全部見る(公式カードリストの全収録カード+この弾の特別カード。レアリティ順→色順) ----
+var CL=null,alOpen=false;
+var CLR={'赤':['#d63a3a','#7a1414'],'緑':['#2f9a52','#11502a'],'青':['#2f6fd0','#12306e'],'紫':['#8a4cc8','#3f1d6a'],'黒':['#4a4a56','#16161c'],'黄':['#e0b820','#8a6a06']},CLO=['赤','緑','青','紫','黒','黄'];
+var ALSEC=[['TOP','超レア'],['CP','コミパラ'],['LSP','リーダースーパーパラレル'],['TR','トレジャーレア'],['SP','SP'],['OTHER','特別パラレル'],['FA','フルアート'],['SECP','SECパラレル'],['LPAR','リーダーパラレル'],['PAR','パラレル'],['FOIL','フォイル'],['SEC','SEC'],['SR','SR'],['L','リーダー'],['R','R'],['UC','UC'],['C','C'],['P','プロモ'],['ETC','その他']];
+function alList(){
+ var info={},ser=(CL.sets||{})[String(CFG.series)],own=ser?ser.cards:[],by={},out=[];
+ Object.keys(CL.sets||{}).forEach(function(k){CL.sets[k].cards.forEach(function(r){var b=r[0].replace(/_[pr]\d+$/,'');if(!info[r[0]])info[r[0]]=r;if(!info[b])info[b]=r})});
+ ALL.forEach(function(c){by[c.id]=c});
+ var add=function(id,r){var c=by[id],rar=r?r[1]:(c&&c.rar)||'',p=/_p\d+$/.test(id),sec;
+  if(c&&!/^(R|SR|SEC)$/.test(c.c))sec=c.c;
+  else if(p)sec=rar==='L'?'LPAR':rar==='SEC'?'SECP':/SP/.test(rar)?'SP':'PAR';
+  else sec=/SP/.test(rar)?'SP':rar==='TR'?'TR':/^(SEC|SR|L|R|UC|C|P)$/.test(rar)?rar:'ETC';
+  var x=c||{id:id,c:p?'PAR':'R',n:r?r[2]:id,rar:rar,k:p?'パラレル':rar==='L'?'リーダー':rar,p:null,t:0,set:CFG.code};
+  var cr=(info[id]||info[id.replace(/_[pr]\d+$/,'')]||[])[4]||'';out.push({c:x,sec:sec,col:cr})};
+ own.forEach(function(r){add(r[0],r)});
+ ALL.forEach(function(c){if(!out.some(function(o){return o.c.id===c.id}))add(c.id,info[c.id]||null)});
+ var ci=function(col){var a=col.split('/'),i=CLO.indexOf(a[0]);return (i<0?9:i)*10+(a.length>1?1:0)};
+ var si={};ALSEC.forEach(function(x,i){si[x[0]]=i});
+ out.sort(function(a,b){return (si[a.sec]-si[b.sec])||(ci(a.col)-ci(b.col))||(a.col<b.col?-1:a.col>b.col?1:0)||(a.c.id<b.c.id?-1:1)});
+ return out}
+function renderAll(){
+ var L=alList(),sec={},names={};(CFG.labels&&Object.keys(CFG.labels)||[]).forEach(function(k){names[k]=CFG.labels[k]});
+ L.forEach(function(o){(sec[o.sec]=sec[o.sec]||[]).push(o)});
+ var S2=ALSEC.filter(function(x){return sec[x[0]]});
+ $('alT').innerHTML=esc(CFG.code+' '+CFG.name)+'<small>収録カード 全'+L.length+'種(レアリティ順・色順)</small>';
+ $('alN').innerHTML=S2.map(function(x){return '<a href="#al-'+x[0]+'" data-j="'+x[0]+'">'+esc(names[x[0]]||x[1])+' '+sec[x[0]].length+'</a>'}).join('');
+ var idx=0;window.ALC=[];
+ $('alB').innerHTML=S2.map(function(x){return '<h3 id="al-'+x[0]+'">'+esc(names[x[0]]||x[1])+'<small>'+sec[x[0]].length+'種</small></h3><div class="alg">'+sec[x[0]].map(function(o){var c=o.c,a=o.col.split('/'),c1=(CLR[a[0]]||['#555','#222']),c2=CLR[a[1]];ALC.push(c);
+  return '<button type="button" class="alc" data-a="'+(idx++)+'"><div class="im" style="--a:'+c1[0]+';--b:'+(c2?c2[1]:c1[1])+(c2?';--b2:'+c2[0]:'')+'"><span class="rb">'+esc(c.k)+'</span>'+(o.col?'<span class="cl" title="'+esc(o.col)+'"></span>':'')+esc(c.n)+'</div><div class="tx"><b>'+esc(c.n)+'</b><span class="q">'+esc(cardNo(c))+(o.col?' '+esc(o.col):'')+'</span><br><span class="p">'+(c.p!=null?yen(c.p):'')+'</span></div></button>'}).join('')+'</div>'}).join('');
+ [].forEach.call($('alB').querySelectorAll('.alc'),function(e){addImg(e.querySelector('.im'),ALC[+e.dataset.a])});
+}
+function openAll(){
+ if(!CFG)return;var go=function(){renderAll();$('al').hidden=false;$('al').scrollTop=0;document.documentElement.style.overflow='hidden';alOpen=true;
+  try{history.pushState({al:1},'',location.pathname+location.search+'#cards')}catch(e){}track('view_all_cards',{set:CFG.code})};
+ if(CL)go();else{$('allB').textContent='読み込み中…';getJSON('data/raw/cardlists.json').then(function(j){CL=j}).catch(function(){CL={sets:{}}}).then(function(){$('allB').textContent='このBOXのカードを全部見る ›';go()})}
+}
+function closeAll(fromPop){if(!alOpen)return;alOpen=false;$('al').hidden=true;if(!dvOpen)document.documentElement.style.overflow='';if(!fromPop)try{history.back()}catch(e){}}
+$('allB').addEventListener('click',function(e){e.stopPropagation();openAll()});
+$('alX').addEventListener('click',function(){closeAll()});
+$('alB').addEventListener('click',function(e){var b=e.target.closest('.alc');if(b)openDetail(ALC[+b.dataset.a])});
+$('alN').addEventListener('click',function(e){var a=e.target.closest('a[data-j]');if(!a)return;e.preventDefault();var h=$('al-'+a.dataset.j);if(h)$('al').scrollTo({top:h.offsetTop-110,behavior:reduce?'auto':'smooth'})});
+addEventListener('popstate',function(){if(alOpen&&location.hash!=='#cards'&&!/^#card=/.test(location.hash))closeAll(true)});
 // ---- カード詳細(大きく表示+販売ショップ一覧) ----
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
 function cardNo(c){return c.id.replace(/_[pr]\d+$/,'')}
@@ -615,12 +675,12 @@ function openDetail(c){
  $('dvX').focus({preventScroll:true});
 }
 function closeDetail(fromPop){
- if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow='';$('dvCard').innerHTML='';
+ if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow=alOpen?'hidden':'';$('dvCard').innerHTML='';
  if(dvPushed){dvPushed=false;if(!fromPop)try{history.back()}catch(e){}}
 }
 $('dvX').addEventListener('click',function(){closeDetail()});
 addEventListener('popstate',function(){if(dvOpen){dvPushed=false;closeDetail(true)}});
-addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
+addEventListener('keydown',function(e){if(e.key==='Escape'){if(dvOpen)closeDetail();else closeAll()}});
 // 指・マウス・端末の傾きでカードが動く
 (function(){var cb=$('dvCard');
  function tilt(x,y){if(reduce)return;cb.style.setProperty('--ry',(x*18).toFixed(1)+'deg');cb.style.setProperty('--rx',(-y*18).toFixed(1)+'deg');cb.style.setProperty('--sx',(50+x*60).toFixed(0)+'%')}
