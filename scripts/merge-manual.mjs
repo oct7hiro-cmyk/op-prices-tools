@@ -6,6 +6,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const index = JSON.parse(await readFile('sets/index.json', 'utf8'));
+const HI_CATS = new Set(['TOP', 'CP', 'LSP', 'TR']); // 超高額カード(参考価格は安い順3件の中央値)
 const median = (a) => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length ? (s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2)) : null; };
 
 // 読み込み(以前の手入力・推定の値は捨てて、実際の出品価格だけを残す)
@@ -15,12 +16,14 @@ for (const s of index.sets) {
   if (!existsSync(f)) continue;
   const data = JSON.parse(await readFile(f, 'utf8'));
   const cfg = JSON.parse(await readFile(`sets/${s.code}.json`, 'utf8'));
+  const cat = Object.fromEntries(cfg.cards.map((c) => [c[0], c[1]]));
   data.cards = data.cards.filter((c) => c.source !== 'manual' || c.offers?.length).map((c) => {
     if (c.source === 'manual' || c.est) { const { refPrice, minPrice, source, est, buyPrice, label, ...rest } = c; return rest; }
-    if (c.minPrice) { // カードの価格はショップ最安値(2番目の35%未満の極端に安い出品は別物とみなして除く)
+    if (c.minPrice) { // カードの価格はショップ最安値(2番目の35%未満の極端に安い出品は別物とみなして除く)。超高額カードは安い順3件の中央値
       const ps = (c.offers ?? []).map((o) => o.p).filter((p) => p > 0).sort((a, b) => a - b);
       while (ps.length >= 3 && ps[0] < ps[1] * 0.35) ps.shift();
-      return { ...c, refPrice: ps[0] ?? c.minPrice };
+      const hi = HI_CATS.has(cat[c.id]) || (ps[0] ?? 0) >= 30000;
+      return { ...c, refPrice: ps.length ? (ps.length >= 3 && hi ? ps[1] : ps[0]) : c.minPrice };
     }
     return c;
   });
