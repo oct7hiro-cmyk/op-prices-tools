@@ -2,12 +2,13 @@
  "updated": "2026-10-22",
  "source": "カードラッシュ 環境デッキランキング/Tier表",
  "sourceUrl": "https://cardrush.media/onepiece/articles/60",
- "note": "code は OPlayTCG のデッキコード(リーダー|枚数xカード番号,…)。QRコードの d= を base64 で読んだもの。code が無いデッキは「リスト準備中」",
+ "note": "デッキリストは毎日 scripts/fetch-decks.mjs が OPlayTCG のメタ統計から勝率最上位の構築を取る(data/decklists-auto.json)。取れないときだけ code(OPlayTCG のデッキコード: リーダー|枚数xカード番号,…)を使う",
+ "names": { "ST30-001": "ルフィ&エース" },
  "tiers": [
   { "tier": "SS", "label": "Tier 1", "decks": [
    { "slug": "blue-rocks", "name": "青ロックス", "leader": "OP17-039",
      "code": "OP17-039|4xOP08-051,4xOP17-040,4xOP17-045,4xOP17-046,4xOP17-048,4xOP17-049,4xOP17-052,4xOP17-054,4xOP17-055,4xOP17-056,4xOP17-118,3xOP17-044,2xOP17-042,1xEB02-030" },
-   { "slug": "rg-luffy-ace", "name": "赤緑ルフィ&エース", "leader": null },
+   { "slug": "rg-luffy-ace", "name": "赤緑ルフィ&エース", "leader": "ST30-001" },
    { "slug": "purple-enel", "name": "紫エネル", "leader": "OP15-058" }
   ]},
   { "tier": "S", "label": "Tier 2", "decks": [
