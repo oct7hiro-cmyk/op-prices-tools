@@ -49,7 +49,9 @@ def profile(alpha):
 
 def shape_ok(t, b, pt, pb, ar):
     return (t >= 0.05 and b >= 0.05 and min(t, b) / max(t, b) >= 0.5
-            and 0.12 < pt < 0.88 and 0.12 < pb < 0.88 and 0.45 < ar < 0.85)
+            and 0.12 < pt < 0.88 and 0.12 < pb < 0.88 and 0.45 < ar < 0.85
+            # 奥の角(上)と手前の角(下)は横にずれる。同じ位置なら斜めに撮った平たいもの(パックなど)
+            and abs(pt - pb) >= 0.12)
 
 
 def cutout1(raw, th, chroma):
