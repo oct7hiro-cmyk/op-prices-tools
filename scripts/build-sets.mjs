@@ -18,8 +18,8 @@ const NAME_OVERRIDE = { 'OP17-118_p2': '海賊団SP', 'EB04-061_p3': '海賊団S
   'OP13-118_p3': 'レッドSP', 'OP13-119_p3': 'レッドSP', 'OP13-120_p3': 'レッドSP' };
 // 周年記念SPなど、別の弾のカード番号で収録される最上位カードは必ず最上位(TOP)に入れる
 const FORCE_TOP = new Set(Object.keys(NAME_OVERRIDE));
-// 価格監視しないカテゴリ(低額で種類が多い)
-const NO_WATCH = new Set(['FOIL']);
+// 価格は監視せず、画像だけ探すカテゴリ(低額で種類が多い)
+const IMG_ONLY = new Set(['FOIL']);
 const NG_VARIANT = ['パラ', 'SP', 'スーパー', 'コミ', '漫画', 'サイン', '★'];
 // 記念セット・海外版など、同じカード番号でも別物の出品を除く
 const NG_SPECIAL = ['ANNIVERSARY', '周年', 'CHINA', '中国', '英語', '海外', '簡体', '繁体'];
@@ -68,13 +68,17 @@ for (const f of files) {
 
   // 価格監視: ベース(R/SR/SEC)と、λ>0のカテゴリに属するバリアント
   const byCode = {};
-  cards.forEach((c) => { const code = c[0].replace(/_p\d+$/, ''); (byCode[code] ??= []).push(c); });
+  // カード番号: _p(パラレル)・_r(プレミアムブースターの再録)を除いた番号
+  cards.forEach((c) => { const code = c[0].replace(/_[pr]\d+$/, ''); (byCode[code] ??= []).push(c); });
   for (const [id, cat, name] of cards) {
-    if (NO_WATCH.has(cat) || (!['R', 'SR', 'SEC'].includes(cat) && !cats[cat] && !hit?.[cat])) continue;
-    const code = id.replace(/_p\d+$/, '');
+    if (!IMG_ONLY.has(cat) && !['R', 'SR', 'SEC'].includes(cat) && !cats[cat] && !hit?.[cat]) continue;
+    const code = id.replace(/_[pr]\d+$/, '');
     const siblings = byCode[code].length > 1;
     const w = { set: r.code, id, name: `${name}(${NAME_OVERRIDE[id] ?? LABEL[cat] ?? cat})`, code };
-    if (['R', 'SR', 'SEC'].includes(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
+    if (IMG_ONLY.has(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, imgOnly: true, mustNot: [...NG_VARIANT, ...NG_SPECIAL] });
+    else if (isPRB && /_r\d+$/.test(id)) // 再録(R/SR/SEC): 元の弾の同じ番号と区別するため、PRBの出品だけを価格に使う
+      Object.assign(w, { keyword: `ワンピースカード ${code} ${r.code}`, mustAny: ['PRB', 'BEST', 'ベスト'], mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
+    else if (['R', 'SR', 'SEC'].includes(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
     else if (cat === 'SP') Object.assign(w, { keyword: `ワンピースカード ${code} SP`, mustAny: ['SP', 'スペシャル'], minPrice: 1000 });
     else if (cat === 'CP' || cat === 'LSP') Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, mustAny: ['スーパー', 'コミ', '漫画'], minPrice: 5000 });
     else if (cat === 'TOP') {
@@ -88,6 +92,8 @@ for (const f of files) {
     else if (cat === 'TR') Object.assign(w, { keyword: `ワンピースカード ${code} TR`, mustAny: ['TR', 'トレジャー'], minPrice: 300 });
     else Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', ...NG_SPECIAL],
       ...(siblings && cat === 'OTHER' ? { minPrice: 3000 } : {}) });
+    // プレミアムブースターは再録カードの出品が少ないので、見つからなければ同じ番号のカードの画像を使う
+    if (isPRB && !w.imgOnly) Object.assign(w, { imgKeyword: `ワンピースカード ${code}`, imgNg: /_r\d+$/.test(id) || ['R', 'SR', 'SEC'].includes(cat) ? [...NG_VARIANT, ...NG_SPECIAL] : NG_SPECIAL });
     watch.push(w);
   }
 }
