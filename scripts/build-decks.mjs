@@ -128,7 +128,7 @@ Object.values(names).forEach((n) => (dup[n] = (dup[n] ?? 0) + 1));
 for (const id in names) if (dup[names[id]] > 1) names[id] += `(${id.split('-')[0]})`;
 
 const ML = meta?.leaders ?? {};
-const mu = (x) => ({ id: x.o, name: names[x.o] ?? deckName(x.o), games: x.games, winRate: x.winRate, first: x.first, second: x.second, leader: item(x.o, 1) });
+const mu = (x) => ({ id: x.o, name: names[x.o] ?? deckName(x.o), games: x.games, winRate: x.winRate, first: x.first, second: x.second, leader: { id: x.o, name: nameOf(x.o), imgs: item(x.o, 1).imgs.slice(0, 1) } });
 const out = { updatedAt: '', source: meta ? meta.source : src.source, sourceUrl: meta ? meta.sourceUrl : src.sourceUrl,
   listUpdated: meta ? (meta.statsAt ?? '').slice(0, 10) : src.updated, rule: meta?.rule ?? null, window: meta?.window ?? null, minMatch: meta?.minMatch ?? null,
   lists: auto.source ? { source: auto.source, sourceUrl: auto.sourceUrl, rule: auto.rule } : null, tiers: [] };
@@ -140,8 +140,9 @@ for (const r of rows) {
     if (st) {
       e.stats = { winRate: st.winRate, games: st.games, first: st.first, second: st.second, share: st.share, players: st.players };
       const ms = st.matchups ?? [];
-      e.good = ms.filter((x) => x.winRate > 50).sort((a, b) => b.winRate - a.winRate).slice(0, 3).map(mu);
-      e.bad = ms.filter((x) => x.winRate < 50).sort((a, b) => a.winRate - b.winRate).slice(0, 3).map(mu);
+      // 有利/不利(画面では上位3つを出し、「もっと見る」で全部)
+      e.good = ms.filter((x) => x.winRate > 50).sort((a, b) => b.winRate - a.winRate).map(mu);
+      e.bad = ms.filter((x) => x.winRate < 50).sort((a, b) => a.winRate - b.winRate).map(mu);
     }
     if (code) {
       const p = parseCode(code);
