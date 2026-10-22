@@ -1,11 +1,12 @@
 // 相場ランキング data/ranking.json を作る(merge-manual の後に実行)。Node 20+、依存なし。
 //   部門: top=超高額(コミパラ・超レアなど) / par=パラレル・SP / base=汎用カード(R・SR・SEC)
-//   一覧: high=高額TOP50 / up=今週の値上がり(約7日前との比較。データが7日分ないときはある分で比較)
+//   一覧: high=高額TOP50 / up=今週の値上がり / down=今週の値下がり(約7日前との比較。データが7日分ないときはある分で比較)
+//   価格はショップ最安値(履歴の min)で比べる
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const DIV = { TOP: 'top', CP: 'top', LSP: 'top', SP: 'par', TR: 'top', PAR: 'par', SECP: 'par', LPAR: 'par', FA: 'par', OTHER: 'par', R: 'base', SR: 'base', SEC: 'base' };
-const MIN_UP = { top: 1000, par: 300, base: 100 }; // 値上がりとして載せる最低の上げ幅(円)
+const MIN_UP = { top: 1000, par: 300, base: 100 }; // 値上がり・値下がりとして載せる最低の変動幅(円)
 const N = 50;
 const DAY = 864e5;
 
@@ -16,7 +17,7 @@ async function history(id) {
   const f = `data/history/${id}.csv`;
   if (!existsSync(f)) return [];
   return (await readFile(f, 'utf8')).trim().split('\n').slice(1).map((l) => {
-    const [date, min, ref, count] = l.split(','); return { date, min: +min, ref: +ref, count: +count };
+    const [date, min, , count] = l.split(','); return { date, min: +min, ref: +min, count: +count };
   }).filter((h) => h.ref > 0);
 }
 
@@ -65,8 +66,9 @@ for (const div of ['top', 'par', 'base']) {
   const list = all.filter((r) => r.div === div);
   const high = [...list].sort((a, b) => b.p - a.p).slice(0, N);
   const up = list.filter((r) => r.diff >= MIN_UP[div] && r.pct > 0).sort((a, b) => b.pct - a.pct || b.diff - a.diff).slice(0, N);
+  const down = list.filter((r) => r.diff <= -MIN_UP[div] && r.pct < 0).sort((a, b) => a.pct - b.pct || a.diff - b.diff).slice(0, N);
   const days = list.filter((r) => r.days).map((r) => r.days);
-  out.divisions[div] = { high, up, total: list.length, days: days.length ? Math.max(...days) : 0 };
+  out.divisions[div] = { high, up, down, total: list.length, days: days.length ? Math.max(...days) : 0 };
 }
 await writeFile('data/ranking.json', JSON.stringify(out));
-console.log('ランキング', Object.entries(out.divisions).map(([k, v]) => `${k}: 対象${v.total} 高額${v.high.length} 値上がり${v.up.length}(最大${v.days}日比)`).join(' / '));
+console.log('ランキング', Object.entries(out.divisions).map(([k, v]) => `${k}: 対象${v.total} 高額${v.high.length} 値上がり${v.up.length} 値下がり${v.down.length}(最大${v.days}日比)`).join(' / '));
