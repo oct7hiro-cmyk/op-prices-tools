@@ -107,11 +107,15 @@ function pick(items, card, d) {
   }).sort((a, b) => a.itemPrice - b.itemPrice);
 }
 
-// カードの画像: 最安値の2倍以内の出品だけを安い順に(高い出品は別の絵柄の上位版のことがあるため)
+// カードの画像: 最安値の2倍以内の出品だけを安い順に(高い出品は別の絵柄の上位版のことがあるため)。
+// 2枚未満しか取れないときは5倍以内まで広げる(Yahoo!の正方形画像は横向きのことがあり、縦長の候補を増やすため)
 function cardImgs(valid, n = 4) {
-  const lim = (valid[0]?.itemPrice ?? 0) * 2;
   const out = [];
-  for (const i of valid) { if (i.itemPrice > lim) break; if (i.img && !out.includes(i.img)) out.push(i.img); if (out.length >= n) break; }
+  for (const k of [2, 5]) {
+    const lim = (valid[0]?.itemPrice ?? 0) * k;
+    for (const i of valid) { if (i.itemPrice > lim || out.length >= n) break; if (i.img && !out.includes(i.img)) out.push(i.img); }
+    if (out.length >= 2) break;
+  }
   return out;
 }
 // 出品画像URL(最大n件)。Yahoo!(600px)を2件まで先に、残りを楽天(400px)から。安い順
