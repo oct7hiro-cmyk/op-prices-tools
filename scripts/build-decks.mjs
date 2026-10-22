@@ -10,7 +10,9 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const WATCH = process.argv.includes('--watch');
-const NG_VARIANT = ['パラ', 'SP', 'スペシャル', 'スーパー', 'コミ', '漫画', 'サイン', '★'];
+// コミパラ(スーパーパラレル)を表す語。「スーパー」だけだとSR(スーパーレア)の出品に当たってしまう
+const SUPER = ['スーパーパラ', 'スーパー・パラ', 'スーパー パラ'];
+const NG_VARIANT = ['パラ', 'SP', 'スペシャル', ...SUPER, 'コミ', '漫画', 'サイン', '★'];
 const NG_SPECIAL = ['ANNIVERSARY', '周年', 'CHINA', '中国', '英語', '海外', '簡体', '繁体'];
 const PCC_WORDS = ['プレミアムカードコレクション', 'ベストセレクション', 'PCC', 'プレミアムカード', 'プレカコレ'];
 const SPECIAL = new Set(['TOP', 'SP', 'CP', 'LSP', 'TR']); // フルパラに使わない区分
@@ -87,8 +89,8 @@ if (WATCH) {
     const base = id.replace(/_[pr]\d+$/, ''), c = card[id] ?? card[base];
     const w = { set: 'DECK', id, name: `${nameOf(id)}(${id === base ? (c?.rar ?? '') : kind === 'pcc' ? 'プレミアムカードコレクション' : 'パラレル'})`, code: base };
     if (id === base) Object.assign(w, { keyword: `ワンピースカード ${base}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL, ...PCC_WORDS], trimHigh: 4 });
-    else if (kind === 'pcc') Object.assign(w, { keyword: `ワンピースカード ${base} プレミアムカードコレクション`, mustAny: PCC_WORDS, mustNot: ['スーパー', 'コミ', '漫画', 'SP', 'スペシャル', ...NG_SPECIAL] });
-    else Object.assign(w, { keyword: `ワンピースカード ${base} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', 'スペシャル', ...NG_SPECIAL, ...PCC_WORDS] });
+    else if (kind === 'pcc') Object.assign(w, { keyword: `ワンピースカード ${base} プレミアムカードコレクション`, mustAny: PCC_WORDS, mustNot: [...SUPER, 'コミ', '漫画', 'SP', 'スペシャル', ...NG_SPECIAL] });
+    else Object.assign(w, { keyword: `ワンピースカード ${base} パラレル`, must: ['パラ'], mustNot: [...SUPER, 'コミ', '漫画', 'SP', 'スペシャル', ...NG_SPECIAL, ...PCC_WORDS] });
     out.push(w);
   }
   await writeFile('data/decks-watch.json', JSON.stringify({ cards: out }, null, 1) + '\n');
