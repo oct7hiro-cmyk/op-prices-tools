@@ -98,13 +98,20 @@ async function search(keyword, minPrice, all = false) {
 function pick(items, card, d) {
   const code = norm(card.code ?? card.id);
   const ng = [...(d.ng ?? []), ...(card.mustNot ?? [])].map(norm);
-  const must = (card.must ?? []).map(norm), any = (card.mustAny ?? []).map(norm);
+  const must = (card.must ?? []).map(norm), any = (card.mustAny ?? []).map(norm), any2 = (card.mustAny2 ?? []).map(norm);
   return items.filter((i) => {
     const n = norm(i.itemName);
-    return n.includes(code) && !ng.some((w) => n.includes(w)) && must.every((w) => n.includes(w)) && (!any.length || any.some((w) => n.includes(w)));
+    return n.includes(code) && !ng.some((w) => n.includes(w)) && must.every((w) => n.includes(w)) && (!any.length || any.some((w) => n.includes(w))) && (!any2.length || any2.some((w) => n.includes(w)));
   }).sort((a, b) => a.itemPrice - b.itemPrice);
 }
 
+// カードの画像: 最安値の2倍以内の出品だけを安い順に(高い出品は別の絵柄の上位版のことがあるため)
+function cardImgs(valid, n = 4) {
+  const lim = (valid[0]?.itemPrice ?? 0) * 2;
+  const out = [];
+  for (const i of valid) { if (i.itemPrice > lim) break; if (i.img && !out.includes(i.img)) out.push(i.img); if (out.length >= n) break; }
+  return out;
+}
 // 出品画像URL(最大n件)。Yahoo!(600px)を2件まで先に、残りを楽天(400px)から。安い順
 function imgsOf(items, n = 4) {
   const ys = items.filter((i) => i.src === 'yahoo' && i.img).map((i) => i.img);
@@ -151,7 +158,7 @@ async function priceCard(card, defaults) {
   while (valid.length >= 3 && valid[0].itemPrice < valid[1].itemPrice * 0.35) valid = valid.slice(1);
   if (card.trimHigh && valid.length) valid = valid.filter((i) => i.itemPrice <= valid[0].itemPrice * card.trimHigh);
   // 出品が見つからないときの画像: 同じカード番号の出品の画像(プレミアムブースターの再録など)
-  let imgs = imgsOf(valid);
+  let imgs = cardImgs(valid);
   if (!imgs.length && card.imgKeyword) {
     await sleep(DELAY_MS);
     imgs = imgsOf(pick(await search(card.imgKeyword, defaults.minPrice, true), { code: card.code, mustNot: card.imgNg ?? [] }, defaults));
