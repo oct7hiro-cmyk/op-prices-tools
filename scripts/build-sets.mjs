@@ -23,6 +23,8 @@ const IMG_ONLY = new Set(['FOIL']);
 const NG_VARIANT = ['パラ', 'SP', 'スペシャル', 'スーパー', 'コミ', '漫画', 'サイン', '★']; // スペシャル=SPカード(PRBの再録SPなど)
 // 記念セット・海外版など、同じカード番号でも別物の出品を除く
 const NG_SPECIAL = ['ANNIVERSARY', '周年', 'CHINA', '中国', '英語', '海外', '簡体', '繁体'];
+// コミパラ・通常パラレルの価格に混ざりやすい、別の絵柄の上位版(レッドSP・海賊団SP・描き下ろしなど)
+const NG_OTHER_ART = ['レッド', '海賊団', '書き下ろし', '描き下ろし', '周年'];
 
 const sets = [];
 const watch = [];
@@ -37,9 +39,10 @@ for (const f of files) {
   for (const [id, rar, name] of src.cards) {
     let cat = null;
     if (id.includes('_p')) cat = FORCE_TOP.has(id) ? 'TOP' : (r.variants[id] ?? 'OTHER');
+    else if (r.cp_r_ids?.includes(id)) cat = 'CP'; // プレミアムブースターのコミパラ(_r番号で掲載)
     else if (['R', 'SR', 'SEC'].includes(rar)) cat = rar;
     if (!cat) continue;
-    cards.push([id, cat, name, rar, NAME_OVERRIDE[id] ?? null]);
+    cards.push([id, cat, name, rar, NAME_OVERRIDE[id] ?? r.names?.[id] ?? null]);
   }
   const cats = {};
   for (const [k, v] of Object.entries(r.categories ?? {})) {
@@ -74,13 +77,19 @@ for (const f of files) {
     if (!IMG_ONLY.has(cat) && !['R', 'SR', 'SEC'].includes(cat) && !cats[cat] && !hit?.[cat]) continue;
     const code = id.replace(/_[pr]\d+$/, '');
     const siblings = byCode[code].length > 1;
-    const w = { set: r.code, id, name: `${name}(${NAME_OVERRIDE[id] ?? LABEL[cat] ?? cat})`, code };
+    const lbl = NAME_OVERRIDE[id] ?? r.names?.[id] ?? null;
+    const hasFA = isPRB && byCode[code].some((c) => c[1] === 'FA');
+    const w = { set: r.code, id, name: `${name}(${lbl ?? LABEL[cat] ?? cat})`, code };
     if (IMG_ONLY.has(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, imgOnly: true, mustNot: [...NG_VARIANT, ...NG_SPECIAL] });
+    else if (r.search?.[id]) Object.assign(w, r.search[id]); // 調査ファイルで個別に指定した検索条件(描き下ろしパラレルなど)
+    else if (isPRB && /_r\d+$/.test(id) && cat === 'CP') // プレミアムブースターのコミパラ: 元の弾のコミパラと区別するためPRBの出品だけ
+      Object.assign(w, { keyword: `ワンピースカード ${code} ${r.code}`, mustAny: ['スーパー', 'コミ', '漫画'], mustAny2: ['PRB', 'BEST', 'ベスト'], mustNot: NG_OTHER_ART, minPrice: 5000 });
     else if (isPRB && /_r\d+$/.test(id)) // 再録(R/SR/SEC): 元の弾の同じ番号と区別するため、PRBの出品だけを価格に使う
       Object.assign(w, { keyword: `ワンピースカード ${code} ${r.code}`, mustAny: ['PRB', 'BEST', 'ベスト'], mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
     else if (['R', 'SR', 'SEC'].includes(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
     else if (cat === 'SP') Object.assign(w, { keyword: `ワンピースカード ${code} SP`, mustAny: ['SP', 'スペシャル'], minPrice: 1000 });
-    else if (cat === 'CP' || cat === 'LSP') Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, mustAny: ['スーパー', 'コミ', '漫画'], minPrice: 5000 });
+    else if (cat === 'CP' || cat === 'LSP') Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, mustAny: ['スーパー', 'コミ', '漫画'], mustNot: cat === 'CP' ? [...NG_OTHER_ART, '金', '銀'] : NG_OTHER_ART, minPrice: 5000 });
+    else if (cat === 'FA') Object.assign(w, { keyword: `ワンピースカード ${code} フルアート`, mustAny: ['フルアート', 'FA'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', ...NG_SPECIAL] });
     else if (cat === 'TOP') {
       const lb = NAME_OVERRIDE[id] ?? '';
       if (/金/.test(lb)) Object.assign(w, { keyword: `ワンピースカード ${code} 金`, mustAny: ['金'], mustNot: ['銀'], minPrice: 20000 });
@@ -90,7 +99,7 @@ for (const f of files) {
       else Object.assign(w, { keyword: `ワンピースカード ${code}`, mustAny: ['スーパー', 'コミ', '漫画', '海賊団', '金', '赤', 'サイン', '周年'], minPrice: 30000 });
     }
     else if (cat === 'TR') Object.assign(w, { keyword: `ワンピースカード ${code} TR`, mustAny: ['TR', 'トレジャー'], minPrice: 300 });
-    else Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', ...NG_SPECIAL],
+    else Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, must: ['パラ'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', ...NG_SPECIAL, ...NG_OTHER_ART, ...(hasFA ? ['フルアート'] : [])],
       ...(siblings && cat === 'OTHER' ? { minPrice: 3000 } : {}) });
     // プレミアムブースターは再録カードの出品が少ないので、見つからなければ同じ番号のカードの画像を使う
     if (isPRB && !w.imgOnly) Object.assign(w, { imgKeyword: `ワンピースカード ${code}`, imgNg: /_r\d+$/.test(id) || ['R', 'SR', 'SEC'].includes(cat) ? [...NG_VARIANT, ...NG_SPECIAL] : NG_SPECIAL });
