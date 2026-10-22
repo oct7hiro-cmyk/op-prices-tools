@@ -1,12 +1,13 @@
 // 相場ランキング data/ranking.json を作る(merge-manual の後に実行)。Node 20+、依存なし。
 //   部門: top=超高額(コミパラ・超レアなど) / par=パラレル・SP / base=汎用カード(R・SR・SEC)
 //   一覧: high=高額TOP50 / up=今週の値上がり / down=今週の値下がり(約7日前との比較。データが7日分ないときはある分で比較)
-//   価格はショップ最安値(履歴の min)で比べる
+//   価格はショップ最安値(履歴の min)で比べる。値上がり・値下がりは部門ごとの最低価格以上のカードだけ、金額順と率順の2通り
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const DIV = { TOP: 'top', CP: 'top', LSP: 'top', SP: 'par', TR: 'top', PAR: 'par', SECP: 'par', LPAR: 'par', FA: 'par', OTHER: 'par', R: 'base', SR: 'base', SEC: 'base' };
 const MIN_UP = { top: 1000, par: 300, base: 100 }; // 値上がり・値下がりとして載せる最低の変動幅(円)
+const MIN_PRICE = { top: 10000, par: 1000, base: 500 }; // 値上がり・値下がりに載せる最低価格(低額カードが率で上位を占めないように。値下がりは下がる前の価格)
 const N = 50;
 const DAY = 864e5;
 
@@ -66,10 +67,15 @@ const out = { updatedAt: today, divisions: {} };
 for (const div of ['top', 'par', 'base']) {
   const list = all.filter((r) => r.div === div);
   const high = [...list].sort((a, b) => b.p - a.p).slice(0, N);
-  const up = list.filter((r) => r.diff >= MIN_UP[div] && r.pct > 0).sort((a, b) => b.pct - a.pct || b.diff - a.diff).slice(0, N);
-  const down = list.filter((r) => r.diff <= -MIN_UP[div] && r.pct < 0).sort((a, b) => a.pct - b.pct || a.diff - b.diff).slice(0, N);
+  // 値上がり・値下がりは金額順(up/down)と率順(upPct/downPct)の両方を作る
+  const ups = list.filter((r) => r.diff >= MIN_UP[div] && r.pct > 0 && r.p >= MIN_PRICE[div]);
+  const downs = list.filter((r) => r.diff <= -MIN_UP[div] && r.pct < 0 && r.prev >= MIN_PRICE[div]);
+  const up = [...ups].sort((a, b) => b.diff - a.diff || b.pct - a.pct).slice(0, N);
+  const upPct = [...ups].sort((a, b) => b.pct - a.pct || b.diff - a.diff).slice(0, N);
+  const down = [...downs].sort((a, b) => a.diff - b.diff || a.pct - b.pct).slice(0, N);
+  const downPct = [...downs].sort((a, b) => a.pct - b.pct || a.diff - b.diff).slice(0, N);
   const days = list.filter((r) => r.days).map((r) => r.days);
-  out.divisions[div] = { high, up, down, total: list.length, days: days.length ? Math.max(...days) : 0 };
+  out.divisions[div] = { high, up, upPct, down, downPct, minPrice: MIN_PRICE[div], total: list.length, days: days.length ? Math.max(...days) : 0 };
 }
 await writeFile('data/ranking.json', JSON.stringify(out));
 console.log('ランキング', Object.entries(out.divisions).map(([k, v]) => `${k}: 対象${v.total} 高額${v.high.length} 値上がり${v.up.length} 値下がり${v.down.length}(最大${v.days}日比)`).join(' / '));
