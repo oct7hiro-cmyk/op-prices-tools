@@ -178,6 +178,22 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .boxinfo{margin:10px auto 0;max-width:420px;font-size:13px;color:var(--mute);line-height:1.6}
 .boxinfo b{color:var(--ink);font-size:15px}
 .lnk{border:0;background:none;padding:0;color:var(--gold);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.allb{display:block;margin:12px auto 0;padding:10px 20px;border:1px solid var(--gold);border-radius:99px;background:rgba(255,207,74,.1);color:var(--gold);font:inherit;font-size:14px;font-weight:900;cursor:pointer}
+#al{position:fixed;inset:0;z-index:57;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);-webkit-overflow-scrolling:touch}
+#al .alh{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 10px;background:rgba(11,7,16,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+#al .alh h2{flex:1;margin:0;font-size:15px;line-height:1.3}#al .alh h2 small{display:block;font-size:11px;color:var(--mute);font-weight:500}
+#alX{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+#al .aln{display:flex;gap:6px;overflow-x:auto;padding:8px 14px;scrollbar-width:none}#al .aln::-webkit-scrollbar{display:none}
+#al .aln a{flex:none;font-size:12px;font-weight:700;padding:4px 10px;border:1px solid var(--line);border-radius:99px;color:var(--ink);text-decoration:none;background:var(--panel)}
+#alB{max-width:960px;margin:0 auto;padding:4px 14px 40px}
+#alB h3{margin:18px 0 8px;font-size:15px;display:flex;align-items:baseline;gap:8px;scroll-margin-top:110px}#alB h3 small{font-size:12px;color:var(--mute);font-weight:500}
+.alg{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.alc{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);color:var(--ink);font:inherit;text-align:left;padding:0;cursor:pointer}
+.alc .im{position:relative;aspect-ratio:63/88;background:linear-gradient(160deg,var(--a,#555),var(--b,#222));display:flex;flex-direction:column;justify-content:flex-end;padding:5px;font-size:10px;font-weight:900;line-height:1.25;color:#fff;text-shadow:0 1px 2px #000;overflow:hidden}
+.alc .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .2s}.alc .im img.ok{opacity:1}
+.alc .rb{position:absolute;left:3px;top:3px;z-index:2;font-size:9px;font-weight:900;padding:1px 5px;border-radius:4px;background:rgba(10,6,16,.85);border:1px solid rgba(255,255,255,.25);color:#fff;text-shadow:none}
+.alc .cl{position:absolute;right:3px;top:3px;z-index:2;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--a) 50%,var(--b2,var(--a)) 50%);border:1px solid rgba(255,255,255,.7)}
+.alc .tx{padding:4px 5px 6px;font-size:10px;line-height:1.3}.alc .tx b{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.alc .tx .p{color:var(--gold);font-weight:900}.alc .tx .q{color:var(--mute)}
 .hist{margin-top:14px;text-align:left}
 .hsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}
 .hsum div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#120c18}
@@ -241,6 +257,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .dkmu .th{position:relative;width:36px;aspect-ratio:63/88;border-radius:4px;overflow:hidden;background:#241a2c}.dkmu .th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}.dkmu .th img.ok{opacity:1}
 .dkmu .n{font-weight:900;font-size:13px}.dkmu .s{font-size:11px;color:var(--mute)}.dkmu .r{font-weight:900;font-size:16px;text-align:right}.dkmu .g .r{color:#4dffa6}.dkmu .b .r{color:#ff8f8f}
 .dkmu .em{font-size:12px;color:var(--mute);padding:6px 0}
+.dkmu .tt{display:inline-block;font-size:10px;font-weight:900;padding:0 5px;border-radius:4px;margin-right:5px;background:#3a2b45;vertical-align:1px}.dkmu .tt.SS{background:#ff9d2e;color:#2a1600}.dkmu .tt.S{background:#ff6fb0;color:#2a0a20}.dkmu .tt.A{background:#7fb4ff;color:#0a1430}
 .dkmu .mo{margin-top:6px;width:100%;padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:12px;font-weight:700;cursor:pointer}
 @media(max-width:520px){.dkst{grid-template-columns:repeat(2,1fr)}.dkmu{grid-template-columns:1fr}}
 .dkl{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;padding:12px 0 12px 12px}
@@ -264,6 +281,36 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .dksum small{display:block;font-size:12px;color:var(--mute)}
 .dksum b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(20px,5vw,28px);color:var(--gold)}
 #dkNote{font-size:12px;color:var(--mute);margin:4px 2px 10px}
+.dkbuy{display:grid;grid-template-columns:1fr auto;gap:8px;margin:4px 0 6px}
+.dkbb{position:relative;display:block;width:100%;padding:12px 14px;border:0;border-radius:12px;text-align:left;cursor:pointer;font:inherit;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 4px 0 #8a3a0a,0 0 22px rgba(255,170,60,.45);animation:dkbg 1.8s ease-in-out infinite}
+@keyframes dkbg{50%{box-shadow:0 4px 0 #8a3a0a,0 0 38px rgba(255,190,80,.85)}}
+.dkbb b{display:block;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(17px,4.6vw,21px);line-height:1.2}
+.dkbb small{display:block;font-size:11px;font-weight:700;opacity:.85;margin-top:2px}
+.dkbb .bp{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:"Dela Gothic One",sans-serif;font-size:clamp(16px,4.4vw,20px)}
+.dkbb[aria-expanded="true"]{animation:none}
+.dkmer{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);text-decoration:none;font-size:12px;font-weight:900;line-height:1.3;text-align:center}
+.dkmer small{font-size:10px;font-weight:500;color:var(--mute)}
+#dkBuy{border:1px solid var(--gold);border-radius:12px;background:rgba(255,207,74,.06);padding:12px;margin:8px 0 12px}
+#dkBuy .tot{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+#dkBuy .tot b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(26px,7vw,34px);color:var(--gold)}
+#dkBuy .tot span{font-size:12px;color:var(--mute)}
+#dkBuy .cmp{margin:6px 0 0;font-size:12px}#dkBuy .cmp em{font-style:normal;font-weight:900;color:#4dffa6}
+#dkBuy .shp{margin:8px 0 0;font-size:12px;color:var(--mute)}#dkBuy select{font:inherit;font-size:12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 4px}
+#dkBuy .how{font-size:11px;color:var(--mute);margin:8px 0 0;line-height:1.5}
+.bgp{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+.bgp h4{margin:0;display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:13px;background:rgba(255,255,255,.04)}
+.bgp h4 .sn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bgp h4 .st2{font-size:12px;font-weight:900;white-space:nowrap}.bgp h4 .st2 small{display:block;font-size:10px;font-weight:500;color:var(--mute);text-align:right}
+.bgp .src{font-size:10px;font-weight:900;padding:2px 6px;border-radius:5px;color:#fff;background:#bf0000}.bgp .src.yahoo{background:#ff0033}
+.bgp ul{list-style:none;margin:0;padding:0 10px}
+.bgp li{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:12px}
+.bgp li:first-child{border-top:0}.bgp li .cn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bgp li .cn small{color:var(--mute)}
+.bgp li .pp{font-weight:900;white-space:nowrap;text-align:right}.bgp li .pp small{display:block;font-size:10px;font-weight:500;color:var(--mute)}
+.bgp li a{font-size:11px;font-weight:900;padding:5px 9px;border-radius:7px;background:var(--gold);color:#2a1600;text-decoration:none;white-space:nowrap}
+.bgp.ms li{grid-template-columns:1fr auto}
+.mer{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel)}
+.mer h4{margin:0 0 4px;font-size:13px}.mer p{margin:0 0 8px;font-size:12px;color:var(--mute);line-height:1.5}
+.mer a{display:block;text-align:center;padding:9px;border-radius:9px;font-size:13px;font-weight:900;text-decoration:none;margin-top:6px;border:1px solid var(--line);color:var(--ink)}
+.mer a.m1{background:#ff4b4b;border-color:#ff4b4b;color:#fff}
 .dkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
 .dkg .dc{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);cursor:pointer;color:var(--ink);font:inherit;text-align:left;padding:0}
 .dkg .dc .im{position:relative;aspect-ratio:63/88;background:#241a2c;display:grid;place-items:center;font-size:11px;color:var(--mute);text-align:center;padding:4px}
@@ -288,6 +335,8 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .sc .nm3{font-size:13px;font-weight:700;line-height:1.3;margin-top:2px}
 .sc .ev{font-size:12px;color:var(--mute);margin-top:6px}.sc .ev b{color:var(--ink);font-size:14px}
 .sc .nw{position:absolute;top:8px;left:8px;font-size:11px;font-weight:900;padding:2px 8px;border-radius:99px;background:var(--red);color:#fff}
+#snd{position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);right:12px;z-index:56;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(26,18,32,.85);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+#snd svg{width:20px;height:20px}#snd .x{display:none}#snd.off .w{display:none}#snd.off .x{display:inline}#snd.off{color:var(--mute)}
 .back{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);left:12px;z-index:5;font-size:13px;font-weight:700;color:var(--ink);text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:99px;background:rgba(26,18,32,.85)}
 /* カード詳細(販売ショップ一覧) */
 #dv{position:fixed;inset:0;z-index:58;overflow-y:auto;overscroll-behavior:contain;background:#07040c;-webkit-overflow-scrolling:touch}
@@ -374,6 +423,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <p class="lead" id="rkLead">ショップの販売価格(楽天・Yahoo!)から毎朝更新</p>
 <div class="tabs" id="rkDiv"><button data-v="top">超高額</button><button data-v="par">パラレル/SP</button><button data-v="base">通常カード</button></div>
 <div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button><button data-v="down">今週の値下がり</button></div>
+<div class="tabs sub" id="rkSort" hidden><button data-v="amt">金額順</button><button data-v="pct">率順</button></div>
 <p id="rkNote"></p>
 <ol class="rl" id="rkList"></ol>
 <p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格のうち最安値で、買取価格ではありません。在庫のある出品がないカードは売り切れの出品の価格を参考にしています。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
@@ -391,10 +441,12 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="dkst" id="dkSt"></div>
 <div class="dkmu" id="dkMu"></div>
 <div class="dksum" id="dkSum"></div>
+<div class="dkbuy"><button type="button" class="dkbb" id="dkBuyB" aria-expanded="false" aria-controls="dkBuy"></button><a class="dkmer" id="dkMer" target="_blank" rel="noopener">メルカリで<br>デッキを探す<small>販売価格と比べる</small></a></div>
+<div id="dkBuy" hidden></div>
 <p id="dkNote"></p>
 <div class="dkg" id="dkGrid"></div>
 </div>
-<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。デッキ価格は各カードのショップ最安値×枚数の合計で、買取価格ではありません。フルパラ版は、パラレルのあるカードをパラレル(SP・コミパラなどを除く)に置き換えた価格です。Tier表・勝率・相性・デッキリストはOPlayTCGのメタ統計(直近30日・ランク戦)から毎日集計しています。勝率はそのリーダー全体の成績、相性は200戦以上の相手のみ表示(上位3つ、「もっと見る」で全部)、デッキリストはよく使われている構築のうち50戦以上で勝率が一番高いものです。フルパラ版はプレミアムカードコレクションのパラレルも候補に含め、一番安いものを選んでいます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。デッキ価格は各カードのショップ最安値×枚数の合計で、買取価格ではありません。フルパラ版は、パラレルのあるカードをパラレル(SP・コミパラなどを除く)に置き換えた価格です。Tier表・勝率・相性・デッキリストはOPlayTCGのメタ統計(直近30日・ランク戦)から毎日集計しています。勝率はそのリーダー全体の成績、相性は200戦以上の相手のみ表示(Tier A以上の相手から上位3つ、「もっと見る」でTier B・Tier表外も含めて全部)、デッキリストはよく使われている構築のうち50戦以上で勝率が一番高いものです。フルパラ版はプレミアムカードコレクションのパラレルも候補に含め、一番安いものを選んでいます。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
 </section>
 <section id="stage" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
@@ -404,6 +456,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="scene" id="scene"><button class="box" id="box" aria-label="BOXを開封する"><span class="cube" id="cube"></span><img class="bimg" id="bimg" alt=""></button></div>
 <p class="tap dg">TAP!</p>
 <p class="boxinfo" id="boxInfo"></p>
+<button type="button" class="allb" id="allB">このBOXのカードを全部見る ›</button>
 <details class="hist" id="histS"><summary>この弾の開封履歴</summary><div id="histSB"></div></details>
 <p class="foot">非公式の開封シミュレーターです</p>
 </div>
@@ -445,6 +498,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <h3>弾別の開封シミュレーター</h3><ul class="lk"><li><a href="op17/">OP17 世界最強の戦士</a></li><li><a href="op16/">OP16 決戦の刻</a></li><li><a href="op15/">OP15 神の島の冒険</a></li><li><a href="eb04/">EB04 EGGHEAD CRISIS</a></li><li><a href="op14/">OP14 蒼海の七傑</a></li><li><a href="eb03/">EB03 ONE PIECE Heroines Edition</a></li><li><a href="op13/">OP13 受け継がれる意志</a></li><li><a href="prb02/">PRB02 ONE PIECE CARD THE BEST vol.2</a></li><li><a href="op12/">OP12 師弟の絆</a></li><li><a href="op11/">OP11 神速の拳</a></li><li><a href="eb02/">EB02 Anime 25th collection</a></li><li><a href="op10/">OP10 王族の血統</a></li><li><a href="op09/">OP09 新たなる皇帝</a></li><li><a href="prb01/">PRB01 ONE PIECE CARD THE BEST</a></li><li><a href="op08/">OP08 二つの伝説</a></li><li><a href="op07/">OP07 500年後の未来</a></li><li><a href="eb01/">EB01 メモリアルコレクション</a></li><li><a href="op06/">OP06 双璧の覇者</a></li><li><a href="op05/">OP05 新時代の主役</a></li><li><a href="op04/">OP04 謀略の王国</a></li><li><a href="op03/">OP03 強大な敵</a></li><li><a href="op02/">OP02 頂上決戦</a></li><li><a href="op01/">OP01 ROMANCE DAWN</a></li></ul></section><!--/ABOUT-->
 </main>
 
+<div id="al" hidden role="dialog" aria-modal="true" aria-labelledby="alT"><div class="alh"><h2 id="alT"></h2><button type="button" id="alX" aria-label="閉じる">×</button></div><nav class="aln" id="alN"></nav><div id="alB"></div></div>
 <div id="dv" hidden role="dialog" aria-modal="true" aria-labelledby="dvN">
 <div class="bgr"></div><div class="glow"></div>
 <button id="dvX" aria-label="閉じる">×</button>
@@ -463,6 +517,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div id="toast" class="toast"></div>
 <div id="stampEl" class="stamp" hidden></div>
 <div id="flash"></div>
+<button id="snd" type="button" hidden aria-label="効果音" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="x" d="M17 9l5 6M22 9l-5 6"/></svg></button>
 
 <script>
 var S={msrp:5280,pre:7000,date:''};
@@ -548,6 +603,48 @@ function addImg(parent,c){
   im.classList.add('ok')};
  im.src=L[0];parent.appendChild(im);
 }
+// ---- このBOXのカードを全部見る(公式カードリストの全収録カード+この弾の特別カード。レアリティ順→色順) ----
+var CL=null,alOpen=false;
+var CLR={'赤':['#d63a3a','#7a1414'],'緑':['#2f9a52','#11502a'],'青':['#2f6fd0','#12306e'],'紫':['#8a4cc8','#3f1d6a'],'黒':['#4a4a56','#16161c'],'黄':['#e0b820','#8a6a06']},CLO=['赤','緑','青','紫','黒','黄'];
+var ALSEC=[['TOP','超レア'],['CP','コミパラ'],['LSP','リーダースーパーパラレル'],['TR','トレジャーレア'],['SP','SP'],['OTHER','特別パラレル'],['FA','フルアート'],['SECP','SECパラレル'],['LPAR','リーダーパラレル'],['PAR','パラレル'],['FOIL','フォイル'],['SEC','SEC'],['SR','SR'],['L','リーダー'],['R','R'],['UC','UC'],['C','C'],['P','プロモ'],['ETC','その他']];
+function alList(){
+ var info={},ser=(CL.sets||{})[String(CFG.series)],own=ser?ser.cards:[],by={},out=[];
+ Object.keys(CL.sets||{}).forEach(function(k){CL.sets[k].cards.forEach(function(r){var b=r[0].replace(/_[pr]\d+$/,'');if(!info[r[0]])info[r[0]]=r;if(!info[b])info[b]=r})});
+ ALL.forEach(function(c){by[c.id]=c});
+ var add=function(id,r){var c=by[id],rar=r?r[1]:(c&&c.rar)||'',p=/_p\d+$/.test(id),sec;
+  if(c&&!/^(R|SR|SEC)$/.test(c.c))sec=c.c;
+  else if(p)sec=rar==='L'?'LPAR':rar==='SEC'?'SECP':/SP/.test(rar)?'SP':'PAR';
+  else sec=/SP/.test(rar)?'SP':rar==='TR'?'TR':/^(SEC|SR|L|R|UC|C|P)$/.test(rar)?rar:'ETC';
+  var x=c||{id:id,c:p?'PAR':'R',n:r?r[2]:id,rar:rar,k:p?'パラレル':rar==='L'?'リーダー':rar,p:null,t:0,set:CFG.code};
+  var cr=(info[id]||info[id.replace(/_[pr]\d+$/,'')]||[])[4]||'';out.push({c:x,sec:sec,col:cr})};
+ own.forEach(function(r){add(r[0],r)});
+ ALL.forEach(function(c){if(!out.some(function(o){return o.c.id===c.id}))add(c.id,info[c.id]||null)});
+ var ci=function(col){var a=col.split('/'),i=CLO.indexOf(a[0]);return (i<0?9:i)*10+(a.length>1?1:0)};
+ var si={};ALSEC.forEach(function(x,i){si[x[0]]=i});
+ out.sort(function(a,b){return (si[a.sec]-si[b.sec])||(ci(a.col)-ci(b.col))||(a.col<b.col?-1:a.col>b.col?1:0)||(a.c.id<b.c.id?-1:1)});
+ return out}
+function renderAll(){
+ var L=alList(),sec={},names={};(CFG.labels&&Object.keys(CFG.labels)||[]).forEach(function(k){names[k]=CFG.labels[k]});
+ L.forEach(function(o){(sec[o.sec]=sec[o.sec]||[]).push(o)});
+ var S2=ALSEC.filter(function(x){return sec[x[0]]});
+ $('alT').innerHTML=esc(CFG.code+' '+CFG.name)+'<small>収録カード 全'+L.length+'種(レアリティ順・色順)</small>';
+ $('alN').innerHTML=S2.map(function(x){return '<a href="#al-'+x[0]+'" data-j="'+x[0]+'">'+esc(names[x[0]]||x[1])+' '+sec[x[0]].length+'</a>'}).join('');
+ var idx=0;window.ALC=[];
+ $('alB').innerHTML=S2.map(function(x){return '<h3 id="al-'+x[0]+'">'+esc(names[x[0]]||x[1])+'<small>'+sec[x[0]].length+'種</small></h3><div class="alg">'+sec[x[0]].map(function(o){var c=o.c,a=o.col.split('/'),c1=(CLR[a[0]]||['#555','#222']),c2=CLR[a[1]];ALC.push(c);
+  return '<button type="button" class="alc" data-a="'+(idx++)+'"><div class="im" style="--a:'+c1[0]+';--b:'+(c2?c2[1]:c1[1])+(c2?';--b2:'+c2[0]:'')+'"><span class="rb">'+esc(c.k)+'</span>'+(o.col?'<span class="cl" title="'+esc(o.col)+'"></span>':'')+esc(c.n)+'</div><div class="tx"><b>'+esc(c.n)+'</b><span class="q">'+esc(cardNo(c))+(o.col?' '+esc(o.col):'')+'</span><br><span class="p">'+(c.p!=null?yen(c.p):'')+'</span></div></button>'}).join('')+'</div>'}).join('');
+ [].forEach.call($('alB').querySelectorAll('.alc'),function(e){addImg(e.querySelector('.im'),ALC[+e.dataset.a])});
+}
+function openAll(){
+ if(!CFG)return;var go=function(){renderAll();$('al').hidden=false;$('al').scrollTop=0;document.documentElement.style.overflow='hidden';alOpen=true;
+  try{history.pushState({al:1},'',location.pathname+location.search+'#cards')}catch(e){}track('view_all_cards',{set:CFG.code})};
+ if(CL)go();else{$('allB').textContent='読み込み中…';getJSON('data/raw/cardlists.json').then(function(j){CL=j}).catch(function(){CL={sets:{}}}).then(function(){$('allB').textContent='このBOXのカードを全部見る ›';go()})}
+}
+function closeAll(fromPop){if(!alOpen)return;alOpen=false;$('al').hidden=true;if(!dvOpen)document.documentElement.style.overflow='';if(!fromPop)try{history.back()}catch(e){}}
+$('allB').addEventListener('click',function(e){e.stopPropagation();openAll()});
+$('alX').addEventListener('click',function(){closeAll()});
+$('alB').addEventListener('click',function(e){var b=e.target.closest('.alc');if(b)openDetail(ALC[+b.dataset.a])});
+$('alN').addEventListener('click',function(e){var a=e.target.closest('a[data-j]');if(!a)return;e.preventDefault();var h=$('al-'+a.dataset.j);if(h)$('al').scrollTo({top:h.offsetTop-110,behavior:reduce?'auto':'smooth'})});
+addEventListener('popstate',function(){if(alOpen&&location.hash!=='#cards'&&!/^#card=/.test(location.hash))closeAll(true)});
 // ---- カード詳細(大きく表示+販売ショップ一覧) ----
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
 function cardNo(c){return c.id.replace(/_[pr]\d+$/,'')}
@@ -583,12 +680,12 @@ function openDetail(c){
  $('dvX').focus({preventScroll:true});
 }
 function closeDetail(fromPop){
- if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow='';$('dvCard').innerHTML='';
+ if(!dvOpen)return;dvOpen=false;$('dv').hidden=true;document.documentElement.style.overflow=alOpen?'hidden':'';$('dvCard').innerHTML='';
  if(dvPushed){dvPushed=false;if(!fromPop)try{history.back()}catch(e){}}
 }
 $('dvX').addEventListener('click',function(){closeDetail()});
 addEventListener('popstate',function(){if(dvOpen){dvPushed=false;closeDetail(true)}});
-addEventListener('keydown',function(e){if(e.key==='Escape')closeDetail()});
+addEventListener('keydown',function(e){if(e.key==='Escape'){if(dvOpen)closeDetail();else closeAll()}});
 // 指・マウス・端末の傾きでカードが動く
 (function(){var cb=$('dvCard');
  function tilt(x,y){if(reduce)return;cb.style.setProperty('--ry',(x*18).toFixed(1)+'deg');cb.style.setProperty('--rx',(-y*18).toFixed(1)+'deg');cb.style.setProperty('--sx',(50+x*60).toFixed(0)+'%')}
@@ -650,7 +747,7 @@ function cutin(c){
  var r=$('reveal');r.className=c.t===3?'t3':'t2';
  $('rk').textContent=c.k;$('rn').textContent=c.n;$('rp').textContent=c.p==null?'':yen(c.p);
  $('rimg').innerHTML='';addImg($('rimg'),c);
- r.hidden=false;flash(1,700);
+ r.hidden=false;flash(1,700);sfx('cutin',c.t);
  burst(innerWidth/2,innerHeight*.45,c.t===3?['#ffe08a','#fff3c0','#ff9d2e','#ff5fa8']:['#d8c8ff','#8fb4ff','#fff'],c.t===3?90:45);
  return new Promise(function(res){r.onclick=function(){r.hidden=true;res()}});
 }
@@ -663,18 +760,18 @@ async function play(){
  $('verdict').hidden=true;$('after').hidden=true;$('detail').hidden=true;$('skip').hidden=false;
  var els=order.map(function(c){var e=cardEl(c);g.appendChild(e);return e});
  if(!reduce)els.forEach(function(e,i){e.animate([{opacity:0,transform:'translateY(-60px) scale(.5) rotate(-10deg)'},{opacity:1,transform:'none'}],{duration:400,delay:i*45,easing:'cubic-bezier(.2,1.3,.4,1)',fill:'backwards'})});
- await wait(500+els.length*45);
+ sfx('deal',els.length);await wait(500+els.length*45);
  var tot=0;
  for(var i=0;i<order.length;i++){
   var c=order[i],e=els[i],gr=grade(c);
   if(!skip&&!reduce)e.scrollIntoView({block:'nearest',behavior:'smooth'});
-  if(gr>=2&&!skip){e.classList.add('tease');await wait(gr===3?1200:850);e.classList.remove('tease')}
+  if(gr>=2&&!skip){e.classList.add('tease');sfx('tease',gr===3?1.2:.85);await wait(gr===3?1200:850);e.classList.remove('tease')}
   if(c.t>=2&&!skip)await cutin(c);
   e.classList.add('on');
   var prev=tot;tot+=price(c);
-  fx(e,gr);setTotal(tot,gr===0?220:550);
-  if(prev<S.msrp&&tot>=S.msrp){$('mkM').classList.add('on');if(!skip)toast('定価突破!','m')}
-  if(prev<S.pre&&tot>=S.pre){$('mkP').classList.add('on');if(!skip){toast('プレ値突破!!','p');burst(innerWidth/2,innerHeight*.3,['#ffcf4a','#fff','#ff5fa8','#7fe0ff'],60)}}
+  sfx('flip'+gr);fx(e,gr);setTotal(tot,gr===0?220:550);
+  if(prev<S.msrp&&tot>=S.msrp){$('mkM').classList.add('on');if(!skip){toast('定価突破!','m');sfx('msrp')}}
+  if(prev<S.pre&&tot>=S.pre){$('mkP').classList.add('on');if(!skip){toast('プレ値突破!!','p');sfx('pre');burst(innerWidth/2,innerHeight*.3,['#ffcf4a','#fff','#ff5fa8','#7fe0ff'],60)}}
   await wait(gr===0?160:gr===1?420:750);
  }
  $('skip').hidden=true;setTotal(tot,0);
@@ -685,7 +782,7 @@ function finish(tot){
  tally.n++;tally.pnl+=tot-S.pre;if(win)tally.w++;
  if(!S.forced){hAdd(tot);refreshHist();var bt=hits.slice().sort(function(a,b){return price(b)-price(a)})[0];
   track('open_box',{set:CFG.code,total:Math.round(tot),result:cls,best_card:bt?bt.id:'',best_price:bt?price(bt):0})}
- var st=$('stampEl');st.className='stamp '+cls;st.innerHTML='<b>'+word+'</b><small>定価 '+sgn(tot-S.msrp)+' / プレ値 '+sgn(tot-S.pre)+'</small>';st.hidden=false;
+ sfx(cls);var st=$('stampEl');st.className='stamp '+cls;st.innerHTML='<b>'+word+'</b><small>定価 '+sgn(tot-S.msrp)+' / プレ値 '+sgn(tot-S.pre)+'</small>';st.hidden=false;
  if(!reduce){st.animate([{transform:'translate(-50%,-50%) scale(3) rotate(-14deg)',opacity:0},{transform:'translate(-50%,-50%) scale(.9) rotate(-8deg)',opacity:1,offset:.7},{transform:'translate(-50%,-50%) scale(1) rotate(-8deg)',opacity:1}],{duration:520,easing:'cubic-bezier(.3,1.4,.5,1)'});shake()}
  if(win)burst(innerWidth/2,innerHeight*.45,['#4dffa6','#ffcf4a','#fff','#ff5fa8'],90);
  var v=$('verdict');v.className='dg '+cls;v.textContent=word;v.hidden=false;
@@ -705,18 +802,56 @@ function detail(){
  var es=estimated(),w=[];if(ms)w.push('価格が取れていないカードが'+ms+'種あり、0円で計算しています。');if(es)w.push('出品が見つからないカード'+es+'種は、同じ弾・同じレアリティの中央値(推定価格)で計算しています。');
  $('warn').hidden=!w.length;$('warn').textContent=w.join('');
 }
+// ---- 効果音(Web Audioで合成。音声ファイルなし)。右下のボタンでオン/オフ、設定はこの端末に保存 ----
+var SND={on:true,ctx:null,m:null,nb:null};try{SND.on=localStorage.getItem('snd')!=='0'}catch(e){}
+function actx(){if(!SND.on)return null;
+ if(!SND.ctx){var A=window.AudioContext||window.webkitAudioContext;if(!A)return null;try{SND.ctx=new A()}catch(e){return null}
+  var cp=SND.ctx.createDynamicsCompressor();SND.m=SND.ctx.createGain();SND.m.gain.value=.5;SND.m.connect(cp);cp.connect(SND.ctx.destination)}
+ if(SND.ctx.state==='suspended')SND.ctx.resume();return SND.ctx}
+function tone(f,t0,d,o){o=o||{};var c=SND.ctx,os=c.createOscillator(),g=c.createGain(),v=o.vol||.2;os.type=o.type||'triangle';os.frequency.setValueAtTime(f,t0);if(o.to)os.frequency.exponentialRampToValueAtTime(o.to,t0+d);
+ g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(v,t0+(o.a||.006));if(o.hold)g.gain.setValueAtTime(v,t0+d*o.hold);g.gain.exponentialRampToValueAtTime(.0001,t0+d);os.connect(g);g.connect(SND.m);os.start(t0);os.stop(t0+d+.05)}
+function noise(t0,d,o){o=o||{};var c=SND.ctx;
+ if(!SND.nb){var n=c.sampleRate*2,b=c.createBuffer(1,n,c.sampleRate),x=b.getChannelData(0);for(var i=0;i<n;i++)x[i]=Math.random()*2-1;SND.nb=b}
+ var s=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain(),v=o.vol||.2;s.buffer=SND.nb;s.loop=true;f.type=o.ft||'bandpass';f.frequency.setValueAtTime(o.f||1000,t0);if(o.f2)f.frequency.exponentialRampToValueAtTime(o.f2,t0+d);f.Q.value=o.q||1;
+ g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(v,t0+(o.a||.008));if(o.hold)g.gain.setValueAtTime(v,t0+d*o.hold);g.gain.exponentialRampToValueAtTime(.0001,t0+d);s.connect(f);f.connect(g);g.connect(SND.m);s.start(t0,Math.random());s.stop(t0+d+.05)}
+function arp(fs,t,step,d,o){fs.forEach(function(f,k){tone(f,t+k*step,d,o)})}
+function sfx(n,a){
+ if(!SND.on||(skip&&/^(deal|flip|tease|cutin|msrp|pre)/.test(n)))return;var c=actx();if(!c)return;var t=c.currentTime+.02,i;
+ switch(n){
+ case 'shake':for(i=0;i<6;i++){noise(t+i*.15,.13,{ft:'lowpass',f:260,vol:.45});tone(62+i*7,t+i*.15,.12,{type:'sine',vol:.3})}noise(t,.9,{f:900,f2:2400,q:.6,vol:.05,hold:.8});break;
+ case 'open':tone(110,t,.5,{type:'sine',to:38,vol:.7});noise(t,.55,{f:500,f2:6000,q:.6,vol:.35});arp([1319,1568,2093,2637,3136],t+.12,.045,.45,{vol:.09});break;
+ case 'deal':for(i=0;i<Math.min(a||8,14);i++)noise(t+i*.045,.045,{ft:'highpass',f:2500,vol:.1});break;
+ case 'flip0':noise(t,.05,{ft:'highpass',f:3000,vol:.12});tone(1200,t,.07,{vol:.06});break;
+ case 'flip1':noise(t,.05,{ft:'highpass',f:3000,vol:.12});arp([1568,2349],t,.07,.45,{vol:.14});break;
+ case 'flip2':tone(150,t,.3,{type:'sine',to:60,vol:.45});arp([1047,1319,1568,2093,2637],t,.05,.6,{vol:.12});noise(t+.05,.7,{ft:'highpass',f:6000,vol:.08});break;
+ case 'flip3':tone(120,t,.5,{type:'sine',to:40,vol:.7});arp([1047,1319,1568,2093,2637,3136],t,.045,.8,{vol:.13});[523,659,784].forEach(function(f){tone(f,t+.25,1.1,{type:'sawtooth',vol:.04,hold:.4})});noise(t+.05,1,{ft:'highpass',f:6000,vol:.1});break;
+ case 'tease':var d=a||1;noise(t,d,{f:300,f2:5000,q:1.2,vol:.22,hold:.85});tone(180,t,d,{type:'sawtooth',to:900,vol:.04,hold:.85});for(i=0;i<Math.floor(d/.12);i++)tone(600+i*80,t+i*.12,.06,{type:'square',vol:.025});break;
+ case 'cutin':var big=a===3;tone(90,t,.8,{type:'sine',to:35,vol:.8});noise(t,.6,{ft:'lowpass',f:1200,vol:.5});
+  var F=big?[523,659,784,1047]:[440,554,659,880];arp(F,t+.15,.11,.4,{type:'square',vol:.06});F.forEach(function(f){tone(f,t+.6,big?1.8:1.2,{type:'sawtooth',vol:.035,hold:.5});tone(f*2,t+.6,big?1.8:1.2,{vol:.05,hold:.5})});
+  noise(t+.6,big?1.6:1,{ft:'highpass',f:7000,vol:.09});break;
+ case 'msrp':arp([784,1047],t,.1,.35,{type:'square',vol:.07});break;
+ case 'pre':arp([784,988,1175,1568],t,.08,.5,{type:'square',vol:.07});noise(t+.3,.6,{ft:'highpass',f:7000,vol:.08});break;
+ case 'win':arp([523,659,784],t,.12,.25,{type:'square',vol:.08});[1047,1319,1568].forEach(function(f){tone(f,t+.36,1.4,{type:'square',vol:.05,hold:.5})});tone(130,t+.36,.6,{type:'sine',to:65,vol:.5});noise(t+.36,1.2,{ft:'highpass',f:7000,vol:.09});break;
+ case 'mid':arp([659,784,1047],t,.1,.4,{type:'square',vol:.07});break;
+ case 'lose':[392,370,349].forEach(function(f,k){tone(f,t+k*.28,.26,{type:'square',vol:.06})});tone(330,t+.84,.9,{type:'square',to:220,vol:.06,hold:.3});break;
+ case 'ui':tone(1400,t,.05,{vol:.08});break;
+ }}
+(function(){var b=$('snd'),upd=function(){b.classList.toggle('off',!SND.on);b.setAttribute('aria-pressed',SND.on?'true':'false');b.title=SND.on?'効果音オン(タップでオフ)':'効果音オフ(タップでオン)'};upd();
+ b.addEventListener('click',function(){SND.on=!SND.on;try{localStorage.setItem('snd',SND.on?'1':'0')}catch(e){}upd();if(SND.on)sfx('ui');else if(SND.ctx)SND.ctx.suspend();track('sound_toggle',{on:SND.on})});
+ var vis=function(){b.hidden=$('stage').hidden&&$('result').hidden};vis();
+ if(window.MutationObserver){var mo=new MutationObserver(vis);mo.observe($('stage'),{attributes:true,attributeFilter:['hidden']});mo.observe($('result'),{attributes:true,attributeFilter:['hidden']})}})();
 async function openBox(force){
- if(busy)return;busy=true;readSet();S.forced=!!force;
+ if(busy)return;busy=true;readSet();S.forced=!!force;skip=false;actx();
  var box=$('box'),scene=$('scene');
  if(!reduce){
-  box.classList.add('shake');await new Promise(function(r){setTimeout(r,900)});
+  box.classList.add('shake');sfx('shake');await new Promise(function(r){setTimeout(r,900)});
   for(var i=0;i<24;i++){var el=document.createElement('div');el.className='bc';scene.appendChild(el);
    var a=Math.random()*Math.PI*2,dist=Math.min(innerWidth,innerHeight)*(.28+Math.random()*.45),x=Math.cos(a)*dist,y=Math.sin(a)*dist*.8,rot=(Math.random()-.5)*900;
    el.animate([{transform:'translate(0,0) scale(.3) rotate(0)',opacity:1},{transform:'translate('+x+'px,'+y+'px) scale(1.15) rotate('+rot+'deg)',opacity:1,offset:.7},{transform:'translate('+x*1.15+'px,'+y*1.15+'px) scale(1) rotate('+rot*1.1+'deg)',opacity:0}],{duration:1100,easing:'cubic-bezier(.15,.8,.25,1)',fill:'forwards'})}
-  box._fade=box.animate([{opacity:1,filter:'brightness(1)'},{opacity:0,filter:'brightness(3)'}],{duration:260,fill:'forwards'});
+  sfx('open');box._fade=box.animate([{opacity:1,filter:'brightness(1)'},{opacity:0,filter:'brightness(3)'}],{duration:260,fill:'forwards'});
   await new Promise(function(r){setTimeout(r,850)});
  }
- var fl=$('flash');
+ var fl=$('flash');if(reduce)sfx('open');
  await fl.animate([{opacity:0},{opacity:1}],{duration:reduce?80:420,fill:'forwards'}).finished;
  hits=drawer()(force);
  $('stage').hidden=true;$('result').hidden=false;scrollTo(0,0);
@@ -821,7 +956,8 @@ $('dv').addEventListener('click',function(e){var a=e.target.closest('a[href]');i
  track('shop_click',{item_id:DVCUR.id,item_name:DVCUR.n,item_label:DVCUR.k,price:DVCUR.p||0,link_type:kind,shop_source:src,position:li?[].indexOf.call(li.parentNode.children,li)+1:0,from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'})});
 
 // ---- 相場ランキング ----
-var RK=null,RKS={div:'top',tab:'high'};
+var RK=null,RKS={div:'top',tab:'high',sort:'amt'};
+function rkKey(){return RKS.tab!=='high'&&RKS.sort==='pct'?RKS.tab+'Pct':RKS.tab}
 var RKDIV={top:'超高額(コミパラ・超レア・リーダースーパーパラレル・トレジャーレア)',par:'パラレル/SP(パラレル・SP・SECパラレル・リーダーパラレル・フルアートなど)',base:'通常カード(R・SR・SEC)'};
 function spark(a){if(!a||a.length<2)return'';var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),w=64,h=18;
  var pts=a.map(function(v,i){return (i/(a.length-1)*w).toFixed(1)+','+(mx===mn?h/2:h-(v-mn)/(mx-mn)*h).toFixed(1)}).join(' ');
@@ -831,8 +967,9 @@ function renderRank(){
  track('view_ranking',{division:RKS.div,tab:RKS.tab});
  [].forEach.call(document.querySelectorAll('#rkDiv button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.div)});
  [].forEach.call(document.querySelectorAll('#rkTab button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.tab)});
- var d=RK.divisions[RKS.div],list=d[RKS.tab]||[];
- $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab!=='high'?' ・ 約7日前の最安値との比較('+(RKS.tab==='up'?'上げ幅':'下げ幅')+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)':'');
+ $('rkSort').hidden=RKS.tab==='high';[].forEach.call(document.querySelectorAll('#rkSort button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.sort)});
+ var d=RK.divisions[RKS.div],list=d[rkKey()]||d[RKS.tab]||[];
+ $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab!=='high'?' ・ 約7日前の最安値との比較('+(RKS.tab==='up'?'今の価格':'下がる前の価格')+'が'+yen(d.minPrice||{top:10000,par:1000,base:500}[RKS.div])+'以上・'+(RKS.tab==='up'?'上げ幅':'下げ幅')+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)・'+(RKS.sort==='pct'?'変動率の大きい順':'変動額の大きい順'):'');
  if(!list.length){$('rkList').innerHTML='<li class="em">'+(RKS.tab!=='high'?'まだ'+(RKS.tab==='up'?'値上がり':'値下がり')+'のデータがありません。価格の記録が数日分たまると表示されます'+(d.days?'(現在'+d.days+'日分)':'')+'。':'データがありません。')+'</li>';return}
  $('rkList').innerHTML=list.map(function(r,i){
   var img=r.imgs&&r.imgs[0]?'<img alt="" loading="lazy" referrerpolicy="no-referrer" src="'+esc(r.imgs[0])+'" onerror="this.remove()">':'';
@@ -842,14 +979,15 @@ function renderRank(){
 }
 function showRank(){
  $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';pv();
- var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up'||q.get('tab')==='down')RKS.tab=q.get('tab');
+ var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up'||q.get('tab')==='down')RKS.tab=q.get('tab');if(q.get('sort')==='pct')RKS.sort='pct';
  getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
   .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
 }
-function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RKS.div+'&tab='+RKS.tab)}catch(e){}if(RK)renderRank()}
+function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RKS.div+'&tab='+RKS.tab+(RKS.sort==='pct'?'&sort=pct':''))}catch(e){}if(RK)renderRank()}
+$('rkSort').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('sort',b.dataset.v)});
 $('rkDiv').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('div',b.dataset.v)});
 $('rkTab').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('tab',b.dataset.v)});
-$('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard(RK.divisions[RKS.div][RKS.tab][+li.dataset.i]))});
+$('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard((RK.divisions[RKS.div][rkKey()]||RK.divisions[RKS.div][RKS.tab])[+li.dataset.i]))});
 // ---- 環境デッキ ----
 var DK=null,DKS={slug:null,ver:'normal'};
 function dkCard(x){return{id:x.id,set:'DECK',c:x.para?'PAR':'R',n:x.name,k:x.pcc?'プレミアムカードコレクション':x.para?'パラレル':(x.rar||x.type||''),p:x.p,est:x.est,so:x.so,offers:x.offers||[],search:x.search,ysearch:x.ysearch,imgs:x.imgs||[],t:0}}
@@ -865,15 +1003,20 @@ function renderTiers(){
 }
 function renderDeck(slug){
  var f=dkFind(slug);if(!f||!f.d.ready){renderTiers();return}
- var d=f.d;DKS.slug=slug;$('dkTier').hidden=true;$('dkDeck').hidden=false;scrollTo(0,0);
+ var d=f.d;DKS.slug=slug;$('dkBuy').hidden=true;$('dkBuyB').setAttribute('aria-expanded','false');$('dkTier').hidden=true;$('dkDeck').hidden=false;scrollTo(0,0);
  document.title=d.name+' デッキレシピと価格|ワンピースカード 環境デッキ';
  $('dkName').textContent=d.name;$('dkMeta').textContent=f.t.tier+'('+f.t.label+')・リーダー '+d.leader.name+'('+d.leader.id+')・'+d.count+'枚';
  var st=d.stats,pc=function(v){return v==null?'-':v.toFixed(1)+'%'};
  $('dkSt').innerHTML=st?['勝率',pc(st.winRate),'先手',pc(st.first.winRate),'後手',pc(st.second.winRate),'使用率',pc(st.share)].reduce(function(a,x,i,arr){if(i%2===0)a.push('<div><small>'+x+'</small><b>'+arr[i+1]+'</b></div>');return a},[]).join('')+'':'';
  if(st)$('dkSt').title=st.games.toLocaleString()+'戦・'+st.players.toLocaleString()+'人';
- var muL=function(list,cls,ttl){return '<div class="'+cls+'"><h3>'+ttl+'</h3>'+(list&&list.length?'<ul>'+list.map(function(m,i){return '<li'+(i>=3?' class="more" hidden':'')+'><span class="th" data-m="'+cls+i+'"></span><span><div class="n">'+esc(m.name)+'</div><div class="s">先手 '+pc(m.first)+' ・ 後手 '+pc(m.second)+' ・ '+m.games.toLocaleString()+'戦</div></span><span class="r">'+pc(m.winRate)+'</span></li>'}).join('')+'</ul>'+(list.length>3?'<button type="button" class="mo" data-n="'+(list.length-3)+'">もっと見る(あと'+(list.length-3)+'件)</button>':''):'<div class="em">対戦数の多い相手の中にはありません</div>')+'</div>'};
- $('dkMu').innerHTML=st?muL(d.good,'g','有利なデッキ')+muL(d.bad,'b','不利なデッキ'):'';
- (d.good||[]).forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="g'+i+'"]'),dkCard(m.leader))});(d.bad||[]).forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="b'+i+'"]'),dkCard(m.leader))});
+ // 有利/不利: Tier A以上の相手から上位3つ。残り(Tier B・Tier表外も含む全部)は「もっと見る」で
+ var TOF={};DK.tiers.forEach(function(t){t.decks.forEach(function(x){TOF[x.slug]=t.tier})});
+ var muL=function(list,cls,ttl,none){list=list||[];var top=list.filter(function(m){return /^(SS|S|A)$/.test(TOF[m.id.toLowerCase()]||'')}).slice(0,3),rest=list.filter(function(m){return top.indexOf(m)<0}),all=top.concat(rest);
+  var row=function(m,i){var t=TOF[m.id.toLowerCase()];return '<li'+(i>=top.length?' class="more" hidden':'')+'><span class="th" data-m="'+cls+i+'"></span><span><div class="n">'+(t?'<span class="tt '+t+'">'+t+'</span>':'')+esc(m.name)+'</div><div class="s">先手 '+pc(m.first)+' ・ 後手 '+pc(m.second)+' ・ '+m.games.toLocaleString()+'戦</div></span><span class="r">'+pc(m.winRate)+'</span></li>'};
+  return {html:'<div class="'+cls+'"><h3>'+ttl+'</h3>'+(top.length?'':'<div class="em">'+none+'</div>')+(all.length?'<ul>'+all.map(row).join('')+'</ul>':'')+(rest.length?'<button type="button" class="mo" data-n="'+rest.length+'">もっと見る(あと'+rest.length+'件)</button>':'')+'</div>',list:all}};
+ var G=st?muL(d.good,'g','有利なデッキ','Tier A以上のデッキには有利な相手がいません'):null,B=st?muL(d.bad,'b','不利なデッキ','Tier A以上のデッキには不利な相手がいません'):null;
+ $('dkMu').innerHTML=st?G.html+B.html:'';
+ if(st){G.list.forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="g'+i+'"]'),dkCard(m.leader))});B.list.forEach(function(m,i){addImg($('dkMu').querySelector('[data-m="b'+i+'"]'),dkCard(m.leader))})}
  $('dkLImg').innerHTML='';addImg($('dkLImg'),dkCard(d.leader));
  track('view_deck',{deck:d.slug,deck_name:d.name});pv();renderDeckList();
 }
@@ -884,7 +1027,59 @@ function renderDeckList(){
  $('dkGrid').innerHTML=v.cards.map(function(x,i){
   return '<button class="dc" type="button" data-i="'+i+'"><div class="im">'+esc(x.name)+(x.para?'<span class="lt">'+(x.pcc?'PCC':'パラレル')+'</span>':'')+'<span class="qt">×'+x.n+'</span></div><div class="tx"><b>'+esc(x.name)+'</b>'+esc(x.id.replace(/_[pr]\d+$/,''))+(i===0?' リーダー':'')+'<br><span class="p">'+(x.p==null?'価格なし':yen(x.p))+'</span>'+(x.p!=null&&x.n>1?' ×'+x.n+'='+yen(x.p*x.n):'')+'</div></button>'}).join('');
  [].forEach.call($('dkGrid').querySelectorAll('.dc'),function(e){addImg(e.querySelector('.im'),dkCard(v.cards[+e.dataset.i]))});
+ renderBuy();
 }
+// 最適まとめ買い: 送料(1ショップごと)も含めて合計が一番安くなるショップの組み合わせを探す
+// ショップの組み合わせを全部調べる(ショップが18を超えるときは扱っている種類の多い18ショップの中から)
+var SHIP=300;try{var sv=localStorage.getItem('dkShip');if(sv!==null&&+sv>=0)SHIP=+sv}catch(e){}
+function dkOpt(cards,ship){
+ var items=[],miss=[],keys=[],K={};
+ cards.forEach(function(c){var os=(c.offers||[]).filter(function(o){return !o.so&&o.p>0&&o.u});if(os.length)items.push({c:c,os:os});else miss.push(c)});
+ items.forEach(function(it){it.os.forEach(function(o){var k=(o.s||'rakuten')+'|'+(o.shop||'');if(!(k in K)){K[k]=keys.length;keys.push(k)}o._k=K[k]})});
+ var N=keys.length;
+ function pickB(i,has){var b=null,os=items[i].os;for(var j=0;j<os.length;j++){var o=os[j];if(has(o._k)&&(!b||o.p<b.p||(o.p===b.p&&o.f&&!b.f)))b=o}return b}
+ function ev(has){var tot=0,asg=[],use={};
+  for(var i=0;i<items.length;i++){var b=pickB(i,has);if(!b)return{cost:Infinity};tot+=b.p*items[i].c.n;asg.push(b);var u=use[b._k]||(use[b._k]={paid:0});if(!b.f)u.paid=1}
+  var sh=0,n=0;for(var k in use){n++;if(use[k].paid)sh+=ship}
+  return{cost:tot+sh,items:tot,ship:sh,shops:n,asg:asg,use:use}}
+ var base=ev(function(){return true}),cur=base;
+ // 候補ショップ(多いときは扱っている種類の多い順に18まで。どこにも無いカードの最安ショップは足す)
+ var cnt=keys.map(function(){return 0});items.forEach(function(it){var seen={};it.os.forEach(function(o){if(!seen[o._k]){seen[o._k]=1;cnt[o._k]++}})});
+ var C=keys.map(function(_,k){return k}).sort(function(a,b){return cnt[b]-cnt[a]}).slice(0,18);
+ items.forEach(function(it){if(!it.os.some(function(o){return C.indexOf(o._k)>=0}))C.push(it.os[0]._k)});C=C.slice(0,20);
+ var bit={};C.forEach(function(k,i){bit[k]=1<<i});
+ var bm=-1,bc=Infinity;
+ for(var m=1;m<(1<<C.length);m++){var tot=0,paid=0;
+  for(var i=0;i<items.length&&tot<bc;i++){var b=null,os=items[i].os;for(var j=0;j<os.length;j++){var o=os[j];if((m&(bit[o._k]||0))&&(!b||o.p<b.p||(o.p===b.p&&o.f&&!b.f)))b=o}
+   if(!b){tot=Infinity;break}tot+=b.p*items[i].c.n;if(!b.f)paid|=bit[b._k]}
+  if(tot<bc){var x=paid,c=0;while(x){x&=x-1;c++}tot+=c*ship;if(tot<bc){bc=tot;bm=m}}}
+ if(bm>0){var r=ev(function(k){return (bm&(bit[k]||0))!==0});if(r.cost<=cur.cost)cur=r}
+ var groups={};cur.asg&&cur.asg.forEach(function(o,i){var g=groups[o._k]||(groups[o._k]={s:o.s,shop:o.shop,rows:[],sub:0,paid:cur.use[o._k].paid});g.rows.push({c:items[i].c,o:o});g.sub+=o.p*items[i].c.n});
+ return{best:cur,base:base,groups:Object.keys(groups).map(function(k){return groups[k]}).sort(function(a,b){return b.sub-a.sub}),miss:miss}}
+function merUrl(d,max){var kw=d.name.replace(/[((].*?[))]/g,'').replace(/&/g,' ')+' デッキ'+(DKS.ver==='full'?' フルパラ':'');
+ return 'https://jp.mercari.com/search?keyword='+encodeURIComponent(kw)+'&status=on_sale'+(max?'&price_min='+Math.round(max*.3)+'&price_max='+Math.round(max):'')}
+var DKOC={};
+function renderBuy(){
+ var d=dkFind(DKS.slug).d,v=d[DKS.ver],ck=DKS.slug+'|'+DKS.ver+'|'+SHIP,R=DKOC[ck]||(DKOC[ck]=dkOpt(v.cards,SHIP)),b=R.best,ok=isFinite(b.cost)&&R.groups.length;
+ $('dkBuyB').innerHTML='<b>最適まとめ買い</b><small>'+(ok?'送料込み・'+b.shops+'ショップでそろう':'送料まで考えて一番安い買い方')+'</small>'+(ok?'<span class="bp">'+yen(b.cost)+'</span>':'');
+ $('dkMer').href=merUrl(d,0);
+ if($('dkBuy').hidden)return;
+ if(!ok){$('dkBuy').innerHTML='<p class="how">在庫のある出品が見つからず、計算できませんでした。</p>';return}
+ var diff=R.base.cost-b.cost,h='';
+ h+='<div class="tot"><b>'+yen(b.cost)+'</b><span>カード '+yen(b.items)+' + 送料目安 '+yen(b.ship)+' ・ '+b.shops+'ショップ'+(R.miss.length?' ・ 在庫なし'+R.miss.length+'種を除く':'')+'</span></div>';
+ h+='<p class="cmp">カードごとの最安ショップでバラバラに買うと '+yen(R.base.cost)+'('+R.base.shops+'ショップ・送料目安 '+yen(R.base.ship)+')'+(diff>0?' → <em>'+yen(diff)+' お得</em>':' → バラバラに買っても同じ金額です')+'</p>';
+ h+='<div class="shp">送料の目安(1ショップあたり) <select id="dkShip">'+[0,200,300,500,800].map(function(x){return '<option value="'+x+'"'+(x===SHIP?' selected':'')+'>'+yen(x)+'</option>'}).join('')+'</select> 送料無料の出品だけのショップは¥0で計算</div>';
+ h+=R.groups.map(function(g){return '<div class="bgp"><h4><span class="src '+(g.s==='yahoo'?'yahoo':'')+'">'+(g.s==='yahoo'?'Yahoo!':'楽天')+'</span><span class="sn">'+esc(g.shop||'ショップ')+'</span><span class="st2">'+yen(g.sub+(g.paid?SHIP:0))+'<small>'+g.rows.length+'種・'+(g.paid?'送料 '+yen(SHIP):'送料無料')+'</small></span></h4><ul>'+
+  g.rows.map(function(r){return '<li><span class="cn">'+esc(r.c.name)+' <small>'+esc(r.c.id.replace(/_[pr]\d+$/,''))+(r.c.para?(r.c.pcc?' PCC':' パラレル'):'')+'</small></span><span class="pp">'+yen(r.o.p*r.c.n)+'<small>'+yen(r.o.p)+'×'+r.c.n+'</small></span><a href="'+esc(r.o.u)+'" target="_blank" rel="sponsored noopener" data-bb="1">'+r.c.n+'枚 買う ›</a></li>'}).join('')+'</ul></div>'}).join('');
+ if(R.miss.length)h+='<div class="bgp ms"><h4><span class="sn">在庫のある出品が見つからないカード</span></h4><ul>'+R.miss.map(function(c){var i=v.cards.indexOf(c);return '<li><span class="cn">'+esc(c.name)+' ×'+c.n+' <small>'+esc(c.id.replace(/_[pr]\d+$/,''))+'</small></span><a href="#" data-mi="'+i+'">探す ›</a></li>'}).join('')+'</ul></div>';
+ h+='<p class="how">楽天・Yahoo!はショップごとにカートが分かれるため、このサイトから自動でカートに入れることはできません。「買う」で各商品ページを開き、表示の枚数を選んでカートに入れてください。在庫・価格は毎朝6時の取得時点のもので、在庫が足りない・売り切れの場合があります。送料は目安です(実際の送料や送料無料の条件は各ショップでご確認ください)。PR・広告リンクを含みます。</p>';
+ h+='<div class="mer"><h4>メルカリのデッキ販売と比べる</h4><p>まとめ買いの合計は <b>'+yen(b.cost)+'</b>。メルカリでこれより安く出品されているデッキがあれば、そちらの方が安く手に入るかもしれません(カードの状態・枚数・構築は出品ごとに確認してください)。</p><a class="m1" href="'+esc(merUrl(d,b.cost))+'" target="_blank" rel="noopener" data-mer="under">メルカリで'+yen(b.cost)+'以下のデッキを見る ›</a><a href="'+esc(merUrl(d,0))+'" target="_blank" rel="noopener" data-mer="all">メルカリでデッキ販売をすべて見る ›</a></div>';
+ $('dkBuy').innerHTML=h;
+}
+$('dkBuyB').addEventListener('click',function(){var p=$('dkBuy'),o=p.hidden;p.hidden=!o;this.setAttribute('aria-expanded',o?'true':'false');renderBuy();if(o){track('bulk_buy',{deck:DKS.slug,version:DKS.ver});p.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}});
+$('dkBuy').addEventListener('change',function(e){if(e.target.id!=='dkShip')return;SHIP=+e.target.value;try{localStorage.setItem('dkShip',SHIP)}catch(x){}renderBuy()});
+$('dkBuy').addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;if(a.dataset.mi!=null){e.preventDefault();openDetail(dkCard(dkFind(DKS.slug).d[DKS.ver].cards[+a.dataset.mi]))}else if(a.dataset.mer)track('mercari_click',{deck:DKS.slug,version:DKS.ver,type:a.dataset.mer});else if(a.dataset.bb)track('bulk_buy_shop',{deck:DKS.slug})});
+$('dkMer').addEventListener('click',function(){track('mercari_click',{deck:DKS.slug,version:DKS.ver,type:'top'})});
 function showDecks(slug){
  $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=true;$('decks').hidden=false;
  getJSON('data/decks.json').then(function(j){DK=j;S.date=j.updatedAt;if(slug)renderDeck(slug);else renderTiers()})
