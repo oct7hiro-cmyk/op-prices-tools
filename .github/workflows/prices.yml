@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       sets:
-        description: '取得する弾(例 OP17,OP16 / all)。空欄なら通常スケジュール'
+        description: '取得する弾(例 OP17,OP16 / all / DECK=環境デッキのカード)。空欄なら通常スケジュール'
         required: false
         default: ''
       box_only:
@@ -22,6 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: node scripts/build-sets.mjs
+      - run: node scripts/build-decks.mjs --watch
       - run: node scripts/fetch-prices.mjs
         env:
           RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
@@ -37,10 +38,11 @@ jobs:
         run: pip install --quiet pillow && python3 scripts/box_images.py
         continue-on-error: true
       - run: node scripts/merge-manual.mjs
+      - run: node scripts/build-decks.mjs
       - run: node scripts/build-ranking.mjs
       - run: node scripts/build-pages.mjs
       - name: Commit data
         run: |
           git config user.name "price-bot"; git config user.email "bot@users.noreply.github.com"
-          git add data sets cards.json index.html sitemap.xml ranking img op?? eb?? prb??
+          git add data sets cards.json index.html sitemap.xml ranking decks img op?? eb?? prb??
           git diff --cached --quiet || (git commit -m "prices $(date -u +%F)" && git pull --rebase && git push)
