@@ -90,8 +90,7 @@
  },
  "OP05": {
   "file": "img/box/op05.webp",
-  "src": "user",
-  "fixed": true
+  "src": "user-broken"
  },
  "OP04": {
   "file": "img/box/op04.webp",
