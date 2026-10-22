@@ -597,7 +597,7 @@ function addImg(parent,c){
  im.alt=c.n;im.decoding='async';im.referrerPolicy='no-referrer';
  im.onerror=function(){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove()};
  im.onload=function(){
-  if(im.naturalWidth<200&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さすぎる画像は「画像なし」の差し替えのことが多い
+  if(im.naturalWidth<200&&im.naturalWidth>im.naturalHeight*.85&&im.src!==first){if(++i<L.length)im.src=L[i];else if(first)im.src=first;else im.remove();return} // 小さい正方形の画像は「画像なし」の差し替えのことが多い(駿河屋の小さい縦長画像は使う)
   if(im.src===first){im.classList.add('ok');return}
   if(im.naturalWidth>im.naturalHeight*.85&&i+1<L.length){first=first||im.src;im.src=L[++i];return} // 正方形なら次の候補を試す
   im.classList.add('ok')};
