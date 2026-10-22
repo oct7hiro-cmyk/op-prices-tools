@@ -374,6 +374,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <p class="lead" id="rkLead">ショップの販売価格(楽天・Yahoo!)から毎朝更新</p>
 <div class="tabs" id="rkDiv"><button data-v="top">超高額</button><button data-v="par">パラレル/SP</button><button data-v="base">通常カード</button></div>
 <div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button><button data-v="down">今週の値下がり</button></div>
+<div class="tabs sub" id="rkSort" hidden><button data-v="amt">金額順</button><button data-v="pct">率順</button></div>
 <p id="rkNote"></p>
 <ol class="rl" id="rkList"></ol>
 <p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格のうち最安値で、買取価格ではありません。在庫のある出品がないカードは売り切れの出品の価格を参考にしています。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
@@ -820,7 +821,8 @@ $('dv').addEventListener('click',function(e){var a=e.target.closest('a[href]');i
  track('shop_click',{item_id:DVCUR.id,item_name:DVCUR.n,item_label:DVCUR.k,price:DVCUR.p||0,link_type:kind,shop_source:src,position:li?[].indexOf.call(li.parentNode.children,li)+1:0,from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'})});
 
 // ---- 相場ランキング ----
-var RK=null,RKS={div:'top',tab:'high'};
+var RK=null,RKS={div:'top',tab:'high',sort:'amt'};
+function rkKey(){return RKS.tab!=='high'&&RKS.sort==='pct'?RKS.tab+'Pct':RKS.tab}
 var RKDIV={top:'超高額(コミパラ・超レア・リーダースーパーパラレル・トレジャーレア)',par:'パラレル/SP(パラレル・SP・SECパラレル・リーダーパラレル・フルアートなど)',base:'通常カード(R・SR・SEC)'};
 function spark(a){if(!a||a.length<2)return'';var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),w=64,h=18;
  var pts=a.map(function(v,i){return (i/(a.length-1)*w).toFixed(1)+','+(mx===mn?h/2:h-(v-mn)/(mx-mn)*h).toFixed(1)}).join(' ');
@@ -830,8 +832,9 @@ function renderRank(){
  track('view_ranking',{division:RKS.div,tab:RKS.tab});
  [].forEach.call(document.querySelectorAll('#rkDiv button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.div)});
  [].forEach.call(document.querySelectorAll('#rkTab button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.tab)});
- var d=RK.divisions[RKS.div],list=d[RKS.tab]||[];
- $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab!=='high'?' ・ 約7日前の最安値との比較('+(RKS.tab==='up'?'上げ幅':'下げ幅')+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)':'');
+ $('rkSort').hidden=RKS.tab==='high';[].forEach.call(document.querySelectorAll('#rkSort button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.sort)});
+ var d=RK.divisions[RKS.div],list=d[rkKey()]||d[RKS.tab]||[];
+ $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab!=='high'?' ・ 約7日前の最安値との比較('+(RKS.tab==='up'?'今の価格':'下がる前の価格')+'が'+yen(d.minPrice||{top:10000,par:1000,base:500}[RKS.div])+'以上・'+(RKS.tab==='up'?'上げ幅':'下げ幅')+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)・'+(RKS.sort==='pct'?'変動率の大きい順':'変動額の大きい順'):'');
  if(!list.length){$('rkList').innerHTML='<li class="em">'+(RKS.tab!=='high'?'まだ'+(RKS.tab==='up'?'値上がり':'値下がり')+'のデータがありません。価格の記録が数日分たまると表示されます'+(d.days?'(現在'+d.days+'日分)':'')+'。':'データがありません。')+'</li>';return}
  $('rkList').innerHTML=list.map(function(r,i){
   var img=r.imgs&&r.imgs[0]?'<img alt="" loading="lazy" referrerpolicy="no-referrer" src="'+esc(r.imgs[0])+'" onerror="this.remove()">':'';
@@ -841,14 +844,15 @@ function renderRank(){
 }
 function showRank(){
  $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';pv();
- var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up'||q.get('tab')==='down')RKS.tab=q.get('tab');
+ var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up'||q.get('tab')==='down')RKS.tab=q.get('tab');if(q.get('sort')==='pct')RKS.sort='pct';
  getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
   .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
 }
-function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RKS.div+'&tab='+RKS.tab)}catch(e){}if(RK)renderRank()}
+function rkSet(k,v){RKS[k]=v;try{history.replaceState(null,'','ranking/?div='+RKS.div+'&tab='+RKS.tab+(RKS.sort==='pct'?'&sort=pct':''))}catch(e){}if(RK)renderRank()}
+$('rkSort').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('sort',b.dataset.v)});
 $('rkDiv').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('div',b.dataset.v)});
 $('rkTab').addEventListener('click',function(e){var b=e.target.closest('button');if(b)rkSet('tab',b.dataset.v)});
-$('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard(RK.divisions[RKS.div][RKS.tab][+li.dataset.i]))});
+$('rkList').addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(!li||!RK)return;openDetail(rkCard((RK.divisions[RKS.div][rkKey()]||RK.divisions[RKS.div][RKS.tab])[+li.dataset.i]))});
 // ---- 環境デッキ ----
 var DK=null,DKS={slug:null,ver:'normal'};
 function dkCard(x){return{id:x.id,set:'DECK',c:x.para?'PAR':'R',n:x.name,k:x.pcc?'プレミアムカードコレクション':x.para?'パラレル':(x.rar||x.type||''),p:x.p,est:x.est,so:x.so,offers:x.offers||[],search:x.search,ysearch:x.ysearch,imgs:x.imgs||[],t:0}}
