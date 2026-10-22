@@ -83,7 +83,7 @@ for (const f of files) {
     const siblings = byCode[code].length > 1;
     const lbl = NAME_OVERRIDE[id] ?? r.names?.[id] ?? null;
     const hasFA = isPRB && byCode[code].some((c) => c[1] === 'FA');
-    const w = { set: r.code, id, name: `${name}(${lbl ?? LABEL[cat] ?? cat})`, code };
+    const w = { set: r.code, id, name: `${name}(${lbl ?? LABEL[cat] ?? cat})`, code, ...(['TOP', 'CP', 'LSP', 'TR'].includes(cat) ? { hi: true } : {}) };
     if (IMG_ONLY.has(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, imgOnly: true, mustNot: [...NG_VARIANT, ...NG_SPECIAL] });
     else if (r.search?.[id]) Object.assign(w, r.search[id]); // 調査ファイルで個別に指定した検索条件(描き下ろしパラレルなど)
     else if (isPRB && /_r\d+$/.test(id) && cat === 'CP') // プレミアムブースターのコミパラ: 元の弾のコミパラと区別するためPRBの出品だけ
