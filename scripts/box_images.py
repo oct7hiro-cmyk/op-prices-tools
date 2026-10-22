@@ -15,12 +15,15 @@ OUT = 'img/box'
 
 
 def cutout(raw):
-    # 背景の「白」の基準を3段階で試す(白っぽい箱は、より白いところだけを背景にしないと箱の面まで消える)。
-    # 直方体の形(下の shape_ok)を満たす中で一番良いものを使う
+    # 背景の「白」の基準をゆるい順に試し、直方体の形(下の shape_ok)になった最初のものを使う。
+    # 白っぽい箱は、ゆるい基準だと箱の面まで消えるので、より白いところだけを背景にして切り直す
+    # (最初から厳しい基準にすると、ふつうの箱の周りに白いふちが残る)
     best = None
     for th, chroma in ((228, 22), (244, 12), (250, 8), (253, 5)):
         r = cutout1(raw, th, chroma)
-        if r and (not best or r['score'] > best['score'] or (best['score'] == 0 and r['fill'] > best['fill'])):
+        if r and r['score'] > 0:
+            return r
+        if r and (not best or r['fill'] > best['fill']):
             best = r
     return best
 
