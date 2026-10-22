@@ -116,9 +116,9 @@ ${sec('top', '超高額')}${sec('par', 'パラレル/SP')}${sec('base', '通常�
   const dk = existsSync('data/decks.json') ? JSON.parse(await readFile('data/decks.json', 'utf8')) : null;
   const title = 'ワンピースカード 環境デッキTier表|デッキレシピと価格(ノーマル/フルパラ)';
   const desc = 'ワンピースカードゲームの環境デッキをTier別に掲載。デッキレシピと、デッキ1つ分の価格(ノーマル版・フルパラ版)を楽天・Yahoo!のショップ最安値から毎日計算。カードごとの最安ショップもわかります。';
-  const rows = dk ? dk.tiers.map((t) => `<h3>${esc(t.tier)}(${esc(t.label)})</h3><table><tbody>${t.decks.map((d) => `<tr><td>${esc(d.name)}${d.leader ? `<br><small>${esc(d.leader.id)}</small>` : ''}</td><td class="r">${d.ready ? `ノーマル ${yen(d.normal.total)}<br>フルパラ ${yen(d.full.total)}` : '準備中'}</td></tr>`).join('')}</tbody></table>`).join('') : '';
+  const rows = dk ? dk.tiers.map((t) => `<h3>${esc(t.tier)}(${esc(t.label)})</h3><table><tbody>${t.decks.map((d) => `<tr><td>${esc(d.name)}${d.leader ? `<br><small>${esc(d.leader.id)}</small>` : ''}</td><td class="r">${d.ready ? `ノーマル ${yen(d.normal.total)}<br>フルパラ ${yen(d.full.total)}${d.stats ? `<br>勝率 ${d.stats.winRate}%` : ''}` : '準備中'}</td></tr>`).join('')}</tbody></table>`).join('') : '';
   const about = `<section class="about" id="about"><h2>ワンピースカード 環境デッキTier表</h2>
-<p>環境で使われている主要デッキをTier別にまとめ、デッキレシピとデッキ1つ分の価格を、楽天・Yahoo!ショッピングのショップ最安値から計算しています。${dk ? esc(dk.updatedAt) + '時点。' : ''}Tier表の出典:${dk ? `<a href="${esc(dk.sourceUrl)}" rel="noopener">${esc(dk.source)}</a>` : ''}</p>
+<p>環境で使われている主要デッキをTier別にまとめ、デッキレシピとデッキ1つ分の価格を、楽天・Yahoo!ショッピングのショップ最安値から計算しています。${dk ? esc(dk.updatedAt) + '時点。' : ''}Tier表の出典:${dk ? `<a href="${esc(dk.sourceUrl)}" rel="noopener">${esc(dk.source)}</a>` : ''}${dk?.lists ? `。デッキリストは<a href="${esc(dk.lists.sourceUrl)}" rel="noopener">${esc(dk.lists.source)}</a>の直近30日ランク戦で勝率が一番高い構築です` : ''}</p>
 ${rows}
 <p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p>
 <h3>弾別の開封シミュレーター</h3>${setLinks()}</section>`;
