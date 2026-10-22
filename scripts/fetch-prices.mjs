@@ -132,6 +132,12 @@ function chooseSets(index) {
 }
 
 async function priceCard(card, defaults) {
+  // 画像だけ探すカード(低額のフォイルなど): 価格は記録しない
+  if (card.imgOnly) {
+    const items = pick(await search(card.keyword, defaults.minPrice), card, defaults);
+    return { id: card.id, name: card.name, updatedAt: today, count: 0, imgs: imgsOf(items),
+      searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword), offers: [] };
+  }
   let valid = pick(await search(card.keyword, card.minPrice ?? defaults.minPrice), card, defaults);
   // 在庫のある出品がないとき(高額カードに多い)は、売り切れの出品も含めて探し、その販売価格を参考価格にする
   let soldout = false;
@@ -142,8 +148,14 @@ async function priceCard(card, defaults) {
   }
   // 通常カード(R/SR/SEC)は最安の trimHigh 倍を超える出品を除く(記念版・別バージョンの高値が混ざって相場が跳ねるのを防ぐ)
   if (card.trimHigh && valid.length) valid = valid.filter((i) => i.itemPrice <= valid[0].itemPrice * card.trimHigh);
+  // 出品が見つからないときの画像: 同じカード番号の出品の画像(プレミアムブースターの再録など)
+  let imgs = imgsOf(valid);
+  if (!imgs.length && card.imgKeyword) {
+    await sleep(DELAY_MS);
+    imgs = imgsOf(pick(await search(card.imgKeyword, defaults.minPrice, true), { code: card.code, mustNot: card.imgNg ?? [] }, defaults));
+  }
   const hist = (await readHistory(card.id)).filter((h) => h.date !== today);
-  const rec = { id: card.id, name: card.name, updatedAt: today, count: soldout ? 0 : valid.length, imgs: imgsOf(valid),
+  const rec = { id: card.id, name: card.name, updatedAt: today, count: soldout ? 0 : valid.length, imgs,
     searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword),
     offers: offersOf(valid).map((o) => (soldout ? { ...o, so: 1 } : o)), ...(soldout ? { soldout: true } : {}) };
   if (valid.length) {
@@ -162,7 +174,9 @@ async function priceCard(card, defaults) {
 
 // BOX(未開封)の販売価格。弾名+弾コード(OP17 / OP-17)の両方を含む出品だけを使い、
 // 複数BOX・カートン・パック・開封済み・オリパなどは除外。安い順3件の中央値をプレ値(実売相場)とする。
-const BOX_NG = ['カートン', 'パック単品', 'バラ', 'ばら', '1パック', 'シングル', '開封済', '空箱', 'オリパ', '福袋', 'ケース', 'セット', '2BOX', '3BOX', '4BOX', '5BOX', '6BOX', '10BOX', '12BOX', '24BOX', '×2', 'X2', '2個', '3個', 'スリーブ', 'プレイマット', 'デッキ', 'ストレージ'];
+const BOX_NG = ['カートン', 'パック単品', 'バラ', 'ばら', '1パック', 'シングル', '開封済', '空箱', 'オリパ', '福袋', 'ケース', 'セット', '2BOX', '3BOX', '4BOX', '5BOX', '6BOX', '10BOX', '12BOX', '24BOX', '×2', 'X2', '2個', '3個', 'スリーブ', 'プレイマット', 'デッキ', 'ストレージ',
+  // 海外版(英語版・中国語版など)は別の商品なので除く
+  '英語', 'ENGLISH', '海外', '北米', 'EN版', '中国', '簡体', '繁体', '韓国', 'アジア版'];
 // 「6パック」「15パック ばら売り」などBOXでない出品を除く。BOXのパック数と同じ数、または「2パック付き」(特典)はOK
 function packsOk(n, packs) {
   for (const m of n.matchAll(/(\d+)パック(.?)/g)) {
