@@ -25,6 +25,8 @@ const NG_VARIANT = ['パラ', 'SP', 'スペシャル', 'スーパー', 'コミ',
 const NG_SPECIAL = ['ANNIVERSARY', '周年', 'CHINA', '中国', '英語', '海外', '簡体', '繁体'];
 // コミパラ・通常パラレルの価格に混ざりやすい、別の絵柄の上位版(レッドSP・海賊団SP・描き下ろしなど)
 const NG_OTHER_ART = ['レッド', '海賊団', '書き下ろし', '描き下ろし', '周年'];
+// 通常のSPに混ざりやすい、周年記念SP(金・銀背景)の出品
+const NG_GOLD = ['金背景', '銀背景', '金枠', '銀枠', 'ゴールド', 'シルバー'];
 
 const sets = [];
 const watch = [];
@@ -87,7 +89,7 @@ for (const f of files) {
     else if (isPRB && /_r\d+$/.test(id)) // 再録(R/SR/SEC): 元の弾の同じ番号と区別するため、PRBの出品だけを価格に使う
       Object.assign(w, { keyword: `ワンピースカード ${code} ${r.code}`, mustAny: ['PRB', 'BEST', 'ベスト'], mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
     else if (['R', 'SR', 'SEC'].includes(cat)) Object.assign(w, { keyword: `ワンピースカード ${code}`, mustNot: [...NG_VARIANT, ...NG_SPECIAL], trimHigh: 4 });
-    else if (cat === 'SP') Object.assign(w, { keyword: `ワンピースカード ${code} SP`, mustAny: ['SP', 'スペシャル'], minPrice: 1000 });
+    else if (cat === 'SP') Object.assign(w, { keyword: `ワンピースカード ${code} SP`, mustAny: ['SP', 'スペシャル'], mustNot: [...NG_OTHER_ART, ...NG_GOLD], minPrice: 1000 });
     else if (cat === 'CP' || cat === 'LSP') Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, mustAny: ['スーパー', 'コミ', '漫画'], mustNot: cat === 'CP' ? [...NG_OTHER_ART, '金', '銀'] : NG_OTHER_ART, minPrice: 5000 });
     else if (cat === 'FA') Object.assign(w, { keyword: `ワンピースカード ${code} フルアート`, mustAny: ['フルアート', 'FA'], mustNot: ['スーパー', 'コミ', '漫画', 'SP', ...NG_SPECIAL] });
     else if (cat === 'TOP') {
