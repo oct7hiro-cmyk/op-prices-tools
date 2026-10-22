@@ -78,7 +78,7 @@ ${top.length ? `<h3>${esc(s.code)}の高額カード TOP${top.length}</h3><table
 ${cats ? `<h3>封入率の目安</h3><ul>${cats}</ul>` : ''}
 <p>価格は${esc(sm.updatedAt || today)}時点のショップ販売価格(楽天・Yahoo!ショッピング)です。封入率は販売・買取サイトの開封調査にもとづく推定値で、公式発表ではありません。当サイトは非公式のファンサイトです。</p>
 <h3>ほかの弾の開封シミュレーター</h3>${setLinks()}
-<p><a href="ranking/">ワンピースカード 相場ランキング(高額カードTOP50・今週の値上がり)</a></p>
+<p><a href="ranking/">ワンピースカード 相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p>
 </section>`;
   let html = region(tpl, 'HEAD', head({ title, desc, url, sub: true }));
   html = region(html, 'PAGE', `<script>window.PAGE={set:'${s.code}'}</script>`);
@@ -96,10 +96,10 @@ ${cats ? `<h3>封入率の目安</h3><ul>${cats}</ul>` : ''}
     const list = rk?.divisions?.[div]?.high?.slice(0, 10) ?? [];
     return list.length ? `<h3>${name} 高額TOP10</h3><table><tbody>${list.map((r, i) => `<tr><td>${i + 1}</td><td>${esc(r.n)}(${esc(r.k)})<br><small>${esc(r.set)} ${esc(r.id.replace(/_[pr]\d+$/, ''))}</small></td><td class="r">${yen(r.p)}</td></tr>`).join('')}</tbody></table>` : '';
   };
-  const title = 'ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';
-  const desc = 'ワンピースカードゲームの相場ランキング。コミパラなどの超高額カード、パラレル・SP、通常カード(R・SR・SEC)の高額TOP50と今週値上がりしたカードを、楽天・Yahoo!の販売価格から毎日更新。';
+  const title = 'ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり・値下がり';
+  const desc = 'ワンピースカードゲームの相場ランキング。コミパラなどの超高額カード、パラレル・SP、通常カード(R・SR・SEC)の高額TOP50と今週値上がり・値下がりしたカードを、楽天・Yahoo!の販売価格から毎日更新。';
   const about = `<section class="about" id="about"><h2>ワンピースカード 相場ランキング</h2>
-<p>全弾のカードの販売価格(楽天・Yahoo!ショッピング、安い順3件の中央値)を毎朝集計しています。${rk ? esc(rk.updatedAt) + '時点。' : ''}</p>
+<p>全弾のカードの販売価格(楽天・Yahoo!ショッピングのショップ最安値)を毎朝集計しています。${rk ? esc(rk.updatedAt) + '時点。' : ''}</p>
 ${sec('top', '超高額')}${sec('par', 'パラレル/SP')}${sec('base', '通常カード')}
 <h3>弾別の開封シミュレーター</h3>${setLinks()}</section>`;
   let html = region(tpl, 'HEAD', head({ title, desc, url, sub: true }));
@@ -115,7 +115,7 @@ ${sec('top', '超高額')}${sec('par', 'パラレル/SP')}${sec('base', '通常�
   const about = `<section class="about" id="about"><h2>ワンピースカード 開封シミュレーターとは</h2>
 <p>ワンピースカードゲームのブースターパック・エクストラブースター・プレミアムブースターのBOX開封を、無料でシミュレーションできるサイトです。出たカードの合計金額を、楽天・Yahoo!ショッピングの販売価格で計算し、定価やプレ値(未開封BOXの販売価格)と比べて「当たりBOXか」を判定します。1BOXの期待値、当たりカードの相場、開封履歴も見られます。</p>
 <h3>弾別の開封シミュレーター</h3>${setLinks()}
-<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり)</a></p></section>`;
+<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p></section>`;
   const html = region(tpl, 'ABOUT', about);
   if (html !== tpl) await writeFile('index.html', html);
   pages.unshift(BASE);
