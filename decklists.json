@@ -2,8 +2,9 @@
  "updated": "2026-10-22",
  "source": "カードラッシュ 環境デッキランキング/Tier表",
  "sourceUrl": "https://cardrush.media/onepiece/articles/60",
- "note": "デッキリストは毎日 scripts/fetch-decks.mjs が OPlayTCG のメタ統計から勝率最上位の構築を取る(data/decklists-auto.json)。取れないときだけ code(OPlayTCG のデッキコード: リーダー|枚数xカード番号,…)を使う",
+ "note": "Tier表・勝率・相性・デッキリストは毎日 scripts/fetch-decks.mjs が OPlayTCG から取る(data/meta.json・data/decklists-auto.json)。下の tiers と code は取れないときの予備。short はデッキ名の短い名前の上書き。旧メモ: デッキリストは毎日 scripts/fetch-decks.mjs が OPlayTCG のメタ統計から勝率最上位の構築を取る(data/decklists-auto.json)。取れないときだけ code(OPlayTCG のデッキコード: リーダー|枚数xカード番号,…)を使う",
  "names": { "ST30-001": "ルフィ&エース" },
+ "short": { "OP17-039": "ロックス", "ST30-001": "ルフィ&エース" },
  "tiers": [
   { "tier": "SS", "label": "Tier 1", "decks": [
    { "slug": "blue-rocks", "name": "青ロックス", "leader": "OP17-039",
