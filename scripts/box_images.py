@@ -15,14 +15,38 @@ OUT = 'img/box'
 
 
 def cutout(raw):
-    # 普通の白背景で切り抜き、箱が白っぽくて形が欠けたら(詰まり具合が低い)、より白いところだけを背景として切り直す
-    r = cutout1(raw, 228, 22)
-    if r and r['fill'] < 0.86:
-        r2 = cutout1(raw, 248, 10)
-        if r2 and r2['fill'] > r['fill']:
-            r2['score'] = r2['fill'] + min(r2['area'], 0.6) * 0.3 if r2['fill'] > 0.72 and r2['area'] > 0.18 and 0.5 < r2['ar'] < 2.2 and r2['edge'] < 0.02 else 0
-            return r2
-    return r
+    # 背景の「白」の基準を3段階で試す(白っぽい箱は、より白いところだけを背景にしないと箱の面まで消える)。
+    # 直方体の形(下の shape_ok)を満たす中で一番良いものを使う
+    best = None
+    for th, chroma in ((228, 22), (244, 12), (250, 8), (253, 5)):
+        r = cutout1(raw, th, chroma)
+        if r and (not best or r['score'] > best['score'] or (best['score'] == 0 and r['fill'] > best['fill'])):
+            best = r
+    return best
+
+
+def profile(alpha):
+    """直方体の形かどうかの手がかり。斜め上から撮った箱は、上の輪郭は奥の角が一番高い「へ」の字、
+    下の輪郭は手前の角が一番低い「V」の字になり、どちらの角も左右の端ではなく内側にある。
+    正面だけの写真(海外版の平たい箱・パック)は上下がまっすぐ。箱の白い天面が背景と一緒に消えると、上の一番高い所が端に寄る。
+    返り値: 上・下の輪郭の高さの振れ幅(画像の高さ比)と、上の一番高い所・下の一番低い所の横位置(0〜1)"""
+    w, h = alpha.size
+    px = alpha.load()
+    xs, tops, bots = [], [], []
+    for x in range(int(w * .03), int(w * .97)):
+        ys = [y for y in range(h) if px[x, y] > 128]
+        if ys:
+            xs.append(x); tops.append(ys[0]); bots.append(ys[-1])
+    if not tops:
+        return 0, 0, 0, 0
+    pt = xs[tops.index(min(tops))] / w
+    pb = xs[bots.index(max(bots))] / w
+    return (max(tops) - min(tops)) / h, (max(bots) - min(bots)) / h, pt, pb
+
+
+def shape_ok(t, b, pt, pb, ar):
+    return (t >= 0.05 and b >= 0.05 and min(t, b) / max(t, b) >= 0.5
+            and 0.12 < pt < 0.88 and 0.12 < pb < 0.88 and 0.45 < ar < 0.85)
 
 
 def cutout1(raw, th, chroma):
@@ -98,12 +122,15 @@ def cutout1(raw, th, chroma):
     best_n = sum(1 for v in mask.getdata() if v)
     bw, bh = x1 - x0 + 1, y1 - y0 + 1
     fill, area, ar, edge_r = best_n / (bw * bh), best_n / N, bw / bh, edge / (2 * (w + h))
-    # 箱は外枠にほぼ詰まった形。端に接していたら背景つきの写真、面積が小さすぎたら別物
-    ok = fill > 0.72 and area > 0.18 and 0.5 < ar < 2.2 and edge_r < 0.02
-    score = fill + min(area, 0.6) * 0.3 if ok else 0
+    crop = im.crop((x0, y0, x1 + 1, y1 + 1))
+    t, b, pt, pb = profile(crop.getchannel('A'))
+    # 箱は外枠にほぼ詰まった形。端に接していたら背景つきの写真、面積が小さすぎたら別物。
+    # さらに斜めから見た直方体の形であること(パック・海外版の平たい箱・欠けた箱は不採用)
+    ok = fill > 0.72 and area > 0.12 and edge_r < 0.02 and shape_ok(t, b, pt, pb, ar)
+    score = fill + min(t, b) / max(t, b, 1e-6) * 0.5 + min(area, 0.6) * 0.3 if ok else 0
     out = io.BytesIO()
-    im.crop((x0, y0, x1 + 1, y1 + 1)).save(out, 'WEBP', quality=86)
-    return {'out': out.getvalue(), 'score': score, 'fill': round(fill, 2), 'area': round(area, 2), 'ar': round(ar, 2), 'edge': round(edge_r, 3)}
+    crop.save(out, 'WEBP', quality=86)
+    return {'out': out.getvalue(), 'score': score, 'fill': round(fill, 2), 'area': round(area, 2), 'ar': round(ar, 2), 'edge': round(edge_r, 3), 't': round(t, 3), 'b': round(b, 3)}
 
 
 def main():
@@ -130,7 +157,7 @@ def main():
                     best = {**r, 'src': u}
             except Exception as e:  # noqa
                 print(f'[{code}] {u}: {e}', file=sys.stderr)
-        info = (f"score={best['score']:.2f} fill={best['fill']} area={best['area']} ar={best['ar']} edge={best['edge']}" if best else '候補なし')
+        info = (f"score={best['score']:.2f} fill={best['fill']} area={best['area']} ar={best['ar']} edge={best['edge']} t={best['t']} b={best['b']}" if best else '候補なし')
         if best and best['score'] > 0:
             file = f'{OUT}/{code.lower()}.webp'
             open(file, 'wb').write(best['out'])
@@ -138,7 +165,15 @@ def main():
             made += 1
             print(f'[{code}] 採用 {info}')
         else:
-            print(f"[{code}] 不採用({info}){' 前回の画像を継続' if code in manifest else ''}")
+            prev = manifest.get(code, {}).get('file')
+            keep = False
+            if prev and os.path.exists(prev):  # 前回の画像も直方体の形でなければ消す(画面はCSSで描いたBOXになる)
+                pim = Image.open(prev).convert('RGBA')
+                keep = shape_ok(*profile(pim.getchannel('A')), pim.width / pim.height)
+                if not keep:
+                    os.remove(prev)
+                    manifest.pop(code, None)
+            print(f"[{code}] 不採用({info}){' 前回の画像を継続' if keep else ' 画像なし(CSSのBOX)'}")
     json.dump(manifest, open(mf, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
     print(f'BOX画像 {made}弾を更新 / 合計{len(manifest)}弾')
 
