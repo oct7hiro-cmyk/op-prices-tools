@@ -1,0 +1,33 @@
+{
+ "updated": "2026-10-22",
+ "source": "カードラッシュ 環境デッキランキング/Tier表",
+ "sourceUrl": "https://cardrush.media/onepiece/articles/60",
+ "note": "code は OPlayTCG のデッキコード(リーダー|枚数xカード番号,…)。QRコードの d= を base64 で読んだもの。code が無いデッキは「リスト準備中」",
+ "tiers": [
+  { "tier": "SS", "label": "Tier 1", "decks": [
+   { "slug": "blue-rocks", "name": "青ロックス", "leader": "OP17-039",
+     "code": "OP17-039|4xOP08-051,4xOP17-040,4xOP17-045,4xOP17-046,4xOP17-048,4xOP17-049,4xOP17-052,4xOP17-054,4xOP17-055,4xOP17-056,4xOP17-118,3xOP17-044,2xOP17-042,1xEB02-030" },
+   { "slug": "rg-luffy-ace", "name": "赤緑ルフィ&エース", "leader": null },
+   { "slug": "purple-enel", "name": "紫エネル", "leader": "OP15-058" }
+  ]},
+  { "tier": "S", "label": "Tier 2", "decks": [
+   { "slug": "py-robin", "name": "紫黄ロビン", "leader": "OP09-062" },
+   { "slug": "rb-sabo", "name": "赤黒サボ", "leader": "OP13-004" },
+   { "slug": "black-luffy", "name": "黒ルフィ", "leader": "OP17-079" },
+   { "slug": "purple-kaido", "name": "紫カイドウ", "leader": "OP17-058" },
+   { "slug": "by-hancock", "name": "青黄ハンコック", "leader": "OP14-041" }
+  ]},
+  { "tier": "A", "label": "Tier 3", "decks": [
+   { "slug": "red-ace", "name": "赤エース", "leader": "OP16-001" },
+   { "slug": "yellow-linlin", "name": "黄リンリン", "leader": "OP17-099" },
+   { "slug": "green-shanks", "name": "緑シャンクス", "leader": "OP17-020" },
+   { "slug": "black-yamato", "name": "黒ヤマト", "leader": "OP16-079" },
+   { "slug": "by-nami", "name": "青黄ナミ", "leader": "OP11-041" },
+   { "slug": "bg-luffy", "name": "青緑ルフィ", "leader": "OP16-022" },
+   { "slug": "rg-luffy", "name": "赤緑ルフィ", "leader": "OP13-001" },
+   { "slug": "by-teach", "name": "黒黄ティーチ", "leader": "OP16-080" },
+   { "slug": "rb-ace", "name": "赤青エース", "leader": "OP13-002" },
+   { "slug": "rb-lucy", "name": "赤青ルーシー", "leader": "OP15-002" }
+  ]}
+ ]
+}
