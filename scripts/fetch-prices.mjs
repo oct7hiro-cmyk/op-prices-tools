@@ -159,8 +159,8 @@ async function priceCard(card, defaults) {
     searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword),
     offers: offersOf(valid).map((o) => (soldout ? { ...o, so: 1 } : o)), ...(soldout ? { soldout: true } : {}) };
   if (valid.length) {
-    const ref = median(valid.slice(0, 3).map((i) => i.itemPrice)); // 安い順3件の中央値=外れ値に強い参考価格
-    const base = hist.length ? median(hist.slice(-7).map((h) => h.ref)) : null;
+    const ref = valid[0].itemPrice; // 参考価格=ショップ最安値
+    const base = hist.length ? median(hist.slice(-7).map((h) => h.min)) : null;
     Object.assign(rec, { minPrice: valid[0].itemPrice, refPrice: ref, shop: valid[0].shopName, url: valid[0].url, src: valid[0].src,
       counts: { rakuten: valid.filter((i) => i.src === 'rakuten').length, yahoo: valid.filter((i) => i.src === 'yahoo').length },
       change: base && !soldout ? Math.round(((ref - base) / base) * 1000) / 10 : null });
