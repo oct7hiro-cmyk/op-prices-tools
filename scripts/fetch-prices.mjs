@@ -259,6 +259,22 @@ async function main() {
     total += list.length; failedAll += failed.length;
     console.log(`[${code}] 完了: ${out.length}件, 失敗${failed.length}件`);
   }
+  // 環境デッキのカード(弾の監視に無いもの: C/UC・リーダー・他の弾のカードなど)。通常の毎日の実行と、SETS に all / DECK を指定したときに取得
+  const envSets = (process.env.SETS ?? '').trim();
+  if (!BOX_ONLY && existsSync('data/decks-watch.json') && (!envSets || /(^|,)\s*(all|DECK)\s*(,|$)/.test(envSets))) {
+    const watch = JSON.parse(await readFile('data/decks-watch.json', 'utf8')).cards;
+    const prev = existsSync('data/decks-prices.json') ? JSON.parse(await readFile('data/decks-prices.json', 'utf8')).cards : [];
+    const byId = Object.fromEntries(prev.map((c) => [c.id, c]));
+    let ok = 0;
+    for (const card of watch) {
+      try { byId[card.id] = await priceCard(card, defaults); ok++; console.log(`[DECK] ${card.id}: ${byId[card.id].count}件 ref=${byId[card.id].refPrice ?? '-'}`); }
+      catch (e) { if (/認証エラー/.test(e.message)) throw e; console.error(`[DECK] ${card.id}: ${e.message}`); }
+      await sleep(DELAY_MS);
+    }
+    const ids = new Set(watch.map((c) => c.id));
+    await writeFile('data/decks-prices.json', JSON.stringify({ updatedAt: today, cards: Object.values(byId).filter((c) => ids.has(c.id)) }));
+    console.log(`[DECK] 完了: ${ok}/${watch.length}件`);
+  }
   spikesAll.sort((a, b) => b.change - a.change);
   if (!BOX_ONLY) await writeFile('data/spikes.json', JSON.stringify({ updatedAt: today, spikes: spikesAll }, null, 1));
   console.log(`全体: ${total}件, 急騰${spikesAll.length}件, 失敗${failedAll}件`);
