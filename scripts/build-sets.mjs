@@ -62,7 +62,7 @@ for (const f of files) {
   }
   const conf = { code: r.code, series: r.series, name: r.name, title: src.name, release: r.release ?? null,
     msrp: r.msrp_box ?? null, packs: r.packs ?? 24, perPack: r.cards_per_pack ?? 6, market: r.box_market ?? null,
-    confidence: r.confidence ?? null, base, hit, cats, labels: LABEL, cards, sources: r.sources ?? [], notes: r.notes ?? '' };
+    confidence: r.confidence ?? null, base, hit, cats, labels: { ...LABEL, ...(r.labels ?? {}) }, cards, sources: r.sources ?? [], notes: r.notes ?? '' };
   await writeFile(`sets/${r.code}.json`, JSON.stringify(conf));
   sets.push({ code: r.code, name: r.name, title: src.name, release: conf.release, msrp: conf.msrp, market: conf.market, confidence: conf.confidence });
 
