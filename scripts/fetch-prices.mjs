@@ -35,7 +35,7 @@ async function searchRakuten(keyword, minPrice, all = false) {
       return (j.Items ?? []).map((i) => i.Item ?? i).map((i) => {
         const u = (i.mediumImageUrls ?? [])[0], img = typeof u === 'string' ? u : u?.imageUrl;
         return { src: 'rakuten', itemName: i.itemName, itemPrice: i.itemPrice, shopName: i.shopName,
-          url: i.affiliateUrl || i.itemUrl, img: img ? img.replace(/\?_ex=\d+x\d+$/, '') + '?_ex=400x400' : null };
+          url: i.affiliateUrl || i.itemUrl, free: i.postageFlag === 0, img: img ? img.replace(/\?_ex=\d+x\d+$/, '') + '?_ex=400x400' : null };
       });
     }
     if (res.status === 401 || res.status === 403)
@@ -60,7 +60,7 @@ async function searchYahoo(keyword, minPrice, all = false) {
       if (res.ok) {
         const j = await res.json();
         return (j.hits ?? []).map((h) => ({ src: 'yahoo', itemName: h.name ?? '', itemPrice: Number(h.price), shopName: h.seller?.name ?? '',
-          url: vcWrap(h.url), img: h.exImage?.url || h.image?.medium || null }));
+          url: vcWrap(h.url), free: h.shipping?.code === 2, img: h.exImage?.url || h.image?.medium || null }));
       }
       if (res.status === 401 || res.status === 403) { yahooDown = true; console.error(`[Yahoo] 認証エラー(${res.status}): ${(await res.text()).replace(/\s+/g, ' ').slice(0, 300)} / appid長さ=${YAHOO_APP_ID.length}。以降は楽天のみ`); return []; }
       if (res.status === 404) return [];
@@ -82,8 +82,8 @@ const rakutenSearchUrl = (kw) => {
 };
 // Yahoo!ショッピングの検索結果ページ(受け皿)
 const yahooSearchUrl = (kw) => vcWrap(`https://shopping.yahoo.co.jp/search?p=${encodeURIComponent(kw)}`);
-// 販売ショップ一覧(安い順・最大8件)。検索は在庫ありのみなので、取得時点で在庫あり
-const offersOf = (valid, n = 8) => valid.slice(0, n).map((i) => ({ s: i.src, shop: i.shopName, p: i.itemPrice, u: i.url, n: String(i.itemName ?? '').slice(0, 60) }));
+// 販売ショップ一覧(安い順・最大8件)。検索は在庫ありのみなので、取得時点で在庫あり。f:1 は送料無料(楽天 postageFlag=0「送料込」/ Yahoo! shipping.code=2「送料無料」)
+const offersOf = (valid, n = 8) => valid.slice(0, n).map((i) => ({ s: i.src, shop: i.shopName, p: i.itemPrice, u: i.url, n: String(i.itemName ?? '').slice(0, 60), ...(i.free ? { f: 1 } : {}) }));
 // 最安出品へのリンク情報
 const linkOf = (valid, kw) => ({ url: valid[0]?.url ?? null, src: valid[0]?.src ?? null, shop: valid[0]?.shopName ?? null,
   price: valid[0]?.itemPrice ?? null, searchUrl: rakutenSearchUrl(kw), ysearchUrl: yahooSearchUrl(kw), offers: offersOf(valid) });
