@@ -1,10 +1,10 @@
 // 相場ランキング data/ranking.json を作る(merge-manual の後に実行)。Node 20+、依存なし。
-//   部門: top=超高額(SP・コミパラ・超レアなど) / par=汎用パラレル / base=汎用カード(R・SR・SEC)
+//   部門: top=超高額(コミパラ・超レアなど) / par=パラレル・SP / base=汎用カード(R・SR・SEC)
 //   一覧: high=高額TOP50 / up=今週の値上がり(約7日前との比較。データが7日分ないときはある分で比較)
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
-const DIV = { TOP: 'top', CP: 'top', LSP: 'top', SP: 'top', TR: 'top', PAR: 'par', SECP: 'par', LPAR: 'par', FA: 'par', OTHER: 'par', R: 'base', SR: 'base', SEC: 'base' };
+const DIV = { TOP: 'top', CP: 'top', LSP: 'top', SP: 'par', TR: 'top', PAR: 'par', SECP: 'par', LPAR: 'par', FA: 'par', OTHER: 'par', R: 'base', SR: 'base', SEC: 'base' };
 const MIN_UP = { top: 1000, par: 300, base: 100 }; // 値上がりとして載せる最低の上げ幅(円)
 const N = 50;
 const DAY = 864e5;
