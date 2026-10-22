@@ -97,10 +97,10 @@ ${cats ? `<h3>封入率の目安</h3><ul>${cats}</ul>` : ''}
     return list.length ? `<h3>${name} 高額TOP10</h3><table><tbody>${list.map((r, i) => `<tr><td>${i + 1}</td><td>${esc(r.n)}(${esc(r.k)})<br><small>${esc(r.set)} ${esc(r.id.replace(/_[pr]\d+$/, ''))}</small></td><td class="r">${yen(r.p)}</td></tr>`).join('')}</tbody></table>` : '';
   };
   const title = 'ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';
-  const desc = 'ワンピースカードゲームの相場ランキング。SP・コミパラなどの超高額カード、パラレル、通常カード(R・SR・SEC)の高額TOP50と今週値上がりしたカードを、楽天・Yahoo!の販売価格から毎日更新。';
+  const desc = 'ワンピースカードゲームの相場ランキング。コミパラなどの超高額カード、パラレル・SP、通常カード(R・SR・SEC)の高額TOP50と今週値上がりしたカードを、楽天・Yahoo!の販売価格から毎日更新。';
   const about = `<section class="about" id="about"><h2>ワンピースカード 相場ランキング</h2>
 <p>全弾のカードの販売価格(楽天・Yahoo!ショッピング、安い順3件の中央値)を毎朝集計しています。${rk ? esc(rk.updatedAt) + '時点。' : ''}</p>
-${sec('top', '超高額')}${sec('par', 'パラレル')}${sec('base', '通常カード')}
+${sec('top', '超高額')}${sec('par', 'パラレル/SP')}${sec('base', '通常カード')}
 <h3>弾別の開封シミュレーター</h3>${setLinks()}</section>`;
   let html = region(tpl, 'HEAD', head({ title, desc, url, sub: true }));
   html = region(html, 'PAGE', `<script>window.PAGE={view:'rank'}</script>`);
