@@ -1,7 +1,7 @@
 // 検索エンジン向けの静的ページを作る(build-ranking の後に実行)。Node 20+、依存なし。
 //   index.html の <!--HEAD-->〜<!--/HEAD-->(タイトル・説明文)、<!--PAGE-->〜<!--/PAGE-->(表示する画面)、
 //   <!--ABOUT-->〜<!--/ABOUT-->(ページ下部の説明・高額カード表)を差し替えて
-//   /<弾コード小文字>/index.html と /ranking/index.html を書き出し、ルートの index.html と sitemap.xml も更新する。
+//   /<弾コード小文字>/index.html と /ranking/index.html・/decks/index.html を書き出し、ルートの index.html と sitemap.xml も更新する。
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
@@ -110,12 +110,32 @@ ${sec('top', '超高額')}${sec('par', 'パラレル/SP')}${sec('base', '通常�
   pages.push(url);
 }
 
+// 環境デッキTier表
+{
+  const url = `${BASE}decks/`;
+  const dk = existsSync('data/decks.json') ? JSON.parse(await readFile('data/decks.json', 'utf8')) : null;
+  const title = 'ワンピースカード 環境デッキTier表|デッキレシピと価格(ノーマル/フルパラ)';
+  const desc = 'ワンピースカードゲームの環境デッキをTier別に掲載。デッキレシピと、デッキ1つ分の価格(ノーマル版・フルパラ版)を楽天・Yahoo!のショップ最安値から毎日計算。カードごとの最安ショップもわかります。';
+  const rows = dk ? dk.tiers.map((t) => `<h3>${esc(t.tier)}(${esc(t.label)})</h3><table><tbody>${t.decks.map((d) => `<tr><td>${esc(d.name)}${d.leader ? `<br><small>${esc(d.leader.id)}</small>` : ''}</td><td class="r">${d.ready ? `ノーマル ${yen(d.normal.total)}<br>フルパラ ${yen(d.full.total)}` : '準備中'}</td></tr>`).join('')}</tbody></table>`).join('') : '';
+  const about = `<section class="about" id="about"><h2>ワンピースカード 環境デッキTier表</h2>
+<p>環境で使われている主要デッキをTier別にまとめ、デッキレシピとデッキ1つ分の価格を、楽天・Yahoo!ショッピングのショップ最安値から計算しています。${dk ? esc(dk.updatedAt) + '時点。' : ''}Tier表の出典:${dk ? `<a href="${esc(dk.sourceUrl)}" rel="noopener">${esc(dk.source)}</a>` : ''}</p>
+${rows}
+<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p>
+<h3>弾別の開封シミュレーター</h3>${setLinks()}</section>`;
+  let html = region(tpl, 'HEAD', head({ title, desc, url, sub: true }));
+  html = region(html, 'PAGE', `<script>window.PAGE={view:'decks'}</script>`);
+  html = region(html, 'ABOUT', about);
+  await mkdir('decks', { recursive: true });
+  await writeFile('decks/index.html', html);
+  pages.push(url);
+}
+
 // トップ(ルートの index.html は説明と弾一覧のリンクだけ更新)
 {
   const about = `<section class="about" id="about"><h2>ワンピースカード 開封シミュレーターとは</h2>
 <p>ワンピースカードゲームのブースターパック・エクストラブースター・プレミアムブースターのBOX開封を、無料でシミュレーションできるサイトです。出たカードの合計金額を、楽天・Yahoo!ショッピングの販売価格で計算し、定価やプレ値(未開封BOXの販売価格)と比べて「当たりBOXか」を判定します。1BOXの期待値、当たりカードの相場、開封履歴も見られます。</p>
 <h3>弾別の開封シミュレーター</h3>${setLinks()}
-<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p></section>`;
+<p><a href="ranking/">相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a> ・ <a href="decks/">環境デッキTier表(デッキ価格)</a></p></section>`;
   const html = region(tpl, 'ABOUT', about);
   if (html !== tpl) await writeFile('index.html', html);
   pages.unshift(BASE);
