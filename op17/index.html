@@ -6,12 +6,12 @@
 <!--HEAD-->
 <base href="/op-prices-tools/">
 <title>OP17 世界最強の戦士 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場</title>
-<meta name="description" content="ワンピースカード OP17「世界最強の戦士」のBOX開封をシミュレーション。1BOXの期待値¥15,106、プレ値¥12,480。当たりカード:モンキー・Ｄ・ルフィ(海賊団SP)¥1,980,000、ロックス・Ｄ・ジーベック(海賊団SP)¥549,000、シャンクス(コミパラ)¥139,000など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta name="description" content="ワンピースカード OP17「世界最強の戦士」のBOX開封をシミュレーション。1BOXの期待値¥12,078、プレ値¥12,480。当たりカード:モンキー・Ｄ・ルフィ(海賊団SP)¥1,281,000、ロックス・Ｄ・ジーベック(海賊団SP)¥495,000、シャンクス(コミパラ)¥133,900など。楽天・Yahoo!の販売価格から毎日更新。">
 <link rel="canonical" href="https://oct7hiro-cmyk.github.io/op-prices-tools/op17/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ワンピースカード 開封シミュレーター">
 <meta property="og:title" content="OP17 世界最強の戦士 開封シミュレーター|BOX開封ガチャ・期待値・当たりカード相場">
-<meta property="og:description" content="ワンピースカード OP17「世界最強の戦士」のBOX開封をシミュレーション。1BOXの期待値¥15,106、プレ値¥12,480。当たりカード:モンキー・Ｄ・ルフィ(海賊団SP)¥1,980,000、ロックス・Ｄ・ジーベック(海賊団SP)¥549,000、シャンクス(コミパラ)¥139,000など。楽天・Yahoo!の販売価格から毎日更新。">
+<meta property="og:description" content="ワンピースカード OP17「世界最強の戦士」のBOX開封をシミュレーション。1BOXの期待値¥12,078、プレ値¥12,480。当たりカード:モンキー・Ｄ・ルフィ(海賊団SP)¥1,281,000、ロックス・Ｄ・ジーベック(海賊団SP)¥495,000、シャンクス(コミパラ)¥133,900など。楽天・Yahoo!の販売価格から毎日更新。">
 <meta property="og:url" content="https://oct7hiro-cmyk.github.io/op-prices-tools/op17/">
 <meta name="twitter:card" content="summary">
 <!--/HEAD-->
@@ -215,6 +215,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .rl .tg.m{background:#5a3a10;color:#ffd58a}
 .rl .pz{text-align:right;font-weight:900;font-size:15px;white-space:nowrap}
 .rl .ch{display:block;font-size:12px;color:var(--win)}
+.rl .ch.dn{color:#7fb4ff}
 .rl svg{display:block;margin:3px 0 0 auto}
 .rl .em{cursor:default;display:block;text-align:center;color:var(--mute);font-size:13px;padding:24px 8px}
 /* 弾の一覧 */
@@ -304,7 +305,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <section id="picker" hidden>
 <h1 class="dg">ワンピースカード<br>開封シミュレーター</h1>
 <p class="lead">全弾のBOX開封ガチャ。開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算し、1BOXの期待値やプレ値と比べられます。</p>
-<a class="rkbn" href="ranking/"><span><b>相場ランキング</b><small>超高額・パラレル/SP・通常カードの高額TOP50と今週の値上がり</small></span><span>›</span></a>
+<a class="rkbn" href="ranking/"><span><b>相場ランキング</b><small>超高額・パラレル/SP・通常カードの高額TOP50と今週の値上がり・値下がり</small></span><span>›</span></a>
 <div class="sets" id="sets"></div>
 <details class="hist" id="histP"><summary>あなたの開封履歴(全弾)</summary><div id="histPB"></div></details>
 <p class="foot">非公式の開封シミュレーターです。封入率は販売サイトの推定値で、公式発表はありません。</p>
@@ -315,10 +316,10 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <h1 class="dg">相場ランキング</h1>
 <p class="lead" id="rkLead">ショップの販売価格(楽天・Yahoo!)から毎朝更新</p>
 <div class="tabs" id="rkDiv"><button data-v="top">超高額</button><button data-v="par">パラレル/SP</button><button data-v="base">通常カード</button></div>
-<div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button></div>
+<div class="tabs sub" id="rkTab"><button data-v="high">高額TOP50</button><button data-v="up">今週の値上がり</button><button data-v="down">今週の値下がり</button></div>
 <p id="rkNote"></p>
 <ol class="rl" id="rkList"></ol>
-<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格(安い順3件の中央値)で、買取価格ではありません。在庫のある出品がないカードは売り切れの出品の価格を参考にしています。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
+<p class="small" style="margin-top:16px">PR・カードをタップすると販売ショップの一覧を表示します(楽天アフィリエイト・バリューコマースの広告リンクを含みます)。価格は各ショップの販売価格のうち最安値で、買取価格ではありません。在庫のある出品がないカードは売り切れの出品の価格を参考にしています。価格データの一部:楽天ウェブサービス / Supported by Rakuten Developers / Web Services by Yahoo! JAPAN</p>
 </section>
 <section id="stage" hidden>
 <a class="back" href="./">‹ 弾一覧</a>
@@ -368,13 +369,13 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <table><tbody>
 <tr><th>定価(1BOX)</th><td class="r">¥5,760</td></tr>
 <tr><th>プレ値(未開封BOXの販売価格)</th><td class="r">¥12,480</td></tr>
-<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥15,106</td></tr>
+<tr><th>1BOXの期待値(R以上の販売価格)</th><td class="r">¥12,078</td></tr>
 </tbody></table>
-<h3>OP17の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>モンキー・Ｄ・ルフィ(海賊団SP)<br><small>EB04-061</small></td><td class="r">¥1,980,000</td></tr><tr><td>2</td><td>ロックス・Ｄ・ジーベック(海賊団SP)<br><small>OP17-118</small></td><td class="r">¥549,000</td></tr><tr><td>3</td><td>シャンクス(コミパラ)<br><small>OP17-022</small></td><td class="r">¥139,000</td></tr><tr><td>4</td><td>モンキー・Ｄ・ルフィ(リーダースーパーパラレル)<br><small>OP17-079</small></td><td class="r">¥131,500</td></tr><tr><td>5</td><td>エドワード・ニューゲート(コミパラ)<br><small>OP17-005</small></td><td class="r">¥87,550</td></tr><tr><td>6</td><td>シャーロット・リンリン(コミパラ)<br><small>OP17-112</small></td><td class="r">¥82,400</td></tr><tr><td>7</td><td>カイドウ(コミパラ)<br><small>OP17-062</small></td><td class="r">¥75,600</td></tr><tr><td>8</td><td>モンキー・Ｄ・ルフィ(SP)<br><small>ST31-004</small></td><td class="r">¥64,800</td></tr><tr><td>9</td><td>ロロノア・ゾロ(SP)<br><small>EB04-007</small></td><td class="r">¥31,000</td></tr><tr><td>10</td><td>マーシャル・Ｄ・ティーチ(SP)<br><small>ST27-005</small></td><td class="r">¥25,000</td></tr></tbody></table>
+<h3>OP17の高額カード TOP10</h3><table><tbody><tr><td>1</td><td>モンキー・Ｄ・ルフィ(海賊団SP)<br><small>EB04-061</small></td><td class="r">¥1,281,000</td></tr><tr><td>2</td><td>ロックス・Ｄ・ジーベック(海賊団SP)<br><small>OP17-118</small></td><td class="r">¥495,000</td></tr><tr><td>3</td><td>シャンクス(コミパラ)<br><small>OP17-022</small></td><td class="r">¥133,900</td></tr><tr><td>4</td><td>モンキー・Ｄ・ルフィ(リーダースーパーパラレル)<br><small>OP17-079</small></td><td class="r">¥120,000</td></tr><tr><td>5</td><td>エドワード・ニューゲート(コミパラ)<br><small>OP17-005</small></td><td class="r">¥85,800</td></tr><tr><td>6</td><td>シャーロット・リンリン(コミパラ)<br><small>OP17-112</small></td><td class="r">¥80,600</td></tr><tr><td>7</td><td>モンキー・Ｄ・ルフィ(SP)<br><small>ST31-004</small></td><td class="r">¥64,800</td></tr><tr><td>8</td><td>ロロノア・ゾロ(SP)<br><small>EB04-007</small></td><td class="r">¥31,000</td></tr><tr><td>9</td><td>マーシャル・Ｄ・ティーチ(SP)<br><small>ST27-005</small></td><td class="r">¥25,000</td></tr><tr><td>10</td><td>シャンクス(SP)<br><small>OP13-028</small></td><td class="r">¥20,600</td></tr></tbody></table>
 <h3>封入率の目安</h3><ul><li>リーダーパラレル:1BOXに約1/6枚</li><li>SP:1BOXに約1/11枚</li><li>コミパラ:1BOXに約1/96枚</li><li>リーダースーパーパラレル:1BOXに約1/98枚</li><li>超レア:1BOXに約1/200枚</li><li>トレジャーレア:1BOXに約1/56枚</li><li>特別パラレル:1BOXに約1/3枚</li></ul>
 <p>価格は2026-10-22時点のショップ販売価格(楽天・Yahoo!ショッピング)です。封入率は販売・買取サイトの開封調査にもとづく推定値で、公式発表ではありません。当サイトは非公式のファンサイトです。</p>
 <h3>ほかの弾の開封シミュレーター</h3><ul class="lk"><li><a href="op17/">OP17 世界最強の戦士</a></li><li><a href="op16/">OP16 決戦の刻</a></li><li><a href="op15/">OP15 神の島の冒険</a></li><li><a href="eb04/">EB04 EGGHEAD CRISIS</a></li><li><a href="op14/">OP14 蒼海の七傑</a></li><li><a href="eb03/">EB03 ONE PIECE Heroines Edition</a></li><li><a href="op13/">OP13 受け継がれる意志</a></li><li><a href="prb02/">PRB02 ONE PIECE CARD THE BEST vol.2</a></li><li><a href="op12/">OP12 師弟の絆</a></li><li><a href="op11/">OP11 神速の拳</a></li><li><a href="eb02/">EB02 Anime 25th collection</a></li><li><a href="op10/">OP10 王族の血統</a></li><li><a href="op09/">OP09 新たなる皇帝</a></li><li><a href="prb01/">PRB01 ONE PIECE CARD THE BEST</a></li><li><a href="op08/">OP08 二つの伝説</a></li><li><a href="op07/">OP07 500年後の未来</a></li><li><a href="eb01/">EB01 メモリアルコレクション</a></li><li><a href="op06/">OP06 双璧の覇者</a></li><li><a href="op05/">OP05 新時代の主役</a></li><li><a href="op04/">OP04 謀略の王国</a></li><li><a href="op03/">OP03 強大な敵</a></li><li><a href="op02/">OP02 頂上決戦</a></li><li><a href="op01/">OP01 ROMANCE DAWN</a></li></ul>
-<p><a href="ranking/">ワンピースカード 相場ランキング(高額カードTOP50・今週の値上がり)</a></p>
+<p><a href="ranking/">ワンピースカード 相場ランキング(高額カードTOP50・今週の値上がり・値下がり)</a></p>
 </section><!--/ABOUT-->
 </main>
 
@@ -539,7 +540,9 @@ function setBox(){}
 function boxImg(im,code,wrap){im.onload=function(){wrap.classList.add('has-img')};im.onerror=function(){wrap.classList.remove('has-img')};im.alt=code+' BOX';im.src='img/box/'+code.toLowerCase()+'.webp'}
 var KC={R:'R',SR:'SR',SEC:'SEC',PAR:'PAR',SECP:'PAR',FOIL:'PAR',FA:'PAR',OTHER:'PAR',LPAR:'LPAR',LSP:'TOP',CP:'TOP',TOP:'TOP',SP:'SP',TR:'SP'};
 // 演出の強さ 0:なし 1:SR 2:ため 3:カットイン。フォイル(低額)は演出なし
-function grade(c){return c.c==='R'||c.c==='FOIL'?0:c.c==='SR'?1:(c.t>=2?3:2)}
+// プレミアムブースターのフルアート・フォイル系(C/UCの低額な特殊仕様)も演出なし
+function lowFoil(c){return c.c==='FOIL'||(CFG&&/^PRB/.test(CFG.code)&&(c.c==='FA'||c.c==='OTHER'))}
+function grade(c){return c.c==='R'||lowFoil(c)?0:c.c==='SR'?1:(c.t>=2?3:2)}
 function wait(ms){return new Promise(function(r){setTimeout(r,skip?0:ms)})}
 function readSet(){S.msrp=+$('msrp').value||0;S.pre=+$('pre').value||0}
 function gmax(){return Math.max(S.pre,S.msrp)*1.5}
@@ -724,7 +727,7 @@ function showSet(code){
   $('src').innerHTML=['封入率は開封調査にもとづく販売・買取サイトの推定値です。公式発表はありません(信頼度:'+({high:'高',medium:'中',low:'低'}[cfg.confidence]||'-')+')。',
    '1BOX('+cfg.packs+'パック×'+cfg.perPack+'枚):'+base+'。'].concat(cats).concat([
    'プレ値:'+(bx&&bx.pre?'楽天ウェブサービスとYahoo!ショッピングの未開封BOX(1BOX単品・開封済み/カートン/オリパ等を除く)の販売価格のうち安い順3件の中央値('+bx.count+'件・最安'+yen(bx.min)+'・'+esc(bx.updatedAt)+'時点)。フリマ・オークションの取引価格は含みません。':'販売サイトの相場調査にもとづく参考値。')+'条件・演出テストの欄で変更できます。',
-   '価格は楽天ウェブサービスとYahoo!ショッピングの販売価格('+(S.date||'-')+'時点、安い順3件の中央値)。在庫のある出品がないカードは売り切れの出品の価格、どちらもないカードは同じ弾・同じレアリティの中央値(「推定」と表示)です。カード画像は楽天市場・Yahoo!ショッピングの出品画像です。',
+   '価格は楽天ウェブサービスとYahoo!ショッピングの販売価格('+(S.date||'-')+'時点、ショップ最安値)。在庫のある出品がないカードは売り切れの出品の価格、どちらもないカードは同じ弾・同じレアリティの中央値(「推定」と表示)です。カード画像は楽天市場・Yahoo!ショッピングの出品画像です。',
    '根拠:'+cfg.sources.slice(0,8).map(function(u){return '<a href="'+esc(u)+'" target="_blank" rel="noopener" style="color:inherit">'+esc(u.replace(/^https?:\/\//,'').slice(0,40))+'</a>'}).join(' / ')
   ]).map(function(t){return '<li>'+t+'</li>'}).join('');
   $('picker').hidden=true;$('stage').hidden=false;busy=false;
@@ -763,17 +766,17 @@ function renderRank(){
  [].forEach.call(document.querySelectorAll('#rkDiv button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.div)});
  [].forEach.call(document.querySelectorAll('#rkTab button'),function(b){b.classList.toggle('on',b.dataset.v===RKS.tab)});
  var d=RK.divisions[RKS.div],list=d[RKS.tab]||[];
- $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab==='up'?' ・ 約7日前の参考価格との比較(上げ幅'+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)':'');
- if(!list.length){$('rkList').innerHTML='<li class="em">'+(RKS.tab==='up'?'まだ値上がりのデータがありません。価格の記録が数日分たまると表示されます'+(d.days?'(現在'+d.days+'日分)':'')+'。':'データがありません。')+'</li>';return}
+ $('rkNote').textContent=RKDIV[RKS.div]+' ・ 対象'+d.total+'種'+(RKS.tab!=='high'?' ・ 約7日前の最安値との比較('+(RKS.tab==='up'?'上げ幅':'下げ幅')+({top:'1,000',par:'300',base:'100'}[RKS.div])+'円以上・出品2件以上)':'');
+ if(!list.length){$('rkList').innerHTML='<li class="em">'+(RKS.tab!=='high'?'まだ'+(RKS.tab==='up'?'値上がり':'値下がり')+'のデータがありません。価格の記録が数日分たまると表示されます'+(d.days?'(現在'+d.days+'日分)':'')+'。':'データがありません。')+'</li>';return}
  $('rkList').innerHTML=list.map(function(r,i){
   var img=r.imgs&&r.imgs[0]?'<img alt="" loading="lazy" referrerpolicy="no-referrer" src="'+esc(r.imgs[0])+'" onerror="this.remove()">':'';
-  var right=RKS.tab==='up'?yen(r.p)+'<span class="ch">+'+r.pct+'%(+'+yen(r.diff)+')</span>'+spark(r.spark):yen(r.p);
-  var meta='<span class="tg">'+esc(r.k)+'</span>'+esc(r.set)+' '+esc(r.id.replace(/_[pr]\d+$/,''))+(r.soldout?' <span class="tg m">売り切れ価格</span>':(RKS.tab==='up'?' ・ '+r.days+'日前 '+yen(r.prev):' ・ 出品'+r.count+'件'));
+  var right=RKS.tab==='up'?yen(r.p)+'<span class="ch">+'+r.pct+'%(+'+yen(r.diff)+')</span>'+spark(r.spark):RKS.tab==='down'?yen(r.p)+'<span class="ch dn">'+r.pct+'%(−'+yen(-r.diff)+')</span>'+spark(r.spark):yen(r.p);
+  var meta='<span class="tg">'+esc(r.k)+'</span>'+esc(r.set)+' '+esc(r.id.replace(/_[pr]\d+$/,''))+(r.soldout?' <span class="tg m">売り切れ価格</span>':(RKS.tab!=='high'?' ・ '+r.days+'日前 '+yen(r.prev):' ・ 出品'+r.count+'件'));
   return '<li data-i="'+i+'"><span class="no">'+(i+1)+'</span><span class="th">'+img+'</span><span><div class="nm4">'+esc(r.n)+'</div><div class="mt">'+meta+'</div></span><span class="pz">'+right+'</span></li>'}).join('');
 }
 function showRank(){
  $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=false;document.title='ワンピースカード 相場ランキング|高額カードTOP50・今週の値上がり';pv();
- var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up')RKS.tab='up';
+ var q=new URLSearchParams(location.search);if(RKDIV[q.get('div')])RKS.div=q.get('div');if(q.get('tab')==='up'||q.get('tab')==='down')RKS.tab=q.get('tab');
  getJSON('data/ranking.json').then(function(j){RK=j;S.date=j.updatedAt;$('rkLead').textContent='ショップの販売価格(楽天・Yahoo!)から毎朝更新 ・ '+j.updatedAt+' 時点';renderRank()})
   .catch(function(){$('rkList').innerHTML='<li class="em">ランキングを読み込めませんでした。</li>'});
 }
