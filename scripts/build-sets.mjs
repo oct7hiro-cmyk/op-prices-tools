@@ -20,7 +20,7 @@ const NAME_OVERRIDE = { 'OP17-118_p2': '海賊団SP', 'EB04-061_p3': '海賊団S
 const FORCE_TOP = new Set(Object.keys(NAME_OVERRIDE));
 // 価格は監視せず、画像だけ探すカテゴリ(低額で種類が多い)
 const IMG_ONLY = new Set(['FOIL']);
-const NG_VARIANT = ['パラ', 'SP', 'スーパー', 'コミ', '漫画', 'サイン', '★'];
+const NG_VARIANT = ['パラ', 'SP', 'スペシャル', 'スーパー', 'コミ', '漫画', 'サイン', '★']; // スペシャル=SPカード(PRBの再録SPなど)
 // 記念セット・海外版など、同じカード番号でも別物の出品を除く
 const NG_SPECIAL = ['ANNIVERSARY', '周年', 'CHINA', '中国', '英語', '海外', '簡体', '繁体'];
 
