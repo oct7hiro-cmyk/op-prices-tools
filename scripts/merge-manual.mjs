@@ -17,6 +17,7 @@ for (const s of index.sets) {
   const cfg = JSON.parse(await readFile(`sets/${s.code}.json`, 'utf8'));
   data.cards = data.cards.filter((c) => c.source !== 'manual' || c.offers?.length).map((c) => {
     if (c.source === 'manual' || c.est) { const { refPrice, minPrice, source, est, buyPrice, label, ...rest } = c; return rest; }
+    if (c.minPrice) return { ...c, refPrice: c.minPrice }; // カードの価格はショップ最安値
     return c;
   });
   all.push({ s, f, data, cfg });
