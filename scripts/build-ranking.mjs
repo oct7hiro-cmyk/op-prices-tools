@@ -18,8 +18,8 @@ async function history(id) {
   const f = `data/history/${id}.csv`;
   if (!existsSync(f)) return [];
   return (await readFile(f, 'utf8')).trim().split('\n').slice(1).map((l) => {
-    const [date, min, , count] = l.split(','); return { date, min: +min, ref: +min, count: +count };
-  }).filter((h) => h.ref > 0);
+    const [date, min, ref, count] = l.split(','); return { date, min: +min, ref: +ref || +min, count: +count };
+  }).filter((h) => h.min > 0);
 }
 
 const all = [];
@@ -57,9 +57,12 @@ for (const r of all) {
     .sort((a, b) => Math.abs((t - Date.parse(a.date)) / DAY - 7) - Math.abs((t - Date.parse(b.date)) / DAY - 7));
   const base = near[0] ?? older[0];
   if (base.count < 2 || last.count < 2) continue; // 出品が薄いときは比べない
-  // 今の価格は画面と同じ最安値(極端に安い別物の出品を除いた値)
-  r.prev = base.ref; r.days = Math.round((t - Date.parse(base.date)) / DAY); r.diff = r.p - base.ref;
-  r.pct = Math.round((r.diff / base.ref) * 1000) / 10;
+  // 今の価格は画面と同じ参考価格(最安値。超高額カードは安い順3件の中央値)
+  // 超高額カード(参考価格=安い順3件の中央値)は履歴の ref、それ以外は履歴の min(最安値)と比べる
+  const hi = r.div === 'top' || r.p >= 30000;
+  // 出品3件未満の日は中央値でなく最安値
+  r.prev = hi && base.count >= 3 ? base.ref : base.min; r.days = Math.round((t - Date.parse(base.date)) / DAY); r.diff = r.p - r.prev;
+  r.pct = Math.round((r.diff / r.prev) * 1000) / 10;
   r.spark = [...h.slice(-14, -1).map((x) => x.ref), r.p];
 }
 
