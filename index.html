@@ -264,6 +264,36 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .dksum small{display:block;font-size:12px;color:var(--mute)}
 .dksum b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(20px,5vw,28px);color:var(--gold)}
 #dkNote{font-size:12px;color:var(--mute);margin:4px 2px 10px}
+.dkbuy{display:grid;grid-template-columns:1fr auto;gap:8px;margin:4px 0 6px}
+.dkbb{position:relative;display:block;width:100%;padding:12px 14px;border:0;border-radius:12px;text-align:left;cursor:pointer;font:inherit;background:linear-gradient(180deg,#ffdd6a,#ff9d2e);color:#3a1500;box-shadow:0 4px 0 #8a3a0a,0 0 22px rgba(255,170,60,.45);animation:dkbg 1.8s ease-in-out infinite}
+@keyframes dkbg{50%{box-shadow:0 4px 0 #8a3a0a,0 0 38px rgba(255,190,80,.85)}}
+.dkbb b{display:block;font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(17px,4.6vw,21px);line-height:1.2}
+.dkbb small{display:block;font-size:11px;font-weight:700;opacity:.85;margin-top:2px}
+.dkbb .bp{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:"Dela Gothic One",sans-serif;font-size:clamp(16px,4.4vw,20px)}
+.dkbb[aria-expanded="true"]{animation:none}
+.dkmer{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);text-decoration:none;font-size:12px;font-weight:900;line-height:1.3;text-align:center}
+.dkmer small{font-size:10px;font-weight:500;color:var(--mute)}
+#dkBuy{border:1px solid var(--gold);border-radius:12px;background:rgba(255,207,74,.06);padding:12px;margin:8px 0 12px}
+#dkBuy .tot{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+#dkBuy .tot b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:clamp(26px,7vw,34px);color:var(--gold)}
+#dkBuy .tot span{font-size:12px;color:var(--mute)}
+#dkBuy .cmp{margin:6px 0 0;font-size:12px}#dkBuy .cmp em{font-style:normal;font-weight:900;color:#4dffa6}
+#dkBuy .shp{margin:8px 0 0;font-size:12px;color:var(--mute)}#dkBuy select{font:inherit;font-size:12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 4px}
+#dkBuy .how{font-size:11px;color:var(--mute);margin:8px 0 0;line-height:1.5}
+.bgp{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+.bgp h4{margin:0;display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:13px;background:rgba(255,255,255,.04)}
+.bgp h4 .sn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bgp h4 .st2{font-size:12px;font-weight:900;white-space:nowrap}.bgp h4 .st2 small{display:block;font-size:10px;font-weight:500;color:var(--mute);text-align:right}
+.bgp .src{font-size:10px;font-weight:900;padding:2px 6px;border-radius:5px;color:#fff;background:#bf0000}.bgp .src.yahoo{background:#ff0033}
+.bgp ul{list-style:none;margin:0;padding:0 10px}
+.bgp li{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--line);font-size:12px}
+.bgp li:first-child{border-top:0}.bgp li .cn{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bgp li .cn small{color:var(--mute)}
+.bgp li .pp{font-weight:900;white-space:nowrap;text-align:right}.bgp li .pp small{display:block;font-size:10px;font-weight:500;color:var(--mute)}
+.bgp li a{font-size:11px;font-weight:900;padding:5px 9px;border-radius:7px;background:var(--gold);color:#2a1600;text-decoration:none;white-space:nowrap}
+.bgp.ms li{grid-template-columns:1fr auto}
+.mer{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--panel)}
+.mer h4{margin:0 0 4px;font-size:13px}.mer p{margin:0 0 8px;font-size:12px;color:var(--mute);line-height:1.5}
+.mer a{display:block;text-align:center;padding:9px;border-radius:9px;font-size:13px;font-weight:900;text-decoration:none;margin-top:6px;border:1px solid var(--line);color:var(--ink)}
+.mer a.m1{background:#ff4b4b;border-color:#ff4b4b;color:#fff}
 .dkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
 .dkg .dc{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);cursor:pointer;color:var(--ink);font:inherit;text-align:left;padding:0}
 .dkg .dc .im{position:relative;aspect-ratio:63/88;background:#241a2c;display:grid;place-items:center;font-size:11px;color:var(--mute);text-align:center;padding:4px}
@@ -392,6 +422,8 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="dkst" id="dkSt"></div>
 <div class="dkmu" id="dkMu"></div>
 <div class="dksum" id="dkSum"></div>
+<div class="dkbuy"><button type="button" class="dkbb" id="dkBuyB" aria-expanded="false" aria-controls="dkBuy"></button><a class="dkmer" id="dkMer" target="_blank" rel="noopener">メルカリで<br>デッキを探す<small>販売価格と比べる</small></a></div>
+<div id="dkBuy" hidden></div>
 <p id="dkNote"></p>
 <div class="dkg" id="dkGrid"></div>
 </div>
@@ -868,7 +900,7 @@ function renderTiers(){
 }
 function renderDeck(slug){
  var f=dkFind(slug);if(!f||!f.d.ready){renderTiers();return}
- var d=f.d;DKS.slug=slug;$('dkTier').hidden=true;$('dkDeck').hidden=false;scrollTo(0,0);
+ var d=f.d;DKS.slug=slug;$('dkBuy').hidden=true;$('dkBuyB').setAttribute('aria-expanded','false');$('dkTier').hidden=true;$('dkDeck').hidden=false;scrollTo(0,0);
  document.title=d.name+' デッキレシピと価格|ワンピースカード 環境デッキ';
  $('dkName').textContent=d.name;$('dkMeta').textContent=f.t.tier+'('+f.t.label+')・リーダー '+d.leader.name+'('+d.leader.id+')・'+d.count+'枚';
  var st=d.stats,pc=function(v){return v==null?'-':v.toFixed(1)+'%'};
@@ -892,7 +924,59 @@ function renderDeckList(){
  $('dkGrid').innerHTML=v.cards.map(function(x,i){
   return '<button class="dc" type="button" data-i="'+i+'"><div class="im">'+esc(x.name)+(x.para?'<span class="lt">'+(x.pcc?'PCC':'パラレル')+'</span>':'')+'<span class="qt">×'+x.n+'</span></div><div class="tx"><b>'+esc(x.name)+'</b>'+esc(x.id.replace(/_[pr]\d+$/,''))+(i===0?' リーダー':'')+'<br><span class="p">'+(x.p==null?'価格なし':yen(x.p))+'</span>'+(x.p!=null&&x.n>1?' ×'+x.n+'='+yen(x.p*x.n):'')+'</div></button>'}).join('');
  [].forEach.call($('dkGrid').querySelectorAll('.dc'),function(e){addImg(e.querySelector('.im'),dkCard(v.cards[+e.dataset.i]))});
+ renderBuy();
 }
+// 最適まとめ買い: 送料(1ショップごと)も含めて合計が一番安くなるショップの組み合わせを探す
+// ショップの組み合わせを全部調べる(ショップが18を超えるときは扱っている種類の多い18ショップの中から)
+var SHIP=300;try{var sv=localStorage.getItem('dkShip');if(sv!==null&&+sv>=0)SHIP=+sv}catch(e){}
+function dkOpt(cards,ship){
+ var items=[],miss=[],keys=[],K={};
+ cards.forEach(function(c){var os=(c.offers||[]).filter(function(o){return !o.so&&o.p>0&&o.u});if(os.length)items.push({c:c,os:os});else miss.push(c)});
+ items.forEach(function(it){it.os.forEach(function(o){var k=(o.s||'rakuten')+'|'+(o.shop||'');if(!(k in K)){K[k]=keys.length;keys.push(k)}o._k=K[k]})});
+ var N=keys.length;
+ function pickB(i,has){var b=null,os=items[i].os;for(var j=0;j<os.length;j++){var o=os[j];if(has(o._k)&&(!b||o.p<b.p||(o.p===b.p&&o.f&&!b.f)))b=o}return b}
+ function ev(has){var tot=0,asg=[],use={};
+  for(var i=0;i<items.length;i++){var b=pickB(i,has);if(!b)return{cost:Infinity};tot+=b.p*items[i].c.n;asg.push(b);var u=use[b._k]||(use[b._k]={paid:0});if(!b.f)u.paid=1}
+  var sh=0,n=0;for(var k in use){n++;if(use[k].paid)sh+=ship}
+  return{cost:tot+sh,items:tot,ship:sh,shops:n,asg:asg,use:use}}
+ var base=ev(function(){return true}),cur=base;
+ // 候補ショップ(多いときは扱っている種類の多い順に18まで。どこにも無いカードの最安ショップは足す)
+ var cnt=keys.map(function(){return 0});items.forEach(function(it){var seen={};it.os.forEach(function(o){if(!seen[o._k]){seen[o._k]=1;cnt[o._k]++}})});
+ var C=keys.map(function(_,k){return k}).sort(function(a,b){return cnt[b]-cnt[a]}).slice(0,18);
+ items.forEach(function(it){if(!it.os.some(function(o){return C.indexOf(o._k)>=0}))C.push(it.os[0]._k)});C=C.slice(0,20);
+ var bit={};C.forEach(function(k,i){bit[k]=1<<i});
+ var bm=-1,bc=Infinity;
+ for(var m=1;m<(1<<C.length);m++){var tot=0,paid=0;
+  for(var i=0;i<items.length&&tot<bc;i++){var b=null,os=items[i].os;for(var j=0;j<os.length;j++){var o=os[j];if((m&(bit[o._k]||0))&&(!b||o.p<b.p||(o.p===b.p&&o.f&&!b.f)))b=o}
+   if(!b){tot=Infinity;break}tot+=b.p*items[i].c.n;if(!b.f)paid|=bit[b._k]}
+  if(tot<bc){var x=paid,c=0;while(x){x&=x-1;c++}tot+=c*ship;if(tot<bc){bc=tot;bm=m}}}
+ if(bm>0){var r=ev(function(k){return (bm&(bit[k]||0))!==0});if(r.cost<=cur.cost)cur=r}
+ var groups={};cur.asg&&cur.asg.forEach(function(o,i){var g=groups[o._k]||(groups[o._k]={s:o.s,shop:o.shop,rows:[],sub:0,paid:cur.use[o._k].paid});g.rows.push({c:items[i].c,o:o});g.sub+=o.p*items[i].c.n});
+ return{best:cur,base:base,groups:Object.keys(groups).map(function(k){return groups[k]}).sort(function(a,b){return b.sub-a.sub}),miss:miss}}
+function merUrl(d,max){var kw=d.name.replace(/[((].*?[))]/g,'').replace(/&/g,' ')+' デッキ'+(DKS.ver==='full'?' フルパラ':'');
+ return 'https://jp.mercari.com/search?keyword='+encodeURIComponent(kw)+'&status=on_sale'+(max?'&price_min='+Math.round(max*.3)+'&price_max='+Math.round(max):'')}
+var DKOC={};
+function renderBuy(){
+ var d=dkFind(DKS.slug).d,v=d[DKS.ver],ck=DKS.slug+'|'+DKS.ver+'|'+SHIP,R=DKOC[ck]||(DKOC[ck]=dkOpt(v.cards,SHIP)),b=R.best,ok=isFinite(b.cost)&&R.groups.length;
+ $('dkBuyB').innerHTML='<b>最適まとめ買い</b><small>'+(ok?'送料込み・'+b.shops+'ショップでそろう':'送料まで考えて一番安い買い方')+'</small>'+(ok?'<span class="bp">'+yen(b.cost)+'</span>':'');
+ $('dkMer').href=merUrl(d,0);
+ if($('dkBuy').hidden)return;
+ if(!ok){$('dkBuy').innerHTML='<p class="how">在庫のある出品が見つからず、計算できませんでした。</p>';return}
+ var diff=R.base.cost-b.cost,h='';
+ h+='<div class="tot"><b>'+yen(b.cost)+'</b><span>カード '+yen(b.items)+' + 送料目安 '+yen(b.ship)+' ・ '+b.shops+'ショップ'+(R.miss.length?' ・ 在庫なし'+R.miss.length+'種を除く':'')+'</span></div>';
+ h+='<p class="cmp">カードごとの最安ショップでバラバラに買うと '+yen(R.base.cost)+'('+R.base.shops+'ショップ・送料目安 '+yen(R.base.ship)+')'+(diff>0?' → <em>'+yen(diff)+' お得</em>':' → バラバラに買っても同じ金額です')+'</p>';
+ h+='<div class="shp">送料の目安(1ショップあたり) <select id="dkShip">'+[0,200,300,500,800].map(function(x){return '<option value="'+x+'"'+(x===SHIP?' selected':'')+'>'+yen(x)+'</option>'}).join('')+'</select> 送料無料の出品だけのショップは¥0で計算</div>';
+ h+=R.groups.map(function(g){return '<div class="bgp"><h4><span class="src '+(g.s==='yahoo'?'yahoo':'')+'">'+(g.s==='yahoo'?'Yahoo!':'楽天')+'</span><span class="sn">'+esc(g.shop||'ショップ')+'</span><span class="st2">'+yen(g.sub+(g.paid?SHIP:0))+'<small>'+g.rows.length+'種・'+(g.paid?'送料 '+yen(SHIP):'送料無料')+'</small></span></h4><ul>'+
+  g.rows.map(function(r){return '<li><span class="cn">'+esc(r.c.name)+' <small>'+esc(r.c.id.replace(/_[pr]\d+$/,''))+(r.c.para?(r.c.pcc?' PCC':' パラレル'):'')+'</small></span><span class="pp">'+yen(r.o.p*r.c.n)+'<small>'+yen(r.o.p)+'×'+r.c.n+'</small></span><a href="'+esc(r.o.u)+'" target="_blank" rel="sponsored noopener" data-bb="1">'+r.c.n+'枚 買う ›</a></li>'}).join('')+'</ul></div>'}).join('');
+ if(R.miss.length)h+='<div class="bgp ms"><h4><span class="sn">在庫のある出品が見つからないカード</span></h4><ul>'+R.miss.map(function(c){var i=v.cards.indexOf(c);return '<li><span class="cn">'+esc(c.name)+' ×'+c.n+' <small>'+esc(c.id.replace(/_[pr]\d+$/,''))+'</small></span><a href="#" data-mi="'+i+'">探す ›</a></li>'}).join('')+'</ul></div>';
+ h+='<p class="how">楽天・Yahoo!はショップごとにカートが分かれるため、このサイトから自動でカートに入れることはできません。「買う」で各商品ページを開き、表示の枚数を選んでカートに入れてください。在庫・価格は毎朝6時の取得時点のもので、在庫が足りない・売り切れの場合があります。送料は目安です(実際の送料や送料無料の条件は各ショップでご確認ください)。PR・広告リンクを含みます。</p>';
+ h+='<div class="mer"><h4>メルカリのデッキ販売と比べる</h4><p>まとめ買いの合計は <b>'+yen(b.cost)+'</b>。メルカリでこれより安く出品されているデッキがあれば、そちらの方が安く手に入るかもしれません(カードの状態・枚数・構築は出品ごとに確認してください)。</p><a class="m1" href="'+esc(merUrl(d,b.cost))+'" target="_blank" rel="noopener" data-mer="under">メルカリで'+yen(b.cost)+'以下のデッキを見る ›</a><a href="'+esc(merUrl(d,0))+'" target="_blank" rel="noopener" data-mer="all">メルカリでデッキ販売をすべて見る ›</a></div>';
+ $('dkBuy').innerHTML=h;
+}
+$('dkBuyB').addEventListener('click',function(){var p=$('dkBuy'),o=p.hidden;p.hidden=!o;this.setAttribute('aria-expanded',o?'true':'false');renderBuy();if(o){track('bulk_buy',{deck:DKS.slug,version:DKS.ver});p.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}});
+$('dkBuy').addEventListener('change',function(e){if(e.target.id!=='dkShip')return;SHIP=+e.target.value;try{localStorage.setItem('dkShip',SHIP)}catch(x){}renderBuy()});
+$('dkBuy').addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;if(a.dataset.mi!=null){e.preventDefault();openDetail(dkCard(dkFind(DKS.slug).d[DKS.ver].cards[+a.dataset.mi]))}else if(a.dataset.mer)track('mercari_click',{deck:DKS.slug,version:DKS.ver,type:a.dataset.mer});else if(a.dataset.bb)track('bulk_buy_shop',{deck:DKS.slug})});
+$('dkMer').addEventListener('click',function(){track('mercari_click',{deck:DKS.slug,version:DKS.ver,type:'top'})});
 function showDecks(slug){
  $('picker').hidden=true;$('stage').hidden=true;$('rank').hidden=true;$('decks').hidden=false;
  getJSON('data/decks.json').then(function(j){DK=j;S.date=j.updatedAt;if(slug)renderDeck(slug);else renderTiers()})
