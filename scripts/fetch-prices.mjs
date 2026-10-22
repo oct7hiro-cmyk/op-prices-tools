@@ -17,6 +17,12 @@ const SPIKE_PCT = 20;     // 基準価格から+20%以上で急騰扱い
 const MIN_SAMPLES = 2;    // 有効な出品が2件未満なら「薄い」として急騰判定しない
 // 「画像なし」の差し替え画像(駿河屋の no_photo.jpg など)はカード画像に使わない
 const NOIMG = /no[_-]?(photo|image|img)|now[_-]?printing/i;
+// 状態の悪い出品(キズ・Bランク以下・ジャンクなど)と鑑定品(PSAなど。割高)は価格に使わない
+const COND_NG = /(?:キズ|傷)(?!防止|つき防止|付き防止)|難あり|訳あり|ジャンク|プレイ用|白欠け|折れ|[BCD]ランク|ランク[BCD]|状態[BCD]|\bPSA\s?\d|\bBGS\b|\bARS\s?\d|鑑定/;
+// 参考価格: ふつうは最安値。超高額カード(コミパラ・超レアなど、または最安値3万円以上)で出品が3件以上なら安い順3件の中央値
+// (1件だけの極端に安い出品・状態の悪い中古に引っ張られないように)。ps は安い順・極端に安い別物を除いた後の価格
+const HI_PRICE = 30000;
+const refOf = (ps, hi) => (ps.length >= 3 && (hi || ps[0] >= HI_PRICE) ? [...ps.slice(0, 3)].sort((a, b) => a - b)[1] : ps[0]);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10); // JST日付
 const norm = (s) => s.normalize('NFKC').toUpperCase();
@@ -103,7 +109,7 @@ function pick(items, card, d) {
   const must = (card.must ?? []).map(norm), any = (card.mustAny ?? []).map(norm), any2 = (card.mustAny2 ?? []).map(norm);
   return items.filter((i) => {
     const n = norm(i.itemName);
-    return n.includes(code) && !ng.some((w) => n.includes(w)) && must.every((w) => n.includes(w)) && (!any.length || any.some((w) => n.includes(w))) && (!any2.length || any2.some((w) => n.includes(w)));
+    return n.includes(code) && !COND_NG.test(n) && !ng.some((w) => n.includes(w)) && must.every((w) => n.includes(w)) && (!any.length || any.some((w) => n.includes(w))) && (!any2.length || any2.some((w) => n.includes(w)));
   }).sort((a, b) => a.itemPrice - b.itemPrice);
 }
 
@@ -174,7 +180,7 @@ async function priceCard(card, defaults) {
     searchUrl: rakutenSearchUrl(card.keyword), ysearchUrl: yahooSearchUrl(card.keyword),
     offers: offersOf(valid).map((o) => (soldout ? { ...o, so: 1 } : o)), ...(soldout ? { soldout: true } : {}) };
   if (valid.length) {
-    const ref = valid[0].itemPrice; // 参考価格=ショップ最安値
+    const ref = refOf(valid.map((i) => i.itemPrice), card.hi); // 参考価格=ショップ最安値(超高額カードは安い順3件の中央値)
     const base = hist.length ? median(hist.slice(-7).map((h) => h.min)) : null;
     Object.assign(rec, { minPrice: valid[0].itemPrice, refPrice: ref, shop: valid[0].shopName, url: valid[0].url, src: valid[0].src,
       counts: { rakuten: valid.filter((i) => i.src === 'rakuten').length, yahoo: valid.filter((i) => i.src === 'yahoo').length },
