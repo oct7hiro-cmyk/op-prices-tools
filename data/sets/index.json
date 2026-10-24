@@ -1,37 +1,37 @@
 {
- "updated": "2026-10-23",
+ "updated": "2026-10-24",
  "sets": {
   "OP17": {
-   "updatedAt": "2026-10-24",
+   "updatedAt": "2026-10-25",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/nipponiajapan/cabinet/tradingcard/misc/imgrc0122786608.jpg?_ex=400x400",
-   "ev": 14424,
+   "ev": 14616,
    "pre": 12480,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-10-24",
+   "updatedAt": "2026-10-25",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6942,
-   "pre": 12260,
+   "ev": 6967,
+   "pre": 11960,
    "priced": 74,
    "estimated": 0,
    "total": 74
   },
   "OP15": {
-   "updatedAt": "2026-10-24",
+   "updatedAt": "2026-10-25",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
-   "ev": 7455,
+   "ev": 7571,
    "pre": 11480,
    "priced": 71,
    "estimated": 0,
    "total": 71
   },
   "EB04": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-25",
    "box": "https://item-shopping.c.yimg.jp/i/l/speedwagon_10014387",
-   "ev": 10124,
+   "ev": 10762,
    "pre": 16799,
    "priced": 55,
    "estimated": 0,
@@ -92,9 +92,9 @@
    "total": 74
   },
   "EB02": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-25",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769733727",
-   "ev": 5987,
+   "ev": 6034,
    "pre": 42800,
    "priced": 75,
    "estimated": 0,
@@ -155,9 +155,9 @@
    "total": 49
   },
   "OP06": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-25",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009394",
-   "ev": 3556,
+   "ev": 3631,
    "pre": 23800,
    "priced": 69,
    "estimated": 0,
