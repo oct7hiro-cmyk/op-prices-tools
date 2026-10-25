@@ -1,28 +1,28 @@
 {
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "sets": {
   "OP17": {
-   "updatedAt": "2026-10-25",
+   "updatedAt": "2026-10-26",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/nipponiajapan/cabinet/tradingcard/misc/imgrc0122786608.jpg?_ex=400x400",
-   "ev": 14616,
+   "ev": 14638,
    "pre": 12480,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-10-25",
+   "updatedAt": "2026-10-26",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6967,
+   "ev": 6958,
    "pre": 11960,
    "priced": 74,
    "estimated": 0,
    "total": 74
   },
   "OP15": {
-   "updatedAt": "2026-10-25",
+   "updatedAt": "2026-10-26",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
-   "ev": 7571,
+   "ev": 7640,
    "pre": 11480,
    "priced": 71,
    "estimated": 0,
@@ -38,9 +38,9 @@
    "total": 55
   },
   "OP14": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-26",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/happystorefujioka/cabinet/26062300-1/b0fqb2bqhm.jpg?_ex=400x400",
-   "ev": 7831,
+   "ev": 7742,
    "pre": 12356,
    "priced": 74,
    "estimated": 0,
@@ -101,9 +101,9 @@
    "total": 75
   },
   "OP10": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-26",
    "box": "https://item-shopping.c.yimg.jp/i/l/shop998_op10b",
-   "ev": 2741,
+   "ev": 2782,
    "pre": 13800,
    "priced": 69,
    "estimated": 0,
@@ -164,9 +164,9 @@
    "total": 69
   },
   "OP05": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-26",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118002174",
-   "ev": 3284,
+   "ev": 3481,
    "pre": 66000,
    "priced": 73,
    "estimated": 0,
