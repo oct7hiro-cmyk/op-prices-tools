@@ -13,6 +13,9 @@ const WIN = 'd30', MODE = 'ranked';
 const MIN_GAMES = 1000, MIN_SHARE = 0.01;        // Tier表に載せる条件
 const MIN_MATCH = 200;                          // 相性に載せる最低対戦数
 const MIN_DECK_GAMES = 50;                      // デッキリストに使う構築の最低対戦数
+// 注目(少数派)デッキ: Tier表の条件に届かないが、直近7日のランク戦で勝ち越しているリーダー
+// (発売前の新弾カード=スポイラーで強化された、これから流行りそうなデッキを早めに見つけるため)
+const RISE_WIN = 'd7', RISE_MIN_GAMES = 500, RISE_MIN_SHARE = 0.003, RISE_LOWER = 0.5;
 const TIERS = [['SS', 'Tier 1', 0.52], ['S', 'Tier 2', 0.50], ['A', 'Tier 3', 0.475], ['B', 'Tier 4', -1]];
 
 const lower = (w, n) => { const z = 1.96, p = w / n; return (p + z * z / (2 * n) - z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / (1 + z * z / n); };
@@ -65,16 +68,32 @@ for (const l of w.leaders) {
 }
 const eligible = Object.entries(leaders).filter(([, x]) => x.games >= MIN_GAMES && x.share >= MIN_SHARE * 100).sort((a, b) => b[1].lower - a[1].lower);
 const tiers = TIERS.map(([tier, label, th], i) => ({ tier, label, leaders: eligible.filter(([, x]) => x.lower / 100 >= th && (i === 0 || x.lower / 100 < TIERS[i - 1][2])).map(([id]) => id) })).filter((t) => t.leaders.length);
+// 注目(少数派)デッキ
+const w7 = P.windows?.[RISE_WIN]?.[MODE];
+const inTier = new Set(eligible.map(([id]) => id));
+const rising = [];
+if (w7?.leaders?.length) {
+  for (const l of w7.leaders) {
+    if (BANNED.has(l.l) || inTier.has(l.l) || l.g < RISE_MIN_GAMES || l.g / (2 * w7.n) < RISE_MIN_SHARE) continue;
+    const lo = lower(l.w, l.g);
+    if (lo < RISE_LOWER) continue;
+    const gs = l.g - l.gf, ws = l.w - l.wf;
+    rising.push({ id: l.l, games: l.g, winRate: pct(l.w, l.g), lower: Math.round(lo * 1000) / 10, share: Math.round((l.g / (2 * w7.n)) * 1000) / 10, players: l.u,
+      first: { games: l.gf, winRate: pct(l.wf, l.gf) }, second: { games: gs, winRate: pct(ws, gs) } });
+  }
+  rising.sort((a, b) => b.lower - a.lower);
+}
 const meta = { source: 'OPlayTCG メタ統計', sourceUrl: 'https://oplaytcg.com/en/meta-stats', statsAt: P.gen ?? null, to: P.to ?? null,
   window: '直近30日・ランク戦', totalGames: total, rule: `直近30日のランク戦で${MIN_GAMES}戦以上・使用率${MIN_SHARE * 100}%以上のリーダーを、勝率の95%信頼区間の下限で並べたもの(SS 52%以上 / S 50%以上 / A 47.5%以上 / B それ未満)`,
-  minMatch: MIN_MATCH, tiers, leaders };
+  minMatch: MIN_MATCH, tiers, leaders,
+  rising, risingRule: `Tier表の条件に届かないリーダーのうち、直近7日のランク戦で${RISE_MIN_GAMES}戦以上・使用率${RISE_MIN_SHARE * 100}%以上・勝率の95%信頼区間の下限${RISE_LOWER * 100}%以上のもの(発売前の新弾カードで強化されたデッキなど)` };
 await writeFile('data/meta.json', JSON.stringify(meta));
 
 // デッキリスト(Tier表のリーダーと、相性表に出る相手のぶん)
 const out = { fetchedAt: new Date().toISOString(), statsAt: D.gen ?? null, source: 'OPlayTCG メタ統計', sourceUrl: 'https://oplaytcg.com/en/meta-stats',
   rule: `直近30日のランク戦で使用数上位の構築のうち、${MIN_DECK_GAMES}戦以上で勝率が一番高いもの`, decks: {} };
-for (const [id] of eligible) {
-  const e = D.decks?.[`${WIN}|${MODE}|${id}`] ?? D.decks?.[`${WIN}|all|${id}`];
+for (const id of [...eligible.map(([x]) => x), ...rising.map((r) => r.id)]) {
+  const e = (rising.some((r) => r.id === id) ? D.decks?.[`${RISE_WIN}|${MODE}|${id}`] : null) ?? D.decks?.[`${WIN}|${MODE}|${id}`] ?? D.decks?.[`${WIN}|all|${id}`];
   const list = (e?.d ?? []).filter((x) => Array.isArray(x.k) && x.k.length && x.g > 0);
   if (!list.length) continue;
   const best = list.filter((x) => x.g >= MIN_DECK_GAMES).sort((a, b) => b.w / b.g - a.w / a.g)[0] ?? [...list].sort((a, b) => b.g - a.g)[0];
@@ -87,4 +106,5 @@ for (const [id] of eligible) {
 }
 await writeFile('data/decklists-auto.json', JSON.stringify(out, null, 1) + '\n');
 console.log(tiers.map((t) => `${t.tier}: ${t.leaders.map((id) => `${id}(${leaders[id].winRate}%)`).join(' ')}`).join('\n'));
+console.log(`注目(少数派): ${rising.map((r) => `${r.id}(${r.winRate}% ${r.games}戦 ${r.share}%)`).join(' ') || 'なし'}`);
 console.log(`デッキリスト ${Object.keys(out.decks).length}件 / リーダー ${Object.keys(leaders).length}人`);
