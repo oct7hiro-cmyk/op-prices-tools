@@ -171,6 +171,12 @@ async function priceCard(card, defaults) {
   if (card.trimHigh && valid.length) valid = valid.filter((i) => i.itemPrice <= valid[0].itemPrice * card.trimHigh);
   // 出品が見つからないときの画像: 同じカード番号の出品の画像(プレミアムブースターの再録など)
   let imgs = cardImgs(valid);
+  // 出品はあるが画像が無いとき(画像の無いショップの出品だけなど)は、カード名+番号で売り切れも含めて探し直して画像だけ使う
+  if (!imgs.length && !card.imgKeyword) {
+    await sleep(DELAY_MS);
+    const nm = String(card.name ?? '').replace(/[((].*$/, '').trim();
+    imgs = cardImgs(pick(await search(`${nm} ${card.code ?? card.id}`, 1, true), { ...card, minPrice: undefined }, defaults));
+  }
   if (!imgs.length && card.imgKeyword) {
     await sleep(DELAY_MS);
     imgs = imgsOf(pick(await search(card.imgKeyword, defaults.minPrice, true), { code: card.code, mustNot: card.imgNg ?? [] }, defaults));
