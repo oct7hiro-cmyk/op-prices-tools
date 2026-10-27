@@ -68,6 +68,9 @@ const codeFromSrc = Object.fromEntries(src.tiers.flatMap((t) => t.decks).filter(
 const rows = meta?.tiers?.length
   ? meta.tiers.map((t) => ({ tier: t.tier, label: t.label, leaders: t.leaders }))
   : src.tiers.map((t) => ({ tier: t.tier, label: t.label, leaders: t.decks.map((d) => d.leader).filter(Boolean) }));
+// 注目(少数派)デッキ: Tier表の下に別の段として並べる(成績は直近7日のもの)
+const RISE = Object.fromEntries((meta?.rising ?? []).map((r) => [r.id, r]));
+if (Object.keys(RISE).length) rows.push({ tier: '注目', label: '少数派', rising: true, leaders: Object.keys(RISE) });
 const codeOf = (id) => auto.decks?.[id]?.code ?? codeFromSrc[id] ?? null;
 const allLeaders = rows.flatMap((r) => r.leaders);
 const opponents = new Set();
@@ -107,7 +110,8 @@ let updated = '';
 const item = (id, n, kind) => {
   const base = id.replace(/_[pr]\d+$/, ''), c = card[id] ?? card[base] ?? {}, r = price[id] ?? {};
   if (r.updatedAt > updated) updated = r.updatedAt;
-  return { id, n, name: nameOf(id), rar: c.rar ?? '', type: TYPE[c.type] ?? '', color: c.color ?? '', para: id !== base,
+  // 公式カードリストに無いカード=発売前(スポイラー)。予約の出品があれば価格が付く
+  return { id, n, name: nameOf(id), unreleased: !card[base] || undefined, rar: c.rar ?? '', type: TYPE[c.type] ?? '', color: c.color ?? '', para: id !== base,
     pcc: kind === 'pcc' ? (card[id]?.info ?? 'プレミアムカードコレクション') : undefined,
     p: r.refPrice ?? null, est: r.est || undefined, so: r.soldout || undefined, offers: (r.offers ?? []).slice(0, 8), imgs: (r.imgs ?? []).slice(0, 3),
     search: r.searchUrl, ysearch: r.ysearchUrl };
@@ -135,12 +139,12 @@ const out = { updatedAt: '', source: meta ? meta.source : src.source, sourceUrl:
   listUpdated: meta ? (meta.statsAt ?? '').slice(0, 10) : src.updated, rule: meta?.rule ?? null, window: meta?.window ?? null, minMatch: meta?.minMatch ?? null,
   lists: auto.source ? { source: auto.source, sourceUrl: auto.sourceUrl, rule: auto.rule } : null, tiers: [] };
 for (const r of rows) {
-  const row = { tier: r.tier, label: r.label, decks: [] };
+  const row = { tier: r.tier, label: r.label, ...(r.rising ? { rising: true, rule: meta.risingRule } : {}), decks: [] };
   for (const id of r.leaders) {
-    const code = codeOf(id), st = ML[id];
+    const code = codeOf(id), st = RISE[id] && r.rising ? { ...RISE[id], matchups: ML[id]?.matchups ?? [] } : ML[id];
     const e = { slug: id.toLowerCase(), name: names[id], leader: item(id, 1), ready: !!code };
     if (st) {
-      e.stats = { winRate: st.winRate, games: st.games, first: st.first, second: st.second, share: st.share, players: st.players };
+      e.stats = { winRate: st.winRate, games: st.games, first: st.first, second: st.second, share: st.share, players: st.players, ...(r.rising ? { window: '直近7日' } : {}) };
       const ms = st.matchups ?? [];
       // 有利/不利(画面では上位3つを出し、「もっと見る」で全部)
       e.good = ms.filter((x) => x.winRate > 50).sort((a, b) => b.winRate - a.winRate).map(mu);
@@ -152,6 +156,7 @@ for (const r of rows) {
       const fl = [full(p.leader, 1), ...p.cards.map((c) => full(c.id, c.n))];
       e.count = p.cards.reduce((t, c) => t + c.n, 0);
       e.normal = { cards: normal, ...total(normal) };
+      e.unreleased = normal.filter((x) => x.unreleased).reduce((t, x) => t + x.n, 0) || undefined;
       e.full = { cards: fl, ...total(fl) };
     }
     row.decks.push(e);
