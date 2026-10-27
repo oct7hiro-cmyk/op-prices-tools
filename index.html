@@ -206,6 +206,19 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 .hlist a{color:var(--gold)}
 #picker .hist{max-width:640px;margin:26px auto 0}
 /* 相場ランキング */
+.srch{position:relative;max-width:640px;margin:0 auto 14px}
+.srch input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#120c18;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.srch input:focus{outline:none;border-color:var(--gold)}
+#qr{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:20;max-height:60vh;overflow-y:auto;background:#140d1a;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.6);text-align:left}
+#qr button,.fvl button{display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:center;width:100%;padding:7px 10px;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+#qr button:first-child{border-top:0}#qr .em{padding:12px;font-size:13px;color:var(--mute)}
+.th2{position:relative;width:40px;aspect-ratio:63/88;border-radius:4px;overflow:hidden;background:#241a2c}.th2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}.th2 img.ok{opacity:1}
+.qn{min-width:0}.qn b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.qn small{font-size:11px;color:var(--mute)}
+.qp{font-weight:900;text-align:right;white-space:nowrap}.qp small{display:block;font-size:11px;font-weight:700}.qp .up{color:#4dffa6}.qp .dn{color:#ff8f8f}.qp .fl{color:var(--mute)}
+#fav{max-width:640px;margin:0 auto 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;text-align:left}
+.fvh{margin:0;padding:10px 12px 6px;font-size:15px}.fvh small{margin-left:8px;font-size:11px;color:var(--mute);font-weight:500}
+.fvb{margin-top:8px;padding:6px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.35);background:rgba(10,6,16,.6);color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.fvb.on{border-color:#ff6fb0;color:#ff8fc8;background:rgba(255,111,176,.15)}
 .rkbn{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:640px;margin:0 auto 18px;padding:12px 16px;border-radius:14px;text-decoration:none;color:#2a1600;font-weight:900;background:linear-gradient(90deg,#ffe08a,#ff9d2e);box-shadow:0 0 24px rgba(255,170,60,.35)}
 .rkbn small{display:block;font-weight:700;font-size:12px;color:#5a3300}
 .rkbn b{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:18px}
@@ -241,6 +254,10 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 #decks h1{margin:0;text-align:center;font-size:clamp(28px,7vw,44px);color:var(--gold);text-shadow:0 4px 0 #8a2a0a}
 #decks .lead{text-align:center;margin:6px 0 16px;color:var(--mute);font-size:13px}
 #decks .lead a{color:inherit}
+.dkrise{margin-top:18px;padding:10px 12px;border:1px solid #4dffa6;border-bottom:0;border-radius:10px 10px 0 0;background:rgba(77,255,166,.07)}.dkrise b{display:block;font-size:15px;color:#4dffa6}.dkrise span{display:block;font-size:12px;margin-top:2px}.dkrise small{display:block;font-size:10px;color:var(--mute);margin-top:4px}
+.dkrow.rise{border:1px solid #4dffa6;border-top:1px solid var(--line)}.dkt.NEW b{font-size:20px;color:#4dffa6}
+.dkc .nwb{position:absolute;left:4px;top:4px;z-index:2;font-size:10px;font-weight:900;padding:1px 6px;border-radius:4px;background:#4dffa6;color:#05210f}
+.dkg .dc .lt.nw{left:auto;right:4px;background:#4dffa6;color:#05210f}
 .dkrow{display:grid;grid-template-columns:70px 1fr;border-top:1px solid var(--line)}
 .dkrow:last-child{border-bottom:1px solid var(--line)}
 .dkt{display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--line);padding:10px 4px}
@@ -411,6 +428,8 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <section id="picker" hidden>
 <h1 class="dg">ワンピースカード<br>開封シミュレーター</h1>
 <p class="lead">全弾のBOX開封ガチャ。開封する弾を選んでください。結果はショップの販売価格(楽天・Yahoo!)で計算し、1BOXの期待値やプレ値と比べられます。</p>
+<div class="srch"><input id="q" type="search" placeholder="カード名・番号で検索(例: ルフィ / OP01-120)" autocomplete="off" enterkeyhint="search" aria-label="カード検索"><div id="qr" hidden></div></div>
+<div id="fav" hidden><h2 class="fvh">お気に入りカード<small>前日からの値動き</small></h2><div class="fvl" id="favL"></div></div>
 <a class="rkbn" href="ranking/"><span><b>相場ランキング</b><small>超高額・パラレル/SP・通常カードの高額TOP50と今週の値上がり・値下がり</small></span><span>›</span></a>
 <a class="rkbn dk" href="decks/"><span><b>環境デッキTier表</b><small>上位デッキのレシピと、デッキ1つ分の価格(ノーマル/フルパラ)</small></span><span>›</span></a>
 <div class="sets" id="sets"></div>
@@ -507,6 +526,7 @@ ul.src{margin:8px 0 0;padding-left:18px;font-size:12px;color:var(--mute)}
 <div class="stage"><div class="float"><div id="dvCard"></div></div></div>
 <div class="kk" id="dvK"></div>
 <h2 id="dvN"></h2>
+<button type="button" class="fvb" id="dvFav" aria-pressed="false">♡ お気に入り</button>
 <div class="cid" id="dvId"></div>
 <div class="mp"><small id="dvPL">相場(ショップ販売価格)</small><b id="dvP"></b><div class="mn" id="dvMin" hidden></div></div>
 <a class="cta" id="dvCta" target="_blank" rel="sponsored noopener" hidden></a>
@@ -659,7 +679,7 @@ function kw(c){return 'ワンピースカード '+(cardNo(c)||c.n)}
 var DVC={0:['#7fd6e8','rgba(127,214,232,.35)'],1:['#ffcf4a','rgba(255,207,74,.4)'],2:['#ff8fd0','rgba(255,143,208,.45)'],3:['#ffe08a','rgba(255,200,90,.55)']};
 var dvOpen=false,dvPushed=false;
 function openDetail(c){
- DVCUR=c;sfx('detail');track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'});
+ DVCUR=c;sfx('detail');setTimeout(favUpd,0);track('view_item_detail',{item_id:c.id,item_name:c.n,item_label:c.k,price:c.p||0,set:c.set||(CFG?CFG.code:''),from:!$('decks').hidden?'decks':$('rank').hidden?'gacha':'ranking'});
  var dv=$('dv'),g=grade(c),col=DVC[g];
  dv.style.setProperty('--dvc',col[0]);dv.style.setProperty('--dvg',col[1]);
  var cardBox=$('dvCard');cardBox.className='k-'+KC[c.c];cardBox.style.setProperty('--rx','0deg');cardBox.style.setProperty('--ry','0deg');
@@ -944,8 +964,50 @@ function showSet(code){
   $('picker').hidden=true;$('stage').hidden=false;busy=false;
  }).catch(function(){location.href='./'});
 }
+// ---- カード検索・お気に入り(data/search.json: [番号, 弾, 名前, ラベル, 価格, 前日の価格, 画像]) ----
+var SR=null,SRP=null,SETC={};
+function srLoad(){return SRP||(SRP=getJSON('data/search.json').then(function(j){SR=j.c||[];SR.forEach(function(r){r.k=srNorm(r[2]+' '+r[0]+' '+r[3])});return SR}).catch(function(){SR=[];return SR}))}
+function srNorm(t){return String(t).normalize('NFKC').toUpperCase().replace(/[ぁ-ゖ]/g,function(c){return String.fromCharCode(c.charCodeAt(0)+96)}).replace(/[\s・･\-_.()()]/g,'')}
+function srCard(r){return{id:r[0],set:r[1],n:r[2],k:r[3],p:r[4],c:'R',t:0,imgs:r[6]?[r[6]]:[]}}
+function srRow(r,i,attr){var d=r[4]!=null&&r[5]!=null?r[4]-r[5]:null;
+ return '<button type="button" '+attr+'="'+i+'"><span class="th2" data-th="'+attr+i+'"></span><span class="qn"><b>'+esc(r[2])+'</b><small>'+esc(r[3])+' ・ '+esc(cardNo({id:r[0]}))+' ・ '+esc(r[1])+'</small></span><span class="qp">'+(r[4]!=null?yen(r[4]):'-')+
+  (attr==='data-f'?'<small class="'+(d>0?'up':d<0?'dn':'fl')+'">'+(d==null?'前日データなし':d===0?'±0':(d>0?'+':'')+yen(d).replace('¥','¥')+'('+(d>0?'+':'')+(Math.round(d/r[5]*1000)/10)+'%)')+'</small>':'')+'</span></button>'}
+function srImgs(box,list,attr){list.forEach(function(r,i){var e=box.querySelector('[data-th="'+attr+i+'"]');if(e)addImg(e,srCard(r))})}
+var QRES=[];
+function srSearch(){var q=srNorm($('q').value);var box=$('qr');if(!q){box.hidden=true;return}
+ srLoad().then(function(){if(srNorm($('q').value)!==q)return;
+  var idq=q.replace(/[^A-Z0-9]/g,'');
+  var tk=$('q').value.split(/[\s　]+/).map(srNorm).filter(Boolean);
+  QRES=SR.filter(function(r){return tk.every(function(t){return r.k.indexOf(t)>=0})}).sort(function(a,b){var ai=a[0].replace(/[^A-Z0-9]/gi,'').toUpperCase().indexOf(idq)===0?0:1,bi=b[0].replace(/[^A-Z0-9]/gi,'').toUpperCase().indexOf(idq)===0?0:1;return ai-bi||(b[4]||0)-(a[4]||0)}).slice(0,40);
+  box.innerHTML=QRES.length?QRES.map(function(r,i){return srRow(r,i,'data-q')}).join(''):'<div class="em">見つかりませんでした。カード名の一部や番号(OP01-120 など)で探してください。</div>';
+  box.hidden=false;srImgs(box,QRES,'data-q')})}
+var qT=0;$('q').addEventListener('input',function(){clearTimeout(qT);qT=setTimeout(srSearch,150)});
+$('q').addEventListener('focus',function(){srLoad();if($('q').value)srSearch()});
+$('q').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();srSearch();track('search',{search_term:$('q').value})}});
+document.addEventListener('click',function(e){if(!e.target.closest('.srch'))$('qr').hidden=true});
+// 弾のデータから販売店の一覧つきのカードを作って詳細を開く
+function openFrom(set,id,fb){
+ var go=function(x){var cfg=x[0],j=x[1],r=(cfg.cards||[]).filter(function(c){return c[0]===id})[0],m=(j.cards||[]).filter(function(c){return c.id===id})[0]||{};
+  var c=r?{id:id,set:set,c:r[1],n:r[2],rar:r[3],k:r[4]||(cfg.labels&&cfg.labels[r[1]])||LBL[r[1]]||r[1],t:TIER[r[1]]||0}:fb;
+  c.p=m.refPrice!=null?m.refPrice:fb.p;c.est=!!m.est;c.so=!!m.soldout;c.offers=m.offers||[];c.search=m.searchUrl;c.ysearch=m.ysearchUrl;c.imgs=m.imgs&&m.imgs.length?m.imgs:fb.imgs;
+  if(c.p>=30000&&c.t<3)c.t=3;else if(c.p>=8000&&c.t<2)c.t=2;openDetail(c)};
+ (SETC[set]||(SETC[set]=Promise.all([getJSON('sets/'+set+'.json'),getJSON('data/sets/'+set+'.json')]))).then(go).catch(function(){openDetail(fb)})}
+$('qr').addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(!b)return;var r=QRES[+b.dataset.q];track('select_search_result',{item_id:r[0],set:r[1]});openFrom(r[1],r[0],srCard(r))});
+// お気に入り(この端末のブラウザに保存)
+function favGet(){try{return JSON.parse(localStorage.getItem('fav')||'[]')}catch(e){return[]}}
+function favSet(a){try{localStorage.setItem('fav',JSON.stringify(a))}catch(e){}}
+function favHas(c){var id=c.id;return favGet().some(function(f){return f.i===id})}
+function favUpd(){var c=DVCUR,b=$('dvFav');if(!c||c.c==='BOX'){b.hidden=true;return}b.hidden=false;var on=favHas(c);b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'♥ お気に入り登録済み':'♡ お気に入りに追加'}
+$('dvFav').addEventListener('click',function(){var c=DVCUR;if(!c)return;var a=favGet(),on=favHas(c);
+ if(on)a=a.filter(function(f){return f.i!==c.id});else a.unshift({i:c.id,s:c.set==='DECK'?'':c.set||(CFG?CFG.code:''),n:c.n,k:c.k});
+ favSet(a.slice(0,100));favUpd();track(on?'remove_favorite':'add_favorite',{item_id:c.id,item_name:c.n});if(!$('picker').hidden)renderFav()});
+var FAVR=[];
+function renderFav(){var a=favGet();$('fav').hidden=!a.length;if(!a.length)return;
+ srLoad().then(function(){FAVR=a.map(function(f){return SR.filter(function(r){return r[0]===f.i&&(!f.s||r[1]===f.s)})[0]||SR.filter(function(r){return r[0]===f.i})[0]||[f.i,f.s,f.n,f.k,null,null,'']});
+  $('favL').innerHTML=FAVR.map(function(r,i){return srRow(r,i,'data-f')}).join('');srImgs($('favL'),FAVR,'data-f')})}
+$('favL').addEventListener('click',function(e){var b=e.target.closest('[data-f]');if(!b)return;var r=FAVR[+b.dataset.f];if(r[1]&&r[1]!=='DECK')openFrom(r[1],r[0],srCard(r));else openDetail(srCard(r))});
 function showPicker(){
- $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード 開封シミュレーター|全弾BOX開封ガチャ・期待値・相場';pv();renderHist($('histPB'),'');
+ $('picker').hidden=false;$('stage').hidden=true;document.title='ワンピースカード 開封シミュレーター|全弾BOX開封ガチャ・期待値・相場';pv();renderHist($('histPB'),'');renderFav();
  Promise.all([getJSON('sets/index.json'),getJSON('data/sets/index.json').catch(function(){return{sets:{}}})]).then(function(r){
   var list=r[0].sets,sum=r[1].sets||{};
   $('sets').innerHTML=list.map(function(s,i){var x=sum[s.code]||{};
@@ -1006,8 +1068,8 @@ function renderTiers(){
  $('dkTier').hidden=false;$('dkDeck').hidden=true;document.title='ワンピースカード 環境デッキTier表|デッキレシピと価格(ノーマル/フルパラ)';
  $('dkLead').innerHTML='Tier表・勝率・相性:<a href="'+esc(DK.sourceUrl)+'" target="_blank" rel="noopener">'+esc(DK.source)+'</a>('+esc(DK.window||'')+'・'+esc(DK.listUpdated)+'時点)をもとにこのサイトで集計・価格はショップ最安値('+esc(DK.updatedAt||'-')+'時点)'+(DK.rule?'<br><small>'+esc(DK.rule)+'</small>':'');
  $('dkRows').innerHTML=DK.tiers.map(function(t){
-  return '<div class="dkrow"><div class="dkt '+esc(t.tier)+'"><b>'+esc(t.tier)+'</b><small>'+esc(t.label)+'</small></div><div class="dkl">'+t.decks.map(function(d){
-   return '<button class="dkc" type="button" data-s="'+esc(d.slug)+'"'+(d.ready?'':' disabled')+'><div class="im" data-l="'+esc(d.slug)+'"></div><div class="nm">'+esc(d.name)+'</div><div class="dp">'+(d.stats?'勝率 <b>'+d.stats.winRate.toFixed(1)+'%</b> ・ 使用率'+d.stats.share.toFixed(1)+'%<br>':'')+(d.ready?'ノーマル '+yen(d.normal.total)+'<br>フルパラ '+yen(d.full.total):'デッキリスト準備中')+'</div></button>'}).join('')+'</div></div>'}).join('');
+  return (t.rising?'<div class="dkrise"><b>注目の少数派デッキ</b><span>Tier表の条件(使用率1%以上)には届かないものの、直近7日で勝ち越している新しいデッキです。発売前の新弾カード(スポイラー)で強化されたデッキも含みます。流行る前にパーツの価格をチェックできます。</span>'+(t.rule?'<small>'+esc(t.rule)+'</small>':'')+'</div>':'')+'<div class="dkrow'+(t.rising?' rise':'')+'"><div class="dkt '+(t.rising?'NEW':esc(t.tier))+'"><b>'+esc(t.tier)+'</b><small>'+esc(t.label)+'</small></div><div class="dkl">'+t.decks.map(function(d){
+   return '<button class="dkc" type="button" data-s="'+esc(d.slug)+'"'+(d.ready?'':' disabled')+'><div class="im" data-l="'+esc(d.slug)+'">'+(d.unreleased?'<span class="nwb">発売前カード '+d.unreleased+'枚</span>':'')+'</div><div class="nm">'+esc(d.name)+'</div><div class="dp">'+(d.stats?(d.stats.window?'直近7日 ':'')+'勝率 <b>'+d.stats.winRate.toFixed(1)+'%</b> ・ 使用率'+d.stats.share.toFixed(1)+'%<br>':'')+(d.ready?'ノーマル '+yen(d.normal.total)+'<br>フルパラ '+yen(d.full.total):'デッキリスト準備中')+'</div></button>'}).join('')+'</div></div>'}).join('');
  DK.tiers.forEach(function(t){t.decks.forEach(function(d){if(d.leader)addImg(document.querySelector('[data-l="'+d.slug+'"]'),dkCard(d.leader))})});
  pv();
 }
@@ -1017,7 +1079,7 @@ function renderDeck(slug){
  document.title=d.name+' デッキレシピと価格|ワンピースカード 環境デッキ';
  $('dkName').textContent=d.name;$('dkMeta').textContent=f.t.tier+'('+f.t.label+')・リーダー '+d.leader.name+'('+d.leader.id+')・'+d.count+'枚';
  var st=d.stats,pc=function(v){return v==null?'-':v.toFixed(1)+'%'};
- $('dkSt').innerHTML=st?['勝率',pc(st.winRate),'先手',pc(st.first.winRate),'後手',pc(st.second.winRate),'使用率',pc(st.share)].reduce(function(a,x,i,arr){if(i%2===0)a.push('<div><small>'+x+'</small><b>'+arr[i+1]+'</b></div>');return a},[]).join('')+'':'';
+ $('dkSt').innerHTML=st?[st.window?'勝率('+st.window+')':'勝率',pc(st.winRate),'先手',pc(st.first.winRate),'後手',pc(st.second.winRate),'使用率',pc(st.share)].reduce(function(a,x,i,arr){if(i%2===0)a.push('<div><small>'+x+'</small><b>'+arr[i+1]+'</b></div>');return a},[]).join('')+'':'';
  if(st)$('dkSt').title=st.games.toLocaleString()+'戦・'+st.players.toLocaleString()+'人';
  // 有利/不利: Tier A以上の相手から上位3つ。残り(Tier B・Tier表外も含む全部)は「もっと見る」で
  var TOF={};DK.tiers.forEach(function(t){t.decks.forEach(function(x){TOF[x.slug]=t.tier})});
@@ -1033,9 +1095,10 @@ function renderDeck(slug){
 function renderDeckList(){
  var d=dkFind(DKS.slug).d,v=d[DKS.ver];
  $('dkSum').innerHTML=['normal','full'].map(function(k){return '<div data-v="'+k+'" class="'+(k===DKS.ver?'on':'')+'"><small>'+(k==='normal'?'ノーマル版':'フルパラ版')+'</small><b>'+yen(d[k].total)+'</b></div>'}).join('');
- $('dkNote').textContent=(v.missing?'価格が取れていないカード'+v.missing+'枚は合計に含みません。':'')+'カードをタップすると最安ショップを表示します。';
+ var nw=v.cards.filter(function(x){return x.unreleased&&x.p==null}).reduce(function(t,x){return t+x.n},0),ms=v.missing-nw,rise=dkFind(DKS.slug).t.rising;
+ $('dkNote').textContent=(rise?'注目の少数派デッキ(直近7日の成績)です。':'')+(nw?'発売前のカード'+nw+'枚は、予約の出品が見つからないため合計に含みません(今買えるパーツの合計です)。':'')+(ms>0?'価格が取れていないカード'+ms+'枚は合計に含みません。':'')+'カードをタップすると最安ショップを表示します。';
  $('dkGrid').innerHTML=v.cards.map(function(x,i){
-  return '<button class="dc" type="button" data-i="'+i+'"><div class="im">'+esc(x.name)+(x.para?'<span class="lt">'+(x.pcc?'PCC':'パラレル')+'</span>':'')+'<span class="qt">×'+x.n+'</span></div><div class="tx"><b>'+esc(x.name)+'</b>'+esc(x.id.replace(/_[pr]\d+$/,''))+(i===0?' リーダー':'')+'<br><span class="p">'+(x.p==null?'価格なし':yen(x.p))+'</span>'+(x.p!=null&&x.n>1?' ×'+x.n+'='+yen(x.p*x.n):'')+'</div></button>'}).join('');
+  return '<button class="dc" type="button" data-i="'+i+'"><div class="im">'+esc(x.name)+(x.para?'<span class="lt">'+(x.pcc?'PCC':'パラレル')+'</span>':'')+(x.unreleased?'<span class="lt nw">発売前</span>':'')+'<span class="qt">×'+x.n+'</span></div><div class="tx"><b>'+esc(x.name)+'</b>'+esc(x.id.replace(/_[pr]\d+$/,''))+(i===0?' リーダー':'')+'<br><span class="p">'+(x.p==null?(x.unreleased?'発売前':'価格なし'):yen(x.p)+(x.unreleased?' 予約':''))+'</span>'+(x.p!=null&&x.n>1?' ×'+x.n+'='+yen(x.p*x.n):'')+'</div></button>'}).join('');
  [].forEach.call($('dkGrid').querySelectorAll('.dc'),function(e){addImg(e.querySelector('.im'),dkCard(v.cards[+e.dataset.i]))});
  renderBuy();
 }
