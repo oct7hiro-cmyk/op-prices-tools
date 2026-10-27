@@ -78,8 +78,13 @@ for (const f of files) {
   // カード番号: _p(パラレル)・_r(プレミアムブースターの再録)を除いた番号
   cards.forEach((c) => { const code = c[0].replace(/_[pr]\d+$/, ''); (byCode[code] ??= []).push(c); });
   for (const [id, cat, name] of cards) {
-    if (!IMG_ONLY.has(cat) && !['R', 'SR', 'SEC'].includes(cat) && !cats[cat] && !hit?.[cat]) continue;
     const code = id.replace(/_[pr]\d+$/, '');
+    // 封入率の設定が無い区分(OP01/OP02の特別パラレルなど)は価格を監視せず、全カード一覧に出す画像だけ探す
+    if (!IMG_ONLY.has(cat) && !['R', 'SR', 'SEC'].includes(cat) && !cats[cat] && !hit?.[cat]) {
+      watch.push({ set: r.code, id, name: `${name}(${LABEL[cat] ?? cat})`, code, keyword: `ワンピースカード ${code} パラレル`, imgOnly: true, must: ['パラ'],
+        mustNot: [...SUPER, 'コミ', '漫画', 'SP', ...NG_SPECIAL, ...NG_OTHER_ART] });
+      continue;
+    }
     const siblings = byCode[code].length > 1;
     const lbl = NAME_OVERRIDE[id] ?? r.names?.[id] ?? null;
     const hasFA = isPRB && byCode[code].some((c) => c[1] === 'FA');
