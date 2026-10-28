@@ -1,28 +1,28 @@
 {
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "sets": {
   "OP17": {
-   "updatedAt": "2026-10-28",
+   "updatedAt": "2026-10-29",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/nipponiajapan/cabinet/tradingcard/misc/imgrc0122786608.jpg?_ex=400x400",
-   "ev": 14508,
+   "ev": 14299,
    "pre": 12480,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-10-28",
+   "updatedAt": "2026-10-29",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6797,
+   "ev": 6995,
    "pre": 11880,
    "priced": 74,
    "estimated": 0,
    "total": 74
   },
   "OP15": {
-   "updatedAt": "2026-10-28",
+   "updatedAt": "2026-10-29",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
-   "ev": 7573,
+   "ev": 7452,
    "pre": 11480,
    "priced": 71,
    "estimated": 0,
@@ -65,12 +65,12 @@
    "total": 93
   },
   "PRB02": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-29",
    "box": "https://item-shopping.c.yimg.jp/i/l/hrco_prb-02",
-   "ev": 4653,
+   "ev": 4578,
    "pre": 13500,
    "priced": 226,
-   "estimated": 11,
+   "estimated": 13,
    "total": 226
   },
   "OP12": {
@@ -128,10 +128,10 @@
    "total": 266
   },
   "OP08": {
-   "updatedAt": "2026-10-22",
-   "box": "https://item-shopping.c.yimg.jp/i/l/ookinidesu_h20240525-6732okd9850yu965",
-   "ev": 2891,
-   "pre": 13500,
+   "updatedAt": "2026-10-29",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/pippi-store/cabinet/12170431/26889232_0.jpg?_ex=400x400",
+   "ev": 2922,
+   "pre": 14480,
    "priced": 69,
    "estimated": 0,
    "total": 69
@@ -191,9 +191,9 @@
    "total": 69
   },
   "OP02": {
-   "updatedAt": "2026-10-22",
+   "updatedAt": "2026-10-29",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
-   "ev": 2876,
+   "ev": 2891,
    "pre": 30280,
    "priced": 65,
    "estimated": 0,
