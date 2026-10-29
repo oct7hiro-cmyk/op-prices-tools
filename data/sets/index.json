@@ -1,6 +1,15 @@
 {
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "sets": {
+  "EB05": {
+   "updatedAt": "2026-10-29",
+   "box": "https://item-shopping.c.yimg.jp/i/l/yuyuspi_4582770059229",
+   "ev": 17545,
+   "pre": 14300,
+   "priced": 66,
+   "estimated": 66,
+   "total": 66
+  },
   "OP17": {
    "updatedAt": "2026-10-29",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/nipponiajapan/cabinet/tradingcard/misc/imgrc0122786608.jpg?_ex=400x400",

@@ -132,5 +132,11 @@
   "file": "img/box/op12.webp",
   "src": "user",
   "fixed": true
+ },
+ "EB05": {
+  "file": "img/box/eb05.webp",
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/spjstore/cabinet/11379786/11406626/4582770059229.jpg?_ex=400x400",
+  "score": 1.46,
+  "updatedAt": "2026-10-29"
  }
 }

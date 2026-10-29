@@ -1,6 +1,15 @@
 {
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "sets": [
+  {
+   "code": "EB05",
+   "name": "ONE PIECE Heroines Edition vol.2",
+   "title": "エクストラブースター ONE PIECE Heroines Edition vol.2【EB-05】",
+   "release": "2026-10-31",
+   "msrp": 5760,
+   "market": null,
+   "confidence": "low"
+  },
   {
    "code": "OP17",
    "name": "世界最強の戦士",
