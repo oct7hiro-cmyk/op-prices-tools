@@ -30,6 +30,9 @@ const NG_OTHER_ART = ['レッド', '海賊団', '書き下ろし', '描き下ろ
 // 通常のSPに混ざりやすい、周年記念SP(金・銀背景)の出品
 const NG_GOLD = ['金背景', '銀背景', '金枠', '銀枠', 'ゴールド', 'シルバー'];
 
+// どの弾のカードでも番号から名前を引けるように
+const NAME_ANY = {};
+for (const st of Object.values(raw.sets)) for (const c of st.cards) NAME_ANY[c[0]] ??= c[2];
 const sets = [];
 const watch = [];
 for (const f of files) {
@@ -39,8 +42,11 @@ for (const f of files) {
   const isPRB = r.code.startsWith('PRB');
   const base = { ...(r.base ?? {}) };
   if (!isPRB) base.R = [7, 8]; // OP/EB は 1BOX R 7〜8枚(複数の販売サイトの集計)
+  // 発売前で公式カードリストにまだ無いパラレル・SPなど(調査ファイルの extra: [番号, レアリティ])。名前は元のカード番号から引く
+  const offIds = new Set(src.cards.map((c) => c[0]));
+  const extra = (r.extra ?? []).filter(([id]) => !offIds.has(id)).map(([id, rar]) => [id, rar, NAME_ANY[id.replace(/_[pr]\d+$/, '')] ?? id]);
   const cards = [];
-  for (const [id, rar, name] of src.cards) {
+  for (const [id, rar, name] of [...src.cards, ...extra]) {
     let cat = null;
     if (id.includes('_p')) cat = FORCE_TOP.has(id) ? 'TOP' : (r.variants[id] ?? 'OTHER');
     else if (r.cp_r_ids?.includes(id)) cat = 'CP'; // プレミアムブースターのコミパラ(_r番号で掲載)
@@ -69,7 +75,11 @@ for (const f of files) {
   }
   const conf = { code: r.code, series: r.series, name: r.name, title: src.name, release: r.release ?? null,
     msrp: r.msrp_box ?? null, packs: r.packs ?? 24, perPack: r.cards_per_pack ?? 6, market: r.box_market ?? null,
-    confidence: r.confidence ?? null, base, hit, cats, labels: { ...LABEL, ...(r.labels ?? {}) }, cards, sources: r.sources ?? [], notes: r.notes ?? '' };
+    confidence: r.confidence ?? null, base, hit, cats, labels: { ...LABEL, ...(r.labels ?? {}) }, cards,
+    // 公式カードリストの画像を使う弾: 公式に載っている番号(画面で公式画像を先に試す)
+    ...(r.officialImg ? { offImg: [...offIds] } : {}),
+    // 発売前の仮の価格(予想販売価格)。出品の価格が取れるまで使う
+    ...(r.provisional ? { prov: r.provisional } : {}), sources: r.sources ?? [], notes: r.notes ?? '' };
   await writeFile(`sets/${r.code}.json`, JSON.stringify(conf));
   sets.push({ code: r.code, name: r.name, title: src.name, release: conf.release, msrp: conf.msrp, market: conf.market, confidence: conf.confidence });
 
@@ -110,6 +120,8 @@ for (const f of files) {
     else if (cat === 'TR') Object.assign(w, { keyword: `ワンピースカード ${code} TR`, mustAny: ['TR', 'トレジャー'], minPrice: 300 });
     else Object.assign(w, { keyword: `ワンピースカード ${code} パラレル`, must: ['パラ'], mustNot: [...SUPER, 'コミ', '漫画', 'SP', ...NG_SPECIAL, ...NG_OTHER_ART, ...(hasFA ? ['フルアート'] : [])],
       ...(siblings && cat === 'OTHER' ? { minPrice: 3000 } : {}) });
+    // 他の弾の番号で収録されるSP・リーダーパラレル(再録)は、元の弾のものと区別するため弾コードか弾名を含む出品だけ(調査ファイルの spSetTag)
+    if (['SP', 'LPAR'].includes(cat) && r.spSetTag && !code.startsWith(r.code)) w.mustAny2 = r.spSetTag;
     // プレミアムブースターは再録カードの出品が少ないので、見つからなければ同じ番号のカードの画像を使う
     if (isPRB && !w.imgOnly) Object.assign(w, { imgKeyword: `ワンピースカード ${code}`, imgNg: /_r\d+$/.test(id) || ['R', 'SR', 'SEC'].includes(cat) ? [...NG_VARIANT, ...NG_SPECIAL] : NG_SPECIAL });
     watch.push(w);
