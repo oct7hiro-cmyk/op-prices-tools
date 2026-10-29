@@ -571,7 +571,7 @@ var COLOR={OP01:['#1f4a9c','#102a5e'],OP02:['#8a3a1c','#4e1e0c'],OP03:['#1e7d8c'
 function applyColor(code){var c=COLOR[code]||[],r=document.documentElement.style;
  r.setProperty('--c1',c[0]||'#b0182b');r.setProperty('--c2',c[1]||'#7a0e1e');r.setProperty('--ca',c[2]||'#ffcf4a');r.setProperty('--ct',c[3]||'#3a0714')}
 function setupCards(cfg){
- CFG=cfg;ALL=[];POOL={};(cfg.offImg||[]).forEach(function(id){OFF[id]=1});
+ CFG=cfg;ALL=[];POOL={};
  cfg.cards.forEach(function(r){var c={id:r[0],c:r[1],n:r[2],rar:r[3],k:r[4]||(cfg.labels&&cfg.labels[r[1]])||LBL[r[1]]||r[1],p:null,t:TIER[r[1]]||0};ALL.push(c);(POOL[c.c]=POOL[c.c]||[]).push(c)});
 }
 function retier(){ALL.forEach(function(c){var t=TIER[c.c]||0;if(c.p>=30000)t=3;else if(c.p>=8000&&t<2)t=2;c.t=t})}
@@ -625,8 +625,8 @@ var IMG={};
 var BOX_IMG='';
 // 出品画像のうち「画像なし」の差し替え画像(no_photo など)は使わない
 var NOIMG=/no[_-]?(photo|image|img)|now[_-]?printing/i;
-// 公式カードリストの画像を使う弾(発売直後で出品画像が少ない弾など)。読み込めなければ出品画像に切り替わる
-var OFF={},OFF_RE=/^EB05-/;
+// 公式カードリストの画像は他サイトでの表示が禁止されている(Cross-Origin-Resource-Policy: same-site)ため使わない
+var OFF={},OFF_RE=/(?!)/;
 function offUrl(id){return 'https://www.onepiece-cardgame.com/images/cardlist/card/'+id+'.png'}
 function imgOf(c){if(IMG[c.id])return[IMG[c.id]];var L=(c.imgs||[]).filter(function(u){return !NOIMG.test(u)});return OFF[c.id]||(OFF_RE.test(c.id)&&!/_p9\d$/.test(c.id))?[offUrl(c.id)].concat(L):L}
 function addImg(parent,c){
