@@ -31,8 +31,7 @@ for (const s of index.sets) {
     const c = byId[id] ?? {};
     const p = c.refPrice ?? null;
     const hi = HI_CATS.has(cat) || (p ?? 0) >= 30000;
-    // 公式カードリストの画像を使う弾(調査ファイルの officialImg)は公式の画像を先に使う
-    const img = (cfg.offImg?.includes(id) ? `https://www.onepiece-cardgame.com/images/cardlist/card/${id}.png` : null) ?? (c.imgs ?? []).find((u) => !NOIMG.test(u)) ?? '';
+    const img = (c.imgs ?? []).find((u) => !NOIMG.test(u)) ?? '';
     out.push([id, s.code, name, label || cfg.labels?.[cat] || LBL[cat] || cat, p, p != null && !c.est && !c.soldout ? await prevOf(id, hi) : null, img]);
   }
 }
