@@ -47,9 +47,11 @@ for (const { s, f, data, cfg } of all) {
   const byId = Object.fromEntries(data.cards.map((c) => [c.id, c]));
   for (const [id, cat, name] of cfg.cards) {
     if (!used.has(cat) || byId[id]?.refPrice) continue;
-    const v = median(perSet[s.code]?.[cat] ?? []) ?? median(global[cat] ?? []);
+    // 発売前の弾は、調査ファイルの仮の価格(予想販売価格)を先に使う
+    const pv = cfg.prov?.prices?.[id];
+    const v = pv ?? median(perSet[s.code]?.[cat] ?? []) ?? median(global[cat] ?? []);
     if (!v) continue;
-    const rec = { ...(byId[id] ?? { id, name, offers: [], imgs: [] }), refPrice: v, minPrice: v, est: true, source: 'estimate' };
+    const rec = { ...(byId[id] ?? { id, name, offers: [], imgs: [] }), refPrice: v, minPrice: v, est: true, source: pv ? 'provisional' : 'estimate', ...(pv ? { prov: cfg.prov.source } : {}) };
     if (byId[id]) Object.assign(byId[id], rec); else data.cards.push(rec);
     est++;
   }
