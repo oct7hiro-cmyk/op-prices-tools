@@ -1,29 +1,29 @@
 {
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-10-30",
-   "box": "https://item-shopping.c.yimg.jp/i/l/yuyuspi_4582770059229",
-   "ev": 17545,
-   "pre": 14300,
+   "updatedAt": "2026-10-31",
+   "box": "https://item-shopping.c.yimg.jp/i/l/htw_opcg-jp-059229-bp",
+   "ev": 16795,
+   "pre": 13600,
    "priced": 66,
-   "estimated": 66,
+   "estimated": 7,
    "total": 66
   },
   "OP17": {
-   "updatedAt": "2026-10-30",
-   "box": "https://item-shopping.c.yimg.jp/i/l/hobbyhobby-shop_20260821-01",
-   "ev": 14199,
-   "pre": 12470,
+   "updatedAt": "2026-10-31",
+   "box": "https://item-shopping.c.yimg.jp/i/l/yosabei_op-2026-06",
+   "ev": 14476,
+   "pre": 12000,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-10-30",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6844,
-   "pre": 11680,
+   "updatedAt": "2026-10-31",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769982897.jpg?_ex=400x400",
+   "ev": 7876,
+   "pre": 12250,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -83,10 +83,10 @@
    "total": 226
   },
   "OP12": {
-   "updatedAt": "2026-10-23",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10764050/31857865_0.jpg?_ex=400x400",
-   "ev": 8424,
-   "pre": 19680,
+   "updatedAt": "2026-10-31",
+   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769796838",
+   "ev": 8586,
+   "pre": 19614,
    "priced": 73,
    "estimated": 0,
    "total": 73
@@ -146,9 +146,9 @@
    "total": 69
   },
   "OP07": {
-   "updatedAt": "2026-10-23",
+   "updatedAt": "2026-10-31",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009708",
-   "ev": 3172,
+   "ev": 3214,
    "pre": 23800,
    "priced": 69,
    "estimated": 0,
@@ -209,9 +209,9 @@
    "total": 71
   },
   "OP01": {
-   "updatedAt": "2026-10-23",
+   "updatedAt": "2026-10-31",
    "box": "https://item-shopping.c.yimg.jp/i/l/treedom-market2_tree-3503",
-   "ev": 3914,
+   "ev": 4072,
    "pre": 59468,
    "priced": 65,
    "estimated": 0,
