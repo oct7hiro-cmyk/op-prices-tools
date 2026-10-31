@@ -1,37 +1,37 @@
 {
- "updated": "2026-10-30",
+ "updated": "2026-10-31",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-10-31",
+   "updatedAt": "2026-11-01",
    "box": "https://item-shopping.c.yimg.jp/i/l/htw_opcg-jp-059229-bp",
-   "ev": 16795,
+   "ev": 15399,
    "pre": 13600,
    "priced": 66,
-   "estimated": 7,
+   "estimated": 5,
    "total": 66
   },
   "OP17": {
-   "updatedAt": "2026-10-31",
+   "updatedAt": "2026-11-01",
    "box": "https://item-shopping.c.yimg.jp/i/l/yosabei_op-2026-06",
-   "ev": 14476,
+   "ev": 14234,
    "pre": 12000,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-10-31",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769982897.jpg?_ex=400x400",
-   "ev": 7876,
-   "pre": 12250,
+   "updatedAt": "2026-11-01",
+   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
+   "ev": 7900,
+   "pre": 11680,
    "priced": 74,
    "estimated": 0,
    "total": 74
   },
   "OP15": {
-   "updatedAt": "2026-10-29",
+   "updatedAt": "2026-11-01",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
-   "ev": 7452,
+   "ev": 7556,
    "pre": 11480,
    "priced": 71,
    "estimated": 0,
@@ -92,9 +92,9 @@
    "total": 73
   },
   "OP11": {
-   "updatedAt": "2026-10-24",
+   "updatedAt": "2026-11-01",
    "box": "https://item-shopping.c.yimg.jp/i/l/worldplus01_onepiececard",
-   "ev": 25668,
+   "ev": 25619,
    "pre": 38000,
    "priced": 74,
    "estimated": 1,
@@ -155,9 +155,9 @@
    "total": 69
   },
   "EB01": {
-   "updatedAt": "2026-10-24",
+   "updatedAt": "2026-11-01",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009711",
-   "ev": 2139,
+   "ev": 2391,
    "pre": 24280,
    "priced": 49,
    "estimated": 0,
