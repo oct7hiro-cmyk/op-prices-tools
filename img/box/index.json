@@ -1,15 +1,15 @@
 {
  "OP17": {
   "file": "img/box/op17.webp",
-  "src": "https://item-shopping.c.yimg.jp/i/l/towayu_4582770058406",
+  "src": "https://item-shopping.c.yimg.jp/i/l/towayu_4582770058406a",
   "score": 1.46,
-  "updatedAt": "2026-11-01"
+  "updatedAt": "2026-11-02"
  },
  "OP16": {
   "file": "img/box/op16.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/jugem2020/cabinet/12637066/imgrc0127802417.jpg?_ex=400x400",
   "score": 1.48,
-  "updatedAt": "2026-11-01"
+  "updatedAt": "2026-11-02"
  },
  "EB04": {
   "file": "img/box/eb04.webp",
@@ -44,7 +44,7 @@
   "file": "img/box/eb02.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/kingshop/cabinet/07395959/drhte.jpg?_ex=400x400",
   "score": 1.45,
-  "updatedAt": "2026-10-25"
+  "updatedAt": "2026-11-02"
  },
  "OP10": {
   "file": "img/box/op10.webp",
@@ -66,7 +66,7 @@
  },
  "OP08": {
   "file": "img/box/op08.webp",
-  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/pippi-store/cabinet/12170431/26889232_0.jpg?_ex=400x400",
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/omichi-store/cabinet/13109574/34169352_1.jpg?_ex=400x400",
   "score": 1.49,
   "updatedAt": "2026-10-30"
  },
@@ -79,14 +79,14 @@
  "EB01": {
   "file": "img/box/eb01.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0061/52009711_1.jpg?_ex=400x400",
-  "score": 1.47,
+  "score": 1.46,
   "updatedAt": "2026-11-01"
  },
  "OP06": {
   "file": "img/box/op06.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/ky-zakkaten-r/cabinet/amayahoo/07918438/0748-009136.jpg?_ex=400x400",
   "score": 1.44,
-  "updatedAt": "2026-10-25"
+  "updatedAt": "2026-11-02"
  },
  "OP05": {
   "file": "img/box/op05.webp",
@@ -108,8 +108,8 @@
  },
  "OP02": {
   "file": "img/box/op02.webp",
-  "src": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
-  "score": 1.44,
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0066/52008816_1.jpg?_ex=400x400",
+  "score": 1.49,
   "updatedAt": "2026-10-30"
  },
  "OP01": {
@@ -137,6 +137,6 @@
   "file": "img/box/eb05.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/spjstore/cabinet/11379786/11406626/4582770059229.jpg?_ex=400x400",
   "score": 1.46,
-  "updatedAt": "2026-11-01"
+  "updatedAt": "2026-11-02"
  }
 }
