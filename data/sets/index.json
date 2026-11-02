@@ -1,29 +1,29 @@
 {
- "updated": "2026-11-01",
+ "updated": "2026-11-02",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-02",
+   "updatedAt": "2026-11-03",
    "box": "https://item-shopping.c.yimg.jp/i/l/htw_opcg-jp-059229-bp",
-   "ev": 13954,
-   "pre": 13998,
+   "ev": 13969,
+   "pre": 13000,
    "priced": 66,
    "estimated": 2,
-   "total": 66
+   "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-02",
-   "box": "https://item-shopping.c.yimg.jp/i/l/towayu_4582770058406a",
-   "ev": 14642,
-   "pre": 12000,
+   "updatedAt": "2026-11-03",
+   "box": "https://item-shopping.c.yimg.jp/i/l/yosabei_op-2026-06",
+   "ev": 14153,
+   "pre": 11600,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-02",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6734,
-   "pre": 11680,
+   "updatedAt": "2026-11-03",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769982897.jpg?_ex=400x400",
+   "ev": 6865,
+   "pre": 12250,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -47,10 +47,10 @@
    "total": 55
   },
   "OP14": {
-   "updatedAt": "2026-10-26",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/happystorefujioka/cabinet/26062300-1/b0fqb2bqhm.jpg?_ex=400x400",
-   "ev": 7742,
-   "pre": 12356,
+   "updatedAt": "2026-11-03",
+   "box": "https://item-shopping.c.yimg.jp/i/l/gochanstore_b0fqb2bqhm",
+   "ev": 7941,
+   "pre": 11036,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -110,10 +110,10 @@
    "total": 75
   },
   "OP10": {
-   "updatedAt": "2026-10-26",
-   "box": "https://item-shopping.c.yimg.jp/i/l/shop998_op10b",
-   "ev": 2782,
-   "pre": 13800,
+   "updatedAt": "2026-11-03",
+   "box": "https://item-shopping.c.yimg.jp/i/l/moetaku_rc-itzplgmeoiag-khij",
+   "ev": 2545,
+   "pre": 12960,
    "priced": 69,
    "estimated": 0,
    "total": 69
@@ -173,9 +173,9 @@
    "total": 69
   },
   "OP05": {
-   "updatedAt": "2026-10-26",
-   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118002174",
-   "ev": 3481,
+   "updatedAt": "2026-11-03",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10764051/31859702_0.jpg?_ex=400x400",
+   "ev": 3482,
    "pre": 66000,
    "priced": 73,
    "estimated": 0,
