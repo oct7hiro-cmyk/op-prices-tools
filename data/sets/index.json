@@ -1,29 +1,29 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-04",
-   "box": "https://item-shopping.c.yimg.jp/i/l/yuyuspi_4582770059229",
-   "ev": 12419,
-   "pre": 13980,
+   "updatedAt": "2026-11-05",
+   "box": "https://item-shopping.c.yimg.jp/i/l/htw_opcg-jp-059229-bp",
+   "ev": 12306,
+   "pre": 14160,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-04",
-   "box": "https://item-shopping.c.yimg.jp/i/l/towayu_4582770058406a",
-   "ev": 13609,
-   "pre": 12000,
+   "updatedAt": "2026-11-05",
+   "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
+   "ev": 13579,
+   "pre": 11100,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-04",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 7909,
-   "pre": 11680,
+   "updatedAt": "2026-11-05",
+   "box": "https://item-shopping.c.yimg.jp/i/l/panda-mobile_4582769982897-nw",
+   "ev": 7671,
+   "pre": 11799,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -65,10 +65,10 @@
    "total": 60
   },
   "OP13": {
-   "updatedAt": "2026-10-28",
+   "updatedAt": "2026-11-05",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769865213",
-   "ev": 6865,
-   "pre": 22900,
+   "ev": 6827,
+   "pre": 22500,
    "priced": 93,
    "estimated": 0,
    "total": 93
@@ -128,12 +128,12 @@
    "total": 77
   },
   "PRB01": {
-   "updatedAt": "2026-10-28",
-   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118259509",
-   "ev": 3998,
+   "updatedAt": "2026-11-05",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/ky-zakkaten-r/cabinet/amayahoo/07918438/0748-009554.jpg?_ex=400x400",
+   "ev": 3931,
    "pre": 24999,
    "priced": 194,
-   "estimated": 10,
+   "estimated": 15,
    "total": 266
   },
   "OP08": {
@@ -191,9 +191,9 @@
    "total": 68
   },
   "OP03": {
-   "updatedAt": "2026-10-28",
+   "updatedAt": "2026-11-05",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008958",
-   "ev": 3050,
+   "ev": 2858,
    "pre": 26980,
    "priced": 69,
    "estimated": 0,
