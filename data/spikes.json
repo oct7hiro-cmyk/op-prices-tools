@@ -1,124 +1,86 @@
 {
- "updatedAt": "2026-11-07",
+ "updatedAt": "2026-11-08",
  "spikes": [
   {
-   "id": "OP12-018",
-   "name": "覇王色の覇気(R)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-018%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-018%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-018",
-   "minPrice": 250,
-   "refPrice": 250,
-   "shop": "トレカショップ竜のしっぽ Yahoo!店",
-   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240813114.html",
-   "src": "yahoo",
-   "counts": {
-    "rakuten": 1,
-    "yahoo": 1
-   },
-   "change": 212.5,
-   "set": "OP12"
-  },
-  {
-   "id": "OP07-085",
-   "name": "ステューシー(SR)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP07-085%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP07-085%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP07-085",
-   "minPrice": 350,
-   "refPrice": 350,
-   "shop": "ネットショップ駿河屋 楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F132307682-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F362360270%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "id": "EB01-013",
+   "name": "光月日和(R)",
+   "updatedAt": "2026-11-08",
+   "count": 4,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB01-013%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB01-013%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20EB01-013",
+   "minPrice": 450,
+   "refPrice": 450,
+   "shop": "トレカ通販 トレトク楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F282098j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10549610%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
-    "rakuten": 2,
-    "yahoo": 0
+    "rakuten": 3,
+    "yahoo": 1
    },
-   "change": 169.2,
-   "set": "OP07"
+   "change": 246.2,
+   "set": "EB01"
   },
   {
-   "id": "OP12-071",
-   "name": "シャーロット・プリン(R)",
-   "updatedAt": "2026-11-07",
+   "id": "OP15-092",
+   "name": "モンキー・Ｄ・ルフィ(R)",
+   "updatedAt": "2026-11-08",
    "count": 3,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-071%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-071%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-071",
-   "minPrice": 240,
-   "refPrice": 240,
-   "shop": "ゴールデンホビー",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rshbo.li9aeb49.g00rshbo.li9af287/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgoldhobby%2Fop12-071%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgoldhobby%2Fi%2F10071960%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-092%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-092%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP15-092",
+   "minPrice": 200,
+   "refPrice": 200,
+   "shop": "フルアヘッド",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rf9jo.li9ae177.g00rf9jo.li9afc49/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffullahead%2Fopc-op15-092%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ffullahead%2Fi%2F12260858%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
     "rakuten": 2,
     "yahoo": 1
    },
-   "change": 166.7,
-   "set": "OP12"
+   "change": 150,
+   "set": "OP15"
   },
   {
-   "id": "OP07-002",
-   "name": "アイン(R)",
-   "updatedAt": "2026-11-07",
-   "count": 6,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP07-002%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP07-002%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP07-002",
-   "minPrice": 80,
-   "refPrice": 80,
-   "shop": "ステップREIKODO",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00q9m1o.li9ae286.g00q9m1o.li9af6a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-stepreikodo%2Ftrc-20240223-0153%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-stepreikodo%2Fi%2F10392977%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
-   "src": "rakuten",
-   "counts": {
-    "rakuten": 3,
-    "yahoo": 3
-   },
-   "change": 166.7,
-   "set": "OP07"
-  },
-  {
-   "id": "OP12-056",
-   "name": "モンキー・Ｄ・ガープ(SR)",
-   "updatedAt": "2026-11-07",
-   "count": 5,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-056%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-056%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-056",
-   "minPrice": 120,
-   "refPrice": 120,
-   "shop": "トレカ道",
-   "url": "https://store.shopping.yahoo.co.jp/torekado0822/op12-056.html",
-   "src": "yahoo",
-   "counts": {
-    "rakuten": 3,
-    "yahoo": 2
-   },
-   "change": 100,
-   "set": "OP12"
-  },
-  {
-   "id": "OP07-022",
-   "name": "お玉(R)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP07-022%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP07-022%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP07-022",
-   "minPrice": 120,
-   "refPrice": 120,
-   "shop": "ゴールデンホビー",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rshbo.li9aeb49.g00rshbo.li9af287/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgoldhobby%2Fop07-022%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgoldhobby%2Fi%2F10062926%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "id": "EB01-052",
+   "name": "ヴィオラ(SR)",
+   "updatedAt": "2026-11-08",
+   "count": 3,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB01-052%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB01-052%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20EB01-052",
+   "minPrice": 140,
+   "refPrice": 140,
+   "shop": "フルアヘッド",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rf9jo.li9ae177.g00rf9jo.li9afc49/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffullahead%2Fopc-eb01-052%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ffullahead%2Fi%2F12004374%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
     "rakuten": 2,
-    "yahoo": 0
+    "yahoo": 1
+   },
+   "change": 133.3,
+   "set": "EB01"
+  },
+  {
+   "id": "OP15-060",
+   "name": "エネル(SR)",
+   "updatedAt": "2026-11-08",
+   "count": 4,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-060%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-060%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP15-060",
+   "minPrice": 100,
+   "refPrice": 100,
+   "shop": "トレカショップ竜のしっぽ Yahoo!店",
+   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240814389.html",
+   "src": "yahoo",
+   "counts": {
+    "rakuten": 3,
+    "yahoo": 1
    },
    "change": 100,
-   "set": "OP07"
+   "set": "OP15"
   },
   {
    "id": "OP17-033_p1",
    "name": "ラッキー・ルウ(トレジャーレア)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 5,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-033%2520TR%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-033%2520TR%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP17-033%20TR",
@@ -135,28 +97,9 @@
    "set": "OP17"
   },
   {
-   "id": "OP12-014_p1",
-   "name": "ボア・ハンコック(パラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-014%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-014%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-014%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 3730,
-   "refPrice": 3730,
-   "shop": "ネットショップ駿河屋 楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F147631969-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F362787231%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
-   "src": "rakuten",
-   "counts": {
-    "rakuten": 1,
-    "yahoo": 1
-   },
-   "change": 75.1,
-   "set": "OP12"
-  },
-  {
    "id": "OP17-003",
    "name": "イゾウ(R)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 6,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-003%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-003%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP17-003",
@@ -173,66 +116,47 @@
    "set": "OP17"
   },
   {
-   "id": "OP01-093_p1",
-   "name": "うるティ(パラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-093%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-093%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-093%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 730,
-   "refPrice": 730,
-   "shop": "ネットショップ駿河屋 楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F115642864-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F362446425%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "id": "OP15-085",
+   "name": "トニートニー・チョッパー(R)",
+   "updatedAt": "2026-11-08",
+   "count": 3,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-085%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-085%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP15-085",
+   "minPrice": 170,
+   "refPrice": 170,
+   "shop": "フルアヘッド",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rf9jo.li9ae177.g00rf9jo.li9afc49/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffullahead%2Fopc-op15-085%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ffullahead%2Fi%2F12260839%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
     "rakuten": 2,
-    "yahoo": 0
+    "yahoo": 1
    },
-   "change": 62.2,
-   "set": "OP01"
+   "change": 70,
+   "set": "OP15"
   },
   {
-   "id": "OP12-061_p1",
-   "name": "ドンキホーテ・ロシナンテ(リーダーパラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-061%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-061%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-061%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 2480,
-   "refPrice": 2480,
-   "shop": "ネットショップ駿河屋 楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F147631984-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F364096544%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
-   "src": "rakuten",
-   "counts": {
-    "rakuten": 2,
-    "yahoo": 0
-   },
-   "change": 58,
-   "set": "OP12"
-  },
-  {
-   "id": "OP12-112",
-   "name": "ベビー５(R)",
-   "updatedAt": "2026-11-07",
+   "id": "OP11-004_p1",
+   "name": "孔雀(パラレル)",
+   "updatedAt": "2026-11-08",
    "count": 4,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-112%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-112%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-112",
-   "minPrice": 580,
-   "refPrice": 580,
-   "shop": "ゴールデンホビー",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rshbo.li9aeb49.g00rshbo.li9af287/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgoldhobby%2Fop12-112%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgoldhobby%2Fi%2F10071889%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-004%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-004%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP11-004%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 690,
+   "refPrice": 690,
+   "shop": "トレカ通販 トレトク楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F358222j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10574691%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
     "rakuten": 4,
     "yahoo": 0
    },
-   "change": 54.7,
-   "set": "OP12"
+   "change": 53.3,
+   "set": "OP11"
   },
   {
    "id": "OP14-084_p2",
    "name": "ミス・オールサンデー(SP)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 2,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP14-084%2520SP%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP14-084%2520SP%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP14-084%20SP",
@@ -249,28 +173,66 @@
    "set": "OP16"
   },
   {
-   "id": "OP01-120_p2",
-   "name": "シャンクス(コミパラ)",
-   "updatedAt": "2026-11-07",
-   "count": 3,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-120%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-120%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-120%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 76560,
-   "refPrice": 108000,
-   "shop": "トレカ通販 トレトク楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F280921j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10566501%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "id": "OP11-118",
+   "name": "モンキー・Ｄ・ルフィ(SEC)",
+   "updatedAt": "2026-11-08",
+   "count": 4,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-118%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-118%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP11-118",
+   "minPrice": 480,
+   "refPrice": 480,
+   "shop": "ネットショップ駿河屋 楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F146762972-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F362191083%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
-    "rakuten": 3,
+    "rakuten": 2,
+    "yahoo": 2
+   },
+   "change": 50,
+   "set": "OP11"
+  },
+  {
+   "id": "OP11-106_p1",
+   "name": "ゼウス(パラレル)",
+   "updatedAt": "2026-11-08",
+   "count": 7,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-106%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-106%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP11-106%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 3570,
+   "refPrice": 3570,
+   "shop": "トレカ通販 トレトク楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F358346j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10576053%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 5,
+    "yahoo": 2
+   },
+   "change": 44,
+   "set": "OP11"
+  },
+  {
+   "id": "OP14-029_p1",
+   "name": "たしぎ(SP)",
+   "updatedAt": "2026-11-08",
+   "count": 2,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP14-029%2520SP%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP14-029%2520SP%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP14-029%20SP",
+   "minPrice": 5600,
+   "refPrice": 5600,
+   "shop": "ネットショップ駿河屋 楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F154264484-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F362200715%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 2,
     "yahoo": 0
    },
-   "change": 48.8,
-   "set": "OP01"
+   "change": 40.7,
+   "set": "OP16"
   },
   {
    "id": "OP17-040",
    "name": "エドワード・ニューゲート(R)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 8,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-040%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-040%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP17-040",
@@ -287,47 +249,28 @@
    "set": "OP17"
   },
   {
-   "id": "OP01-004",
-   "name": "ウソップ(R)",
-   "updatedAt": "2026-11-07",
+   "id": "EB01-042",
+   "name": "スカーレット(R)",
+   "updatedAt": "2026-11-08",
    "count": 6,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-004%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-004%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-004",
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB01-042%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB01-042%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20EB01-042",
    "minPrice": 70,
    "refPrice": 70,
    "shop": "ステップREIKODO",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00q9m1o.li9ae286.g00q9m1o.li9af6a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-stepreikodo%2F10257512%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-stepreikodo%2Fi%2F10257515%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00q9m1o.li9ae286.g00q9m1o.li9af6a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-stepreikodo%2Ftrc-20240126-0570%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-stepreikodo%2Fi%2F10382056%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
     "rakuten": 6,
     "yahoo": 0
    },
    "change": 40,
-   "set": "OP01"
-  },
-  {
-   "id": "OP01-069",
-   "name": "シーザー・クラウン(R)",
-   "updatedAt": "2026-11-07",
-   "count": 6,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-069%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-069%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-069",
-   "minPrice": 70,
-   "refPrice": 70,
-   "shop": "ステップREIKODO",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00q9m1o.li9ae286.g00q9m1o.li9af6a3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fauc-stepreikodo%2F10257577%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fauc-stepreikodo%2Fi%2F10257647%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
-   "src": "rakuten",
-   "counts": {
-    "rakuten": 6,
-    "yahoo": 0
-   },
-   "change": 40,
-   "set": "OP01"
+   "set": "EB01"
   },
   {
    "id": "EB05-021",
    "name": "アルビダ(SR)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 2,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB05-021%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB05-021%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20EB05-021",
@@ -344,104 +287,47 @@
    "set": "EB05"
   },
   {
-   "id": "OP12-008_p1",
-   "name": "シャンクス(パラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 5,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-008%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-008%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-008%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 930,
-   "refPrice": 930,
-   "shop": "トレカ通販 トレトク楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F365498j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10591841%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "id": "OP11-001_p1",
+   "name": "コビー(リーダーパラレル)",
+   "updatedAt": "2026-11-08",
+   "count": 4,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-001%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-001%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP11-001%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 1350,
+   "refPrice": 1350,
+   "shop": "ネットショップ駿河屋 楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F146762952-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F363235162%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
-    "rakuten": 5,
-    "yahoo": 0
-   },
-   "change": 34.8,
-   "set": "OP12"
-  },
-  {
-   "id": "OP01-073_p2",
-   "name": "ドンキホーテ・ドフラミンゴ(SP)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-073%2520SP%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-073%2520SP%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-073%20SP",
-   "minPrice": 5150,
-   "refPrice": 5150,
-   "shop": "トレカショップ竜のしっぽ Yahoo!店",
-   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240811639.html",
-   "src": "yahoo",
-   "counts": {
-    "rakuten": 1,
+    "rakuten": 3,
     "yahoo": 1
    },
-   "change": 33.1,
-   "set": "OP07"
+   "change": 39.2,
+   "set": "OP11"
   },
   {
-   "id": "OP12-056_p1",
-   "name": "モンキー・Ｄ・ガープ(パラレル)",
-   "updatedAt": "2026-11-07",
+   "id": "OP11-101_p1",
+   "name": "カポネ・ベッジ(パラレル)",
+   "updatedAt": "2026-11-08",
    "count": 3,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-056%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-056%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-056%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 850,
-   "refPrice": 850,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-101%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-101%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP11-101%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 550,
+   "refPrice": 550,
    "shop": "トレカショップ竜のしっぽ Yahoo!店",
-   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240813161.html",
+   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240812972.html",
    "src": "yahoo",
    "counts": {
     "rakuten": 2,
     "yahoo": 1
    },
-   "change": 28.8,
-   "set": "OP12"
-  },
-  {
-   "id": "OP12-094_p1",
-   "name": "モンキー・Ｄ・ドラゴン(パラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 5,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-094%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP12-094%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP12-094%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 730,
-   "refPrice": 730,
-   "shop": "ネットショップ駿河屋 楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F147631987-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F363764891%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
-   "src": "rakuten",
-   "counts": {
-    "rakuten": 3,
-    "yahoo": 2
-   },
-   "change": 28.1,
-   "set": "OP12"
-  },
-  {
-   "id": "OP01-078_p1",
-   "name": "ボア・ハンコック(パラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 9,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-078%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-078%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-078%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 1650,
-   "refPrice": 1650,
-   "shop": "トレカ通販 トレトク楽天市場店",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00ry05o.li9aea1d.g00ry05o.li9af74e/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftoretoku%2F289423j%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftoretoku%2Fi%2F10555400%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
-   "src": "rakuten",
-   "counts": {
-    "rakuten": 4,
-    "yahoo": 5
-   },
-   "change": 27.9,
-   "set": "OP01"
+   "change": 31,
+   "set": "OP11"
   },
   {
    "id": "OP16-042_p1",
    "name": "インペルダウンの囚人(トレジャーレア)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 8,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP16-042%2520TR%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP16-042%2520TR%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP16-042%20TR",
@@ -458,28 +344,28 @@
    "set": "OP16"
   },
   {
-   "id": "OP17-099_p1",
-   "name": "シャーロット・リンリン(リーダーパラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-099%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP17-099%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP17-099%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 600,
-   "refPrice": 600,
-   "shop": "フルアヘッド",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/g00rf9jo.li9ae177.g00rf9jo.li9afc49/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffullahead%2Fopc-op17-140%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ffullahead%2Fi%2F12280542%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "id": "OP16-015_p1",
+   "name": "モンキー・Ｄ・ルフィ(パラレル)",
+   "updatedAt": "2026-11-08",
+   "count": 3,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP16-015%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP16-015%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP16-015%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 4980,
+   "refPrice": 4980,
+   "shop": "ネットショップ駿河屋 楽天市場店",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00qk9ao.li9aec99.g00qk9ao.li9afaff/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsurugaya-a-too%2F154264471-1%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsurugaya-a-too%2Fi%2F363638577%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
    "src": "rakuten",
    "counts": {
-    "rakuten": 2,
-    "yahoo": 0
+    "rakuten": 1,
+    "yahoo": 2
    },
-   "change": 25,
-   "set": "OP17"
+   "change": 23,
+   "set": "OP16"
   },
   {
    "id": "EB05-034",
    "name": "シュガー(SR)",
-   "updatedAt": "2026-11-07",
+   "updatedAt": "2026-11-08",
    "count": 5,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB05-034%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520EB05-034%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20EB05-034",
@@ -496,29 +382,48 @@
    "set": "EB05"
   },
   {
-   "id": "OP01-094_p1",
-   "name": "カイドウ(パラレル)",
-   "updatedAt": "2026-11-07",
-   "count": 2,
-   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-094%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP01-094%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
-   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP01-094%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
-   "minPrice": 1350,
-   "refPrice": 1350,
+   "id": "OP11-008_p1",
+   "name": "ドール(パラレル)",
+   "updatedAt": "2026-11-08",
+   "count": 5,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-008%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP11-008%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP11-008%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 550,
+   "refPrice": 550,
+   "shop": "お宝あっとマーケット",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/g00s8f2o.li9ae597.g00s8f2o.li9af926/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fotakaraat%2F53t04023002kb%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fotakaraat%2Fi%2F10132911%2F&rafcid=wsc_i_is_e5bbd58f-4c80-4316-9051-31cefdf85652",
+   "src": "rakuten",
+   "counts": {
+    "rakuten": 5,
+    "yahoo": 0
+   },
+   "change": 22.2,
+   "set": "OP11"
+  },
+  {
+   "id": "OP15-022_p1",
+   "name": "ブルック(リーダーパラレル)",
+   "updatedAt": "2026-11-08",
+   "count": 5,
+   "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-022%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP15-022%2520%25E3%2583%2591%25E3%2583%25A9%25E3%2583%25AC%25E3%2583%25AB%2F",
+   "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP15-022%20%E3%83%91%E3%83%A9%E3%83%AC%E3%83%AB",
+   "minPrice": 2600,
+   "refPrice": 2600,
    "shop": "トレカショップ竜のしっぽ Yahoo!店",
-   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240810198.html",
+   "url": "https://store.shopping.yahoo.co.jp/ryuunoshippo/240814344.html",
    "src": "yahoo",
    "counts": {
     "rakuten": 1,
-    "yahoo": 1
+    "yahoo": 4
    },
-   "change": 20.5,
-   "set": "OP01"
+   "change": 22.1,
+   "set": "OP15"
   },
   {
    "id": "OP16-056",
    "name": "Mr.3(ギャルディーノ)(SR)",
-   "updatedAt": "2026-11-07",
-   "count": 3,
+   "updatedAt": "2026-11-08",
+   "count": 2,
    "searchUrl": "https://hb.afl.rakuten.co.jp/hgc/58a69486.b0059417.58a69487.510eb62b/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP16-056%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F%25E3%2583%25AF%25E3%2583%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2582%25B9%25E3%2582%25AB%25E3%2583%25BC%25E3%2583%2589%2520OP16-056%2F",
    "ysearchUrl": "https://shopping.yahoo.co.jp/search?p=%E3%83%AF%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%89%20OP16-056",
    "minPrice": 1020,
@@ -528,7 +433,7 @@
    "src": "rakuten",
    "counts": {
     "rakuten": 2,
-    "yahoo": 1
+    "yahoo": 0
    },
    "change": 20,
    "set": "OP16"
