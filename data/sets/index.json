@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-08",
-   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582770059229",
-   "ev": 11579,
-   "pre": 15500,
+   "updatedAt": "2026-11-09",
+   "box": "https://item-shopping.c.yimg.jp/i/l/hobbyhobby-shop_20261030-3",
+   "ev": 11558,
+   "pre": 14980,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-08",
+   "updatedAt": "2026-11-09",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 13262,
-   "pre": 11000,
+   "ev": 13160,
+   "pre": 11850,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-08",
+   "updatedAt": "2026-11-09",
    "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769982897",
-   "ev": 7702,
+   "ev": 7567,
    "pre": 11700,
    "priced": 74,
    "estimated": 0,
@@ -38,10 +38,10 @@
    "total": 71
   },
   "EB04": {
-   "updatedAt": "2026-11-02",
-   "box": "https://item-shopping.c.yimg.jp/i/l/speedwagon_10014387",
-   "ev": 11410,
-   "pre": 16799,
+   "updatedAt": "2026-11-09",
+   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52011830",
+   "ev": 10675,
+   "pre": 17130,
    "priced": 55,
    "estimated": 0,
    "total": 55
@@ -101,10 +101,10 @@
    "total": 74
   },
   "EB02": {
-   "updatedAt": "2026-11-02",
+   "updatedAt": "2026-11-09",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769733727",
-   "ev": 6075,
-   "pre": 41800,
+   "ev": 5777,
+   "pre": 40800,
    "priced": 75,
    "estimated": 0,
    "total": 75
@@ -164,9 +164,9 @@
    "total": 49
   },
   "OP06": {
-   "updatedAt": "2026-11-02",
+   "updatedAt": "2026-11-09",
    "box": "https://item-shopping.c.yimg.jp/i/l/ky-zakkaten-y_0748-009136",
-   "ev": 3691,
+   "ev": 3397,
    "pre": 25800,
    "priced": 69,
    "estimated": 0,
