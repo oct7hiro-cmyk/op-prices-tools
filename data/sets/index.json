@@ -1,29 +1,29 @@
 {
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-09",
+   "updatedAt": "2026-11-10",
    "box": "https://item-shopping.c.yimg.jp/i/l/hobbyhobby-shop_20261030-3",
-   "ev": 11558,
+   "ev": 11848,
    "pre": 14980,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-09",
+   "updatedAt": "2026-11-10",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 13160,
+   "ev": 13359,
    "pre": 11850,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-09",
-   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769982897",
-   "ev": 7567,
-   "pre": 11700,
+   "updatedAt": "2026-11-10",
+   "box": "https://item-shopping.c.yimg.jp/i/l/hrco_op-16",
+   "ev": 6615,
+   "pre": 11600,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -47,10 +47,10 @@
    "total": 55
   },
   "OP14": {
-   "updatedAt": "2026-11-03",
-   "box": "https://item-shopping.c.yimg.jp/i/l/gochanstore_b0fqb2bqhm",
-   "ev": 7941,
-   "pre": 11036,
+   "updatedAt": "2026-11-10",
+   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769922978",
+   "ev": 7662,
+   "pre": 11250,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -110,9 +110,9 @@
    "total": 75
   },
   "OP10": {
-   "updatedAt": "2026-11-03",
-   "box": "https://item-shopping.c.yimg.jp/i/l/moetaku_rc-itzplgmeoiag-khij",
-   "ev": 2545,
+   "updatedAt": "2026-11-10",
+   "box": "https://item-shopping.c.yimg.jp/i/l/moetaku_rc-itc66tcy8b90-uxqh",
+   "ev": 2271,
    "pre": 12960,
    "priced": 69,
    "estimated": 0,
@@ -173,9 +173,9 @@
    "total": 69
   },
   "OP05": {
-   "updatedAt": "2026-11-03",
+   "updatedAt": "2026-11-10",
    "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10764051/31859702_0.jpg?_ex=400x400",
-   "ev": 3482,
+   "ev": 3259,
    "pre": 66000,
    "priced": 73,
    "estimated": 0,
