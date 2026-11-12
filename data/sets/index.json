@@ -1,29 +1,29 @@
 {
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-12",
+   "updatedAt": "2026-11-13",
    "box": "https://item-shopping.c.yimg.jp/i/l/yuyuspi_4582770059229",
-   "ev": 11071,
-   "pre": 14980,
+   "ev": 10810,
+   "pre": 14500,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-12",
+   "updatedAt": "2026-11-13",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 12909,
-   "pre": 11850,
+   "ev": 12825,
+   "pre": 11000,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-12",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/spjstore/cabinet/11379786/11406626/4582769982897.jpg?_ex=400x400",
-   "ev": 6504,
-   "pre": 11600,
+   "updatedAt": "2026-11-13",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769982897.jpg?_ex=400x400",
+   "ev": 6461,
+   "pre": 11500,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -74,12 +74,12 @@
    "total": 93
   },
   "PRB02": {
-   "updatedAt": "2026-11-06",
+   "updatedAt": "2026-11-13",
    "box": "https://item-shopping.c.yimg.jp/i/l/hrco_prb-02",
-   "ev": 4548,
-   "pre": 13500,
+   "ev": 4268,
+   "pre": 13200,
    "priced": 226,
-   "estimated": 13,
+   "estimated": 12,
    "total": 226
   },
   "OP12": {
@@ -137,9 +137,9 @@
    "total": 266
   },
   "OP08": {
-   "updatedAt": "2026-11-06",
+   "updatedAt": "2026-11-13",
    "box": "https://item-shopping.c.yimg.jp/i/l/ookinidesu_h20240525-6732okd9850yu965",
-   "ev": 2668,
+   "ev": 2919,
    "pre": 13500,
    "priced": 69,
    "estimated": 0,
@@ -200,9 +200,9 @@
    "total": 69
   },
   "OP02": {
-   "updatedAt": "2026-11-06",
+   "updatedAt": "2026-11-13",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
-   "ev": 2906,
+   "ev": 2613,
    "pre": 28680,
    "priced": 65,
    "estimated": 0,
