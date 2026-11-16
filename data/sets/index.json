@@ -1,29 +1,29 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-16",
+   "updatedAt": "2026-11-17",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582770059229",
-   "ev": 10885,
+   "ev": 10637,
    "pre": 14180,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-16",
+   "updatedAt": "2026-11-17",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 12915,
-   "pre": 11760,
+   "ev": 12758,
+   "pre": 10980,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-16",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769982897.jpg?_ex=400x400",
-   "ev": 6259,
-   "pre": 11500,
+   "updatedAt": "2026-11-17",
+   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
+   "ev": 6174,
+   "pre": 11180,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -47,10 +47,10 @@
    "total": 55
   },
   "OP14": {
-   "updatedAt": "2026-11-10",
-   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4582769922978",
-   "ev": 7662,
-   "pre": 11250,
+   "updatedAt": "2026-11-17",
+   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769922978",
+   "ev": 7322,
+   "pre": 11180,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -110,10 +110,10 @@
    "total": 75
   },
   "OP10": {
-   "updatedAt": "2026-11-10",
-   "box": "https://item-shopping.c.yimg.jp/i/l/moetaku_rc-itc66tcy8b90-uxqh",
-   "ev": 2271,
-   "pre": 12960,
+   "updatedAt": "2026-11-17",
+   "box": "https://item-shopping.c.yimg.jp/i/l/shop998_op10b",
+   "ev": 2257,
+   "pre": 13800,
    "priced": 69,
    "estimated": 0,
    "total": 69
@@ -173,12 +173,12 @@
    "total": 69
   },
   "OP05": {
-   "updatedAt": "2026-11-10",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10764051/31859702_0.jpg?_ex=400x400",
-   "ev": 3259,
-   "pre": 66000,
+   "updatedAt": "2026-11-17",
+   "box": "https://item-shopping.c.yimg.jp/i/l/ho2171_ya20231214-1",
+   "ev": 3069,
+   "pre": 59760,
    "priced": 73,
-   "estimated": 0,
+   "estimated": 1,
    "total": 73
   },
   "OP04": {
