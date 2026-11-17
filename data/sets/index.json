@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-17",
+   "updatedAt": "2026-11-18",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582770059229",
-   "ev": 10637,
-   "pre": 14180,
+   "ev": 10648,
+   "pre": 13960,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-17",
+   "updatedAt": "2026-11-18",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 12758,
+   "ev": 12820,
    "pre": 10980,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-17",
+   "updatedAt": "2026-11-18",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6174,
+   "ev": 8045,
    "pre": 11180,
    "priced": 74,
    "estimated": 0,
@@ -56,10 +56,10 @@
    "total": 74
   },
   "EB03": {
-   "updatedAt": "2026-11-11",
-   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/yum-yum/cabinet/4582769865220.jpg?_ex=400x400",
-   "ev": 5035,
-   "pre": 14450,
+   "updatedAt": "2026-11-18",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/premiumgarage/cabinet/13340078/imgrc0121661121.jpg?_ex=400x400",
+   "ev": 4905,
+   "pre": 16500,
    "priced": 60,
    "estimated": 0,
    "total": 60
@@ -119,10 +119,10 @@
    "total": 69
   },
   "OP09": {
-   "updatedAt": "2026-11-11",
-   "box": "https://item-shopping.c.yimg.jp/i/l/moetaku_rc-itemd0efbkt4-ixa3",
-   "ev": 5238,
-   "pre": 21700,
+   "updatedAt": "2026-11-18",
+   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118259493",
+   "ev": 4970,
+   "pre": 21600,
    "priced": 77,
    "estimated": 0,
    "total": 77
@@ -182,9 +182,9 @@
    "total": 73
   },
   "OP04": {
-   "updatedAt": "2026-11-11",
+   "updatedAt": "2026-11-18",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009078",
-   "ev": 3282,
+   "ev": 3503,
    "pre": 23800,
    "priced": 68,
    "estimated": 0,
