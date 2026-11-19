@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-19",
+   "updatedAt": "2026-11-20",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582770059229",
-   "ev": 10417,
+   "ev": 10205,
    "pre": 13960,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-19",
-   "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 12780,
-   "pre": 10980,
+   "updatedAt": "2026-11-20",
+   "box": "https://item-shopping.c.yimg.jp/i/l/okadoys_1118op17",
+   "ev": 12549,
+   "pre": 10530,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-19",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 7025,
+   "updatedAt": "2026-11-20",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/otakarakan/cabinet/05682550/07076774/imgrc0141436662.jpg?_ex=400x400",
+   "ev": 7944,
    "pre": 11180,
    "priced": 74,
    "estimated": 0,
@@ -74,12 +74,12 @@
    "total": 93
   },
   "PRB02": {
-   "updatedAt": "2026-11-13",
+   "updatedAt": "2026-11-20",
    "box": "https://item-shopping.c.yimg.jp/i/l/hrco_prb-02",
-   "ev": 4268,
-   "pre": 13200,
+   "ev": 3953,
+   "pre": 12800,
    "priced": 226,
-   "estimated": 12,
+   "estimated": 7,
    "total": 226
   },
   "OP12": {
@@ -137,10 +137,10 @@
    "total": 266
   },
   "OP08": {
-   "updatedAt": "2026-11-13",
-   "box": "https://item-shopping.c.yimg.jp/i/l/ookinidesu_h20240525-6732okd9850yu965",
-   "ev": 2919,
-   "pre": 13500,
+   "updatedAt": "2026-11-20",
+   "box": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/12950715/43192348_1.jpg?_ex=400x400",
+   "ev": 2548,
+   "pre": 14480,
    "priced": 69,
    "estimated": 0,
    "total": 69
@@ -200,9 +200,9 @@
    "total": 69
   },
   "OP02": {
-   "updatedAt": "2026-11-13",
+   "updatedAt": "2026-11-20",
    "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
-   "ev": 2613,
+   "ev": 2393,
    "pre": 28680,
    "priced": 65,
    "estimated": 0,
