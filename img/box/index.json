@@ -1,15 +1,15 @@
 {
  "OP17": {
   "file": "img/box/op17.webp",
-  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/faustamartweb/cabinet/compass1794817028.jpg?_ex=400x400",
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/supersonic-webstore/cabinet/compass1786155571.jpg?_ex=400x400",
   "score": 1.45,
-  "updatedAt": "2026-11-20"
+  "updatedAt": "2026-11-21"
  },
  "OP16": {
   "file": "img/box/op16.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/keitai-god/cabinet/06339609/10970887/imgrc0103622602.jpg?_ex=400x400",
   "score": 1.47,
-  "updatedAt": "2026-11-20"
+  "updatedAt": "2026-11-21"
  },
  "EB04": {
   "file": "img/box/eb04.webp",
@@ -74,12 +74,12 @@
   "file": "img/box/op07.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/kobido/cabinet/08982934/09120525/imgrc0088334027.jpg?_ex=400x400",
   "score": 1.47,
-  "updatedAt": "2026-11-14"
+  "updatedAt": "2026-11-21"
  },
  "EB01": {
   "file": "img/box/eb01.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0061/52009711_1.jpg?_ex=400x400",
-  "score": 1.47,
+  "score": 1.46,
   "updatedAt": "2026-11-15"
  },
  "OP06": {
@@ -108,15 +108,15 @@
  },
  "OP02": {
   "file": "img/box/op02.webp",
-  "src": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
-  "score": 1.44,
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0066/52008816_1.jpg?_ex=400x400",
+  "score": 1.49,
   "updatedAt": "2026-11-20"
  },
  "OP01": {
   "file": "img/box/op01.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/bearhomes/cabinet/11111993/2566a934fe0f630.jpg?_ex=400x400",
   "score": 1.49,
-  "updatedAt": "2026-11-14"
+  "updatedAt": "2026-11-21"
  },
  "OP15": {
   "file": "img/box/op15.webp",
@@ -137,6 +137,6 @@
   "file": "img/box/eb05.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/noah-shopping/cabinet/default2/kjadjhqw.jpg?_ex=400x400",
   "score": 1.49,
-  "updatedAt": "2026-11-20"
+  "updatedAt": "2026-11-21"
  }
 }
