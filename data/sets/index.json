@@ -1,38 +1,38 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-21",
+   "updatedAt": "2026-11-22",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582770059229",
-   "ev": 10326,
-   "pre": 13880,
+   "ev": 10388,
+   "pre": 13580,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-21",
+   "updatedAt": "2026-11-22",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 13346,
+   "ev": 13463,
    "pre": 10450,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-21",
+   "updatedAt": "2026-11-22",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 5959,
+   "ev": 5915,
    "pre": 10960,
    "priced": 74,
    "estimated": 0,
    "total": 74
   },
   "OP15": {
-   "updatedAt": "2026-11-15",
+   "updatedAt": "2026-11-22",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769966002",
-   "ev": 6675,
-   "pre": 10780,
+   "ev": 6325,
+   "pre": 10380,
    "priced": 71,
    "estimated": 0,
    "total": 71
@@ -92,10 +92,10 @@
    "total": 73
   },
   "OP11": {
-   "updatedAt": "2026-11-15",
+   "updatedAt": "2026-11-22",
    "box": "https://item-shopping.c.yimg.jp/i/l/worldplus01_onepiececard",
-   "ev": 24334,
-   "pre": 37900,
+   "ev": 24152,
+   "pre": 35000,
    "priced": 74,
    "estimated": 1,
    "total": 74
@@ -155,9 +155,9 @@
    "total": 69
   },
   "EB01": {
-   "updatedAt": "2026-11-15",
-   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52009711",
-   "ev": 1925,
+   "updatedAt": "2026-11-22",
+   "box": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52011954",
+   "ev": 1850,
    "pre": 24280,
    "priced": 49,
    "estimated": 0,
