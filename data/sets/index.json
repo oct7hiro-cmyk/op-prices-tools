@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "sets": {
   "EB05": {
-   "updatedAt": "2026-11-23",
+   "updatedAt": "2026-11-24",
    "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582770059229",
-   "ev": 10333,
+   "ev": 10295,
    "pre": 12980,
    "priced": 66,
    "estimated": 1,
    "total": 77
   },
   "OP17": {
-   "updatedAt": "2026-11-23",
+   "updatedAt": "2026-11-24",
    "box": "https://item-shopping.c.yimg.jp/i/l/suruga-ya_630029643001",
-   "ev": 13440,
+   "ev": 13429,
    "pre": 10600,
    "priced": 88,
    "estimated": 1,
    "total": 88
   },
   "OP16": {
-   "updatedAt": "2026-11-23",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769982897",
-   "ev": 6069,
+   "updatedAt": "2026-11-24",
+   "box": "https://item-shopping.c.yimg.jp/i/l/okadoys_1123tcop16",
+   "ev": 6027,
    "pre": 10960,
    "priced": 74,
    "estimated": 0,
@@ -47,10 +47,10 @@
    "total": 55
   },
   "OP14": {
-   "updatedAt": "2026-11-17",
-   "box": "https://item-shopping.c.yimg.jp/i/l/evalue-omochayasan_4582769922978",
-   "ev": 7322,
-   "pre": 11180,
+   "updatedAt": "2026-11-24",
+   "box": "https://item-shopping.c.yimg.jp/i/l/picopicoshop2_4582769922978",
+   "ev": 6547,
+   "pre": 10960,
    "priced": 74,
    "estimated": 0,
    "total": 74
@@ -110,9 +110,9 @@
    "total": 75
   },
   "OP10": {
-   "updatedAt": "2026-11-17",
+   "updatedAt": "2026-11-24",
    "box": "https://item-shopping.c.yimg.jp/i/l/shop998_op10b",
-   "ev": 2257,
+   "ev": 3031,
    "pre": 13800,
    "priced": 69,
    "estimated": 0,
@@ -173,12 +173,12 @@
    "total": 69
   },
   "OP05": {
-   "updatedAt": "2026-11-17",
-   "box": "https://item-shopping.c.yimg.jp/i/l/ho2171_ya20231214-1",
-   "ev": 3069,
-   "pre": 59760,
+   "updatedAt": "2026-11-24",
+   "box": "https://item-shopping.c.yimg.jp/i/l/noahshoping_4570118002174",
+   "ev": 3261,
+   "pre": 53609,
    "priced": 73,
-   "estimated": 1,
+   "estimated": 0,
    "total": 73
   },
   "OP04": {
