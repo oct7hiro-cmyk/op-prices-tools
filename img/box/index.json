@@ -1,15 +1,15 @@
 {
  "OP17": {
   "file": "img/box/op17.webp",
-  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/faustamartweb/cabinet/compass1794817028.jpg?_ex=400x400",
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/premiumgarage/cabinet/13340078/imgrc0120457151.jpg?_ex=400x400",
   "score": 1.45,
-  "updatedAt": "2026-11-25"
+  "updatedAt": "2026-11-26"
  },
  "OP16": {
   "file": "img/box/op16.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/keitai-god/cabinet/06339609/10970887/imgrc0103622602.jpg?_ex=400x400",
   "score": 1.47,
-  "updatedAt": "2026-11-25"
+  "updatedAt": "2026-11-26"
  },
  "EB04": {
   "file": "img/box/eb04.webp",
@@ -62,7 +62,7 @@
   "file": "img/box/prb01.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/saitamatoy/cabinet/202604231915.jpg?_ex=400x400",
   "score": 1.46,
-  "updatedAt": "2026-11-19"
+  "updatedAt": "2026-11-26"
  },
  "OP08": {
   "file": "img/box/op08.webp",
@@ -104,12 +104,12 @@
   "file": "img/box/op03.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/sofapotato/cabinet/10776148/28416126_0.jpg?_ex=400x400",
   "score": 1.48,
-  "updatedAt": "2026-11-19"
+  "updatedAt": "2026-11-26"
  },
  "OP02": {
   "file": "img/box/op02.webp",
-  "src": "https://item-shopping.c.yimg.jp/i/l/bii-dama_52008816",
-  "score": 1.44,
+  "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/bii-dama/cabinet/image0066/52008816_1.jpg?_ex=400x400",
+  "score": 1.49,
   "updatedAt": "2026-11-20"
  },
  "OP01": {
@@ -137,6 +137,6 @@
   "file": "img/box/eb05.webp",
   "src": "https://thumbnail.image.rakuten.co.jp/@0_mall/lcs-live/cabinet/living/08198794/4582770059229.jpg?_ex=400x400",
   "score": 1.46,
-  "updatedAt": "2026-11-25"
+  "updatedAt": "2026-11-26"
  }
 }
